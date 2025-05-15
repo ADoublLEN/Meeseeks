@@ -1,0 +1,4 @@
+jsonschema
+pypinyin
+hanziconv
+aiohttp
