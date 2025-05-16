@@ -9,11 +9,7 @@ Meeseeks is an instruction-following benchmark based on business data. It featur
 
 ## Quick Start
 
-First you need to download the dataset from huggingface, and paste it in `data` folder.
-
-Download from here: https://huggingface.co/datasets/wang4146/Meeseeks/tree/main
-
-Download the file: Meeseeks_quickstart_data.json
+First you need to download the file: `Meeseeks_quickstart_data.json` from https://huggingface.co/datasets/wang4146/Meeseeks/tree/main, and paste it in `data` folder.
 
 To run the project, you need to implement 3 different models by yourself:
 - target model 
