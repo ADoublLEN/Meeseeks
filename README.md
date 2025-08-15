@@ -3,7 +3,7 @@
 
 ## 📌Introduction
 
-Meeseeks is an instruction-following benchmark based on business data. It features a multi-turn mode that enables models to self-correct their responses based on feedback provided by Meeseeks.
+Meeseeks is an instruction-following benchmark, featuring a multi-turn scenario that enables models to self-correct their responses based on feedback provided by Meeseeks.
 
 🔔 Instruction-Following refers to evaluating whether a model adheres to the requirements specified in the user prompt, focusing solely on compliance with given instructions rather than the factual accuracy of the response.
 
