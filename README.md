@@ -5,8 +5,6 @@
 
 Meeseeks is an instruction-following benchmark, featuring a multi-turn scenario that enables models to self-correct their responses based on feedback provided by Meeseeks.
 
-🔔 Instruction-Following refers to evaluating whether a model adheres to the requirements specified in the user prompt, focusing solely on compliance with given instructions rather than the factual accuracy of the response.
-
 ## Quick Start
 
 First you need to download the file: `Meeseeks_quickstart_data.json` from https://huggingface.co/datasets/wang4146/Meeseeks/tree/main, and paste it in `data` folder.
