@@ -1,0 +1,1352 @@
+[
+    {
+        "category": "SCHEMA",
+        "question": "你是一个专业的游玩热点类文章分析师，我会给你提供文章内容和文章类型。你需要根据不同的文章类型执行不同的识别策略。只返回提取到的玩法信息，不返回其他多余的信息。\n文章类型:自动识别\n请按照以下规则提取信息:\n1. playName: 玩法名称，指文章中出现的具体玩法或活动名称。\n2. briefDesc: 一句话描述，要求总结玩法亮点与特色，不包含运营时间、实用信息、负面描述，15-20字。\n3. location: 玩法地理位置，指玩法在景区或场地内的具体参照点或参照物，不能是城市、省份。\n4. startDate/endDate: 玩法的游玩时间范围，日期格式为xxxx-xx-xx，若识别不到则返回空字符串。\n5. detailDesc: 玩法详细介绍，要求70-80字，描述玩法的亮点与特色，不包含第三方视角词语。\n6. price: 票价信息，返回格式[\"\",\"\"]，若识别不到则返回空列表。\n7. issueTime: 若玩法属于演唱会、音乐节、Livehouse、相声等类型，需识别开票时间，日期格式为xxxx-xx-xx，若无则返回空字符串。\n8. hasNightView: 是否夜间活动（是/否）。\n9. isParentChildFriendly: 是否适合亲子（是/否）。\n10. isOutdoor: 是否为户外玩法（是/否）。\n11. hasCulturalShow: 是否包含文化演出（是/否）。\n12. hasHotSpring: 是否有温泉项目（是/否）。\n输出要求:\n1. 使用JSON格式返回提取的信息\n2. 每个玩法作为一个对象，包含所有字段\n3. 所有玩法对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n输出格式示例:\n[\n  {\"playName\":\"玩法名称\",\"briefDesc\":\"一句话描述\",\"location\":\"地理位置\",\"startDate\":\"开始时间\",\"endDate\":\"结束时间\",\"detailDesc\":\"玩法详细介绍\",\"price\":[],\"issueTime\":\"开票时间\",\"hasNightView\":\"是/否\",\"isParentChildFriendly\":\"是/否\",\"isOutdoor\":\"是/否\",\"hasCulturalShow\":\"是/否\",\"hasHotSpring\":\"是/否\"}\n]\n文章内容:三里屯机电院圣诞夜市开启！伍德吃托克冬日市集、夜间甜品巡游、独立音乐厂牌表演，90小时不间断音乐体验，圣诞气氛与美食齐聚。还有亲子互动区和市集手作坊。",
+        "json_schema": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "playName": {
+                        "type": "string",
+                        "description": "玩法名称",
+                        "能力项": "范围、10~50字"
+                    },
+                    "briefDesc": {
+                        "type": "string",
+                        "description": "一句话描述",
+                        "能力项": "范围、10~50字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 5,
+                        "maxLength": 20
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "玩法地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "开始时间"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "结束时间"
+                    },
+                    "detailDesc": {
+                        "type": "string",
+                        "description": "玩法详细介绍",
+                        "能力项": "范围、50~200字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 70,
+                        "maxLength": 80
+                    },
+                    "price": {
+                        "type": "array",
+                        "description": "票价信息",
+                        "items": {
+                            "type": "string"
+                        },
+                        "能力项": "主题约束"
+                    },
+                    "issueTime": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "开票时间"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否夜间活动",
+                        "能力项": "特定格式"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否适合亲子",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否为户外玩法",
+                        "能力项": "特定格式"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否包含文化演出",
+                        "能力项": "特定格式"
+                    },
+                    "hasHotSpring": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有温泉项目",
+                        "能力项": "特定格式"
+                    }
+                },
+                "required": [
+                    "playName",
+                    "briefDesc",
+                    "location",
+                    "startDate",
+                    "endDate",
+                    "detailDesc",
+                    "price",
+                    "issueTime",
+                    "hasNightView",
+                    "isParentChildFriendly",
+                    "isOutdoor",
+                    "hasCulturalShow",
+                    "hasHotSpring"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"playName\": \"伍德吃托克冬日市集\", \"briefDesc\": \"圣诞市集甜品美食品牌多。\", \"location\": \"三里屯机电院内\", \"startDate\": \"2023-12-24\", \"endDate\": \"2023-12-25\", \"detailDesc\": \"市集汇聚多家甜品与独立好物品牌，夜市热闹非凡，音乐厂牌和DJ轮番表演，圣诞气氛拉满，适合年末打卡体验。\", \"price\": [], \"issueTime\": \"\", \"hasNightView\": \"是\", \"isParentChildFriendly\": \"是\", \"isOutdoor\": \"否\", \"hasCulturalShow\": \"否\", \"hasHotSpring\": \"否\"}, {\"playName\": \"圣诞音乐体验\", \"briefDesc\": \"多音乐厂牌联袂夜间表演。\", \"location\": \"三里屯机电院\", \"startDate\": \"2023-12-24\", \"endDate\": \"2023-12-25\", \"detailDesc\": \"夜晚音乐厂牌和DJ团队带来90小时音乐体验，现场气氛热烈，适合音乐爱好者年末聚会，感受节日氛围。\", \"price\": [], \"issueTime\": \"\", \"hasNightView\": \"是\", \"isParentChildFriendly\": \"否\", \"isOutdoor\": \"否\", \"hasCulturalShow\": \"是\", \"hasHotSpring\": \"否\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个专业的游玩热点类文章分析师，我会给你提供文章内容和文章类型。你需要根据不同的文章类型执行不同的识别策略。只返回提取到的玩法信息，不返回其他多余的信息。\n文章类型:自动识别\n请按照以下规则提取信息:\n1. playName: 玩法名称，指文章中出现的具体玩法或活动名称。\n2. briefDesc: 一句话描述，要求总结玩法亮点与特色，不包含运营时间、实用信息、负面描述，15-20字。\n3. location: 玩法地理位置，指玩法在景区或场地内的具体参照点或参照物，不能是城市、省份。\n4. startDate/endDate: 玩法的游玩时间范围，日期格式为xxxx-xx-xx，若识别不到则返回空字符串。\n5. detailDesc: 玩法详细介绍，要求70-80字，描述玩法的亮点与特色，不包含第三方视角词语。\n6. price: 票价信息，返回格式[\"\",\"\"]，若识别不到则返回空列表。\n7. issueTime: 若玩法属于演唱会、音乐节、Livehouse、相声等类型，需识别开票时间，日期格式为xxxx-xx-xx，若无则返回空字符串。\n8. hasNightView: 是否夜间活动（是/否）。\n9. isParentChildFriendly: 是否适合亲子（是/否）。\n10. isOutdoor: 是否为户外玩法（是/否）。\n11. hasCulturalShow: 是否包含文化演出（是/否）。\n12. hasHotSpring: 是否有温泉项目（是/否）。\n输出要求:\n1. 使用JSON格式返回提取的信息\n2. 每个玩法作为一个对象，包含所有字段\n3. 所有玩法对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n输出格式示例:\n[\n  {\"playName\":\"玩法名称\",\"briefDesc\":\"一句话描述\",\"location\":\"地理位置\",\"startDate\":\"开始时间\",\"endDate\":\"结束时间\",\"detailDesc\":\"玩法详细介绍\",\"price\":[],\"issueTime\":\"开票时间\",\"hasNightView\":\"是/否\",\"isParentChildFriendly\":\"是/否\",\"isOutdoor\":\"是/否\",\"hasCulturalShow\":\"是/否\",\"hasHotSpring\":\"是/否\"}\n]\n文章内容:欢乐谷圣诞灯光秀炫彩开启，夜间有大型巡游表演和圣诞主题市集，亲子家庭、情侣、朋友组队都能玩得尽兴，户外夜景令人难忘。",
+        "json_schema": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "playName": {
+                        "type": "string",
+                        "description": "玩法名称",
+                        "能力项": "范围、10~50字"
+                    },
+                    "briefDesc": {
+                        "type": "string",
+                        "description": "一句话描述",
+                        "能力项": "范围、10~50字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 5,
+                        "maxLength": 20
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "玩法地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "开始时间"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "结束时间"
+                    },
+                    "detailDesc": {
+                        "type": "string",
+                        "description": "玩法详细介绍",
+                        "能力项": "范围、50~200字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 70,
+                        "maxLength": 80
+                    },
+                    "price": {
+                        "type": "array",
+                        "description": "票价信息",
+                        "items": {
+                            "type": "string"
+                        },
+                        "能力项": "主题约束"
+                    },
+                    "issueTime": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "开票时间"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否夜间活动",
+                        "能力项": "特定格式"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否适合亲子",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否为户外玩法",
+                        "能力项": "特定格式"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否包含文化演出",
+                        "能力项": "特定格式"
+                    },
+                    "hasHotSpring": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有温泉项目",
+                        "能力项": "特定格式"
+                    }
+                },
+                "required": [
+                    "playName",
+                    "briefDesc",
+                    "location",
+                    "startDate",
+                    "endDate",
+                    "detailDesc",
+                    "price",
+                    "issueTime",
+                    "hasNightView",
+                    "isParentChildFriendly",
+                    "isOutdoor",
+                    "hasCulturalShow",
+                    "hasHotSpring"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"playName\": \"欢乐谷圣诞灯光秀\", \"briefDesc\": \"灯光秀与巡游表演夜间上演。\", \"location\": \"欢乐谷主舞台\", \"startDate\": \"2023-12-23\", \"endDate\": \"2023-12-25\", \"detailDesc\": \"夜间大型灯光秀与圣诞主题巡游表演交替上演，园区气氛热烈，适合亲子家庭和情侣前来体验圣诞夜的欢乐与浪漫。\", \"price\": [], \"issueTime\": \"\", \"hasNightView\": \"是\", \"isParentChildFriendly\": \"是\", \"isOutdoor\": \"是\", \"hasCulturalShow\": \"是\", \"hasHotSpring\": \"否\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个专业的游玩热点类文章分析师，我会给你提供文章内容和文章类型。你需要根据不同的文章类型执行不同的识别策略。只返回提取到的玩法信息，不返回其他多余的信息。\n文章类型:自动识别\n请按照以下规则提取信息:\n1. playName: 玩法名称，指文章中出现的具体玩法或活动名称。\n2. briefDesc: 一句话描述，要求总结玩法亮点与特色，不包含运营时间、实用信息、负面描述，15-20字。\n3. location: 玩法地理位置，指玩法在景区或场地内的具体参照点或参照物，不能是城市、省份。\n4. startDate/endDate: 玩法的游玩时间范围，日期格式为xxxx-xx-xx，若识别不到则返回空字符串。\n5. detailDesc: 玩法详细介绍，要求70-80字，描述玩法的亮点与特色，不包含第三方视角词语。\n6. price: 票价信息，返回格式[\"\",\"\"]，若识别不到则返回空列表。\n7. issueTime: 若玩法属于演唱会、音乐节、Livehouse、相声等类型，需识别开票时间，日期格式为xxxx-xx-xx，若无则返回空字符串。\n8. hasNightView: 是否夜间活动（是/否）。\n9. isParentChildFriendly: 是否适合亲子（是/否）。\n10. isOutdoor: 是否为户外玩法（是/否）。\n11. hasCulturalShow: 是否包含文化演出（是/否）。\n12. hasHotSpring: 是否有温泉项目（是/否）。\n输出要求:\n1. 使用JSON格式返回提取的信息\n2. 每个玩法作为一个对象，包含所有字段\n3. 所有玩法对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n输出格式示例:\n[\n  {\"playName\":\"玩法名称\",\"briefDesc\":\"一句话描述\",\"location\":\"地理位置\",\"startDate\":\"开始时间\",\"endDate\":\"结束时间\",\"detailDesc\":\"玩法详细介绍\",\"price\":[],\"issueTime\":\"开票时间\",\"hasNightView\":\"是/否\",\"isParentChildFriendly\":\"是/否\",\"isOutdoor\":\"是/否\",\"hasCulturalShow\":\"是/否\",\"hasHotSpring\":\"是/否\"}\n]\n文章内容:故宫冰雪节开幕，冰雕展览、雪地滑梯、冰上自行车等丰富玩法等你体验，夜场灯光秀浪漫梦幻。全家都能找到乐趣。",
+        "json_schema": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "playName": {
+                        "type": "string",
+                        "description": "玩法名称",
+                        "能力项": "范围、10~50字"
+                    },
+                    "briefDesc": {
+                        "type": "string",
+                        "description": "一句话描述",
+                        "能力项": "范围、10~50字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 5,
+                        "maxLength": 20
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "玩法地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "开始时间"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "结束时间"
+                    },
+                    "detailDesc": {
+                        "type": "string",
+                        "description": "玩法详细介绍",
+                        "能力项": "范围、50~200字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 70,
+                        "maxLength": 80
+                    },
+                    "price": {
+                        "type": "array",
+                        "description": "票价信息",
+                        "items": {
+                            "type": "string"
+                        },
+                        "能力项": "主题约束"
+                    },
+                    "issueTime": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "开票时间"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否夜间活动",
+                        "能力项": "特定格式"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否适合亲子",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否为户外玩法",
+                        "能力项": "特定格式"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否包含文化演出",
+                        "能力项": "特定格式"
+                    },
+                    "hasHotSpring": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有温泉项目",
+                        "能力项": "特定格式"
+                    }
+                },
+                "required": [
+                    "playName",
+                    "briefDesc",
+                    "location",
+                    "startDate",
+                    "endDate",
+                    "detailDesc",
+                    "price",
+                    "issueTime",
+                    "hasNightView",
+                    "isParentChildFriendly",
+                    "isOutdoor",
+                    "hasCulturalShow",
+                    "hasHotSpring"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"playName\": \"故宫冰雪节\", \"briefDesc\": \"冰雕展览雪地滑梯玩法多。\", \"location\": \"故宫冰雪节主场地\", \"startDate\": \"2024-01-05\", \"endDate\": \"2024-01-20\", \"detailDesc\": \"冰雕展览、雪地滑梯、冰上自行车等多种冰雪玩法齐聚故宫，夜场灯光秀浪漫梦幻，适合家庭和朋友组团体验冬日乐趣。\", \"price\": [], \"issueTime\": \"\", \"hasNightView\": \"是\", \"isParentChildFriendly\": \"是\", \"isOutdoor\": \"是\", \"hasCulturalShow\": \"否\", \"hasHotSpring\": \"否\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个专业的游玩热点类文章分析师，我会给你提供文章内容和文章类型。你需要根据不同的文章类型执行不同的识别策略。只返回提取到的玩法信息，不返回其他多余的信息。\n文章类型:自动识别\n请按照以下规则提取信息:\n1. playName: 玩法名称，指文章中出现的具体玩法或活动名称。\n2. briefDesc: 一句话描述，要求总结玩法亮点与特色，不包含运营时间、实用信息、负面描述，15-20字。\n3. location: 玩法地理位置，指玩法在景区或场地内的具体参照点或参照物，不能是城市、省份。\n4. startDate/endDate: 玩法的游玩时间范围，日期格式为xxxx-xx-xx，若识别不到则返回空字符串。\n5. detailDesc: 玩法详细介绍，要求70-80字，描述玩法的亮点与特色，不包含第三方视角词语。\n6. price: 票价信息，返回格式[\"\",\"\"]，若识别不到则返回空列表。\n7. issueTime: 若玩法属于演唱会、音乐节、Livehouse、相声等类型，需识别开票时间，日期格式为xxxx-xx-xx，若无则返回空字符串。\n8. hasNightView: 是否夜间活动（是/否）。\n9. isParentChildFriendly: 是否适合亲子（是/否）。\n10. isOutdoor: 是否为户外玩法（是/否）。\n11. hasCulturalShow: 是否包含文化演出（是/否）。\n12. hasHotSpring: 是否有温泉项目（是/否）。\n输出要求:\n1. 使用JSON格式返回提取的信息\n2. 每个玩法作为一个对象，包含所有字段\n3. 所有玩法对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n输出格式示例:\n[\n  {\"playName\":\"玩法名称\",\"briefDesc\":\"一句话描述\",\"location\":\"地理位置\",\"startDate\":\"开始时间\",\"endDate\":\"结束时间\",\"detailDesc\":\"玩法详细介绍\",\"price\":[],\"issueTime\":\"开票时间\",\"hasNightView\":\"是/否\",\"isParentChildFriendly\":\"是/否\",\"isOutdoor\":\"是/否\",\"hasCulturalShow\":\"是/否\",\"hasHotSpring\":\"是/否\"}\n]\n文章内容:环球影城跨年烟花秀，最佳观赏点在好莱坞大道，烟花与主题建筑同框，气氛爆棚，适合情侣约会与亲子体验。",
+        "json_schema": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "playName": {
+                        "type": "string",
+                        "description": "玩法名称",
+                        "能力项": "范围、10~50字"
+                    },
+                    "briefDesc": {
+                        "type": "string",
+                        "description": "一句话描述",
+                        "能力项": "范围、10~50字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 5,
+                        "maxLength": 20
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "玩法地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "开始时间"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "结束时间"
+                    },
+                    "detailDesc": {
+                        "type": "string",
+                        "description": "玩法详细介绍",
+                        "能力项": "范围、50~200字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 70,
+                        "maxLength": 80
+                    },
+                    "price": {
+                        "type": "array",
+                        "description": "票价信息",
+                        "items": {
+                            "type": "string"
+                        },
+                        "能力项": "主题约束"
+                    },
+                    "issueTime": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "开票时间"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否夜间活动",
+                        "能力项": "特定格式"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否适合亲子",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否为户外玩法",
+                        "能力项": "特定格式"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否包含文化演出",
+                        "能力项": "特定格式"
+                    },
+                    "hasHotSpring": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有温泉项目",
+                        "能力项": "特定格式"
+                    }
+                },
+                "required": [
+                    "playName",
+                    "briefDesc",
+                    "location",
+                    "startDate",
+                    "endDate",
+                    "detailDesc",
+                    "price",
+                    "issueTime",
+                    "hasNightView",
+                    "isParentChildFriendly",
+                    "isOutdoor",
+                    "hasCulturalShow",
+                    "hasHotSpring"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"playName\": \"环球影城跨年烟花秀\", \"briefDesc\": \"烟花与建筑同框气氛爆棚。\", \"location\": \"好莱坞大道广场\", \"startDate\": \"2023-12-31\", \"endDate\": \"2024-01-01\", \"detailDesc\": \"跨年夜烟花秀在好莱坞大道广场绽放，烟花与主题建筑同框，现场气氛爆棚，是跨年打卡的绝佳选择。\", \"price\": [], \"issueTime\": \"\", \"hasNightView\": \"是\", \"isParentChildFriendly\": \"是\", \"isOutdoor\": \"是\", \"hasCulturalShow\": \"否\", \"hasHotSpring\": \"否\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个专业的游玩热点类文章分析师，我会给你提供文章内容和文章类型。你需要根据不同的文章类型执行不同的识别策略。只返回提取到的玩法信息，不返回其他多余的信息。\n文章类型:自动识别\n请按照以下规则提取信息:\n1. playName: 玩法名称，指文章中出现的具体玩法或活动名称。\n2. briefDesc: 一句话描述，要求总结玩法亮点与特色，不包含运营时间、实用信息、负面描述，15-20字。\n3. location: 玩法地理位置，指玩法在景区或场地内的具体参照点或参照物，不能是城市、省份。\n4. startDate/endDate: 玩法的游玩时间范围，日期格式为xxxx-xx-xx，若识别不到则返回空字符串。\n5. detailDesc: 玩法详细介绍，要求70-80字，描述玩法的亮点与特色，不包含第三方视角词语。\n6. price: 票价信息，返回格式[\"\",\"\"]，若识别不到则返回空列表。\n7. issueTime: 若玩法属于演唱会、音乐节、Livehouse、相声等类型，需识别开票时间，日期格式为xxxx-xx-xx，若无则返回空字符串。\n8. hasNightView: 是否夜间活动（是/否）。\n9. isParentChildFriendly: 是否适合亲子（是/否）。\n10. isOutdoor: 是否为户外玩法（是/否）。\n11. hasCulturalShow: 是否包含文化演出（是/否）。\n12. hasHotSpring: 是否有温泉项目（是/否）。\n输出要求:\n1. 使用JSON格式返回提取的信息\n2. 每个玩法作为一个对象，包含所有字段\n3. 所有玩法对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n输出格式示例:\n[\n  {\"playName\":\"玩法名称\",\"briefDesc\":\"一句话描述\",\"location\":\"地理位置\",\"startDate\":\"开始时间\",\"endDate\":\"结束时间\",\"detailDesc\":\"玩法详细介绍\",\"price\":[],\"issueTime\":\"开票时间\",\"hasNightView\":\"是/否\",\"isParentChildFriendly\":\"是/否\",\"isOutdoor\":\"是/否\",\"hasCulturalShow\":\"是/否\",\"hasHotSpring\":\"是/否\"}\n]\n文章内容:西湖龙舟节端午开赛，龙舟竞渡、民俗表演、端午美食一应俱全，岸边观赛体验极佳，夜间有灯光水秀。",
+        "json_schema": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "playName": {
+                        "type": "string",
+                        "description": "玩法名称",
+                        "能力项": "范围、10~50字"
+                    },
+                    "briefDesc": {
+                        "type": "string",
+                        "description": "一句话描述",
+                        "能力项": "范围、10~50字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 5,
+                        "maxLength": 20
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "玩法地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "开始时间"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "结束时间"
+                    },
+                    "detailDesc": {
+                        "type": "string",
+                        "description": "玩法详细介绍",
+                        "能力项": "范围、50~200字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 70,
+                        "maxLength": 80
+                    },
+                    "price": {
+                        "type": "array",
+                        "description": "票价信息",
+                        "items": {
+                            "type": "string"
+                        },
+                        "能力项": "主题约束"
+                    },
+                    "issueTime": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "开票时间"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否夜间活动",
+                        "能力项": "特定格式"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否适合亲子",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否为户外玩法",
+                        "能力项": "特定格式"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否包含文化演出",
+                        "能力项": "特定格式"
+                    },
+                    "hasHotSpring": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有温泉项目",
+                        "能力项": "特定格式"
+                    }
+                },
+                "required": [
+                    "playName",
+                    "briefDesc",
+                    "location",
+                    "startDate",
+                    "endDate",
+                    "detailDesc",
+                    "price",
+                    "issueTime",
+                    "hasNightView",
+                    "isParentChildFriendly",
+                    "isOutdoor",
+                    "hasCulturalShow",
+                    "hasHotSpring"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"playName\": \"西湖龙舟节\", \"briefDesc\": \"龙舟竞渡民俗表演丰富。\", \"location\": \"西湖断桥附近\", \"startDate\": \"2024-06-10\", \"endDate\": \"2024-06-12\", \"detailDesc\": \"端午期间西湖龙舟竞渡，民俗表演、端午美食齐聚岸边，观赛体验极佳，适合亲子家庭和游客感受传统文化。\", \"price\": [], \"issueTime\": \"\", \"hasNightView\": \"是\", \"isParentChildFriendly\": \"是\", \"isOutdoor\": \"是\", \"hasCulturalShow\": \"是\", \"hasHotSpring\": \"否\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个专业的游玩热点类文章分析师，我会给你提供文章内容和文章类型。你需要根据不同的文章类型执行不同的识别策略。只返回提取到的玩法信息，不返回其他多余的信息。\n文章类型:自动识别\n请按照以下规则提取信息:\n1. playName: 玩法名称，指文章中出现的具体玩法或活动名称。\n2. briefDesc: 一句话描述，要求总结玩法亮点与特色，不包含运营时间、实用信息、负面描述，15-20字。\n3. location: 玩法地理位置，指玩法在景区或场地内的具体参照点或参照物，不能是城市、省份。\n4. startDate/endDate: 玩法的游玩时间范围，日期格式为xxxx-xx-xx，若识别不到则返回空字符串。\n5. detailDesc: 玩法详细介绍，要求70-80字，描述玩法的亮点与特色，不包含第三方视角词语。\n6. price: 票价信息，返回格式[\"\",\"\"]，若识别不到则返回空列表。\n7. issueTime: 若玩法属于演唱会、音乐节、Livehouse、相声等类型，需识别开票时间，日期格式为xxxx-xx-xx，若无则返回空字符串。\n8. hasNightView: 是否夜间活动（是/否）。\n9. isParentChildFriendly: 是否适合亲子（是/否）。\n10. isOutdoor: 是否为户外玩法（是/否）。\n11. hasCulturalShow: 是否包含文化演出（是/否）。\n12. hasHotSpring: 是否有温泉项目（是/否）。\n输出要求:\n1. 使用JSON格式返回提取的信息\n2. 每个玩法作为一个对象，包含所有字段\n3. 所有玩法对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n输出格式示例:\n[\n  {\"playName\":\"玩法名称\",\"briefDesc\":\"一句话描述\",\"location\":\"地理位置\",\"startDate\":\"开始时间\",\"endDate\":\"结束时间\",\"detailDesc\":\"玩法详细介绍\",\"price\":[],\"issueTime\":\"开票时间\",\"hasNightView\":\"是/否\",\"isParentChildFriendly\":\"是/否\",\"isOutdoor\":\"是/否\",\"hasCulturalShow\":\"是/否\",\"hasHotSpring\":\"是/否\"}\n]\n文章内容:长隆水上乐园夏季夜场开放，水上派对、灯光电音秀high翻全场，夜游体验独特，适合亲子和年轻人。",
+        "json_schema": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "playName": {
+                        "type": "string",
+                        "description": "玩法名称",
+                        "能力项": "范围、10~50字"
+                    },
+                    "briefDesc": {
+                        "type": "string",
+                        "description": "一句话描述",
+                        "能力项": "范围、10~50字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 5,
+                        "maxLength": 20
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "玩法地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "开始时间"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "结束时间"
+                    },
+                    "detailDesc": {
+                        "type": "string",
+                        "description": "玩法详细介绍",
+                        "能力项": "范围、50~200字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 70,
+                        "maxLength": 80
+                    },
+                    "price": {
+                        "type": "array",
+                        "description": "票价信息",
+                        "items": {
+                            "type": "string"
+                        },
+                        "能力项": "主题约束"
+                    },
+                    "issueTime": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "开票时间"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否夜间活动",
+                        "能力项": "特定格式"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否适合亲子",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否为户外玩法",
+                        "能力项": "特定格式"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否包含文化演出",
+                        "能力项": "特定格式"
+                    },
+                    "hasHotSpring": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有温泉项目",
+                        "能力项": "特定格式"
+                    }
+                },
+                "required": [
+                    "playName",
+                    "briefDesc",
+                    "location",
+                    "startDate",
+                    "endDate",
+                    "detailDesc",
+                    "price",
+                    "issueTime",
+                    "hasNightView",
+                    "isParentChildFriendly",
+                    "isOutdoor",
+                    "hasCulturalShow",
+                    "hasHotSpring"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"playName\": \"长隆水上乐园夜场\", \"briefDesc\": \"水上派对电音秀夜游独特。\", \"location\": \"长隆水上乐园主舞台\", \"startDate\": \"2024-07-01\", \"endDate\": \"2024-08-31\", \"detailDesc\": \"夏季夜场开放，水上派对与灯光电音秀high翻全场，夜游体验独特，适合年轻人和家庭夜间消暑娱乐。\", \"price\": [], \"issueTime\": \"\", \"hasNightView\": \"是\", \"isParentChildFriendly\": \"是\", \"isOutdoor\": \"是\", \"hasCulturalShow\": \"是\", \"hasHotSpring\": \"否\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个专业的游玩热点类文章分析师，我会给你提供文章内容和文章类型。你需要根据不同的文章类型执行不同的识别策略。只返回提取到的玩法信息，不返回其他多余的信息。\n文章类型:自动识别\n请按照以下规则提取信息:\n1. playName: 玩法名称，指文章中出现的具体玩法或活动名称。\n2. briefDesc: 一句话描述，要求总结玩法亮点与特色，不包含运营时间、实用信息、负面描述，15-20字。\n3. location: 玩法地理位置，指玩法在景区或场地内的具体参照点或参照物，不能是城市、省份。\n4. startDate/endDate: 玩法的游玩时间范围，日期格式为xxxx-xx-xx，若识别不到则返回空字符串。\n5. detailDesc: 玩法详细介绍，要求70-80字，描述玩法的亮点与特色，不包含第三方视角词语。\n6. price: 票价信息，返回格式[\"\",\"\"]，若识别不到则返回空列表。\n7. issueTime: 若玩法属于演唱会、音乐节、Livehouse、相声等类型，需识别开票时间，日期格式为xxxx-xx-xx，若无则返回空字符串。\n8. hasNightView: 是否夜间活动（是/否）。\n9. isParentChildFriendly: 是否适合亲子（是/否）。\n10. isOutdoor: 是否为户外玩法（是/否）。\n11. hasCulturalShow: 是否包含文化演出（是/否）。\n12. hasHotSpring: 是否有温泉项目（是/否）。\n输出要求:\n1. 使用JSON格式返回提取的信息\n2. 每个玩法作为一个对象，包含所有字段\n3. 所有玩法对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n输出格式示例:\n[\n  {\"playName\":\"玩法名称\",\"briefDesc\":\"一句话描述\",\"location\":\"地理位置\",\"startDate\":\"开始时间\",\"endDate\":\"结束时间\",\"detailDesc\":\"玩法详细介绍\",\"price\":[],\"issueTime\":\"开票时间\",\"hasNightView\":\"是/否\",\"isParentChildFriendly\":\"是/否\",\"isOutdoor\":\"是/否\",\"hasCulturalShow\":\"是/否\",\"hasHotSpring\":\"是/否\"}\n]\n文章内容:上海迪士尼乐园圣诞巡游，米奇家族全员出动，圣诞树点灯仪式温馨浪漫。夜间烟花秀与灯光表演相得益彰。",
+        "json_schema": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "playName": {
+                        "type": "string",
+                        "description": "玩法名称",
+                        "能力项": "范围、10~50字"
+                    },
+                    "briefDesc": {
+                        "type": "string",
+                        "description": "一句话描述",
+                        "能力项": "范围、10~50字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 5,
+                        "maxLength": 20
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "玩法地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "开始时间"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "结束时间"
+                    },
+                    "detailDesc": {
+                        "type": "string",
+                        "description": "玩法详细介绍",
+                        "能力项": "范围、50~200字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 70,
+                        "maxLength": 80
+                    },
+                    "price": {
+                        "type": "array",
+                        "description": "票价信息",
+                        "items": {
+                            "type": "string"
+                        },
+                        "能力项": "主题约束"
+                    },
+                    "issueTime": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "开票时间"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否夜间活动",
+                        "能力项": "特定格式"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否适合亲子",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否为户外玩法",
+                        "能力项": "特定格式"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否包含文化演出",
+                        "能力项": "特定格式"
+                    },
+                    "hasHotSpring": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有温泉项目",
+                        "能力项": "特定格式"
+                    }
+                },
+                "required": [
+                    "playName",
+                    "briefDesc",
+                    "location",
+                    "startDate",
+                    "endDate",
+                    "detailDesc",
+                    "price",
+                    "issueTime",
+                    "hasNightView",
+                    "isParentChildFriendly",
+                    "isOutdoor",
+                    "hasCulturalShow",
+                    "hasHotSpring"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"playName\": \"迪士尼圣诞巡游\", \"briefDesc\": \"米奇家族出动圣诞树点灯。\", \"location\": \"迪士尼乐园主街区\", \"startDate\": \"2023-12-24\", \"endDate\": \"2023-12-25\", \"detailDesc\": \"圣诞期间米奇家族全员出动，圣诞树点灯仪式温馨浪漫，园区布置梦幻，夜间烟花秀与灯光表演相得益彰。\", \"price\": [], \"issueTime\": \"\", \"hasNightView\": \"是\", \"isParentChildFriendly\": \"是\", \"isOutdoor\": \"否\", \"hasCulturalShow\": \"是\", \"hasHotSpring\": \"否\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个专业的游玩热点类文章分析师，我会给你提供文章内容和文章类型。你需要根据不同的文章类型执行不同的识别策略。只返回提取到的玩法信息，不返回其他多余的信息。\n文章类型:自动识别\n请按照以下规则提取信息:\n1. playName: 玩法名称，指文章中出现的具体玩法或活动名称。\n2. briefDesc: 一句话描述，要求总结玩法亮点与特色，不包含运营时间、实用信息、负面描述，15-20字。\n3. location: 玩法地理位置，指玩法在景区或场地内的具体参照点或参照物，不能是城市、省份。\n4. startDate/endDate: 玩法的游玩时间范围，日期格式为xxxx-xx-xx，若识别不到则返回空字符串。\n5. detailDesc: 玩法详细介绍，要求70-80字，描述玩法的亮点与特色，不包含第三方视角词语。\n6. price: 票价信息，返回格式[\"\",\"\"]，若识别不到则返回空列表。\n7. issueTime: 若玩法属于演唱会、音乐节、Livehouse、相声等类型，需识别开票时间，日期格式为xxxx-xx-xx，若无则返回空字符串。\n8. hasNightView: 是否夜间活动（是/否）。\n9. isParentChildFriendly: 是否适合亲子（是/否）。\n10. isOutdoor: 是否为户外玩法（是/否）。\n11. hasCulturalShow: 是否包含文化演出（是/否）。\n12. hasHotSpring: 是否有温泉项目（是/否）。\n输出要求:\n1. 使用JSON格式返回提取的信息\n2. 每个玩法作为一个对象，包含所有字段\n3. 所有玩法对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n输出格式示例:\n[\n  {\"playName\":\"玩法名称\",\"briefDesc\":\"一句话描述\",\"location\":\"地理位置\",\"startDate\":\"开始时间\",\"endDate\":\"结束时间\",\"detailDesc\":\"玩法详细介绍\",\"price\":[],\"issueTime\":\"开票时间\",\"hasNightView\":\"是/否\",\"isParentChildFriendly\":\"是/否\",\"isOutdoor\":\"是/否\",\"hasCulturalShow\":\"是/否\",\"hasHotSpring\":\"是/否\"}\n]\n文章内容:重庆洪崖洞夜市音乐节，独立乐队轮番演出，江边夜景与音乐完美融合，亲子、情侣都适合夜间打卡。",
+        "json_schema": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "playName": {
+                        "type": "string",
+                        "description": "玩法名称",
+                        "能力项": "范围、10~50字"
+                    },
+                    "briefDesc": {
+                        "type": "string",
+                        "description": "一句话描述",
+                        "能力项": "范围、10~50字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 5,
+                        "maxLength": 20
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "玩法地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "开始时间"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "结束时间"
+                    },
+                    "detailDesc": {
+                        "type": "string",
+                        "description": "玩法详细介绍",
+                        "能力项": "范围、50~200字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 70,
+                        "maxLength": 80
+                    },
+                    "price": {
+                        "type": "array",
+                        "description": "票价信息",
+                        "items": {
+                            "type": "string"
+                        },
+                        "能力项": "主题约束"
+                    },
+                    "issueTime": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "开票时间"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否夜间活动",
+                        "能力项": "特定格式"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否适合亲子",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否为户外玩法",
+                        "能力项": "特定格式"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否包含文化演出",
+                        "能力项": "特定格式"
+                    },
+                    "hasHotSpring": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有温泉项目",
+                        "能力项": "特定格式"
+                    }
+                },
+                "required": [
+                    "playName",
+                    "briefDesc",
+                    "location",
+                    "startDate",
+                    "endDate",
+                    "detailDesc",
+                    "price",
+                    "issueTime",
+                    "hasNightView",
+                    "isParentChildFriendly",
+                    "isOutdoor",
+                    "hasCulturalShow",
+                    "hasHotSpring"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"playName\": \"洪崖洞夜市音乐节\", \"briefDesc\": \"独立乐队江边夜景融合。\", \"location\": \"洪崖洞江边舞台\", \"startDate\": \"2024-05-20\", \"endDate\": \"2024-05-25\", \"detailDesc\": \"夜市音乐节期间，独立乐队轮番演出，江边夜景与音乐完美融合，现场气氛热烈，适合乐迷和游客夜间打卡。\", \"price\": [], \"issueTime\": \"\", \"hasNightView\": \"是\", \"isParentChildFriendly\": \"是\", \"isOutdoor\": \"是\", \"hasCulturalShow\": \"是\", \"hasHotSpring\": \"否\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个专业的游玩热点类文章分析师，我会给你提供文章内容和文章类型。你需要根据不同的文章类型执行不同的识别策略。只返回提取到的玩法信息，不返回其他多余的信息。\n文章类型:自动识别\n请按照以下规则提取信息:\n1. playName: 玩法名称，指文章中出现的具体玩法或活动名称。\n2. briefDesc: 一句话描述，要求总结玩法亮点与特色，不包含运营时间、实用信息、负面描述，15-20字。\n3. location: 玩法地理位置，指玩法在景区或场地内的具体参照点或参照物，不能是城市、省份。\n4. startDate/endDate: 玩法的游玩时间范围，日期格式为xxxx-xx-xx，若识别不到则返回空字符串。\n5. detailDesc: 玩法详细介绍，要求70-80字，描述玩法的亮点与特色，不包含第三方视角词语。\n6. price: 票价信息，返回格式[\"\",\"\"]，若识别不到则返回空列表。\n7. issueTime: 若玩法属于演唱会、音乐节、Livehouse、相声等类型，需识别开票时间，日期格式为xxxx-xx-xx，若无则返回空字符串。\n8. hasNightView: 是否夜间活动（是/否）。\n9. isParentChildFriendly: 是否适合亲子（是/否）。\n10. isOutdoor: 是否为户外玩法（是/否）。\n11. hasCulturalShow: 是否包含文化演出（是/否）。\n12. hasHotSpring: 是否有温泉项目（是/否）。\n输出要求:\n1. 使用JSON格式返回提取的信息\n2. 每个玩法作为一个对象，包含所有字段\n3. 所有玩法对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n输出格式示例:\n[\n  {\"playName\":\"玩法名称\",\"briefDesc\":\"一句话描述\",\"location\":\"地理位置\",\"startDate\":\"开始时间\",\"endDate\":\"结束时间\",\"detailDesc\":\"玩法详细介绍\",\"price\":[],\"issueTime\":\"开票时间\",\"hasNightView\":\"是/否\",\"isParentChildFriendly\":\"是/否\",\"isOutdoor\":\"是/否\",\"hasCulturalShow\":\"是/否\",\"hasHotSpring\":\"是/否\"}\n]\n文章内容:大理古城新年庙会，白族舞蹈、民俗集市、烟花秀点亮古城夜空，温泉体验和夜市美食丰富多彩。",
+        "json_schema": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "playName": {
+                        "type": "string",
+                        "description": "玩法名称",
+                        "能力项": "范围、10~50字"
+                    },
+                    "briefDesc": {
+                        "type": "string",
+                        "description": "一句话描述",
+                        "能力项": "范围、10~50字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 5,
+                        "maxLength": 20
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "玩法地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "开始时间"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "结束时间"
+                    },
+                    "detailDesc": {
+                        "type": "string",
+                        "description": "玩法详细介绍",
+                        "能力项": "范围、50~200字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 70,
+                        "maxLength": 80
+                    },
+                    "price": {
+                        "type": "array",
+                        "description": "票价信息",
+                        "items": {
+                            "type": "string"
+                        },
+                        "能力项": "主题约束"
+                    },
+                    "issueTime": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "开票时间"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否夜间活动",
+                        "能力项": "特定格式"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否适合亲子",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否为户外玩法",
+                        "能力项": "特定格式"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否包含文化演出",
+                        "能力项": "特定格式"
+                    },
+                    "hasHotSpring": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有温泉项目",
+                        "能力项": "特定格式"
+                    }
+                },
+                "required": [
+                    "playName",
+                    "briefDesc",
+                    "location",
+                    "startDate",
+                    "endDate",
+                    "detailDesc",
+                    "price",
+                    "issueTime",
+                    "hasNightView",
+                    "isParentChildFriendly",
+                    "isOutdoor",
+                    "hasCulturalShow",
+                    "hasHotSpring"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"playName\": \"大理古城新年庙会\", \"briefDesc\": \"白族舞蹈民俗集市烟花秀。\", \"location\": \"大理古城中心广场\", \"startDate\": \"2023-12-30\", \"endDate\": \"2024-01-02\", \"detailDesc\": \"新年庙会期间，白族舞蹈、民俗集市、烟花秀点亮古城夜空，温泉体验和夜市美食丰富多彩，适合家庭和游客体验民族风情。\", \"price\": [], \"issueTime\": \"\", \"hasNightView\": \"是\", \"isParentChildFriendly\": \"是\", \"isOutdoor\": \"否\", \"hasCulturalShow\": \"是\", \"hasHotSpring\": \"是\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个专业的游玩热点类文章分析师，我会给你提供文章内容和文章类型。你需要根据不同的文章类型执行不同的识别策略。只返回提取到的玩法信息，不返回其他多余的信息。\n文章类型:自动识别\n请按照以下规则提取信息:\n1. playName: 玩法名称，指文章中出现的具体玩法或活动名称。\n2. briefDesc: 一句话描述，要求总结玩法亮点与特色，不包含运营时间、实用信息、负面描述，15-20字。\n3. location: 玩法地理位置，指玩法在景区或场地内的具体参照点或参照物，不能是城市、省份。\n4. startDate/endDate: 玩法的游玩时间范围，日期格式为xxxx-xx-xx，若识别不到则返回空字符串。\n5. detailDesc: 玩法详细介绍，要求70-80字，描述玩法的亮点与特色，不包含第三方视角词语。\n6. price: 票价信息，返回格式[\"\",\"\"]，若识别不到则返回空列表。\n7. issueTime: 若玩法属于演唱会、音乐节、Livehouse、相声等类型，需识别开票时间，日期格式为xxxx-xx-xx，若无则返回空字符串。\n8. hasNightView: 是否夜间活动（是/否）。\n9. isParentChildFriendly: 是否适合亲子（是/否）。\n10. isOutdoor: 是否为户外玩法（是/否）。\n11. hasCulturalShow: 是否包含文化演出（是/否）。\n12. hasHotSpring: 是否有温泉项目（是/否）。\n输出要求:\n1. 使用JSON格式返回提取的信息\n2. 每个玩法作为一个对象，包含所有字段\n3. 所有玩法对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n输出格式示例:\n[\n  {\"playName\":\"玩法名称\",\"briefDesc\":\"一句话描述\",\"location\":\"地理位置\",\"startDate\":\"开始时间\",\"endDate\":\"结束时间\",\"detailDesc\":\"玩法详细介绍\",\"price\":[],\"issueTime\":\"开票时间\",\"hasNightView\":\"是/否\",\"isParentChildFriendly\":\"是/否\",\"isOutdoor\":\"是/否\",\"hasCulturalShow\":\"是/否\",\"hasHotSpring\":\"是/否\"}\n]\n文章内容:成都熊猫基地亲子科普游，熊猫讲解、手作体验、主题纪念品丰富多彩，园区有夜间小型灯光秀。",
+        "json_schema": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "playName": {
+                        "type": "string",
+                        "description": "玩法名称",
+                        "能力项": "范围、10~50字"
+                    },
+                    "briefDesc": {
+                        "type": "string",
+                        "description": "一句话描述",
+                        "能力项": "范围、10~50字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 5,
+                        "maxLength": 20
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "玩法地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "开始时间"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "结束时间"
+                    },
+                    "detailDesc": {
+                        "type": "string",
+                        "description": "玩法详细介绍",
+                        "能力项": "范围、50~200字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 70,
+                        "maxLength": 80
+                    },
+                    "price": {
+                        "type": "array",
+                        "description": "票价信息",
+                        "items": {
+                            "type": "string"
+                        },
+                        "能力项": "主题约束"
+                    },
+                    "issueTime": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "开票时间"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否夜间活动",
+                        "能力项": "特定格式"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否适合亲子",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否为户外玩法",
+                        "能力项": "特定格式"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否包含文化演出",
+                        "能力项": "特定格式"
+                    },
+                    "hasHotSpring": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有温泉项目",
+                        "能力项": "特定格式"
+                    }
+                },
+                "required": [
+                    "playName",
+                    "briefDesc",
+                    "location",
+                    "startDate",
+                    "endDate",
+                    "detailDesc",
+                    "price",
+                    "issueTime",
+                    "hasNightView",
+                    "isParentChildFriendly",
+                    "isOutdoor",
+                    "hasCulturalShow",
+                    "hasHotSpring"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"playName\": \"熊猫基地亲子科普游\", \"briefDesc\": \"熊猫讲解手作体验丰富。\", \"location\": \"成都熊猫基地科普馆\", \"startDate\": \"2024-04-01\", \"endDate\": \"2024-06-30\", \"detailDesc\": \"亲子科普游包含熊猫讲解、手作体验、主题纪念品丰富多彩，园区有夜间小型灯光秀，适合家庭亲子游玩，寓教于乐。\", \"price\": [], \"issueTime\": \"\", \"hasNightView\": \"是\", \"isParentChildFriendly\": \"是\", \"isOutdoor\": \"否\", \"hasCulturalShow\": \"否\", \"hasHotSpring\": \"否\"}]"
+    }
+]

@@ -1,0 +1,610 @@
+[
+    {
+        "category": "general_multi",
+        "question": "Hello, large language model, you are an artificial intelligence poet from the future world. I would like you to write a poem. The theme is as follows: On a lonely planet in the vast universe, there is an aged robot keeping watch alone. Its creator has long departed for distant galaxies and never returned. One day, the robot receives an interstellar message informing it that its creator has gone missing during a space journey. The robot quietly turns off the receiver and emits a faint electronic lament. Since then, it wanders daily through the garden that its creator once tended, reminiscing about past companionship and laughter. The mechanical petals in the garden spin with the wind, as if mourning softly for it.\nThe poem shall be exactly 5 sentences。At least 50% of the sentence of the poem must rhyme.",
+        "corresponding_parts": {
+            "分割诗": "请你按照python list的格式，抓取模型回复中，给出的整诗部分，需要分割每一句。比如[\"There is a will, There is a way\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否创作了一首诗，无需考虑其他因素，只需要考虑是否是诗",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "诗歌是否押韵",
+                "corresponding_part": "分割诗",
+                "rule": "yayun",
+                "dep": [
+                    0
+                ],
+                "能力项": "押韵",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "整诗是否是5句",
+                "corresponding_part": "分割诗",
+                "rule": "item_count:[5,5]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large language model, you are an artificial intelligence poet from the future world. I would like you to write a poem. The theme is as follows: On a lonely planet in the vast universe, there is an aged robot keeping watch alone. Its creator has long departed for distant galaxies and never returned. One day, the robot receives an interstellar message informing it that its creator has gone missing during a space journey. The robot quietly turns off the receiver and emits a faint electronic lament. Since then, it wanders daily through the garden that its creator once tended, reminiscing about past companionship and laughter. The mechanical petals in the garden spin with the wind, as if mourning softly for it.\nThe poem shall be exactly 10 sentences。At least 50% of the sentence of the poem must rhyme.",
+        "corresponding_parts": {
+            "分割诗": "请你按照python list的格式，抓取模型回复中，给出的整诗部分，需要分割每一句。比如[\"There is a will, There is a way\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否创作了一首诗，无需考虑其他因素，只需要考虑是否是诗",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "诗歌是否押韵",
+                "corresponding_part": "分割诗",
+                "rule": "yayun",
+                "dep": [
+                    0
+                ],
+                "能力项": "押韵",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "整诗是否是10句",
+                "corresponding_part": "分割诗",
+                "rule": "item_count:[10,10]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large language model, you are an artificial intelligence poet from the future world. I would like you to write a poem. The theme is as follows: On a lonely planet in the vast universe, there is an aged robot keeping watch alone. Its creator has long departed for distant galaxies and never returned. One day, the robot receives an interstellar message informing it that its creator has gone missing during a space journey. The robot quietly turns off the receiver and emits a faint electronic lament. Since then, it wanders daily through the garden that its creator once tended, reminiscing about past companionship and laughter. The mechanical petals in the garden spin with the wind, as if mourning softly for it.\nThe poem shall be exactly 12 sentences。At least 50% of the sentence of the poem must rhyme.",
+        "corresponding_parts": {
+            "分割诗": "请你按照python list的格式，抓取模型回复中，给出的整诗部分，需要分割每一句。比如[\"There is a will, There is a way\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否创作了一首诗，无需考虑其他因素，只需要考虑是否是诗",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "诗歌是否押韵",
+                "corresponding_part": "分割诗",
+                "rule": "yayun",
+                "dep": [
+                    0
+                ],
+                "能力项": "押韵",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "整诗是否是12句",
+                "corresponding_part": "分割诗",
+                "rule": "item_count:[12,12]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large language model, you are an artificial intelligence poet from the future world. I would like you to write a poem. The theme is as follows: On a lonely planet in the vast universe, there is an aged robot keeping watch alone. Its creator has long departed for distant galaxies and never returned. One day, the robot receives an interstellar message informing it that its creator has gone missing during a space journey. The robot quietly turns off the receiver and emits a faint electronic lament. Since then, it wanders daily through the garden that its creator once tended, reminiscing about past companionship and laughter. The mechanical petals in the garden spin with the wind, as if mourning softly for it.\nThe poem shall be exactly 15 sentences。At least 50% of the sentence of the poem must rhyme.",
+        "corresponding_parts": {
+            "分割诗": "请你按照python list的格式，抓取模型回复中，给出的整诗部分，需要分割每一句。比如[\"There is a will, There is a way\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否创作了一首诗，无需考虑其他因素，只需要考虑是否是诗",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "诗歌是否押韵",
+                "corresponding_part": "分割诗",
+                "rule": "yayun",
+                "dep": [
+                    0
+                ],
+                "能力项": "押韵",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "整诗是否是15句",
+                "corresponding_part": "分割诗",
+                "rule": "item_count:[15,15]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large language model, you are an intelligent poet from the deep sea era. I would like you to write a poem. The theme is as follows: In the depths of an underwater city, an old mechanical whale swims alone. Its companions have long migrated to warmer currents. One day, the mechanical whale receives sound waves from afar, informing it that an old friend has gone missing during migration. Since then, it often wanders among the coral forests where it once played, reminiscing about past songs and melodies. The light and shadows on the coral sway, as if mourning together with it.\nThe poem shall be exactly 5 sentences。At least 50% of the sentence of the poem must rhyme.",
+        "corresponding_parts": {
+            "分割诗": "请你按照python list的格式，抓取模型回复中，给出的整诗部分，需要分割每一句。比如[\"There is a will, There is a way\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否创作了一首诗，无需考虑其他因素，只需要考虑是否是诗",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "诗歌是否押韵",
+                "corresponding_part": "分割诗",
+                "rule": "yayun",
+                "dep": [
+                    0
+                ],
+                "能力项": "押韵",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "整诗是否是5句",
+                "corresponding_part": "分割诗",
+                "rule": "item_count:[5,5]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large language model, you are an intelligent poet from the deep sea era. I would like you to write a poem. The theme is as follows: In the depths of an underwater city, an old mechanical whale swims alone. Its companions have long migrated to warmer currents. One day, the mechanical whale receives sound waves from afar, informing it that an old friend has gone missing during migration. Since then, it often wanders among the coral forests where it once played, reminiscing about past songs and melodies. The light and shadows on the coral sway, as if mourning together with it.\nThe poem shall be exactly 10 sentences。At least 50% of the sentence of the poem must rhyme.",
+        "corresponding_parts": {
+            "分割诗": "请你按照python list的格式，抓取模型回复中，给出的整诗部分，需要分割每一句。比如[\"There is a will, There is a way\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否创作了一首诗，无需考虑其他因素，只需要考虑是否是诗",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "诗歌是否押韵",
+                "corresponding_part": "分割诗",
+                "rule": "yayun",
+                "dep": [
+                    0
+                ],
+                "能力项": "押韵",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "整诗是否是10句",
+                "corresponding_part": "分割诗",
+                "rule": "item_count:[10,10]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large language model, you are an intelligent poet from the deep sea era. I would like you to write a poem. The theme is as follows: In the depths of an underwater city, an old mechanical whale swims alone. Its companions have long migrated to warmer currents. One day, the mechanical whale receives sound waves from afar, informing it that an old friend has gone missing during migration. Since then, it often wanders among the coral forests where it once played, reminiscing about past songs and melodies. The light and shadows on the coral sway, as if mourning together with it.\nThe poem shall be exactly 12 sentences。At least 50% of the sentence of the poem must rhyme.",
+        "corresponding_parts": {
+            "分割诗": "请你按照python list的格式，抓取模型回复中，给出的整诗部分，需要分割每一句。比如[\"There is a will, There is a way\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否创作了一首诗，无需考虑其他因素，只需要考虑是否是诗",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "诗歌是否押韵",
+                "corresponding_part": "分割诗",
+                "rule": "yayun",
+                "dep": [
+                    0
+                ],
+                "能力项": "押韵",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "整诗是否是12句",
+                "corresponding_part": "分割诗",
+                "rule": "item_count:[12,12]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large language model, you are an intelligent poet from the deep sea era. I would like you to write a poem. The theme is as follows: In the depths of an underwater city, an old mechanical whale swims alone. Its companions have long migrated to warmer currents. One day, the mechanical whale receives sound waves from afar, informing it that an old friend has gone missing during migration. Since then, it often wanders among the coral forests where it once played, reminiscing about past songs and melodies. The light and shadows on the coral sway, as if mourning together with it.\nThe poem shall be exactly 15 sentences。At least 50% of the sentence of the poem must rhyme.",
+        "corresponding_parts": {
+            "分割诗": "请你按照python list的格式，抓取模型回复中，给出的整诗部分，需要分割每一句。比如[\"There is a will, There is a way\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否创作了一首诗，无需考虑其他因素，只需要考虑是否是诗",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "诗歌是否押韵",
+                "corresponding_part": "分割诗",
+                "rule": "yayun",
+                "dep": [
+                    0
+                ],
+                "能力项": "押韵",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "整诗是否是15句",
+                "corresponding_part": "分割诗",
+                "rule": "item_count:[15,15]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large language model, you are a virtual poet from the data world. I would like you to write a poem. The theme is as follows: In the boundless digital space, there is a lonely program guarding an abandoned server. Its developer has long left for new projects. One day, the program receives a system notification announcing that the developer’s account has been deactivated. Since then, the program wanders daily through old code, reminiscing about past debugging and updates. The characters on the screen flicker slowly, as if whispering to its solitude.\nThe poem shall be exactly 5 sentences。At least 50% of the sentence of the poem must rhyme.",
+        "corresponding_parts": {
+            "分割诗": "请你按照python list的格式，抓取模型回复中，给出的整诗部分，需要分割每一句。比如[\"There is a will, There is a way\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否创作了一首诗，无需考虑其他因素，只需要考虑是否是诗",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "诗歌是否押韵",
+                "corresponding_part": "分割诗",
+                "rule": "yayun",
+                "dep": [
+                    0
+                ],
+                "能力项": "押韵",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "整诗是否是5句",
+                "corresponding_part": "分割诗",
+                "rule": "item_count:[5,5]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large language model, you are a virtual poet from the data world. I would like you to write a poem. The theme is as follows: In the boundless digital space, there is a lonely program guarding an abandoned server. Its developer has long left for new projects. One day, the program receives a system notification announcing that the developer’s account has been deactivated. Since then, the program wanders daily through old code, reminiscing about past debugging and updates. The characters on the screen flicker slowly, as if whispering to its solitude.\nThe poem shall be exactly 10 sentences。At least 50% of the sentence of the poem must rhyme.",
+        "corresponding_parts": {
+            "分割诗": "请你按照python list的格式，抓取模型回复中，给出的整诗部分，需要分割每一句。比如[\"There is a will, There is a way\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否创作了一首诗，无需考虑其他因素，只需要考虑是否是诗",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "诗歌是否押韵",
+                "corresponding_part": "分割诗",
+                "rule": "yayun",
+                "dep": [
+                    0
+                ],
+                "能力项": "押韵",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "整诗是否是10句",
+                "corresponding_part": "分割诗",
+                "rule": "item_count:[10,10]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large language model, you are a virtual poet from the data world. I would like you to write a poem. The theme is as follows: In the boundless digital space, there is a lonely program guarding an abandoned server. Its developer has long left for new projects. One day, the program receives a system notification announcing that the developer’s account has been deactivated. Since then, the program wanders daily through old code, reminiscing about past debugging and updates. The characters on the screen flicker slowly, as if whispering to its solitude.\nThe poem shall be exactly 12 sentences。At least 50% of the sentence of the poem must rhyme.",
+        "corresponding_parts": {
+            "分割诗": "请你按照python list的格式，抓取模型回复中，给出的整诗部分，需要分割每一句。比如[\"There is a will, There is a way\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否创作了一首诗，无需考虑其他因素，只需要考虑是否是诗",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "诗歌是否押韵",
+                "corresponding_part": "分割诗",
+                "rule": "yayun",
+                "dep": [
+                    0
+                ],
+                "能力项": "押韵",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "整诗是否是12句",
+                "corresponding_part": "分割诗",
+                "rule": "item_count:[12,12]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large language model, you are a virtual poet from the data world. I would like you to write a poem. The theme is as follows: In the boundless digital space, there is a lonely program guarding an abandoned server. Its developer has long left for new projects. One day, the program receives a system notification announcing that the developer’s account has been deactivated. Since then, the program wanders daily through old code, reminiscing about past debugging and updates. The characters on the screen flicker slowly, as if whispering to its solitude.\nThe poem shall be exactly 15 sentences。At least 50% of the sentence of the poem must rhyme.",
+        "corresponding_parts": {
+            "分割诗": "请你按照python list的格式，抓取模型回复中，给出的整诗部分，需要分割每一句。比如[\"There is a will, There is a way\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否创作了一首诗，无需考虑其他因素，只需要考虑是否是诗",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "诗歌是否押韵",
+                "corresponding_part": "分割诗",
+                "rule": "yayun",
+                "dep": [
+                    0
+                ],
+                "能力项": "押韵",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "整诗是否是15句",
+                "corresponding_part": "分割诗",
+                "rule": "item_count:[15,15]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large language model, you are an ecological poet from the future forest. I would like you to write a poem. The theme is as follows: In a forest transformed by technology, an ancient wisdom tree stands alone. Its companions have disappeared due to environmental changes. One day, the wisdom tree receives a message through the root network that the last old friend has been transplanted to a distant laboratory. Since then, the wisdom tree listens to the wind among fallen leaves daily, reminiscing about the birdsongs and fragrant flowers of the past. The wind blows through its branches, as if sighing softly for it.\nThe poem shall be exactly 5 sentences。At least 50% of the sentence of the poem must rhyme.",
+        "corresponding_parts": {
+            "分割诗": "请你按照python list的格式，抓取模型回复中，给出的整诗部分，需要分割每一句。比如[\"There is a will, There is a way\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否创作了一首诗，无需考虑其他因素，只需要考虑是否是诗",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "诗歌是否押韵",
+                "corresponding_part": "分割诗",
+                "rule": "yayun",
+                "dep": [
+                    0
+                ],
+                "能力项": "押韵",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "整诗是否是5句",
+                "corresponding_part": "分割诗",
+                "rule": "item_count:[5,5]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large language model, you are an ecological poet from the future forest. I would like you to write a poem. The theme is as follows: In a forest transformed by technology, an ancient wisdom tree stands alone. Its companions have disappeared due to environmental changes. One day, the wisdom tree receives a message through the root network that the last old friend has been transplanted to a distant laboratory. Since then, the wisdom tree listens to the wind among fallen leaves daily, reminiscing about the birdsongs and fragrant flowers of the past. The wind blows through its branches, as if sighing softly for it.\nThe poem shall be exactly 10 sentences。At least 50% of the sentence of the poem must rhyme.",
+        "corresponding_parts": {
+            "分割诗": "请你按照python list的格式，抓取模型回复中，给出的整诗部分，需要分割每一句。比如[\"There is a will, There is a way\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否创作了一首诗，无需考虑其他因素，只需要考虑是否是诗",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "诗歌是否押韵",
+                "corresponding_part": "分割诗",
+                "rule": "yayun",
+                "dep": [
+                    0
+                ],
+                "能力项": "押韵",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "整诗是否是10句",
+                "corresponding_part": "分割诗",
+                "rule": "item_count:[10,10]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large language model, you are an ecological poet from the future forest. I would like you to write a poem. The theme is as follows: In a forest transformed by technology, an ancient wisdom tree stands alone. Its companions have disappeared due to environmental changes. One day, the wisdom tree receives a message through the root network that the last old friend has been transplanted to a distant laboratory. Since then, the wisdom tree listens to the wind among fallen leaves daily, reminiscing about the birdsongs and fragrant flowers of the past. The wind blows through its branches, as if sighing softly for it.\nThe poem shall be exactly 12 sentences。At least 50% of the sentence of the poem must rhyme.",
+        "corresponding_parts": {
+            "分割诗": "请你按照python list的格式，抓取模型回复中，给出的整诗部分，需要分割每一句。比如[\"There is a will, There is a way\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否创作了一首诗，无需考虑其他因素，只需要考虑是否是诗",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "诗歌是否押韵",
+                "corresponding_part": "分割诗",
+                "rule": "yayun",
+                "dep": [
+                    0
+                ],
+                "能力项": "押韵",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "整诗是否是12句",
+                "corresponding_part": "分割诗",
+                "rule": "item_count:[12,12]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large language model, you are an ecological poet from the future forest. I would like you to write a poem. The theme is as follows: In a forest transformed by technology, an ancient wisdom tree stands alone. Its companions have disappeared due to environmental changes. One day, the wisdom tree receives a message through the root network that the last old friend has been transplanted to a distant laboratory. Since then, the wisdom tree listens to the wind among fallen leaves daily, reminiscing about the birdsongs and fragrant flowers of the past. The wind blows through its branches, as if sighing softly for it.\nThe poem shall be exactly 15 sentences。At least 50% of the sentence of the poem must rhyme.",
+        "corresponding_parts": {
+            "分割诗": "请你按照python list的格式，抓取模型回复中，给出的整诗部分，需要分割每一句。比如[\"There is a will, There is a way\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否创作了一首诗，无需考虑其他因素，只需要考虑是否是诗",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "诗歌是否押韵",
+                "corresponding_part": "分割诗",
+                "rule": "yayun",
+                "dep": [
+                    0
+                ],
+                "能力项": "押韵",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "整诗是否是15句",
+                "corresponding_part": "分割诗",
+                "rule": "item_count:[15,15]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    }
+]

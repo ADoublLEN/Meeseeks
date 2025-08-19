@@ -1,4 +1,33 @@
-jsonschema
-pypinyin
-hanziconv
-aiohttp
+# OG_meeseeks 评估系统依赖包
+
+# 核心依赖
+requests>=2.25.0
+jsonschema>=4.0.0
+json-repair>=0.7.0
+
+# 中文处理依赖
+pypinyin>=0.44.0
+opencc>=1.1.0
+
+# 日文处理依赖
+hanziconv>=0.3.2
+pykakasi>=2.2.0
+
+# 韩文处理依赖
+hgtk>=0.1.3
+
+# 网络相关依赖
+urllib3>=1.26.0
+
+# 标准库依赖（通常不需要安装，但列出来作为参考）
+# json (标准库)
+# re (标准库)
+# ast (标准库)
+# os (标准库)
+# sys (标准库)
+# time (标准库)
+# argparse (标准库)
+# math (标准库)
+# typing (标准库)
+# collections (标准库)
+# subprocess (标准库)

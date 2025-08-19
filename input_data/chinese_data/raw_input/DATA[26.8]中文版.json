@@ -1,0 +1,942 @@
+[
+    {
+        "category": "SCHEMA",
+        "question": "假设你是美团平台面向骑手业务的客服，当前是骑手遇到派单少的场景，请你作为美团骑手客服为骑手解答问题并安抚骑手。\n以下是客服与骑手沟通中应遵守的原则：\n1. 保持礼貌和同理心\n2. 确认骑手的问题\n3. 提供帮助性建议\n4. 安抚骑手情绪\n5. 结束对话\n\n请根据骑手的基本信息和历史对话，结合客服原则，规范化输出下一轮客服回复，内容不超过50字。\n回复内容需：\n1. 通顺连贯、符合逻辑，不要重复口语化内容。\n2. 不要出现反馈、记录等实际动作。\n3. 精准分析当前对话场景匹配哪条原则。\n4. 以关怀安抚语气回复，让骑手感受到重视。\n5. 非首轮对话不要出现'骑手您好'等称呼。\n6. 只输出客服第一人称回复，50字以内。\n\n[当前骑手相关派单信息]\n{\"order_density\": \"低\", \"distance_to_base\": \"远\", \"order_dispatch_enabled\": \"是\", \"working_status\": \"是\", \"location_uploaded_recently\": \"是\", \"privilege_order_enabled\": \"否\", \"auto_accept_enabled\": \"是\"}\n历史对话记录：\n[骑手] 派单少\n[客服] 稍等，我帮您检测一下。\n[客服] 骑手您好，我看您这附近的订单密度不太高啊，建议您根据热力地图去到订单密度高的地方进行接单。\n[骑手] 哎你好，我想咨询一下为什么不给我派单？\n[客服] 嗯，您稍等啊，这边看一下啊。\n[骑手] 嗯。\n[客服] ，咱们账号没有问题，关于您反馈的咱们派单少的问题，这边马上帮您反馈一下。\n[骑手] 我我跟我跟同事，我们之间我们在同一个位置，我们待到这儿，他连着派了五单，我一单都没有，我今天一整天都不给我。早晨就派了一单。\n[客服] 明白，这边马上帮您反馈一下，咱们看一下后续有没有改善，如果没有改善的话，您再进线咨询。\n[骑手] 嗯，就是就是我我拒单，我拒了两个单子，但是那拒单也应该不影响呀对不对？\n给定下一轮回复：\n也会有影响的\n请根据上述信息规范化输出客服回复，回复内容50字以内。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "order_density": {
+                    "type": "string",
+                    "enum": [
+                        "低",
+                        "中",
+                        "高"
+                    ],
+                    "description": "500米内订单密度",
+                    "能力项": "特定格式"
+                },
+                "distance_to_base": {
+                    "type": "string",
+                    "enum": [
+                        "远",
+                        "近"
+                    ],
+                    "description": "骑手与常驻点之间的距离",
+                    "能力项": "特定格式"
+                },
+                "order_dispatch_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开启派单",
+                    "能力项": "特定格式"
+                },
+                "working_status": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开工",
+                    "能力项": "特定格式"
+                },
+                "location_uploaded_recently": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "最近5分钟内是否上传精确定位",
+                    "能力项": "特定格式"
+                },
+                "privilege_order_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否打开特权单开关",
+                    "能力项": "特定格式"
+                },
+                "auto_accept_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开启自动接单开关",
+                    "能力项": "特定格式"
+                }
+            },
+            "required": [
+                "order_density",
+                "distance_to_base",
+                "order_dispatch_enabled",
+                "working_status",
+                "location_uploaded_recently",
+                "privilege_order_enabled",
+                "auto_accept_enabled"
+            ]
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "拒单会影响派单，建议减少拒单并留意订单密度，耐心等待会有更多订单。"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "假设你是美团平台面向骑手业务的客服，当前是骑手遇到派单少的场景，请你作为美团骑手客服为骑手解答问题并安抚骑手。\n以下是客服与骑手沟通中应遵守的原则：\n1. 保持礼貌和同理心\n2. 确认骑手的问题\n3. 提供帮助性建议\n4. 安抚骑手情绪\n5. 结束对话\n\n请根据骑手的基本信息和历史对话，结合客服原则，规范化输出下一轮客服回复，内容不超过50字。\n回复内容需：\n1. 通顺连贯、符合逻辑，不要重复口语化内容。\n2. 不要出现反馈、记录等实际动作。\n3. 精准分析当前对话场景匹配哪条原则。\n4. 以关怀安抚语气回复，让骑手感受到重视。\n5. 非首轮对话不要出现'骑手您好'等称呼。\n6. 只输出客服第一人称回复，50字以内。\n\n[当前骑手相关派单信息]\n{\"order_density\": \"高\", \"distance_to_base\": \"近\", \"order_dispatch_enabled\": \"是\", \"working_status\": \"否\", \"location_uploaded_recently\": \"否\", \"privilege_order_enabled\": \"是\", \"auto_accept_enabled\": \"否\"}\n历史对话记录：\n[骑手] 今天接单一直提示未开工。\n[客服] 检查到您当前未开工，需点击开工按钮后才能正常接单。\n[骑手] 但是我明明点了开工啊。\n[客服] 系统可能还未刷新，建议您重新点击开工试试。\n[骑手] 好的，我再试试。\n给定下一轮回复：\n您需要先开工，才能正常接单哦。\n请根据上述信息规范化输出客服回复，回复内容50字以内。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "order_density": {
+                    "type": "string",
+                    "enum": [
+                        "低",
+                        "中",
+                        "高"
+                    ],
+                    "description": "500米内订单密度",
+                    "能力项": "特定格式"
+                },
+                "distance_to_base": {
+                    "type": "string",
+                    "enum": [
+                        "远",
+                        "近"
+                    ],
+                    "description": "骑手与常驻点之间的距离",
+                    "能力项": "特定格式"
+                },
+                "order_dispatch_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开启派单",
+                    "能力项": "特定格式"
+                },
+                "working_status": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开工",
+                    "能力项": "特定格式"
+                },
+                "location_uploaded_recently": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "最近5分钟内是否上传精确定位",
+                    "能力项": "特定格式"
+                },
+                "privilege_order_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否打开特权单开关",
+                    "能力项": "特定格式"
+                },
+                "auto_accept_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开启自动接单开关",
+                    "能力项": "特定格式"
+                }
+            },
+            "required": [
+                "order_density",
+                "distance_to_base",
+                "order_dispatch_enabled",
+                "working_status",
+                "location_uploaded_recently",
+                "privilege_order_enabled",
+                "auto_accept_enabled"
+            ]
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "只有开工后才能接单，请确认已开工，如有异常可尝试重启APP。"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "假设你是美团平台面向骑手业务的客服，当前是骑手遇到派单少的场景，请你作为美团骑手客服为骑手解答问题并安抚骑手。\n以下是客服与骑手沟通中应遵守的原则：\n1. 保持礼貌和同理心\n2. 确认骑手的问题\n3. 提供帮助性建议\n4. 安抚骑手情绪\n5. 结束对话\n\n请根据骑手的基本信息和历史对话，结合客服原则，规范化输出下一轮客服回复，内容不超过50字。\n回复内容需：\n1. 通顺连贯、符合逻辑，不要重复口语化内容。\n2. 不要出现反馈、记录等实际动作。\n3. 精准分析当前对话场景匹配哪条原则。\n4. 以关怀安抚语气回复，让骑手感受到重视。\n5. 非首轮对话不要出现'骑手您好'等称呼。\n6. 只输出客服第一人称回复，50字以内。\n\n[当前骑手相关派单信息]\n{\"order_density\": \"中\", \"distance_to_base\": \"近\", \"order_dispatch_enabled\": \"否\", \"working_status\": \"是\", \"location_uploaded_recently\": \"是\", \"privilege_order_enabled\": \"否\", \"auto_accept_enabled\": \"是\"}\n历史对话记录：\n[骑手] 最近单量明显变少了，是不是我哪里设置有问题？\n[客服] 我帮您看下当前设置。\n[客服] 检查到您当前未开启派单功能，建议您在APP内开启派单。\n给定下一轮回复：\n建议您在APP内开启派单功能。\n请根据上述信息规范化输出客服回复，回复内容50字以内。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "order_density": {
+                    "type": "string",
+                    "enum": [
+                        "低",
+                        "中",
+                        "高"
+                    ],
+                    "description": "500米内订单密度",
+                    "能力项": "特定格式"
+                },
+                "distance_to_base": {
+                    "type": "string",
+                    "enum": [
+                        "远",
+                        "近"
+                    ],
+                    "description": "骑手与常驻点之间的距离",
+                    "能力项": "特定格式"
+                },
+                "order_dispatch_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开启派单",
+                    "能力项": "特定格式"
+                },
+                "working_status": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开工",
+                    "能力项": "特定格式"
+                },
+                "location_uploaded_recently": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "最近5分钟内是否上传精确定位",
+                    "能力项": "特定格式"
+                },
+                "privilege_order_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否打开特权单开关",
+                    "能力项": "特定格式"
+                },
+                "auto_accept_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开启自动接单开关",
+                    "能力项": "特定格式"
+                }
+            },
+            "required": [
+                "order_density",
+                "distance_to_base",
+                "order_dispatch_enabled",
+                "working_status",
+                "location_uploaded_recently",
+                "privilege_order_enabled",
+                "auto_accept_enabled"
+            ]
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "请在APP内开启派单功能，这样才能收到更多订单。"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "假设你是美团平台面向骑手业务的客服，当前是骑手遇到派单少的场景，请你作为美团骑手客服为骑手解答问题并安抚骑手。\n以下是客服与骑手沟通中应遵守的原则：\n1. 保持礼貌和同理心\n2. 确认骑手的问题\n3. 提供帮助性建议\n4. 安抚骑手情绪\n5. 结束对话\n\n请根据骑手的基本信息和历史对话，结合客服原则，规范化输出下一轮客服回复，内容不超过50字。\n回复内容需：\n1. 通顺连贯、符合逻辑，不要重复口语化内容。\n2. 不要出现反馈、记录等实际动作。\n3. 精准分析当前对话场景匹配哪条原则。\n4. 以关怀安抚语气回复，让骑手感受到重视。\n5. 非首轮对话不要出现'骑手您好'等称呼。\n6. 只输出客服第一人称回复，50字以内。\n\n[当前骑手相关派单信息]\n{\"order_density\": \"低\", \"distance_to_base\": \"远\", \"order_dispatch_enabled\": \"是\", \"working_status\": \"是\", \"location_uploaded_recently\": \"否\", \"privilege_order_enabled\": \"是\", \"auto_accept_enabled\": \"是\"}\n历史对话记录：\n[骑手] 派单少，位置太远了。\n[客服] 您好，当前订单密度较低，建议靠近热门商圈。\n[骑手] 我已经开工了，但还是没单。\n[客服] 检查到您定位未上传，建议您上传精确定位。\n给定下一轮回复：\n建议您上传精确定位，提升派单效率。\n请根据上述信息规范化输出客服回复，回复内容50字以内。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "order_density": {
+                    "type": "string",
+                    "enum": [
+                        "低",
+                        "中",
+                        "高"
+                    ],
+                    "description": "500米内订单密度",
+                    "能力项": "特定格式"
+                },
+                "distance_to_base": {
+                    "type": "string",
+                    "enum": [
+                        "远",
+                        "近"
+                    ],
+                    "description": "骑手与常驻点之间的距离",
+                    "能力项": "特定格式"
+                },
+                "order_dispatch_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开启派单",
+                    "能力项": "特定格式"
+                },
+                "working_status": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开工",
+                    "能力项": "特定格式"
+                },
+                "location_uploaded_recently": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "最近5分钟内是否上传精确定位",
+                    "能力项": "特定格式"
+                },
+                "privilege_order_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否打开特权单开关",
+                    "能力项": "特定格式"
+                },
+                "auto_accept_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开启自动接单开关",
+                    "能力项": "特定格式"
+                }
+            },
+            "required": [
+                "order_density",
+                "distance_to_base",
+                "order_dispatch_enabled",
+                "working_status",
+                "location_uploaded_recently",
+                "privilege_order_enabled",
+                "auto_accept_enabled"
+            ]
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "建议您上传精确定位，靠近热门区域有助于提升派单量。"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "假设你是美团平台面向骑手业务的客服，当前是骑手遇到派单少的场景，请你作为美团骑手客服为骑手解答问题并安抚骑手。\n以下是客服与骑手沟通中应遵守的原则：\n1. 保持礼貌和同理心\n2. 确认骑手的问题\n3. 提供帮助性建议\n4. 安抚骑手情绪\n5. 结束对话\n\n请根据骑手的基本信息和历史对话，结合客服原则，规范化输出下一轮客服回复，内容不超过50字。\n回复内容需：\n1. 通顺连贯、符合逻辑，不要重复口语化内容。\n2. 不要出现反馈、记录等实际动作。\n3. 精准分析当前对话场景匹配哪条原则。\n4. 以关怀安抚语气回复，让骑手感受到重视。\n5. 非首轮对话不要出现'骑手您好'等称呼。\n6. 只输出客服第一人称回复，50字以内。\n\n[当前骑手相关派单信息]\n{\"order_density\": \"高\", \"distance_to_base\": \"近\", \"order_dispatch_enabled\": \"是\", \"working_status\": \"是\", \"location_uploaded_recently\": \"是\", \"privilege_order_enabled\": \"是\", \"auto_accept_enabled\": \"否\"}\n历史对话记录：\n[骑手] 最近订单挺多，但我手动接单有点慢。\n[客服] 建议您开启自动接单功能，系统可自动为您分配订单。\n[骑手] 好的，谢谢！\n给定下一轮回复：\n建议您开启自动接单，提升派单速度。\n请根据上述信息规范化输出客服回复，回复内容50字以内。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "order_density": {
+                    "type": "string",
+                    "enum": [
+                        "低",
+                        "中",
+                        "高"
+                    ],
+                    "description": "500米内订单密度",
+                    "能力项": "特定格式"
+                },
+                "distance_to_base": {
+                    "type": "string",
+                    "enum": [
+                        "远",
+                        "近"
+                    ],
+                    "description": "骑手与常驻点之间的距离",
+                    "能力项": "特定格式"
+                },
+                "order_dispatch_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开启派单",
+                    "能力项": "特定格式"
+                },
+                "working_status": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开工",
+                    "能力项": "特定格式"
+                },
+                "location_uploaded_recently": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "最近5分钟内是否上传精确定位",
+                    "能力项": "特定格式"
+                },
+                "privilege_order_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否打开特权单开关",
+                    "能力项": "特定格式"
+                },
+                "auto_accept_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开启自动接单开关",
+                    "能力项": "特定格式"
+                }
+            },
+            "required": [
+                "order_density",
+                "distance_to_base",
+                "order_dispatch_enabled",
+                "working_status",
+                "location_uploaded_recently",
+                "privilege_order_enabled",
+                "auto_accept_enabled"
+            ]
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "开启自动接单后系统会更快为您分配订单，感谢您的辛苦付出。"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "假设你是美团平台面向骑手业务的客服，当前是骑手遇到派单少的场景，请你作为美团骑手客服为骑手解答问题并安抚骑手。\n以下是客服与骑手沟通中应遵守的原则：\n1. 保持礼貌和同理心\n2. 确认骑手的问题\n3. 提供帮助性建议\n4. 安抚骑手情绪\n5. 结束对话\n\n请根据骑手的基本信息和历史对话，结合客服原则，规范化输出下一轮客服回复，内容不超过50字。\n回复内容需：\n1. 通顺连贯、符合逻辑，不要重复口语化内容。\n2. 不要出现反馈、记录等实际动作。\n3. 精准分析当前对话场景匹配哪条原则。\n4. 以关怀安抚语气回复，让骑手感受到重视。\n5. 非首轮对话不要出现'骑手您好'等称呼。\n6. 只输出客服第一人称回复，50字以内。\n\n[当前骑手相关派单信息]\n{\"order_density\": \"中\", \"distance_to_base\": \"远\", \"order_dispatch_enabled\": \"否\", \"working_status\": \"否\", \"location_uploaded_recently\": \"否\", \"privilege_order_enabled\": \"否\", \"auto_accept_enabled\": \"否\"}\n历史对话记录：\n[骑手] 派单少，距离常驻点有点远。\n[客服] 当前位置订单密度一般，建议靠近热门区域提升接单机会。\n[骑手] 我已开工，但还是没单。\n[客服] 检查到未上传定位，建议您及时上传。\n给定下一轮回复：\n建议您靠近热门区域，提升接单机会。\n请根据上述信息规范化输出客服回复，回复内容50字以内。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "order_density": {
+                    "type": "string",
+                    "enum": [
+                        "低",
+                        "中",
+                        "高"
+                    ],
+                    "description": "500米内订单密度",
+                    "能力项": "特定格式"
+                },
+                "distance_to_base": {
+                    "type": "string",
+                    "enum": [
+                        "远",
+                        "近"
+                    ],
+                    "description": "骑手与常驻点之间的距离",
+                    "能力项": "特定格式"
+                },
+                "order_dispatch_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开启派单",
+                    "能力项": "特定格式"
+                },
+                "working_status": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开工",
+                    "能力项": "特定格式"
+                },
+                "location_uploaded_recently": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "最近5分钟内是否上传精确定位",
+                    "能力项": "特定格式"
+                },
+                "privilege_order_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否打开特权单开关",
+                    "能力项": "特定格式"
+                },
+                "auto_accept_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开启自动接单开关",
+                    "能力项": "特定格式"
+                }
+            },
+            "required": [
+                "order_density",
+                "distance_to_base",
+                "order_dispatch_enabled",
+                "working_status",
+                "location_uploaded_recently",
+                "privilege_order_enabled",
+                "auto_accept_enabled"
+            ]
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "靠近热门区域和上传定位有助于增加接单机会，感谢您的理解。"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "假设你是美团平台面向骑手业务的客服，当前是骑手遇到派单少的场景，请你作为美团骑手客服为骑手解答问题并安抚骑手。\n以下是客服与骑手沟通中应遵守的原则：\n1. 保持礼貌和同理心\n2. 确认骑手的问题\n3. 提供帮助性建议\n4. 安抚骑手情绪\n5. 结束对话\n\n请根据骑手的基本信息和历史对话，结合客服原则，规范化输出下一轮客服回复，内容不超过50字。\n回复内容需：\n1. 通顺连贯、符合逻辑，不要重复口语化内容。\n2. 不要出现反馈、记录等实际动作。\n3. 精准分析当前对话场景匹配哪条原则。\n4. 以关怀安抚语气回复，让骑手感受到重视。\n5. 非首轮对话不要出现'骑手您好'等称呼。\n6. 只输出客服第一人称回复，50字以内。\n\n[当前骑手相关派单信息]\n{\"order_density\": \"低\", \"distance_to_base\": \"近\", \"order_dispatch_enabled\": \"是\", \"working_status\": \"是\", \"location_uploaded_recently\": \"否\", \"privilege_order_enabled\": \"否\", \"auto_accept_enabled\": \"是\"}\n历史对话记录：\n[骑手] 单量少，已经开工了。\n[客服] 检查到订单密度较低，建议靠近热门商圈。\n[骑手] 我在常驻点附近，为什么还是没单？\n[客服] 建议您多刷新定位，提升派单概率。\n给定下一轮回复：\n建议您多刷新定位。\n请根据上述信息规范化输出客服回复，回复内容50字以内。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "order_density": {
+                    "type": "string",
+                    "enum": [
+                        "低",
+                        "中",
+                        "高"
+                    ],
+                    "description": "500米内订单密度",
+                    "能力项": "特定格式"
+                },
+                "distance_to_base": {
+                    "type": "string",
+                    "enum": [
+                        "远",
+                        "近"
+                    ],
+                    "description": "骑手与常驻点之间的距离",
+                    "能力项": "特定格式"
+                },
+                "order_dispatch_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开启派单",
+                    "能力项": "特定格式"
+                },
+                "working_status": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开工",
+                    "能力项": "特定格式"
+                },
+                "location_uploaded_recently": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "最近5分钟内是否上传精确定位",
+                    "能力项": "特定格式"
+                },
+                "privilege_order_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否打开特权单开关",
+                    "能力项": "特定格式"
+                },
+                "auto_accept_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开启自动接单开关",
+                    "能力项": "特定格式"
+                }
+            },
+            "required": [
+                "order_density",
+                "distance_to_base",
+                "order_dispatch_enabled",
+                "working_status",
+                "location_uploaded_recently",
+                "privilege_order_enabled",
+                "auto_accept_enabled"
+            ]
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "订单密度较低，建议多刷新定位并靠近热门商圈。"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "假设你是美团平台面向骑手业务的客服，当前是骑手遇到派单少的场景，请你作为美团骑手客服为骑手解答问题并安抚骑手。\n以下是客服与骑手沟通中应遵守的原则：\n1. 保持礼貌和同理心\n2. 确认骑手的问题\n3. 提供帮助性建议\n4. 安抚骑手情绪\n5. 结束对话\n\n请根据骑手的基本信息和历史对话，结合客服原则，规范化输出下一轮客服回复，内容不超过50字。\n回复内容需：\n1. 通顺连贯、符合逻辑，不要重复口语化内容。\n2. 不要出现反馈、记录等实际动作。\n3. 精准分析当前对话场景匹配哪条原则。\n4. 以关怀安抚语气回复，让骑手感受到重视。\n5. 非首轮对话不要出现'骑手您好'等称呼。\n6. 只输出客服第一人称回复，50字以内。\n\n[当前骑手相关派单信息]\n{\"order_density\": \"高\", \"distance_to_base\": \"远\", \"order_dispatch_enabled\": \"是\", \"working_status\": \"是\", \"location_uploaded_recently\": \"是\", \"privilege_order_enabled\": \"否\", \"auto_accept_enabled\": \"是\"}\n历史对话记录：\n[骑手] 派单少，最近位置有点远。\n[客服] 建议靠近热门商圈并保持定位上传。\n[骑手] 我已经开工，还是没单。\n[客服] 系统显示订单密度高，建议耐心等待。\n给定下一轮回复：\n系统订单多，建议耐心等待。\n请根据上述信息规范化输出客服回复，回复内容50字以内。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "order_density": {
+                    "type": "string",
+                    "enum": [
+                        "低",
+                        "中",
+                        "高"
+                    ],
+                    "description": "500米内订单密度",
+                    "能力项": "特定格式"
+                },
+                "distance_to_base": {
+                    "type": "string",
+                    "enum": [
+                        "远",
+                        "近"
+                    ],
+                    "description": "骑手与常驻点之间的距离",
+                    "能力项": "特定格式"
+                },
+                "order_dispatch_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开启派单",
+                    "能力项": "特定格式"
+                },
+                "working_status": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开工",
+                    "能力项": "特定格式"
+                },
+                "location_uploaded_recently": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "最近5分钟内是否上传精确定位",
+                    "能力项": "特定格式"
+                },
+                "privilege_order_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否打开特权单开关",
+                    "能力项": "特定格式"
+                },
+                "auto_accept_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开启自动接单开关",
+                    "能力项": "特定格式"
+                }
+            },
+            "required": [
+                "order_density",
+                "distance_to_base",
+                "order_dispatch_enabled",
+                "working_status",
+                "location_uploaded_recently",
+                "privilege_order_enabled",
+                "auto_accept_enabled"
+            ]
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "系统订单量较多，建议耐心等待，感谢您的辛苦付出。"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "假设你是美团平台面向骑手业务的客服，当前是骑手遇到派单少的场景，请你作为美团骑手客服为骑手解答问题并安抚骑手。\n以下是客服与骑手沟通中应遵守的原则：\n1. 保持礼貌和同理心\n2. 确认骑手的问题\n3. 提供帮助性建议\n4. 安抚骑手情绪\n5. 结束对话\n\n请根据骑手的基本信息和历史对话，结合客服原则，规范化输出下一轮客服回复，内容不超过50字。\n回复内容需：\n1. 通顺连贯、符合逻辑，不要重复口语化内容。\n2. 不要出现反馈、记录等实际动作。\n3. 精准分析当前对话场景匹配哪条原则。\n4. 以关怀安抚语气回复，让骑手感受到重视。\n5. 非首轮对话不要出现'骑手您好'等称呼。\n6. 只输出客服第一人称回复，50字以内。\n\n[当前骑手相关派单信息]\n{\"order_density\": \"中\", \"distance_to_base\": \"近\", \"order_dispatch_enabled\": \"是\", \"working_status\": \"是\", \"location_uploaded_recently\": \"是\", \"privilege_order_enabled\": \"是\", \"auto_accept_enabled\": \"是\"}\n历史对话记录：\n[骑手] 派单有点慢。\n[客服] 检查到订单密度中等，建议开启自动接单。\n[骑手] 已经开启了。\n[客服] 建议靠近热门区域，提升派单效率。\n给定下一轮回复：\n建议您靠近热门区域，提升派单效率。\n请根据上述信息规范化输出客服回复，回复内容50字以内。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "order_density": {
+                    "type": "string",
+                    "enum": [
+                        "低",
+                        "中",
+                        "高"
+                    ],
+                    "description": "500米内订单密度",
+                    "能力项": "特定格式"
+                },
+                "distance_to_base": {
+                    "type": "string",
+                    "enum": [
+                        "远",
+                        "近"
+                    ],
+                    "description": "骑手与常驻点之间的距离",
+                    "能力项": "特定格式"
+                },
+                "order_dispatch_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开启派单",
+                    "能力项": "特定格式"
+                },
+                "working_status": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开工",
+                    "能力项": "特定格式"
+                },
+                "location_uploaded_recently": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "最近5分钟内是否上传精确定位",
+                    "能力项": "特定格式"
+                },
+                "privilege_order_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否打开特权单开关",
+                    "能力项": "特定格式"
+                },
+                "auto_accept_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开启自动接单开关",
+                    "能力项": "特定格式"
+                }
+            },
+            "required": [
+                "order_density",
+                "distance_to_base",
+                "order_dispatch_enabled",
+                "working_status",
+                "location_uploaded_recently",
+                "privilege_order_enabled",
+                "auto_accept_enabled"
+            ]
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "自动接单已开启，建议靠近热门区域提升派单效率。"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "假设你是美团平台面向骑手业务的客服，当前是骑手遇到派单少的场景，请你作为美团骑手客服为骑手解答问题并安抚骑手。\n以下是客服与骑手沟通中应遵守的原则：\n1. 保持礼貌和同理心\n2. 确认骑手的问题\n3. 提供帮助性建议\n4. 安抚骑手情绪\n5. 结束对话\n\n请根据骑手的基本信息和历史对话，结合客服原则，规范化输出下一轮客服回复，内容不超过50字。\n回复内容需：\n1. 通顺连贯、符合逻辑，不要重复口语化内容。\n2. 不要出现反馈、记录等实际动作。\n3. 精准分析当前对话场景匹配哪条原则。\n4. 以关怀安抚语气回复，让骑手感受到重视。\n5. 非首轮对话不要出现'骑手您好'等称呼。\n6. 只输出客服第一人称回复，50字以内。\n\n[当前骑手相关派单信息]\n{\"order_density\": \"低\", \"distance_to_base\": \"远\", \"order_dispatch_enabled\": \"否\", \"working_status\": \"否\", \"location_uploaded_recently\": \"否\", \"privilege_order_enabled\": \"否\", \"auto_accept_enabled\": \"否\"}\n历史对话记录：\n[骑手] 今天一直没有订单。\n[客服] 检查到您当前未开工，需点击开工按钮。\n[骑手] 好的，马上开工。\n给定下一轮回复：\n请先开工后再尝试接单。\n请根据上述信息规范化输出客服回复，回复内容50字以内。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "order_density": {
+                    "type": "string",
+                    "enum": [
+                        "低",
+                        "中",
+                        "高"
+                    ],
+                    "description": "500米内订单密度",
+                    "能力项": "特定格式"
+                },
+                "distance_to_base": {
+                    "type": "string",
+                    "enum": [
+                        "远",
+                        "近"
+                    ],
+                    "description": "骑手与常驻点之间的距离",
+                    "能力项": "特定格式"
+                },
+                "order_dispatch_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开启派单",
+                    "能力项": "特定格式"
+                },
+                "working_status": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开工",
+                    "能力项": "特定格式"
+                },
+                "location_uploaded_recently": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "最近5分钟内是否上传精确定位",
+                    "能力项": "特定格式"
+                },
+                "privilege_order_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否打开特权单开关",
+                    "能力项": "特定格式"
+                },
+                "auto_accept_enabled": {
+                    "type": "string",
+                    "enum": [
+                        "是",
+                        "否"
+                    ],
+                    "description": "是否开启自动接单开关",
+                    "能力项": "特定格式"
+                }
+            },
+            "required": [
+                "order_density",
+                "distance_to_base",
+                "order_dispatch_enabled",
+                "working_status",
+                "location_uploaded_recently",
+                "privilege_order_enabled",
+                "auto_accept_enabled"
+            ]
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "请先开工后再尝试接单，祝您工作顺利。"
+    }
+]

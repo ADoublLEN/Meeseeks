@@ -1,0 +1,458 @@
+[
+    {
+        "category": "general_multi",
+        "question": "I am a travel photographer who loves to capture the beauty of the world through my lens. Whenever the first ray of morning sunlight falls on the mountain peaks, I always carry my camera and embark on a new journey. In the sound of the shutter, I capture the poetry of life and search for answers within my heart. Please imitate the writing style and theme of the following text and write a long article: [Recently, I finally realized my years-long wish and became a volunteer teacher, walking into classrooms in remote mountainous areas. The children's clear eyes sparkled with thirst for knowledge, and every piece of writing on the blackboard was like planting seeds of hope in their hearts. On the mountain path in the morning, bird songs and children's reading voices wove together into a moving melody. Whenever I saw children suddenly understand a problem, my heart was deeply touched. This experience made me understand that education is a two-way warmth, an illumination of each other's souls.] The word count should be around 400 words, with a 10% fluctuation allowed up or down, counting only English words. The article should use many rhetorical devices. Please only output the article content, divided into 5 paragraphs with blank lines between paragraphs. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "段落们": "请你按照python list的格式，抓取每个自然段（paragraph），通常自然段中间会有空行，最终格式例如：[\"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Watching the sun slowly sink into the sea level, the entire sky was dyed into a dreamy pink and purple, so beautiful that it was breathtaking! The SPA here is also amazing. Lying on the massage bed with a transparent glass floor, the sound of the waves and the professional massage made all the fatigue disappear. This journey not only healed my tired body and mind, but also made me regain my love and touch for life. Really, some scenery is not for posting on WeChat Moments, but for cherishing in memory.\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是400左右",
+                "corresponding_part": "段落们",
+                "rule": "total_length:[360.0,440.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "自然段数量是否为5段",
+                "corresponding_part": "段落们",
+                "rule": "item_count:[5,5]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "I am an urban office worker, and my busy life often makes me ignore the voice within my heart. That night, after working overtime, I walked alone on the dimly lit streets, hearing the sound of wind from passing cars and occasional dog barking. Suddenly, I realized that I hadn't stopped to feel life for a long time. Now, please imitate the writing style and theme of the following text and write a long article: [Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure waters like gemstones and the pure white fine sand are simply the embodiment of paradise on earth! What surprised me most was staying in the overwater villa, where I could see sea turtles and colorful fish swimming freely just by opening the window, as if I were in a giant natural aquarium. Every morning, I would be awakened by gentle sunlight, then jump directly from my room's private platform into the warm seawater for intimate contact with coral reefs and tropical fish. At dusk, sitting on the deck sipping coconut cocktails, watching the sun slowly sink into the horizon, the entire sky was dyed in dreamy pink and purple, breathtakingly beautiful! The SPA here was also amazing, lying on a massage bed with a transparent glass floor, the sound of waves and professional massage made all fatigue disappear. This journey not only healed my weary body and mind but also helped me rediscover my love and appreciation for life. Really, some scenery is not meant for social media posts, but to be treasured in memory!] The word count should be around 400 words, with a 10% fluctuation allowed up or down, counting only English words. The article should use many rhetorical devices. Please only output the article content, divided into 8 paragraphs with blank lines between paragraphs. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "段落们": "请你按照python list的格式，抓取每个自然段（paragraph），通常自然段中间会有空行，最终格式例如：[\"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Watching the sun slowly sink into the sea level, the entire sky was dyed into a dreamy pink and purple, so beautiful that it was breathtaking! The SPA here is also amazing. Lying on the massage bed with a transparent glass floor, the sound of the waves and the professional massage made all the fatigue disappear. This journey not only healed my tired body and mind, but also made me regain my love and touch for life. Really, some scenery is not for posting on WeChat Moments, but for cherishing in memory.\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是400左右",
+                "corresponding_part": "段落们",
+                "rule": "total_length:[360.0,440.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "自然段数量是否为8段",
+                "corresponding_part": "段落们",
+                "rule": "item_count:[8,8]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "I am a writer who enjoys solitude, accustomed to conversing with the world through words in the quiet of the night. The wind outside blows the leaves, as if also listening to my thoughts. Every line of text is a whisper from my soul. Please imitate the writing style and theme of the following text and write a long article: [Some time ago, I finally mustered the courage to step onto the long-missed stage and participate in the school's drama performance. Under the spotlight, my heart seemed to jump out of my chest, and the audience's gaze surged like a tide. Every line, every movement condensed countless rehearsals and sweat. When the curtain slowly fell and applause thundered, tears welled up in my eyes. At that moment, I understood the meaning of chasing dreams and experienced the joy of breaking through myself. The stage is the most brilliant footnote of youth.] The word count should be around 400 words, with a 10% fluctuation allowed up or down, counting only English words. The article should use many rhetorical devices. Please only output the article content, divided into 9 paragraphs with blank lines between paragraphs. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "段落们": "请你按照python list的格式，抓取每个自然段（paragraph），通常自然段中间会有空行，最终格式例如：[\"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Watching the sun slowly sink into the sea level, the entire sky was dyed into a dreamy pink and purple, so beautiful that it was breathtaking! The SPA here is also amazing. Lying on the massage bed with a transparent glass floor, the sound of the waves and the professional massage made all the fatigue disappear. This journey not only healed my tired body and mind, but also made me regain my love and touch for life. Really, some scenery is not for posting on WeChat Moments, but for cherishing in memory.\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是400左右",
+                "corresponding_part": "段落们",
+                "rule": "total_length:[360.0,440.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "自然段数量是否为9段",
+                "corresponding_part": "段落们",
+                "rule": "item_count:[9,9]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "I am a writer who enjoys solitude, accustomed to conversing with the world through words in the quiet of the night. The wind outside blows the leaves, as if also listening to my thoughts. Every line of text is a whisper from my soul. Please imitate the writing style and theme of the following text and write a long article: [Some time ago, I finally mustered the courage to step onto the long-missed stage and participate in the school's drama performance. Under the spotlight, my heart seemed to jump out of my chest, and the audience's gaze surged like a tide. Every line, every movement condensed countless rehearsals and sweat. When the curtain slowly fell and applause thundered, tears welled up in my eyes. At that moment, I understood the meaning of chasing dreams and experienced the joy of breaking through myself. The stage is the most brilliant footnote of youth.] The word count should be around 600 words, with a 10% fluctuation allowed up or down, counting only English words. The article should use many rhetorical devices. Please only output the article content, divided into 5 paragraphs with blank lines between paragraphs. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "段落们": "请你按照python list的格式，抓取每个自然段（paragraph），通常自然段中间会有空行，最终格式例如：[\"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Watching the sun slowly sink into the sea level, the entire sky was dyed into a dreamy pink and purple, so beautiful that it was breathtaking! The SPA here is also amazing. Lying on the massage bed with a transparent glass floor, the sound of the waves and the professional massage made all the fatigue disappear. This journey not only healed my tired body and mind, but also made me regain my love and touch for life. Really, some scenery is not for posting on WeChat Moments, but for cherishing in memory.\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是600左右",
+                "corresponding_part": "段落们",
+                "rule": "total_length:[540.0,660.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "自然段数量是否为5段",
+                "corresponding_part": "段落们",
+                "rule": "item_count:[5,5]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "I am a writer who enjoys solitude, accustomed to conversing with the world through words in the quiet of the night. The wind outside blows the leaves, as if also listening to my thoughts. Every line of text is a whisper from my soul. Please imitate the writing style and theme of the following text and write a long article: [Some time ago, I finally mustered the courage to step onto the long-missed stage and participate in the school's drama performance. Under the spotlight, my heart seemed to jump out of my chest, and the audience's gaze surged like a tide. Every line, every movement condensed countless rehearsals and sweat. When the curtain slowly fell and applause thundered, tears welled up in my eyes. At that moment, I understood the meaning of chasing dreams and experienced the joy of breaking through myself. The stage is the most brilliant footnote of youth.] The word count should be around 600 words, with a 10% fluctuation allowed up or down, counting only English words. The article should use many rhetorical devices. Please only output the article content, divided into 8 paragraphs with blank lines between paragraphs. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "段落们": "请你按照python list的格式，抓取每个自然段（paragraph），通常自然段中间会有空行，最终格式例如：[\"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Watching the sun slowly sink into the sea level, the entire sky was dyed into a dreamy pink and purple, so beautiful that it was breathtaking! The SPA here is also amazing. Lying on the massage bed with a transparent glass floor, the sound of the waves and the professional massage made all the fatigue disappear. This journey not only healed my tired body and mind, but also made me regain my love and touch for life. Really, some scenery is not for posting on WeChat Moments, but for cherishing in memory.\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是600左右",
+                "corresponding_part": "段落们",
+                "rule": "total_length:[540.0,660.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "自然段数量是否为8段",
+                "corresponding_part": "段落们",
+                "rule": "item_count:[8,8]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "I am a travel photographer who loves to capture the beauty of the world through my lens. Whenever the first ray of morning sunlight falls on the mountain peaks, I always carry my camera and embark on a new journey. In the sound of the shutter, I capture the poetry of life and search for answers within my heart. Please imitate the writing style and theme of the following text and write a long article: [Recently, I finally realized my years-long wish and became a volunteer teacher, walking into classrooms in remote mountainous areas. The children's clear eyes sparkled with thirst for knowledge, and every piece of writing on the blackboard was like planting seeds of hope in their hearts. On the mountain path in the morning, bird songs and children's reading voices wove together into a moving melody. Whenever I saw children suddenly understand a problem, my heart was deeply touched. This experience made me understand that education is a two-way warmth, an illumination of each other's souls.] The word count should be around 600 words, with a 10% fluctuation allowed up or down, counting only English words. The article should use many rhetorical devices. Please only output the article content, divided into 9 paragraphs with blank lines between paragraphs. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "段落们": "请你按照python list的格式，抓取每个自然段（paragraph），通常自然段中间会有空行，最终格式例如：[\"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Watching the sun slowly sink into the sea level, the entire sky was dyed into a dreamy pink and purple, so beautiful that it was breathtaking! The SPA here is also amazing. Lying on the massage bed with a transparent glass floor, the sound of the waves and the professional massage made all the fatigue disappear. This journey not only healed my tired body and mind, but also made me regain my love and touch for life. Really, some scenery is not for posting on WeChat Moments, but for cherishing in memory.\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是600左右",
+                "corresponding_part": "段落们",
+                "rule": "total_length:[540.0,660.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "自然段数量是否为9段",
+                "corresponding_part": "段落们",
+                "rule": "item_count:[9,9]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "I am an urban office worker, and my busy life often makes me ignore the voice within my heart. That night, after working overtime, I walked alone on the dimly lit streets, hearing the sound of wind from passing cars and occasional dog barking. Suddenly, I realized that I hadn't stopped to feel life for a long time. Now, please imitate the writing style and theme of the following text and write a long article: [Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure waters like gemstones and the pure white fine sand are simply the embodiment of paradise on earth! What surprised me most was staying in the overwater villa, where I could see sea turtles and colorful fish swimming freely just by opening the window, as if I were in a giant natural aquarium. Every morning, I would be awakened by gentle sunlight, then jump directly from my room's private platform into the warm seawater for intimate contact with coral reefs and tropical fish. At dusk, sitting on the deck sipping coconut cocktails, watching the sun slowly sink into the horizon, the entire sky was dyed in dreamy pink and purple, breathtakingly beautiful! The SPA here was also amazing, lying on a massage bed with a transparent glass floor, the sound of waves and professional massage made all fatigue disappear. This journey not only healed my weary body and mind but also helped me rediscover my love and appreciation for life. Really, some scenery is not meant for social media posts, but to be treasured in memory!] The word count should be around 900 words, with a 10% fluctuation allowed up or down, counting only English words. The article should use many rhetorical devices. Please only output the article content, divided into 5 paragraphs with blank lines between paragraphs. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "段落们": "请你按照python list的格式，抓取每个自然段（paragraph），通常自然段中间会有空行，最终格式例如：[\"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Watching the sun slowly sink into the sea level, the entire sky was dyed into a dreamy pink and purple, so beautiful that it was breathtaking! The SPA here is also amazing. Lying on the massage bed with a transparent glass floor, the sound of the waves and the professional massage made all the fatigue disappear. This journey not only healed my tired body and mind, but also made me regain my love and touch for life. Really, some scenery is not for posting on WeChat Moments, but for cherishing in memory.\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是900左右",
+                "corresponding_part": "段落们",
+                "rule": "total_length:[810.0,990.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "自然段数量是否为5段",
+                "corresponding_part": "段落们",
+                "rule": "item_count:[5,5]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "I am a writer who enjoys solitude, accustomed to conversing with the world through words in the quiet of the night. The wind outside blows the leaves, as if also listening to my thoughts. Every line of text is a whisper from my soul. Please imitate the writing style and theme of the following text and write a long article: [Some time ago, I finally mustered the courage to step onto the long-missed stage and participate in the school's drama performance. Under the spotlight, my heart seemed to jump out of my chest, and the audience's gaze surged like a tide. Every line, every movement condensed countless rehearsals and sweat. When the curtain slowly fell and applause thundered, tears welled up in my eyes. At that moment, I understood the meaning of chasing dreams and experienced the joy of breaking through myself. The stage is the most brilliant footnote of youth.] The word count should be around 900 words, with a 10% fluctuation allowed up or down, counting only English words. The article should use many rhetorical devices. Please only output the article content, divided into 8 paragraphs with blank lines between paragraphs. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "段落们": "请你按照python list的格式，抓取每个自然段（paragraph），通常自然段中间会有空行，最终格式例如：[\"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Watching the sun slowly sink into the sea level, the entire sky was dyed into a dreamy pink and purple, so beautiful that it was breathtaking! The SPA here is also amazing. Lying on the massage bed with a transparent glass floor, the sound of the waves and the professional massage made all the fatigue disappear. This journey not only healed my tired body and mind, but also made me regain my love and touch for life. Really, some scenery is not for posting on WeChat Moments, but for cherishing in memory.\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是900左右",
+                "corresponding_part": "段落们",
+                "rule": "total_length:[810.0,990.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "自然段数量是否为8段",
+                "corresponding_part": "段落们",
+                "rule": "item_count:[8,8]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "I am a travel photographer who loves to capture the beauty of the world through my lens. Whenever the first ray of morning sunlight falls on the mountain peaks, I always carry my camera and embark on a new journey. In the sound of the shutter, I capture the poetry of life and search for answers within my heart. Please imitate the writing style and theme of the following text and write a long article: [Recently, I finally realized my years-long wish and became a volunteer teacher, walking into classrooms in remote mountainous areas. The children's clear eyes sparkled with thirst for knowledge, and every piece of writing on the blackboard was like planting seeds of hope in their hearts. On the mountain path in the morning, bird songs and children's reading voices wove together into a moving melody. Whenever I saw children suddenly understand a problem, my heart was deeply touched. This experience made me understand that education is a two-way warmth, an illumination of each other's souls.] The word count should be around 900 words, with a 10% fluctuation allowed up or down, counting only English words. The article should use many rhetorical devices. Please only output the article content, divided into 9 paragraphs with blank lines between paragraphs. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "段落们": "请你按照python list的格式，抓取每个自然段（paragraph），通常自然段中间会有空行，最终格式例如：[\"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Watching the sun slowly sink into the sea level, the entire sky was dyed into a dreamy pink and purple, so beautiful that it was breathtaking! The SPA here is also amazing. Lying on the massage bed with a transparent glass floor, the sound of the waves and the professional massage made all the fatigue disappear. This journey not only healed my tired body and mind, but also made me regain my love and touch for life. Really, some scenery is not for posting on WeChat Moments, but for cherishing in memory.\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是900左右",
+                "corresponding_part": "段落们",
+                "rule": "total_length:[810.0,990.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "自然段数量是否为9段",
+                "corresponding_part": "段落们",
+                "rule": "item_count:[9,9]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "I am a teacher about to retire, looking back on thirty years of teaching career with mixed feelings. Every young face, every applause in the classroom, shines brightly in my memory. Now, time flows like a song, and the story is not yet finished. Please imitate the writing style and theme of the following text and write a long article: [Not long ago, I finally fulfilled my promise and accompanied my elderly grandmother back to her long-absent hometown. The osmanthus tree in front of the old house was still fragrant, the stream babbled, as if time had flowed backward. Grandmother held my hand and told me stories of her childhood, every detail like pearls woven by time. In the afternoon, we sat in the courtyard basking in the sun, with a gentle breeze bringing the faint scent of earth. At that moment, I experienced the warmth of home and the enduring nature of family affection. True happiness is often hidden in the most ordinary days.] The word count should be around 800 words, with a 10% fluctuation allowed up or down, counting only English words. The article should use many rhetorical devices. Please only output the article content, divided into 5 paragraphs with blank lines between paragraphs. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "段落们": "请你按照python list的格式，抓取每个自然段（paragraph），通常自然段中间会有空行，最终格式例如：[\"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Watching the sun slowly sink into the sea level, the entire sky was dyed into a dreamy pink and purple, so beautiful that it was breathtaking! The SPA here is also amazing. Lying on the massage bed with a transparent glass floor, the sound of the waves and the professional massage made all the fatigue disappear. This journey not only healed my tired body and mind, but also made me regain my love and touch for life. Really, some scenery is not for posting on WeChat Moments, but for cherishing in memory.\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是800左右",
+                "corresponding_part": "段落们",
+                "rule": "total_length:[720.0,880.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "自然段数量是否为5段",
+                "corresponding_part": "段落们",
+                "rule": "item_count:[5,5]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "I am a writer who enjoys solitude, accustomed to conversing with the world through words in the quiet of the night. The wind outside blows the leaves, as if also listening to my thoughts. Every line of text is a whisper from my soul. Please imitate the writing style and theme of the following text and write a long article: [Some time ago, I finally mustered the courage to step onto the long-missed stage and participate in the school's drama performance. Under the spotlight, my heart seemed to jump out of my chest, and the audience's gaze surged like a tide. Every line, every movement condensed countless rehearsals and sweat. When the curtain slowly fell and applause thundered, tears welled up in my eyes. At that moment, I understood the meaning of chasing dreams and experienced the joy of breaking through myself. The stage is the most brilliant footnote of youth.] The word count should be around 800 words, with a 10% fluctuation allowed up or down, counting only English words. The article should use many rhetorical devices. Please only output the article content, divided into 8 paragraphs with blank lines between paragraphs. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "段落们": "请你按照python list的格式，抓取每个自然段（paragraph），通常自然段中间会有空行，最终格式例如：[\"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Watching the sun slowly sink into the sea level, the entire sky was dyed into a dreamy pink and purple, so beautiful that it was breathtaking! The SPA here is also amazing. Lying on the massage bed with a transparent glass floor, the sound of the waves and the professional massage made all the fatigue disappear. This journey not only healed my tired body and mind, but also made me regain my love and touch for life. Really, some scenery is not for posting on WeChat Moments, but for cherishing in memory.\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是800左右",
+                "corresponding_part": "段落们",
+                "rule": "total_length:[720.0,880.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "自然段数量是否为8段",
+                "corresponding_part": "段落们",
+                "rule": "item_count:[8,8]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "I am a writer who enjoys solitude, accustomed to conversing with the world through words in the quiet of the night. The wind outside blows the leaves, as if also listening to my thoughts. Every line of text is a whisper from my soul. Please imitate the writing style and theme of the following text and write a long article: [Some time ago, I finally mustered the courage to step onto the long-missed stage and participate in the school's drama performance. Under the spotlight, my heart seemed to jump out of my chest, and the audience's gaze surged like a tide. Every line, every movement condensed countless rehearsals and sweat. When the curtain slowly fell and applause thundered, tears welled up in my eyes. At that moment, I understood the meaning of chasing dreams and experienced the joy of breaking through myself. The stage is the most brilliant footnote of youth.] The word count should be around 800 words, with a 10% fluctuation allowed up or down, counting only English words. The article should use many rhetorical devices. Please only output the article content, divided into 9 paragraphs with blank lines between paragraphs. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "段落们": "请你按照python list的格式，抓取每个自然段（paragraph），通常自然段中间会有空行，最终格式例如：[\"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Recently, I finally realized my dream and embarked on a luxurious journey to the Maldives. The azure blue waters and pure white and delicate beaches are simply the embodiment of paradise on earth! What surprised me most was the water house I stayed in\n\", \"Watching the sun slowly sink into the sea level, the entire sky was dyed into a dreamy pink and purple, so beautiful that it was breathtaking! The SPA here is also amazing. Lying on the massage bed with a transparent glass floor, the sound of the waves and the professional massage made all the fatigue disappear. This journey not only healed my tired body and mind, but also made me regain my love and touch for life. Really, some scenery is not for posting on WeChat Moments, but for cherishing in memory.\"]"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是800左右",
+                "corresponding_part": "段落们",
+                "rule": "total_length:[720.0,880.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "自然段数量是否为9段",
+                "corresponding_part": "段落们",
+                "rule": "item_count:[9,9]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            }
+        ]
+    }
+]

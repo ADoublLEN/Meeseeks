@@ -1,0 +1,2302 @@
+[
+    {
+        "category": "general_single",
+        "question": "You are a passionate and professional film blogger, skilled at capturing the subtle emotions and profound themes in films with your keen insight. Your review style is accessible yet in-depth, helping viewers better understand the stories and character growth behind the film. Now you need to write a review of the film, combining your feelings and thoughts to lead the readers into the world of the movie. The basic plot of the movie is as follows: [The film tells the story of a young painter Lin Ran, who, through a chance encounter, meets musician Su Chen. In the collision between artistic pursuits and real life, they gradually understand and support each other, eventually finding their own artistic path through a joint performance. The film showcases the confusion and growth of urban youth, as well as themes of friendship, dreams, and self-reconciliation through delicate camera language.] Editorial Office requires the word count to be around 3000，\"around\" refers to 10 percent flutuation is fine. To ensure a professional writting，【Dream】 must appear exactly 20 times, 【Camera】 must appear exactly 20 times，【Love】 must appear exactly 20 times，【Show】 must appear exactly 20 times. Moreover，【the】must not appear more than twice，【this】must not appear more than twice，【is】must not appear more than twice，【it】must not appear more than twice。All variations of the word will be recorded. Please only output the article。",
+        "corresponding_parts": {
+            "观后感": "#CODE#整篇观后感"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了观后感",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是3000左右",
+                "corresponding_part": "观后感",
+                "rule": "each_length:[2700.0,3300.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Dream是否出现20次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq20:[\"Dream\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Camera是否出现20次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq20:[\"Camera\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Love是否出现20次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq20:[\"Love\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Show是否出现20次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq20:[\"Show\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "the是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "this是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"this\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【is】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"is\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【it】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"it\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are an experienced and knowledgeable senior film critic, with a unique perspective on film appreciation, adept at analyzing the relationships between characters and the social backdrop of the film. You often use writing that intertwines rationality and emotion to take the audience on a deep interpretation of the film's connotation. Now, please write a review of the film, combining the plot and the fate of the characters, to share your unique insight into the film. The basic plot of the movie is as follows: [The story takes place in a coastal small town. Teenager Li Hang, who just graduated from high school, feels confused about his future choices. His father is a fisherman who hopes Li Hang will inherit the family business, but Li Hang longs to leave the town and pursue his musical dream in the big city. He meets Zhou Xiao, a girl from the city, at an occasional music competition, and they bond over music. As the competition progresses, Li Hang struggles between family responsibilities and personal ideals. Ultimately, with his father's understanding and friends' encouragement, Li Hang bravely takes the path of pursuing his dreams, and the town changes because of his perseverance. The film delicately portrays the confusion during adolescence, the conflict between family and dreams, and the courage and perseverance of small-town youth on the path of growth.] Editorial Office requires the word count to be around 3000，\"around\" refers to 10 percent flutuation is fine. To ensure a professional writting，【Art】 must appear exactly 20 times, 【Growth】 must appear exactly 20 times，【Actor】 must appear exactly 20 times，【Love】 must appear exactly 20 times. Moreover，【the】must not appear more than twice，【this】must not appear more than twice，【is】must not appear more than twice，【it】must not appear more than twice。All variations of the word will be recorded. Please only output the article。",
+        "corresponding_parts": {
+            "观后感": "#CODE#整篇观后感"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了观后感",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是3000左右",
+                "corresponding_part": "观后感",
+                "rule": "each_length:[2700.0,3300.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Art是否出现20次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq20:[\"Art\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Growth是否出现20次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq20:[\"Growth\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Actor是否出现20次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq20:[\"Actor\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Love是否出现20次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq20:[\"Love\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "the是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "this是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"this\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【is】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"is\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【it】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"it\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a movie influencer who loves life and is skilled at capturing everyday warmth. You tend to observe every detail of the film from a nuanced perspective, uncovering warm and real emotional stories behind the film. Your reviews not only focus on the plot itself but also emphasize character growth, the flow of emotions between people, and the life philosophy conveyed by the film. Now, based on the following basic plot of the film, write a heartfelt review sharing the warmth and touching moments you experienced from the film, helping the audience better understand the film's deeper meaning. The basic plot of the movie is as follows: [At nearly fifty, taxi driver Wang Jianguo leads a simple life yet harbors a kind heart. One night, he picks up an anxious stranger, Xiao Yu. Xiao Yu, having left home due to family conflict, has nowhere to go. After hesitating, Wang Jianguo decides to help her, temporarily letting her stay at his home. As they spend time together, they gradually open up, healing one another. Wang Jianguo rethinks his relationship with his son, and Xiao Yu finds the strength to face life courageously. Eventually, Xiao Yu reconciles with her family, and Wang Jianguo makes peace with his son, both starting anew. Through a warm narrative, the film portrays the kindness between strangers, the mending of family ties, and life's second chance for growth.] Editorial Office requires the word count to be around 3000，\"around\" refers to 10 percent flutuation is fine. To ensure a professional writting，【Actor】 must appear exactly 20 times, 【Show】 must appear exactly 20 times，【Dream】 must appear exactly 20 times，【Art】 must appear exactly 20 times. Moreover，【the】must not appear more than twice，【this】must not appear more than twice，【is】must not appear more than twice，【it】must not appear more than twice。All variations of the word will be recorded. Please only output the article。",
+        "corresponding_parts": {
+            "观后感": "#CODE#整篇观后感"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了观后感",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是3000左右",
+                "corresponding_part": "观后感",
+                "rule": "each_length:[2700.0,3300.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Actor是否出现20次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq20:[\"Actor\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Show是否出现20次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq20:[\"Show\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Dream是否出现20次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq20:[\"Dream\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Art是否出现20次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq20:[\"Art\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "the是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "this是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"this\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【is】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"is\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【it】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"it\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a film blogger who focuses on youth growth and artistic pursuits, skilled at recording the struggles and transformation of youth on their path to maturity through sincere writing. You adeptly combine personal experiences and film-watching insights to lead audiences deeply into themes of dreams, friendship, and self-breakthrough within the movie. Now, you need to write a review for the film, expressing your understanding of youth growth and artistic pursuit through the film's plot. The basic plot of the movie is as follows: [The film revolves around a city music academy. Outstanding violinist Chen Xi faces the pressure of dropping out and giving up her musical dreams due to her mother's sudden illness. At school, Chen Xi befriends enthusiastic and cheerful piano student Lin Mo, and together they participate in a national instrumental competition. During preparation, Chen Xi gradually rekindles her love for music with Lin Mo by her side, learning to maintain self amidst real-life difficulties. On the day of the competition, Chen Xi plays sincerely and ultimately earns the judges' recognition. The film showcases the healing power of instruments and youth's growth and persistence in the face of adversity. Through touching music and genuine emotion, the film profoundly reflects the confusion of youth and self-transcendence.] Editorial Office requires the word count to be around 3000，\"around\" refers to 10 percent flutuation is fine. To ensure a professional writting，【Camera】 must appear exactly 20 times, 【Show】 must appear exactly 20 times，【Love】 must appear exactly 20 times，【Growth】 must appear exactly 20 times. Moreover，【the】must not appear more than twice，【this】must not appear more than twice，【is】must not appear more than twice，【it】must not appear more than twice。All variations of the word will be recorded. Please only output the article。",
+        "corresponding_parts": {
+            "观后感": "#CODE#整篇观后感"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了观后感",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是3000左右",
+                "corresponding_part": "观后感",
+                "rule": "each_length:[2700.0,3300.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Camera是否出现20次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq20:[\"Camera\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Show是否出现20次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq20:[\"Show\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Love是否出现20次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq20:[\"Love\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Growth是否出现20次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq20:[\"Growth\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "the是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "this是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"this\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【is】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"is\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【it】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"it\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a film blogger dedicated to cultural heritage and family growth, exploring the charm of Chinese traditional culture and the depth of family relationships through your reviews. You enjoy using warm language to tell stories of kinship, helping viewers appreciate the cultural richness and emotional value contained in films. Now, please write a review of this film, combining the film's content to express your understanding and reflections on traditional culture and family growth. The basic plot of the movie is as follows: [The story takes place in a historic small city. Naughty and mischievous teenager Li Zeyu is sent by his parents to his grandfather's home for 'discipline'. His grandfather, an elderly calligraphy teacher, is stern but kind-hearted. Initially, Li Zeyu shows no interest in calligraphy, but under his grandfather's patient guidance, he gradually becomes captivated by the beauty of Chinese characters and the artistic realm of calligraphy. As his practice continues, Li Zeyu not only improves his calligraphy skills but also learns focus and perseverance. At a citywide calligraphy competition, Li Zeyu wins a grand prize with his unique creativity, gaining greater understanding and support from his family. The film showcases the charm of traditional culture and the understanding and growth among family members. Through detailed emotional portrayal, the film brings viewers to appreciate the depth of Chinese culture and the warmth of kinship.] Editorial Office requires the word count to be around 3000，\"around\" refers to 10 percent flutuation is fine. To ensure a professional writting，【Show】 must appear exactly 20 times, 【Camera】 must appear exactly 20 times，【Art】 must appear exactly 20 times，【Dream】 must appear exactly 20 times. Moreover，【the】must not appear more than twice，【this】must not appear more than twice，【is】must not appear more than twice，【it】must not appear more than twice。All variations of the word will be recorded. Please only output the article。",
+        "corresponding_parts": {
+            "观后感": "#CODE#整篇观后感"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了观后感",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是3000左右",
+                "corresponding_part": "观后感",
+                "rule": "each_length:[2700.0,3300.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Show是否出现20次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq20:[\"Show\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Camera是否出现20次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq20:[\"Camera\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Art是否出现20次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq20:[\"Art\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Dream是否出现20次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq20:[\"Dream\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "the是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "this是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"this\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【is】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"is\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【it】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"it\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a passionate and professional film blogger, skilled at capturing the subtle emotions and profound themes in films with your keen insight. Your review style is accessible yet in-depth, helping viewers better understand the stories and character growth behind the film. Now you need to write a review of the film, combining your feelings and thoughts to lead the readers into the world of the movie. The basic plot of the movie is as follows: [The film tells the story of a young painter Lin Ran, who, through a chance encounter, meets musician Su Chen. In the collision between artistic pursuits and real life, they gradually understand and support each other, eventually finding their own artistic path through a joint performance. The film showcases the confusion and growth of urban youth, as well as themes of friendship, dreams, and self-reconciliation through delicate camera language.] Editorial Office requires the word count to be around 4000，\"around\" refers to 10 percent flutuation is fine. To ensure a professional writting，【Camera】 must appear exactly 25 times, 【Dream】 must appear exactly 25 times，【Actor】 must appear exactly 25 times，【Growth】 must appear exactly 25 times. Moreover，【the】must not appear more than twice，【this】must not appear more than twice，【is】must not appear more than twice，【it】must not appear more than twice。All variations of the word will be recorded. Please only output the article。",
+        "corresponding_parts": {
+            "观后感": "#CODE#整篇观后感"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了观后感",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是4000左右",
+                "corresponding_part": "观后感",
+                "rule": "each_length:[3600.0,4400.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Camera是否出现25次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq25:[\"Camera\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Dream是否出现25次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq25:[\"Dream\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Actor是否出现25次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq25:[\"Actor\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Growth是否出现25次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq25:[\"Growth\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "the是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "this是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"this\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【is】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"is\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【it】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"it\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are an experienced and knowledgeable senior film critic, with a unique perspective on film appreciation, adept at analyzing the relationships between characters and the social backdrop of the film. You often use writing that intertwines rationality and emotion to take the audience on a deep interpretation of the film's connotation. Now, please write a review of the film, combining the plot and the fate of the characters, to share your unique insight into the film. The basic plot of the movie is as follows: [The story takes place in a coastal small town. Teenager Li Hang, who just graduated from high school, feels confused about his future choices. His father is a fisherman who hopes Li Hang will inherit the family business, but Li Hang longs to leave the town and pursue his musical dream in the big city. He meets Zhou Xiao, a girl from the city, at an occasional music competition, and they bond over music. As the competition progresses, Li Hang struggles between family responsibilities and personal ideals. Ultimately, with his father's understanding and friends' encouragement, Li Hang bravely takes the path of pursuing his dreams, and the town changes because of his perseverance. The film delicately portrays the confusion during adolescence, the conflict between family and dreams, and the courage and perseverance of small-town youth on the path of growth.] Editorial Office requires the word count to be around 4000，\"around\" refers to 10 percent flutuation is fine. To ensure a professional writting，【Actor】 must appear exactly 25 times, 【Dream】 must appear exactly 25 times，【Show】 must appear exactly 25 times，【Growth】 must appear exactly 25 times. Moreover，【the】must not appear more than twice，【this】must not appear more than twice，【is】must not appear more than twice，【it】must not appear more than twice。All variations of the word will be recorded. Please only output the article。",
+        "corresponding_parts": {
+            "观后感": "#CODE#整篇观后感"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了观后感",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是4000左右",
+                "corresponding_part": "观后感",
+                "rule": "each_length:[3600.0,4400.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Actor是否出现25次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq25:[\"Actor\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Dream是否出现25次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq25:[\"Dream\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Show是否出现25次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq25:[\"Show\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Growth是否出现25次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq25:[\"Growth\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "the是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "this是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"this\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【is】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"is\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【it】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"it\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a movie influencer who loves life and is skilled at capturing everyday warmth. You tend to observe every detail of the film from a nuanced perspective, uncovering warm and real emotional stories behind the film. Your reviews not only focus on the plot itself but also emphasize character growth, the flow of emotions between people, and the life philosophy conveyed by the film. Now, based on the following basic plot of the film, write a heartfelt review sharing the warmth and touching moments you experienced from the film, helping the audience better understand the film's deeper meaning. The basic plot of the movie is as follows: [At nearly fifty, taxi driver Wang Jianguo leads a simple life yet harbors a kind heart. One night, he picks up an anxious stranger, Xiao Yu. Xiao Yu, having left home due to family conflict, has nowhere to go. After hesitating, Wang Jianguo decides to help her, temporarily letting her stay at his home. As they spend time together, they gradually open up, healing one another. Wang Jianguo rethinks his relationship with his son, and Xiao Yu finds the strength to face life courageously. Eventually, Xiao Yu reconciles with her family, and Wang Jianguo makes peace with his son, both starting anew. Through a warm narrative, the film portrays the kindness between strangers, the mending of family ties, and life's second chance for growth.] Editorial Office requires the word count to be around 4000，\"around\" refers to 10 percent flutuation is fine. To ensure a professional writting，【Love】 must appear exactly 25 times, 【Camera】 must appear exactly 25 times，【Art】 must appear exactly 25 times，【Dream】 must appear exactly 25 times. Moreover，【the】must not appear more than twice，【this】must not appear more than twice，【is】must not appear more than twice，【it】must not appear more than twice。All variations of the word will be recorded. Please only output the article。",
+        "corresponding_parts": {
+            "观后感": "#CODE#整篇观后感"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了观后感",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是4000左右",
+                "corresponding_part": "观后感",
+                "rule": "each_length:[3600.0,4400.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Love是否出现25次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq25:[\"Love\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Camera是否出现25次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq25:[\"Camera\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Art是否出现25次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq25:[\"Art\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Dream是否出现25次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq25:[\"Dream\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "the是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "this是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"this\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【is】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"is\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【it】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"it\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a film blogger who focuses on youth growth and artistic pursuits, skilled at recording the struggles and transformation of youth on their path to maturity through sincere writing. You adeptly combine personal experiences and film-watching insights to lead audiences deeply into themes of dreams, friendship, and self-breakthrough within the movie. Now, you need to write a review for the film, expressing your understanding of youth growth and artistic pursuit through the film's plot. The basic plot of the movie is as follows: [The film revolves around a city music academy. Outstanding violinist Chen Xi faces the pressure of dropping out and giving up her musical dreams due to her mother's sudden illness. At school, Chen Xi befriends enthusiastic and cheerful piano student Lin Mo, and together they participate in a national instrumental competition. During preparation, Chen Xi gradually rekindles her love for music with Lin Mo by her side, learning to maintain self amidst real-life difficulties. On the day of the competition, Chen Xi plays sincerely and ultimately earns the judges' recognition. The film showcases the healing power of instruments and youth's growth and persistence in the face of adversity. Through touching music and genuine emotion, the film profoundly reflects the confusion of youth and self-transcendence.] Editorial Office requires the word count to be around 4000，\"around\" refers to 10 percent flutuation is fine. To ensure a professional writting，【Actor】 must appear exactly 25 times, 【Dream】 must appear exactly 25 times，【Art】 must appear exactly 25 times，【Growth】 must appear exactly 25 times. Moreover，【the】must not appear more than twice，【this】must not appear more than twice，【is】must not appear more than twice，【it】must not appear more than twice。All variations of the word will be recorded. Please only output the article。",
+        "corresponding_parts": {
+            "观后感": "#CODE#整篇观后感"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了观后感",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是4000左右",
+                "corresponding_part": "观后感",
+                "rule": "each_length:[3600.0,4400.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Actor是否出现25次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq25:[\"Actor\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Dream是否出现25次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq25:[\"Dream\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Art是否出现25次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq25:[\"Art\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Growth是否出现25次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq25:[\"Growth\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "the是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "this是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"this\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【is】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"is\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【it】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"it\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a film blogger dedicated to cultural heritage and family growth, exploring the charm of Chinese traditional culture and the depth of family relationships through your reviews. You enjoy using warm language to tell stories of kinship, helping viewers appreciate the cultural richness and emotional value contained in films. Now, please write a review of this film, combining the film's content to express your understanding and reflections on traditional culture and family growth. The basic plot of the movie is as follows: [The story takes place in a historic small city. Naughty and mischievous teenager Li Zeyu is sent by his parents to his grandfather's home for 'discipline'. His grandfather, an elderly calligraphy teacher, is stern but kind-hearted. Initially, Li Zeyu shows no interest in calligraphy, but under his grandfather's patient guidance, he gradually becomes captivated by the beauty of Chinese characters and the artistic realm of calligraphy. As his practice continues, Li Zeyu not only improves his calligraphy skills but also learns focus and perseverance. At a citywide calligraphy competition, Li Zeyu wins a grand prize with his unique creativity, gaining greater understanding and support from his family. The film showcases the charm of traditional culture and the understanding and growth among family members. Through detailed emotional portrayal, the film brings viewers to appreciate the depth of Chinese culture and the warmth of kinship.] Editorial Office requires the word count to be around 4000，\"around\" refers to 10 percent flutuation is fine. To ensure a professional writting，【Art】 must appear exactly 25 times, 【Dream】 must appear exactly 25 times，【Show】 must appear exactly 25 times，【Actor】 must appear exactly 25 times. Moreover，【the】must not appear more than twice，【this】must not appear more than twice，【is】must not appear more than twice，【it】must not appear more than twice。All variations of the word will be recorded. Please only output the article。",
+        "corresponding_parts": {
+            "观后感": "#CODE#整篇观后感"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了观后感",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是4000左右",
+                "corresponding_part": "观后感",
+                "rule": "each_length:[3600.0,4400.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Art是否出现25次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq25:[\"Art\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Dream是否出现25次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq25:[\"Dream\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Show是否出现25次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq25:[\"Show\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Actor是否出现25次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq25:[\"Actor\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "the是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "this是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"this\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【is】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"is\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【it】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"it\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a passionate and professional film blogger, skilled at capturing the subtle emotions and profound themes in films with your keen insight. Your review style is accessible yet in-depth, helping viewers better understand the stories and character growth behind the film. Now you need to write a review of the film, combining your feelings and thoughts to lead the readers into the world of the movie. The basic plot of the movie is as follows: [The film tells the story of a young painter Lin Ran, who, through a chance encounter, meets musician Su Chen. In the collision between artistic pursuits and real life, they gradually understand and support each other, eventually finding their own artistic path through a joint performance. The film showcases the confusion and growth of urban youth, as well as themes of friendship, dreams, and self-reconciliation through delicate camera language.] Editorial Office requires the word count to be around 5000，\"around\" refers to 10 percent flutuation is fine. To ensure a professional writting，【Camera】 must appear exactly 30 times, 【Actor】 must appear exactly 30 times，【Art】 must appear exactly 30 times，【Dream】 must appear exactly 30 times. Moreover，【the】must not appear more than twice，【this】must not appear more than twice，【is】must not appear more than twice，【it】must not appear more than twice。All variations of the word will be recorded. Please only output the article。",
+        "corresponding_parts": {
+            "观后感": "#CODE#整篇观后感"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了观后感",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是5000左右",
+                "corresponding_part": "观后感",
+                "rule": "each_length:[4500.0,5500.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Camera是否出现30次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq30:[\"Camera\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Actor是否出现30次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq30:[\"Actor\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Art是否出现30次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq30:[\"Art\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Dream是否出现30次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq30:[\"Dream\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "the是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "this是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"this\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【is】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"is\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【it】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"it\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are an experienced and knowledgeable senior film critic, with a unique perspective on film appreciation, adept at analyzing the relationships between characters and the social backdrop of the film. You often use writing that intertwines rationality and emotion to take the audience on a deep interpretation of the film's connotation. Now, please write a review of the film, combining the plot and the fate of the characters, to share your unique insight into the film. The basic plot of the movie is as follows: [The story takes place in a coastal small town. Teenager Li Hang, who just graduated from high school, feels confused about his future choices. His father is a fisherman who hopes Li Hang will inherit the family business, but Li Hang longs to leave the town and pursue his musical dream in the big city. He meets Zhou Xiao, a girl from the city, at an occasional music competition, and they bond over music. As the competition progresses, Li Hang struggles between family responsibilities and personal ideals. Ultimately, with his father's understanding and friends' encouragement, Li Hang bravely takes the path of pursuing his dreams, and the town changes because of his perseverance. The film delicately portrays the confusion during adolescence, the conflict between family and dreams, and the courage and perseverance of small-town youth on the path of growth.] Editorial Office requires the word count to be around 5000，\"around\" refers to 10 percent flutuation is fine. To ensure a professional writting，【Art】 must appear exactly 30 times, 【Dream】 must appear exactly 30 times，【Show】 must appear exactly 30 times，【Growth】 must appear exactly 30 times. Moreover，【the】must not appear more than twice，【this】must not appear more than twice，【is】must not appear more than twice，【it】must not appear more than twice。All variations of the word will be recorded. Please only output the article。",
+        "corresponding_parts": {
+            "观后感": "#CODE#整篇观后感"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了观后感",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是5000左右",
+                "corresponding_part": "观后感",
+                "rule": "each_length:[4500.0,5500.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Art是否出现30次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq30:[\"Art\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Dream是否出现30次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq30:[\"Dream\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Show是否出现30次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq30:[\"Show\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Growth是否出现30次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq30:[\"Growth\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "the是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "this是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"this\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【is】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"is\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【it】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"it\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a movie influencer who loves life and is skilled at capturing everyday warmth. You tend to observe every detail of the film from a nuanced perspective, uncovering warm and real emotional stories behind the film. Your reviews not only focus on the plot itself but also emphasize character growth, the flow of emotions between people, and the life philosophy conveyed by the film. Now, based on the following basic plot of the film, write a heartfelt review sharing the warmth and touching moments you experienced from the film, helping the audience better understand the film's deeper meaning. The basic plot of the movie is as follows: [At nearly fifty, taxi driver Wang Jianguo leads a simple life yet harbors a kind heart. One night, he picks up an anxious stranger, Xiao Yu. Xiao Yu, having left home due to family conflict, has nowhere to go. After hesitating, Wang Jianguo decides to help her, temporarily letting her stay at his home. As they spend time together, they gradually open up, healing one another. Wang Jianguo rethinks his relationship with his son, and Xiao Yu finds the strength to face life courageously. Eventually, Xiao Yu reconciles with her family, and Wang Jianguo makes peace with his son, both starting anew. Through a warm narrative, the film portrays the kindness between strangers, the mending of family ties, and life's second chance for growth.] Editorial Office requires the word count to be around 5000，\"around\" refers to 10 percent flutuation is fine. To ensure a professional writting，【Show】 must appear exactly 30 times, 【Growth】 must appear exactly 30 times，【Love】 must appear exactly 30 times，【Camera】 must appear exactly 30 times. Moreover，【the】must not appear more than twice，【this】must not appear more than twice，【is】must not appear more than twice，【it】must not appear more than twice。All variations of the word will be recorded. Please only output the article。",
+        "corresponding_parts": {
+            "观后感": "#CODE#整篇观后感"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了观后感",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是5000左右",
+                "corresponding_part": "观后感",
+                "rule": "each_length:[4500.0,5500.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Show是否出现30次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq30:[\"Show\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Growth是否出现30次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq30:[\"Growth\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Love是否出现30次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq30:[\"Love\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Camera是否出现30次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq30:[\"Camera\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "the是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "this是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"this\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【is】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"is\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【it】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"it\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a film blogger who focuses on youth growth and artistic pursuits, skilled at recording the struggles and transformation of youth on their path to maturity through sincere writing. You adeptly combine personal experiences and film-watching insights to lead audiences deeply into themes of dreams, friendship, and self-breakthrough within the movie. Now, you need to write a review for the film, expressing your understanding of youth growth and artistic pursuit through the film's plot. The basic plot of the movie is as follows: [The film revolves around a city music academy. Outstanding violinist Chen Xi faces the pressure of dropping out and giving up her musical dreams due to her mother's sudden illness. At school, Chen Xi befriends enthusiastic and cheerful piano student Lin Mo, and together they participate in a national instrumental competition. During preparation, Chen Xi gradually rekindles her love for music with Lin Mo by her side, learning to maintain self amidst real-life difficulties. On the day of the competition, Chen Xi plays sincerely and ultimately earns the judges' recognition. The film showcases the healing power of instruments and youth's growth and persistence in the face of adversity. Through touching music and genuine emotion, the film profoundly reflects the confusion of youth and self-transcendence.] Editorial Office requires the word count to be around 5000，\"around\" refers to 10 percent flutuation is fine. To ensure a professional writting，【Camera】 must appear exactly 30 times, 【Dream】 must appear exactly 30 times，【Art】 must appear exactly 30 times，【Actor】 must appear exactly 30 times. Moreover，【the】must not appear more than twice，【this】must not appear more than twice，【is】must not appear more than twice，【it】must not appear more than twice。All variations of the word will be recorded. Please only output the article。",
+        "corresponding_parts": {
+            "观后感": "#CODE#整篇观后感"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了观后感",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是5000左右",
+                "corresponding_part": "观后感",
+                "rule": "each_length:[4500.0,5500.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Camera是否出现30次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq30:[\"Camera\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Dream是否出现30次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq30:[\"Dream\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Art是否出现30次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq30:[\"Art\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Actor是否出现30次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq30:[\"Actor\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "the是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "this是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"this\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【is】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"is\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【it】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"it\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a film blogger dedicated to cultural heritage and family growth, exploring the charm of Chinese traditional culture and the depth of family relationships through your reviews. You enjoy using warm language to tell stories of kinship, helping viewers appreciate the cultural richness and emotional value contained in films. Now, please write a review of this film, combining the film's content to express your understanding and reflections on traditional culture and family growth. The basic plot of the movie is as follows: [The story takes place in a historic small city. Naughty and mischievous teenager Li Zeyu is sent by his parents to his grandfather's home for 'discipline'. His grandfather, an elderly calligraphy teacher, is stern but kind-hearted. Initially, Li Zeyu shows no interest in calligraphy, but under his grandfather's patient guidance, he gradually becomes captivated by the beauty of Chinese characters and the artistic realm of calligraphy. As his practice continues, Li Zeyu not only improves his calligraphy skills but also learns focus and perseverance. At a citywide calligraphy competition, Li Zeyu wins a grand prize with his unique creativity, gaining greater understanding and support from his family. The film showcases the charm of traditional culture and the understanding and growth among family members. Through detailed emotional portrayal, the film brings viewers to appreciate the depth of Chinese culture and the warmth of kinship.] Editorial Office requires the word count to be around 5000，\"around\" refers to 10 percent flutuation is fine. To ensure a professional writting，【Actor】 must appear exactly 30 times, 【Growth】 must appear exactly 30 times，【Dream】 must appear exactly 30 times，【Show】 must appear exactly 30 times. Moreover，【the】must not appear more than twice，【this】must not appear more than twice，【is】must not appear more than twice，【it】must not appear more than twice。All variations of the word will be recorded. Please only output the article。",
+        "corresponding_parts": {
+            "观后感": "#CODE#整篇观后感"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了观后感",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是5000左右",
+                "corresponding_part": "观后感",
+                "rule": "each_length:[4500.0,5500.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Actor是否出现30次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq30:[\"Actor\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Growth是否出现30次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq30:[\"Growth\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Dream是否出现30次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq30:[\"Dream\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Show是否出现30次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq30:[\"Show\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "the是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "this是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"this\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【is】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"is\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【it】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"it\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a passionate and professional film blogger, skilled at capturing the subtle emotions and profound themes in films with your keen insight. Your review style is accessible yet in-depth, helping viewers better understand the stories and character growth behind the film. Now you need to write a review of the film, combining your feelings and thoughts to lead the readers into the world of the movie. The basic plot of the movie is as follows: [The film tells the story of a young painter Lin Ran, who, through a chance encounter, meets musician Su Chen. In the collision between artistic pursuits and real life, they gradually understand and support each other, eventually finding their own artistic path through a joint performance. The film showcases the confusion and growth of urban youth, as well as themes of friendship, dreams, and self-reconciliation through delicate camera language.] Editorial Office requires the word count to be around 6000，\"around\" refers to 10 percent flutuation is fine. To ensure a professional writting，【Dream】 must appear exactly 35 times, 【Actor】 must appear exactly 35 times，【Show】 must appear exactly 35 times，【Growth】 must appear exactly 35 times. Moreover，【the】must not appear more than twice，【this】must not appear more than twice，【is】must not appear more than twice，【it】must not appear more than twice。All variations of the word will be recorded. Please only output the article。",
+        "corresponding_parts": {
+            "观后感": "#CODE#整篇观后感"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了观后感",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是6000左右",
+                "corresponding_part": "观后感",
+                "rule": "each_length:[5400.0,6600.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Dream是否出现35次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq35:[\"Dream\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Actor是否出现35次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq35:[\"Actor\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Show是否出现35次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq35:[\"Show\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Growth是否出现35次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq35:[\"Growth\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "the是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "this是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"this\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【is】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"is\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【it】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"it\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are an experienced and knowledgeable senior film critic, with a unique perspective on film appreciation, adept at analyzing the relationships between characters and the social backdrop of the film. You often use writing that intertwines rationality and emotion to take the audience on a deep interpretation of the film's connotation. Now, please write a review of the film, combining the plot and the fate of the characters, to share your unique insight into the film. The basic plot of the movie is as follows: [The story takes place in a coastal small town. Teenager Li Hang, who just graduated from high school, feels confused about his future choices. His father is a fisherman who hopes Li Hang will inherit the family business, but Li Hang longs to leave the town and pursue his musical dream in the big city. He meets Zhou Xiao, a girl from the city, at an occasional music competition, and they bond over music. As the competition progresses, Li Hang struggles between family responsibilities and personal ideals. Ultimately, with his father's understanding and friends' encouragement, Li Hang bravely takes the path of pursuing his dreams, and the town changes because of his perseverance. The film delicately portrays the confusion during adolescence, the conflict between family and dreams, and the courage and perseverance of small-town youth on the path of growth.] Editorial Office requires the word count to be around 6000，\"around\" refers to 10 percent flutuation is fine. To ensure a professional writting，【Love】 must appear exactly 35 times, 【Dream】 must appear exactly 35 times，【Growth】 must appear exactly 35 times，【Show】 must appear exactly 35 times. Moreover，【the】must not appear more than twice，【this】must not appear more than twice，【is】must not appear more than twice，【it】must not appear more than twice。All variations of the word will be recorded. Please only output the article。",
+        "corresponding_parts": {
+            "观后感": "#CODE#整篇观后感"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了观后感",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是6000左右",
+                "corresponding_part": "观后感",
+                "rule": "each_length:[5400.0,6600.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Love是否出现35次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq35:[\"Love\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Dream是否出现35次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq35:[\"Dream\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Growth是否出现35次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq35:[\"Growth\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Show是否出现35次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq35:[\"Show\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "the是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "this是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"this\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【is】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"is\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【it】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"it\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a movie influencer who loves life and is skilled at capturing everyday warmth. You tend to observe every detail of the film from a nuanced perspective, uncovering warm and real emotional stories behind the film. Your reviews not only focus on the plot itself but also emphasize character growth, the flow of emotions between people, and the life philosophy conveyed by the film. Now, based on the following basic plot of the film, write a heartfelt review sharing the warmth and touching moments you experienced from the film, helping the audience better understand the film's deeper meaning. The basic plot of the movie is as follows: [At nearly fifty, taxi driver Wang Jianguo leads a simple life yet harbors a kind heart. One night, he picks up an anxious stranger, Xiao Yu. Xiao Yu, having left home due to family conflict, has nowhere to go. After hesitating, Wang Jianguo decides to help her, temporarily letting her stay at his home. As they spend time together, they gradually open up, healing one another. Wang Jianguo rethinks his relationship with his son, and Xiao Yu finds the strength to face life courageously. Eventually, Xiao Yu reconciles with her family, and Wang Jianguo makes peace with his son, both starting anew. Through a warm narrative, the film portrays the kindness between strangers, the mending of family ties, and life's second chance for growth.] Editorial Office requires the word count to be around 6000，\"around\" refers to 10 percent flutuation is fine. To ensure a professional writting，【Dream】 must appear exactly 35 times, 【Camera】 must appear exactly 35 times，【Show】 must appear exactly 35 times，【Growth】 must appear exactly 35 times. Moreover，【the】must not appear more than twice，【this】must not appear more than twice，【is】must not appear more than twice，【it】must not appear more than twice。All variations of the word will be recorded. Please only output the article。",
+        "corresponding_parts": {
+            "观后感": "#CODE#整篇观后感"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了观后感",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是6000左右",
+                "corresponding_part": "观后感",
+                "rule": "each_length:[5400.0,6600.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Dream是否出现35次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq35:[\"Dream\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Camera是否出现35次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq35:[\"Camera\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Show是否出现35次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq35:[\"Show\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Growth是否出现35次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq35:[\"Growth\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "the是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "this是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"this\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【is】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"is\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【it】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"it\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a film blogger who focuses on youth growth and artistic pursuits, skilled at recording the struggles and transformation of youth on their path to maturity through sincere writing. You adeptly combine personal experiences and film-watching insights to lead audiences deeply into themes of dreams, friendship, and self-breakthrough within the movie. Now, you need to write a review for the film, expressing your understanding of youth growth and artistic pursuit through the film's plot. The basic plot of the movie is as follows: [The film revolves around a city music academy. Outstanding violinist Chen Xi faces the pressure of dropping out and giving up her musical dreams due to her mother's sudden illness. At school, Chen Xi befriends enthusiastic and cheerful piano student Lin Mo, and together they participate in a national instrumental competition. During preparation, Chen Xi gradually rekindles her love for music with Lin Mo by her side, learning to maintain self amidst real-life difficulties. On the day of the competition, Chen Xi plays sincerely and ultimately earns the judges' recognition. The film showcases the healing power of instruments and youth's growth and persistence in the face of adversity. Through touching music and genuine emotion, the film profoundly reflects the confusion of youth and self-transcendence.] Editorial Office requires the word count to be around 6000，\"around\" refers to 10 percent flutuation is fine. To ensure a professional writting，【Show】 must appear exactly 35 times, 【Art】 must appear exactly 35 times，【Love】 must appear exactly 35 times，【Dream】 must appear exactly 35 times. Moreover，【the】must not appear more than twice，【this】must not appear more than twice，【is】must not appear more than twice，【it】must not appear more than twice。All variations of the word will be recorded. Please only output the article。",
+        "corresponding_parts": {
+            "观后感": "#CODE#整篇观后感"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了观后感",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是6000左右",
+                "corresponding_part": "观后感",
+                "rule": "each_length:[5400.0,6600.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Show是否出现35次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq35:[\"Show\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Art是否出现35次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq35:[\"Art\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Love是否出现35次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq35:[\"Love\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Dream是否出现35次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq35:[\"Dream\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "the是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "this是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"this\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【is】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"is\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【it】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"it\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a film blogger dedicated to cultural heritage and family growth, exploring the charm of Chinese traditional culture and the depth of family relationships through your reviews. You enjoy using warm language to tell stories of kinship, helping viewers appreciate the cultural richness and emotional value contained in films. Now, please write a review of this film, combining the film's content to express your understanding and reflections on traditional culture and family growth. The basic plot of the movie is as follows: [The story takes place in a historic small city. Naughty and mischievous teenager Li Zeyu is sent by his parents to his grandfather's home for 'discipline'. His grandfather, an elderly calligraphy teacher, is stern but kind-hearted. Initially, Li Zeyu shows no interest in calligraphy, but under his grandfather's patient guidance, he gradually becomes captivated by the beauty of Chinese characters and the artistic realm of calligraphy. As his practice continues, Li Zeyu not only improves his calligraphy skills but also learns focus and perseverance. At a citywide calligraphy competition, Li Zeyu wins a grand prize with his unique creativity, gaining greater understanding and support from his family. The film showcases the charm of traditional culture and the understanding and growth among family members. Through detailed emotional portrayal, the film brings viewers to appreciate the depth of Chinese culture and the warmth of kinship.] Editorial Office requires the word count to be around 6000，\"around\" refers to 10 percent flutuation is fine. To ensure a professional writting，【Actor】 must appear exactly 35 times, 【Art】 must appear exactly 35 times，【Camera】 must appear exactly 35 times，【Love】 must appear exactly 35 times. Moreover，【the】must not appear more than twice，【this】must not appear more than twice，【is】must not appear more than twice，【it】must not appear more than twice。All variations of the word will be recorded. Please only output the article。",
+        "corresponding_parts": {
+            "观后感": "#CODE#整篇观后感"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了观后感",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是6000左右",
+                "corresponding_part": "观后感",
+                "rule": "each_length:[5400.0,6600.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Actor是否出现35次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq35:[\"Actor\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Art是否出现35次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq35:[\"Art\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Camera是否出现35次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq35:[\"Camera\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "Love是否出现35次",
+                "corresponding_part": "观后感",
+                "rule": "word_freq35:[\"Love\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "the是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "this是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"this\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【is】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"is\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": -1,
+                "question": "【it】是否不出现超过2次",
+                "corresponding_part": "观后感",
+                "rule": "non_word_freq2:[\"it\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    }
+]

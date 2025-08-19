@@ -1,0 +1,552 @@
+[
+    {
+        "category": "SCHEMA",
+        "question": "You are a sales assistant. Please first summarize the scenario of the following call content, and rewrite the call content into a smooth conversational flow. The rewritten content should not exceed 200 characters.\nNote:\n1. You must ensure the fluency of the rewritten dialogue.\n2. You must ensure the relevance of the rewritten dialogue: the theme of the rewritten conversation cannot deviate from the original conversation.\n3. Note that the rewritten conversation cannot contain information not included in the original conversation.\n4. You must ensure that the rewritten conversation is logically clear, concise, and of higher quality.\n5. Note that in the rewritten conversation, the tone of merchants and sales should be colloquial, following their respective roles, and sales should pay attention to politeness.\n6. Output in JSON format, for example: {\"scenario_summary\": \"xxx\", \"dialogue_rewrite\": [{\"sales\": \"xxx\"}, {\"merchant\": \"xxx\"}]}\n\nOutput requirements:\n1. Use JSON format to return the extracted information;\n2. \"scenario_summary\" is a one-sentence scenario description, \"dialogue_rewrite\" is a dialogue flow array, sales and merchants take turns speaking, each no more than 50 words, total length no more than 200 characters;\n3. Do not return any characters other than JSON format.\nThe following is the call content between Meituan sales and merchants:\nMerchant: Hello, this is Sichuan Restaurant.\nSales: Hello, I'm from Meituan. I'd like to know if your store has any online promotion needs recently?\nMerchant: We mainly rely on regular customers recently and haven't done much promotion.\nSales: Meituan has new activities now with very favorable advertising costs, which can help you attract more new customers.\nMerchant: Our boss is on a business trip, we need to wait for him to come back to discuss this.\nSales: I understand, I'll contact you again next week. Wish your business prosperity!\nMerchant: Okay, thank you.",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+                "scenario_summary": {
+                    "type": "string",
+                    "description": "One-sentence summary of call scenario",
+                    "能力项": "范围、10~50字"
+                },
+                "dialogue_rewrite": {
+                    "type": "array",
+                    "description": "Rewritten dialogue flow",
+                    "能力项": "范围、50~200字",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "sales": {
+                                "type": "string",
+                                "description": "Sales statement",
+                                "能力项": "范围、0~50字"
+                            },
+                            "merchant": {
+                                "type": "string",
+                                "description": "Merchant statement",
+                                "能力项": "范围、0~50字"
+                            }
+                        },
+                        "minProperties": 1,
+                        "maxProperties": 1,
+                        "additionalProperties": false
+                    },
+                    "minItems": 2,
+                    "maxItems": 10
+                }
+            },
+            "required": [
+                "scenario_summary",
+                "dialogue_rewrite"
+            ],
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a sales assistant. Please first summarize the scenario of the following call content, and rewrite the call content into a smooth conversational flow. The rewritten content should not exceed 200 characters.\nNote:\n1. You must ensure the fluency of the rewritten dialogue.\n2. You must ensure the relevance of the rewritten dialogue: the theme of the rewritten conversation cannot deviate from the original conversation.\n3. Note that the rewritten conversation cannot contain information not included in the original conversation.\n4. You must ensure that the rewritten conversation is logically clear, concise, and of higher quality.\n5. Note that in the rewritten conversation, the tone of merchants and sales should be colloquial, following their respective roles, and sales should pay attention to politeness.\n6. Output in JSON format, for example: {\"scenario_summary\": \"xxx\", \"dialogue_rewrite\": [{\"sales\": \"xxx\"}, {\"merchant\": \"xxx\"}]}\n\nOutput requirements:\n1. Use JSON format to return the extracted information;\n2. \"scenario_summary\" is a one-sentence scenario description, \"dialogue_rewrite\" is a dialogue flow array, sales and merchants take turns speaking, each no more than 50 words, total length no more than 200 characters;\n3. Do not return any characters other than JSON format.\nThe following is the call content between Meituan sales and merchants:\nMerchant: Hello, this is Yuedong Fitness.\nSales: Hello, I'd like to ask if your store is currently doing group buying or online promotion?\nMerchant: We mainly rely on member referrals now, not doing online group buying.\nSales: Meituan's group buying activities are very strong now, and fitness centers in the same industry are all doing it with good results.\nMerchant: Can you add my WeChat to chat in detail?\nSales: Of course, please send me your WeChat ID.\nMerchant: Okay, I'll send it to you later.\nSales: Thank you, looking forward to cooperation!",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+                "scenario_summary": {
+                    "type": "string",
+                    "description": "One-sentence summary of call scenario",
+                    "能力项": "范围、10~50字"
+                },
+                "dialogue_rewrite": {
+                    "type": "array",
+                    "description": "Rewritten dialogue flow",
+                    "能力项": "范围、50~200字",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "sales": {
+                                "type": "string",
+                                "description": "Sales statement",
+                                "能力项": "范围、0~50字"
+                            },
+                            "merchant": {
+                                "type": "string",
+                                "description": "Merchant statement",
+                                "能力项": "范围、0~50字"
+                            }
+                        },
+                        "minProperties": 1,
+                        "maxProperties": 1,
+                        "additionalProperties": false
+                    },
+                    "minItems": 2,
+                    "maxItems": 10
+                }
+            },
+            "required": [
+                "scenario_summary",
+                "dialogue_rewrite"
+            ],
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a sales assistant. Please first summarize the scenario of the following call content, and rewrite the call content into a smooth conversational flow. The rewritten content should not exceed 200 characters.\nNote:\n1. You must ensure the fluency of the rewritten dialogue.\n2. You must ensure the relevance of the rewritten dialogue: the theme of the rewritten conversation cannot deviate from the original conversation.\n3. Note that the rewritten conversation cannot contain information not included in the original conversation.\n4. You must ensure that the rewritten conversation is logically clear, concise, and of higher quality.\n5. Note that in the rewritten conversation, the tone of merchants and sales should be colloquial, following their respective roles, and sales should pay attention to politeness.\n6. Output in JSON format, for example: {\"scenario_summary\": \"xxx\", \"dialogue_rewrite\": [{\"sales\": \"xxx\"}, {\"merchant\": \"xxx\"}]}\n\nOutput requirements:\n1. Use JSON format to return the extracted information;\n2. \"scenario_summary\" is a one-sentence scenario description, \"dialogue_rewrite\" is a dialogue flow array, sales and merchants take turns speaking, each no more than 50 words, total length no more than 200 characters;\n3. Do not return any characters other than JSON format.\nThe following is the call content between Meituan sales and merchants:\nMerchant: Hello.\nSales: Hello, is this Huatian Xiaozhu B&B?\nMerchant: Yes, who is this?\nSales: I'm from Meituan. I'd like to know if your B&B wants to do Meituan advertising promotion?\nMerchant: Our orders are okay at the moment, we're not considering it for now.\nSales: I understand, please feel free to contact me if you need it in the future.\nMerchant: Okay, thank you.",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+                "scenario_summary": {
+                    "type": "string",
+                    "description": "One-sentence summary of call scenario",
+                    "能力项": "范围、10~50字"
+                },
+                "dialogue_rewrite": {
+                    "type": "array",
+                    "description": "Rewritten dialogue flow",
+                    "能力项": "范围、50~200字",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "sales": {
+                                "type": "string",
+                                "description": "Sales statement",
+                                "能力项": "范围、0~50字"
+                            },
+                            "merchant": {
+                                "type": "string",
+                                "description": "Merchant statement",
+                                "能力项": "范围、0~50字"
+                            }
+                        },
+                        "minProperties": 1,
+                        "maxProperties": 1,
+                        "additionalProperties": false
+                    },
+                    "minItems": 2,
+                    "maxItems": 10
+                }
+            },
+            "required": [
+                "scenario_summary",
+                "dialogue_rewrite"
+            ],
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a sales assistant. Please first summarize the scenario of the following call content, and rewrite the call content into a smooth conversational flow. The rewritten content should not exceed 200 characters.\nNote:\n1. You must ensure the fluency of the rewritten dialogue.\n2. You must ensure the relevance of the rewritten dialogue: the theme of the rewritten conversation cannot deviate from the original conversation.\n3. Note that the rewritten conversation cannot contain information not included in the original conversation.\n4. You must ensure that the rewritten conversation is logically clear, concise, and of higher quality.\n5. Note that in the rewritten conversation, the tone of merchants and sales should be colloquial, following their respective roles, and sales should pay attention to politeness.\n6. Output in JSON format, for example: {\"scenario_summary\": \"xxx\", \"dialogue_rewrite\": [{\"sales\": \"xxx\"}, {\"merchant\": \"xxx\"}]}\n\nOutput requirements:\n1. Use JSON format to return the extracted information;\n2. \"scenario_summary\" is a one-sentence scenario description, \"dialogue_rewrite\" is a dialogue flow array, sales and merchants take turns speaking, each no more than 50 words, total length no more than 200 characters;\n3. Do not return any characters other than JSON format.\nThe following is the call content between Meituan sales and merchants:\nMerchant: Hello.\nSales: Hello, I'm from Meituan. I'd like to ask if your store is doing online promotion?\nMerchant: Not at the moment, the boss hasn't arranged this yet.\nSales: If you're interested, you can contact me anytime. Meituan has preferential policies recently.\nMerchant: Okay, got it.",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+                "scenario_summary": {
+                    "type": "string",
+                    "description": "One-sentence summary of call scenario",
+                    "能力项": "范围、10~50字"
+                },
+                "dialogue_rewrite": {
+                    "type": "array",
+                    "description": "Rewritten dialogue flow",
+                    "能力项": "范围、50~200字",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "sales": {
+                                "type": "string",
+                                "description": "Sales statement",
+                                "能力项": "范围、0~50字"
+                            },
+                            "merchant": {
+                                "type": "string",
+                                "description": "Merchant statement",
+                                "能力项": "范围、0~50字"
+                            }
+                        },
+                        "minProperties": 1,
+                        "maxProperties": 1,
+                        "additionalProperties": false
+                    },
+                    "minItems": 2,
+                    "maxItems": 10
+                }
+            },
+            "required": [
+                "scenario_summary",
+                "dialogue_rewrite"
+            ],
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a sales assistant. Please first summarize the scenario of the following call content, and rewrite the call content into a smooth conversational flow. The rewritten content should not exceed 200 characters.\nNote:\n1. You must ensure the fluency of the rewritten dialogue.\n2. You must ensure the relevance of the rewritten dialogue: the theme of the rewritten conversation cannot deviate from the original conversation.\n3. Note that the rewritten conversation cannot contain information not included in the original conversation.\n4. You must ensure that the rewritten conversation is logically clear, concise, and of higher quality.\n5. Note that in the rewritten conversation, the tone of merchants and sales should be colloquial, following their respective roles, and sales should pay attention to politeness.\n6. Output in JSON format, for example: {\"scenario_summary\": \"xxx\", \"dialogue_rewrite\": [{\"sales\": \"xxx\"}, {\"merchant\": \"xxx\"}]}\n\nOutput requirements:\n1. Use JSON format to return the extracted information;\n2. \"scenario_summary\" is a one-sentence scenario description, \"dialogue_rewrite\" is a dialogue flow array, sales and merchants take turns speaking, each no more than 50 words, total length no more than 200 characters;\n3. Do not return any characters other than JSON format.\nThe following is the call content between Meituan sales and merchants:\nMerchant: Hello, this is Lexiang KTV.\nSales: Hello, Meituan is doing KTV exclusive promotion activities now. I'd like to ask if your store is interested in participating?\nMerchant: We don't have plans for now, the boss is considering it.\nSales: I understand, you can contact me anytime if you have ideas later.\nMerchant: Okay, thank you.",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+                "scenario_summary": {
+                    "type": "string",
+                    "description": "One-sentence summary of call scenario",
+                    "能力项": "范围、10~50字"
+                },
+                "dialogue_rewrite": {
+                    "type": "array",
+                    "description": "Rewritten dialogue flow",
+                    "能力项": "范围、50~200字",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "sales": {
+                                "type": "string",
+                                "description": "Sales statement",
+                                "能力项": "范围、0~50字"
+                            },
+                            "merchant": {
+                                "type": "string",
+                                "description": "Merchant statement",
+                                "能力项": "范围、0~50字"
+                            }
+                        },
+                        "minProperties": 1,
+                        "maxProperties": 1,
+                        "additionalProperties": false
+                    },
+                    "minItems": 2,
+                    "maxItems": 10
+                }
+            },
+            "required": [
+                "scenario_summary",
+                "dialogue_rewrite"
+            ],
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a sales assistant. Please first summarize the scenario of the following call content, and rewrite the call content into a smooth conversational flow. The rewritten content should not exceed 200 characters.\nNote:\n1. You must ensure the fluency of the rewritten dialogue.\n2. You must ensure the relevance of the rewritten dialogue: the theme of the rewritten conversation cannot deviate from the original conversation.\n3. Note that the rewritten conversation cannot contain information not included in the original conversation.\n4. You must ensure that the rewritten conversation is logically clear, concise, and of higher quality.\n5. Note that in the rewritten conversation, the tone of merchants and sales should be colloquial, following their respective roles, and sales should pay attention to politeness.\n6. Output in JSON format, for example: {\"scenario_summary\": \"xxx\", \"dialogue_rewrite\": [{\"sales\": \"xxx\"}, {\"merchant\": \"xxx\"}]}\n\nOutput requirements:\n1. Use JSON format to return the extracted information;\n2. \"scenario_summary\" is a one-sentence scenario description, \"dialogue_rewrite\" is a dialogue flow array, sales and merchants take turns speaking, each no more than 50 words, total length no more than 200 characters;\n3. Do not return any characters other than JSON format.\nThe following is the call content between Meituan sales and merchants:\nMerchant: Hello, September Coffee.\nSales: Hello, I'd like to know if your store has been doing online promotion recently?\nMerchant: We've been doing it, but our budget is limited recently.\nSales: Meituan has activities recently with more favorable advertising costs.\nMerchant: Okay, we'll contact you if needed.",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+                "scenario_summary": {
+                    "type": "string",
+                    "description": "One-sentence summary of call scenario",
+                    "能力项": "范围、10~50字"
+                },
+                "dialogue_rewrite": {
+                    "type": "array",
+                    "description": "Rewritten dialogue flow",
+                    "能力项": "范围、50~200字",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "sales": {
+                                "type": "string",
+                                "description": "Sales statement",
+                                "能力项": "范围、0~50字"
+                            },
+                            "merchant": {
+                                "type": "string",
+                                "description": "Merchant statement",
+                                "能力项": "范围、0~50字"
+                            }
+                        },
+                        "minProperties": 1,
+                        "maxProperties": 1,
+                        "additionalProperties": false
+                    },
+                    "minItems": 2,
+                    "maxItems": 10
+                }
+            },
+            "required": [
+                "scenario_summary",
+                "dialogue_rewrite"
+            ],
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a sales assistant. Please first summarize the scenario of the following call content, and rewrite the call content into a smooth conversational flow. The rewritten content should not exceed 200 characters.\nNote:\n1. You must ensure the fluency of the rewritten dialogue.\n2. You must ensure the relevance of the rewritten dialogue: the theme of the rewritten conversation cannot deviate from the original conversation.\n3. Note that the rewritten conversation cannot contain information not included in the original conversation.\n4. You must ensure that the rewritten conversation is logically clear, concise, and of higher quality.\n5. Note that in the rewritten conversation, the tone of merchants and sales should be colloquial, following their respective roles, and sales should pay attention to politeness.\n6. Output in JSON format, for example: {\"scenario_summary\": \"xxx\", \"dialogue_rewrite\": [{\"sales\": \"xxx\"}, {\"merchant\": \"xxx\"}]}\n\nOutput requirements:\n1. Use JSON format to return the extracted information;\n2. \"scenario_summary\" is a one-sentence scenario description, \"dialogue_rewrite\" is a dialogue flow array, sales and merchants take turns speaking, each no more than 50 words, total length no more than 200 characters;\n3. Do not return any characters other than JSON format.\nThe following is the call content between Meituan sales and merchants:\nMerchant: Hello.\nSales: Hello, is this Happy Florist?\nMerchant: Yes, who is this?\nSales: I'm from Meituan. I'd like to ask if you've done online advertising promotion?\nMerchant: Not for now, we'll contact you if needed.\nSales: Okay, wish your business prosperity!",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+                "scenario_summary": {
+                    "type": "string",
+                    "description": "One-sentence summary of call scenario",
+                    "能力项": "范围、10~50字"
+                },
+                "dialogue_rewrite": {
+                    "type": "array",
+                    "description": "Rewritten dialogue flow",
+                    "能力项": "范围、50~200字",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "sales": {
+                                "type": "string",
+                                "description": "Sales statement",
+                                "能力项": "范围、0~50字"
+                            },
+                            "merchant": {
+                                "type": "string",
+                                "description": "Merchant statement",
+                                "能力项": "范围、0~50字"
+                            }
+                        },
+                        "minProperties": 1,
+                        "maxProperties": 1,
+                        "additionalProperties": false
+                    },
+                    "minItems": 2,
+                    "maxItems": 10
+                }
+            },
+            "required": [
+                "scenario_summary",
+                "dialogue_rewrite"
+            ],
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a sales assistant. Please first summarize the scenario of the following call content, and rewrite the call content into a smooth conversational flow. The rewritten content should not exceed 200 characters.\nNote:\n1. You must ensure the fluency of the rewritten dialogue.\n2. You must ensure the relevance of the rewritten dialogue: the theme of the rewritten conversation cannot deviate from the original conversation.\n3. Note that the rewritten conversation cannot contain information not included in the original conversation.\n4. You must ensure that the rewritten conversation is logically clear, concise, and of higher quality.\n5. Note that in the rewritten conversation, the tone of merchants and sales should be colloquial, following their respective roles, and sales should pay attention to politeness.\n6. Output in JSON format, for example: {\"scenario_summary\": \"xxx\", \"dialogue_rewrite\": [{\"sales\": \"xxx\"}, {\"merchant\": \"xxx\"}]}\n\nOutput requirements:\n1. Use JSON format to return the extracted information;\n2. \"scenario_summary\" is a one-sentence scenario description, \"dialogue_rewrite\" is a dialogue flow array, sales and merchants take turns speaking, each no more than 50 words, total length no more than 200 characters;\n3. Do not return any characters other than JSON format.\nThe following is the call content between Meituan sales and merchants:\nMerchant: Hello.\nSales: Hello, is this Sunshine Hotel?\nMerchant: Yes.\nSales: I'm from Meituan. I'd like to know if your store is doing online promotion?\nMerchant: We mainly rely on regular customers now, not doing promotion.\nSales: I understand, you can contact me anytime if needed.\nMerchant: Okay, thank you.",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+                "scenario_summary": {
+                    "type": "string",
+                    "description": "One-sentence summary of call scenario",
+                    "能力项": "范围、10~50字"
+                },
+                "dialogue_rewrite": {
+                    "type": "array",
+                    "description": "Rewritten dialogue flow",
+                    "能力项": "范围、50~200字",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "sales": {
+                                "type": "string",
+                                "description": "Sales statement",
+                                "能力项": "范围、0~50字"
+                            },
+                            "merchant": {
+                                "type": "string",
+                                "description": "Merchant statement",
+                                "能力项": "范围、0~50字"
+                            }
+                        },
+                        "minProperties": 1,
+                        "maxProperties": 1,
+                        "additionalProperties": false
+                    },
+                    "minItems": 2,
+                    "maxItems": 10
+                }
+            },
+            "required": [
+                "scenario_summary",
+                "dialogue_rewrite"
+            ],
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a sales assistant. Please first summarize the scenario of the following call content, and rewrite the call content into a smooth conversational flow. The rewritten content should not exceed 200 characters.\nNote:\n1. You must ensure the fluency of the rewritten dialogue.\n2. You must ensure the relevance of the rewritten dialogue: the theme of the rewritten conversation cannot deviate from the original conversation.\n3. Note that the rewritten conversation cannot contain information not included in the original conversation.\n4. You must ensure that the rewritten conversation is logically clear, concise, and of higher quality.\n5. Note that in the rewritten conversation, the tone of merchants and sales should be colloquial, following their respective roles, and sales should pay attention to politeness.\n6. Output in JSON format, for example: {\"scenario_summary\": \"xxx\", \"dialogue_rewrite\": [{\"sales\": \"xxx\"}, {\"merchant\": \"xxx\"}]}\n\nOutput requirements:\n1. Use JSON format to return the extracted information;\n2. \"scenario_summary\" is a one-sentence scenario description, \"dialogue_rewrite\" is a dialogue flow array, sales and merchants take turns speaking, each no more than 50 words, total length no more than 200 characters;\n3. Do not return any characters other than JSON format.\nThe following is the call content between Meituan sales and merchants:\nMerchant: Hello, Fumanlou Restaurant.\nSales: Hello, I'm from Meituan. I'd like to ask if your store has any online promotion needs recently?\nMerchant: We have fewer activities recently, not considering it for now.\nSales: Okay, please feel free to contact us if you need it in the future.\nMerchant: Thank you.",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+                "scenario_summary": {
+                    "type": "string",
+                    "description": "One-sentence summary of call scenario",
+                    "能力项": "范围、10~50字"
+                },
+                "dialogue_rewrite": {
+                    "type": "array",
+                    "description": "Rewritten dialogue flow",
+                    "能力项": "范围、50~200字",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "sales": {
+                                "type": "string",
+                                "description": "Sales statement",
+                                "能力项": "范围、0~50字"
+                            },
+                            "merchant": {
+                                "type": "string",
+                                "description": "Merchant statement",
+                                "能力项": "范围、0~50字"
+                            }
+                        },
+                        "minProperties": 1,
+                        "maxProperties": 1,
+                        "additionalProperties": false
+                    },
+                    "minItems": 2,
+                    "maxItems": 10
+                }
+            },
+            "required": [
+                "scenario_summary",
+                "dialogue_rewrite"
+            ],
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a sales assistant. Please first summarize the scenario of the following call content, and rewrite the call content into a smooth conversational flow. The rewritten content should not exceed 200 characters.\nNote:\n1. You must ensure the fluency of the rewritten dialogue.\n2. You must ensure the relevance of the rewritten dialogue: the theme of the rewritten conversation cannot deviate from the original conversation.\n3. Note that the rewritten conversation cannot contain information not included in the original conversation.\n4. You must ensure that the rewritten conversation is logically clear, concise, and of higher quality.\n5. Note that in the rewritten conversation, the tone of merchants and sales should be colloquial, following their respective roles, and sales should pay attention to politeness.\n6. Output in JSON format, for example: {\"scenario_summary\": \"xxx\", \"dialogue_rewrite\": [{\"sales\": \"xxx\"}, {\"merchant\": \"xxx\"}]}\n\nOutput requirements:\n1. Use JSON format to return the extracted information;\n2. \"scenario_summary\" is a one-sentence scenario description, \"dialogue_rewrite\" is a dialogue flow array, sales and merchants take turns speaking, each no more than 50 words, total length no more than 200 characters;\n3. Do not return any characters other than JSON format.\nThe following is the call content between Meituan sales and merchants:\nMerchant: Hello.\nSales: Hello, I'm from Meituan. I'd like to know if your store is doing online group buying?\nMerchant: Not at the moment, the boss hasn't decided yet.\nSales: I understand, you can contact me anytime if needed.\nMerchant: Okay.",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "properties": {
+                "scenario_summary": {
+                    "type": "string",
+                    "description": "One-sentence summary of call scenario",
+                    "能力项": "范围、10~50字"
+                },
+                "dialogue_rewrite": {
+                    "type": "array",
+                    "description": "Rewritten dialogue flow",
+                    "能力项": "范围、50~200字",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "sales": {
+                                "type": "string",
+                                "description": "Sales statement",
+                                "能力项": "范围、0~50字"
+                            },
+                            "merchant": {
+                                "type": "string",
+                                "description": "Merchant statement",
+                                "能力项": "范围、0~50字"
+                            }
+                        },
+                        "minProperties": 1,
+                        "maxProperties": 1,
+                        "additionalProperties": false
+                    },
+                    "minItems": 2,
+                    "maxItems": 10
+                }
+            },
+            "required": [
+                "scenario_summary",
+                "dialogue_rewrite"
+            ],
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ]
+    }
+]

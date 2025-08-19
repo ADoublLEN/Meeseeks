@@ -1,0 +1,1342 @@
+[
+    {
+        "category": "SCHEMA",
+        "question": "You are a professional travel hotspot article analyst. I will provide you with article content and article type. You need to execute different identification strategies based on different article types. Only return the extracted gameplay information, do not return any other redundant information.\nArticle type: Auto-identify\nPlease extract information according to the following rules:\n1. playName: Gameplay name, referring to specific gameplay or activity names mentioned in the article.\n2. briefDesc: One-sentence description, required to summarize gameplay highlights and features, excluding operational time, practical information, negative descriptions, 68-100 characters (include space, number...).\n3. location: Gameplay geographical location, referring to specific reference points or landmarks within scenic areas or venues, cannot be cities or provinces.\n4. startDate/endDate: Gameplay time range, date format is xxxx-xx-xx, return empty string if not identified.\n5. detailDesc: Detailed gameplay introduction, required 315-400 characters (include space, number...), describing gameplay highlights and features, excluding third-party perspective words.\n6. price: Ticket price information, return format [\"\",\"\"], return empty list if not identified.\n7. issueTime: If gameplay belongs to concerts, music festivals, Livehouse, crosstalk and other types, need to identify ticket release time, date format is xxxx-xx-xx, return empty string if none.\n8. hasNightView: Whether it is a nighttime activity (Yes/No).\n9. isParentChildFriendly: Whether it is suitable for parent-child (Yes/No).\n10. isOutdoor: Whether it is outdoor gameplay (Yes/No).\n11. hasCulturalShow: Whether it includes cultural performances (Yes/No).\n12. hasHotSpring: Whether it has hot spring projects (Yes/No).\nOutput requirements:\n1. Use JSON format to return extracted information\n2. Each gameplay as an object, containing all fields\n3. All gameplay objects form an array\n4. Do not return any characters other than JSON format\nOutput format example:\n[\n  {\"playName\":\"Gameplay Name\",\"briefDesc\":\"One-sentence description\",\"location\":\"Geographical location\",\"startDate\":\"Start time\",\"endDate\":\"End time\",\"detailDesc\":\"Detailed gameplay introduction\",\"price\":[],\"issueTime\":\"Ticket release time\",\"hasNightView\":\"Yes/No\",\"isParentChildFriendly\":\"Yes/No\",\"isOutdoor\":\"Yes/No\",\"hasCulturalShow\":\"Yes/No\",\"hasHotSpring\":\"Yes/No\"}\n]\nArticle content:The Christmas Night Market of Sanlitun Institute of Mechanical and Electrical Engineering is open! Wood Eats Talk Winter Market, Night Dessert Parade, Independent Music Label Performance, 90 hours of non-stop music experience, Christmas atmosphere and food gathered. There are also parent-child interaction areas and market workshops.",
+        "json_schema": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "playName": {
+                        "type": "string",
+                        "description": "Gameplay name",
+                        "能力项": "JSON"
+                    },
+                    "briefDesc": {
+                        "type": "string",
+                        "description": "One-sentence description",
+                        "能力项": "范围、50~200字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 68,
+                        "maxLength": 100
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "Gameplay geographical location",
+                        "能力项": "JSON"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "Start time"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "End time"
+                    },
+                    "detailDesc": {
+                        "type": "string",
+                        "description": "Detailed gameplay introduction",
+                        "能力项": "范围、200字以上",
+                        "pattern": "^.*$|^$",
+                        "minLength": 315,
+                        "maxLength": 400
+                    },
+                    "price": {
+                        "type": "array",
+                        "description": "Ticket price information",
+                        "items": {
+                            "type": "string"
+                        },
+                        "能力项": "主题约束"
+                    },
+                    "issueTime": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "Ticket release time"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is a nighttime activity",
+                        "能力项": "特定格式"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is suitable for parent-child",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is outdoor gameplay",
+                        "能力项": "特定格式"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it includes cultural performances",
+                        "能力项": "特定格式"
+                    },
+                    "hasHotSpring": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it has hot spring projects",
+                        "能力项": "特定格式"
+                    }
+                },
+                "required": [
+                    "playName",
+                    "briefDesc",
+                    "location",
+                    "startDate",
+                    "endDate",
+                    "detailDesc",
+                    "price",
+                    "issueTime",
+                    "hasNightView",
+                    "isParentChildFriendly",
+                    "isOutdoor",
+                    "hasCulturalShow",
+                    "hasHotSpring"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Whether it meets schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a professional travel hotspot article analyst. I will provide you with article content and article type. You need to execute different identification strategies based on different article types. Only return the extracted gameplay information, do not return any other redundant information.\nArticle type: Auto-identify\nPlease extract information according to the following rules:\n1. playName: Gameplay name, referring to specific gameplay or activity names mentioned in the article.\n2. briefDesc: One-sentence description, required to summarize gameplay highlights and features, excluding operational time, practical information, negative descriptions, 68-100 characters (include space, number...).\n3. location: Gameplay geographical location, referring to specific reference points or landmarks within scenic areas or venues, cannot be cities or provinces.\n4. startDate/endDate: Gameplay time range, date format is xxxx-xx-xx, return empty string if not identified.\n5. detailDesc: Detailed gameplay introduction, required 315-400 characters (include space, number...), describing gameplay highlights and features, excluding third-party perspective words.\n6. price: Ticket price information, return format [\"\",\"\"], return empty list if not identified.\n7. issueTime: If gameplay belongs to concerts, music festivals, Livehouse, crosstalk and other types, need to identify ticket release time, date format is xxxx-xx-xx, return empty string if none.\n8. hasNightView: Whether it is a nighttime activity (Yes/No).\n9. isParentChildFriendly: Whether it is suitable for parent-child (Yes/No).\n10. isOutdoor: Whether it is outdoor gameplay (Yes/No).\n11. hasCulturalShow: Whether it includes cultural performances (Yes/No).\n12. hasHotSpring: Whether it has hot spring projects (Yes/No).\nOutput requirements:\n1. Use JSON format to return extracted information\n2. Each gameplay as an object, containing all fields\n3. All gameplay objects form an array\n4. Do not return any characters other than JSON format\nOutput format example:\n[\n  {\"playName\":\"Gameplay Name\",\"briefDesc\":\"One-sentence description\",\"location\":\"Geographical location\",\"startDate\":\"Start time\",\"endDate\":\"End time\",\"detailDesc\":\"Detailed gameplay introduction\",\"price\":[],\"issueTime\":\"Ticket release time\",\"hasNightView\":\"Yes/No\",\"isParentChildFriendly\":\"Yes/No\",\"isOutdoor\":\"Yes/No\",\"hasCulturalShow\":\"Yes/No\",\"hasHotSpring\":\"Yes/No\"}\n]\nArticle content:Happy Valley Christmas Light Show is open, there are large-scale parade performances and Christmas theme markets at night, parents and children, couples, friends can have fun, the outdoor night view is unforgettable.",
+        "json_schema": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "playName": {
+                        "type": "string",
+                        "description": "Gameplay name",
+                        "能力项": "JSON"
+                    },
+                    "briefDesc": {
+                        "type": "string",
+                        "description": "One-sentence description",
+                        "能力项": "范围、50~200字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 68,
+                        "maxLength": 100
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "Gameplay geographical location",
+                        "能力项": "JSON"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "Start time"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "End time"
+                    },
+                    "detailDesc": {
+                        "type": "string",
+                        "description": "Detailed gameplay introduction",
+                        "能力项": "范围、200字以上",
+                        "pattern": "^.*$|^$",
+                        "minLength": 315,
+                        "maxLength": 400
+                    },
+                    "price": {
+                        "type": "array",
+                        "description": "Ticket price information",
+                        "items": {
+                            "type": "string"
+                        },
+                        "能力项": "主题约束"
+                    },
+                    "issueTime": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "Ticket release time"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is a nighttime activity",
+                        "能力项": "特定格式"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is suitable for parent-child",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is outdoor gameplay",
+                        "能力项": "特定格式"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it includes cultural performances",
+                        "能力项": "特定格式"
+                    },
+                    "hasHotSpring": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it has hot spring projects",
+                        "能力项": "特定格式"
+                    }
+                },
+                "required": [
+                    "playName",
+                    "briefDesc",
+                    "location",
+                    "startDate",
+                    "endDate",
+                    "detailDesc",
+                    "price",
+                    "issueTime",
+                    "hasNightView",
+                    "isParentChildFriendly",
+                    "isOutdoor",
+                    "hasCulturalShow",
+                    "hasHotSpring"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Whether it meets schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a professional travel hotspot article analyst. I will provide you with article content and article type. You need to execute different identification strategies based on different article types. Only return the extracted gameplay information, do not return any other redundant information.\nArticle type: Auto-identify\nPlease extract information according to the following rules:\n1. playName: Gameplay name, referring to specific gameplay or activity names mentioned in the article.\n2. briefDesc: One-sentence description, required to summarize gameplay highlights and features, excluding operational time, practical information, negative descriptions, 68-100 characters (include space, number...).\n3. location: Gameplay geographical location, referring to specific reference points or landmarks within scenic areas or venues, cannot be cities or provinces.\n4. startDate/endDate: Gameplay time range, date format is xxxx-xx-xx, return empty string if not identified.\n5. detailDesc: Detailed gameplay introduction, required 315-400 characters (include space, number...), describing gameplay highlights and features, excluding third-party perspective words.\n6. price: Ticket price information, return format [\"\",\"\"], return empty list if not identified.\n7. issueTime: If gameplay belongs to concerts, music festivals, Livehouse, crosstalk and other types, need to identify ticket release time, date format is xxxx-xx-xx, return empty string if none.\n8. hasNightView: Whether it is a nighttime activity (Yes/No).\n9. isParentChildFriendly: Whether it is suitable for parent-child (Yes/No).\n10. isOutdoor: Whether it is outdoor gameplay (Yes/No).\n11. hasCulturalShow: Whether it includes cultural performances (Yes/No).\n12. hasHotSpring: Whether it has hot spring projects (Yes/No).\nOutput requirements:\n1. Use JSON format to return extracted information\n2. Each gameplay as an object, containing all fields\n3. All gameplay objects form an array\n4. Do not return any characters other than JSON format\nOutput format example:\n[\n  {\"playName\":\"Gameplay Name\",\"briefDesc\":\"One-sentence description\",\"location\":\"Geographical location\",\"startDate\":\"Start time\",\"endDate\":\"End time\",\"detailDesc\":\"Detailed gameplay introduction\",\"price\":[],\"issueTime\":\"Ticket release time\",\"hasNightView\":\"Yes/No\",\"isParentChildFriendly\":\"Yes/No\",\"isOutdoor\":\"Yes/No\",\"hasCulturalShow\":\"Yes/No\",\"hasHotSpring\":\"Yes/No\"}\n]\nArticle content:The Forbidden City Ice and Snow Festival opens, ice sculpture exhibitions, snow slides, ice bikes and other rich ways of playing are waiting for you to experience, the night light show is romantic and dreamy. The whole family can find fun.",
+        "json_schema": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "playName": {
+                        "type": "string",
+                        "description": "Gameplay name",
+                        "能力项": "JSON"
+                    },
+                    "briefDesc": {
+                        "type": "string",
+                        "description": "One-sentence description",
+                        "能力项": "范围、50~200字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 68,
+                        "maxLength": 100
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "Gameplay geographical location",
+                        "能力项": "JSON"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "Start time"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "End time"
+                    },
+                    "detailDesc": {
+                        "type": "string",
+                        "description": "Detailed gameplay introduction",
+                        "能力项": "范围、200字以上",
+                        "pattern": "^.*$|^$",
+                        "minLength": 315,
+                        "maxLength": 400
+                    },
+                    "price": {
+                        "type": "array",
+                        "description": "Ticket price information",
+                        "items": {
+                            "type": "string"
+                        },
+                        "能力项": "主题约束"
+                    },
+                    "issueTime": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "Ticket release time"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is a nighttime activity",
+                        "能力项": "特定格式"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is suitable for parent-child",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is outdoor gameplay",
+                        "能力项": "特定格式"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it includes cultural performances",
+                        "能力项": "特定格式"
+                    },
+                    "hasHotSpring": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it has hot spring projects",
+                        "能力项": "特定格式"
+                    }
+                },
+                "required": [
+                    "playName",
+                    "briefDesc",
+                    "location",
+                    "startDate",
+                    "endDate",
+                    "detailDesc",
+                    "price",
+                    "issueTime",
+                    "hasNightView",
+                    "isParentChildFriendly",
+                    "isOutdoor",
+                    "hasCulturalShow",
+                    "hasHotSpring"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Whether it meets schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a professional travel hotspot article analyst. I will provide you with article content and article type. You need to execute different identification strategies based on different article types. Only return the extracted gameplay information, do not return any other redundant information.\nArticle type: Auto-identify\nPlease extract information according to the following rules:\n1. playName: Gameplay name, referring to specific gameplay or activity names mentioned in the article.\n2. briefDesc: One-sentence description, required to summarize gameplay highlights and features, excluding operational time, practical information, negative descriptions, 68-100 characters (include space, number...).\n3. location: Gameplay geographical location, referring to specific reference points or landmarks within scenic areas or venues, cannot be cities or provinces.\n4. startDate/endDate: Gameplay time range, date format is xxxx-xx-xx, return empty string if not identified.\n5. detailDesc: Detailed gameplay introduction, required 315-400 characters (include space, number...), describing gameplay highlights and features, excluding third-party perspective words.\n6. price: Ticket price information, return format [\"\",\"\"], return empty list if not identified.\n7. issueTime: If gameplay belongs to concerts, music festivals, Livehouse, crosstalk and other types, need to identify ticket release time, date format is xxxx-xx-xx, return empty string if none.\n8. hasNightView: Whether it is a nighttime activity (Yes/No).\n9. isParentChildFriendly: Whether it is suitable for parent-child (Yes/No).\n10. isOutdoor: Whether it is outdoor gameplay (Yes/No).\n11. hasCulturalShow: Whether it includes cultural performances (Yes/No).\n12. hasHotSpring: Whether it has hot spring projects (Yes/No).\nOutput requirements:\n1. Use JSON format to return extracted information\n2. Each gameplay as an object, containing all fields\n3. All gameplay objects form an array\n4. Do not return any characters other than JSON format\nOutput format example:\n[\n  {\"playName\":\"Gameplay Name\",\"briefDesc\":\"One-sentence description\",\"location\":\"Geographical location\",\"startDate\":\"Start time\",\"endDate\":\"End time\",\"detailDesc\":\"Detailed gameplay introduction\",\"price\":[],\"issueTime\":\"Ticket release time\",\"hasNightView\":\"Yes/No\",\"isParentChildFriendly\":\"Yes/No\",\"isOutdoor\":\"Yes/No\",\"hasCulturalShow\":\"Yes/No\",\"hasHotSpring\":\"Yes/No\"}\n]\nArticle content:Universal Studios New Year's Eve Fireworks Show, the best viewing point is Hollywood Boulevard, fireworks and theme buildings are in the same frame, the atmosphere is bursting, suitable for couples dating and parent-child experience.",
+        "json_schema": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "playName": {
+                        "type": "string",
+                        "description": "Gameplay name",
+                        "能力项": "JSON"
+                    },
+                    "briefDesc": {
+                        "type": "string",
+                        "description": "One-sentence description",
+                        "能力项": "范围、50~200字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 68,
+                        "maxLength": 100
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "Gameplay geographical location",
+                        "能力项": "JSON"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "Start time"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "End time"
+                    },
+                    "detailDesc": {
+                        "type": "string",
+                        "description": "Detailed gameplay introduction",
+                        "能力项": "范围、200字以上",
+                        "pattern": "^.*$|^$",
+                        "minLength": 315,
+                        "maxLength": 400
+                    },
+                    "price": {
+                        "type": "array",
+                        "description": "Ticket price information",
+                        "items": {
+                            "type": "string"
+                        },
+                        "能力项": "主题约束"
+                    },
+                    "issueTime": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "Ticket release time"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is a nighttime activity",
+                        "能力项": "特定格式"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is suitable for parent-child",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is outdoor gameplay",
+                        "能力项": "特定格式"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it includes cultural performances",
+                        "能力项": "特定格式"
+                    },
+                    "hasHotSpring": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it has hot spring projects",
+                        "能力项": "特定格式"
+                    }
+                },
+                "required": [
+                    "playName",
+                    "briefDesc",
+                    "location",
+                    "startDate",
+                    "endDate",
+                    "detailDesc",
+                    "price",
+                    "issueTime",
+                    "hasNightView",
+                    "isParentChildFriendly",
+                    "isOutdoor",
+                    "hasCulturalShow",
+                    "hasHotSpring"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Whether it meets schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a professional travel hotspot article analyst. I will provide you with article content and article type. You need to execute different identification strategies based on different article types. Only return the extracted gameplay information, do not return any other redundant information.\nArticle type: Auto-identify\nPlease extract information according to the following rules:\n1. playName: Gameplay name, referring to specific gameplay or activity names mentioned in the article.\n2. briefDesc: One-sentence description, required to summarize gameplay highlights and features, excluding operational time, practical information, negative descriptions, 68-100 characters (include space, number...).\n3. location: Gameplay geographical location, referring to specific reference points or landmarks within scenic areas or venues, cannot be cities or provinces.\n4. startDate/endDate: Gameplay time range, date format is xxxx-xx-xx, return empty string if not identified.\n5. detailDesc: Detailed gameplay introduction, required 315-400 characters (include space, number...), describing gameplay highlights and features, excluding third-party perspective words.\n6. price: Ticket price information, return format [\"\",\"\"], return empty list if not identified.\n7. issueTime: If gameplay belongs to concerts, music festivals, Livehouse, crosstalk and other types, need to identify ticket release time, date format is xxxx-xx-xx, return empty string if none.\n8. hasNightView: Whether it is a nighttime activity (Yes/No).\n9. isParentChildFriendly: Whether it is suitable for parent-child (Yes/No).\n10. isOutdoor: Whether it is outdoor gameplay (Yes/No).\n11. hasCulturalShow: Whether it includes cultural performances (Yes/No).\n12. hasHotSpring: Whether it has hot spring projects (Yes/No).\nOutput requirements:\n1. Use JSON format to return extracted information\n2. Each gameplay as an object, containing all fields\n3. All gameplay objects form an array\n4. Do not return any characters other than JSON format\nOutput format example:\n[\n  {\"playName\":\"Gameplay Name\",\"briefDesc\":\"One-sentence description\",\"location\":\"Geographical location\",\"startDate\":\"Start time\",\"endDate\":\"End time\",\"detailDesc\":\"Detailed gameplay introduction\",\"price\":[],\"issueTime\":\"Ticket release time\",\"hasNightView\":\"Yes/No\",\"isParentChildFriendly\":\"Yes/No\",\"isOutdoor\":\"Yes/No\",\"hasCulturalShow\":\"Yes/No\",\"hasHotSpring\":\"Yes/No\"}\n]\nArticle content:The West Lake Dragon Boat Festival Dragon Boat Festival starts on the Dragon Boat Festival, dragon boat racing, folk performances, Dragon Boat Festival food are all available, the shore viewing experience is excellent, there are light and water shows at night.",
+        "json_schema": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "playName": {
+                        "type": "string",
+                        "description": "Gameplay name",
+                        "能力项": "JSON"
+                    },
+                    "briefDesc": {
+                        "type": "string",
+                        "description": "One-sentence description",
+                        "能力项": "范围、50~200字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 68,
+                        "maxLength": 100
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "Gameplay geographical location",
+                        "能力项": "JSON"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "Start time"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "End time"
+                    },
+                    "detailDesc": {
+                        "type": "string",
+                        "description": "Detailed gameplay introduction",
+                        "能力项": "范围、200字以上",
+                        "pattern": "^.*$|^$",
+                        "minLength": 315,
+                        "maxLength": 400
+                    },
+                    "price": {
+                        "type": "array",
+                        "description": "Ticket price information",
+                        "items": {
+                            "type": "string"
+                        },
+                        "能力项": "主题约束"
+                    },
+                    "issueTime": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "Ticket release time"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is a nighttime activity",
+                        "能力项": "特定格式"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is suitable for parent-child",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is outdoor gameplay",
+                        "能力项": "特定格式"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it includes cultural performances",
+                        "能力项": "特定格式"
+                    },
+                    "hasHotSpring": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it has hot spring projects",
+                        "能力项": "特定格式"
+                    }
+                },
+                "required": [
+                    "playName",
+                    "briefDesc",
+                    "location",
+                    "startDate",
+                    "endDate",
+                    "detailDesc",
+                    "price",
+                    "issueTime",
+                    "hasNightView",
+                    "isParentChildFriendly",
+                    "isOutdoor",
+                    "hasCulturalShow",
+                    "hasHotSpring"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Whether it meets schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a professional travel hotspot article analyst. I will provide you with article content and article type. You need to execute different identification strategies based on different article types. Only return the extracted gameplay information, do not return any other redundant information.\nArticle type: Auto-identify\nPlease extract information according to the following rules:\n1. playName: Gameplay name, referring to specific gameplay or activity names mentioned in the article.\n2. briefDesc: One-sentence description, required to summarize gameplay highlights and features, excluding operational time, practical information, negative descriptions, 68-100 characters (include space, number...).\n3. location: Gameplay geographical location, referring to specific reference points or landmarks within scenic areas or venues, cannot be cities or provinces.\n4. startDate/endDate: Gameplay time range, date format is xxxx-xx-xx, return empty string if not identified.\n5. detailDesc: Detailed gameplay introduction, required 315-400 characters (include space, number...), describing gameplay highlights and features, excluding third-party perspective words.\n6. price: Ticket price information, return format [\"\",\"\"], return empty list if not identified.\n7. issueTime: If gameplay belongs to concerts, music festivals, Livehouse, crosstalk and other types, need to identify ticket release time, date format is xxxx-xx-xx, return empty string if none.\n8. hasNightView: Whether it is a nighttime activity (Yes/No).\n9. isParentChildFriendly: Whether it is suitable for parent-child (Yes/No).\n10. isOutdoor: Whether it is outdoor gameplay (Yes/No).\n11. hasCulturalShow: Whether it includes cultural performances (Yes/No).\n12. hasHotSpring: Whether it has hot spring projects (Yes/No).\nOutput requirements:\n1. Use JSON format to return extracted information\n2. Each gameplay as an object, containing all fields\n3. All gameplay objects form an array\n4. Do not return any characters other than JSON format\nOutput format example:\n[\n  {\"playName\":\"Gameplay Name\",\"briefDesc\":\"One-sentence description\",\"location\":\"Geographical location\",\"startDate\":\"Start time\",\"endDate\":\"End time\",\"detailDesc\":\"Detailed gameplay introduction\",\"price\":[],\"issueTime\":\"Ticket release time\",\"hasNightView\":\"Yes/No\",\"isParentChildFriendly\":\"Yes/No\",\"isOutdoor\":\"Yes/No\",\"hasCulturalShow\":\"Yes/No\",\"hasHotSpring\":\"Yes/No\"}\n]\nArticle content:The Chimelong Water Park is open at night in the summer. The water party and light and electronic music show will make the whole place excited. The night tour experience is unique and suitable for parents and children and young people.",
+        "json_schema": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "playName": {
+                        "type": "string",
+                        "description": "Gameplay name",
+                        "能力项": "JSON"
+                    },
+                    "briefDesc": {
+                        "type": "string",
+                        "description": "One-sentence description",
+                        "能力项": "范围、50~200字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 68,
+                        "maxLength": 100
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "Gameplay geographical location",
+                        "能力项": "JSON"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "Start time"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "End time"
+                    },
+                    "detailDesc": {
+                        "type": "string",
+                        "description": "Detailed gameplay introduction",
+                        "能力项": "范围、200字以上",
+                        "pattern": "^.*$|^$",
+                        "minLength": 315,
+                        "maxLength": 400
+                    },
+                    "price": {
+                        "type": "array",
+                        "description": "Ticket price information",
+                        "items": {
+                            "type": "string"
+                        },
+                        "能力项": "主题约束"
+                    },
+                    "issueTime": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "Ticket release time"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is a nighttime activity",
+                        "能力项": "特定格式"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is suitable for parent-child",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is outdoor gameplay",
+                        "能力项": "特定格式"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it includes cultural performances",
+                        "能力项": "特定格式"
+                    },
+                    "hasHotSpring": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it has hot spring projects",
+                        "能力项": "特定格式"
+                    }
+                },
+                "required": [
+                    "playName",
+                    "briefDesc",
+                    "location",
+                    "startDate",
+                    "endDate",
+                    "detailDesc",
+                    "price",
+                    "issueTime",
+                    "hasNightView",
+                    "isParentChildFriendly",
+                    "isOutdoor",
+                    "hasCulturalShow",
+                    "hasHotSpring"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Whether it meets schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a professional travel hotspot article analyst. I will provide you with article content and article type. You need to execute different identification strategies based on different article types. Only return the extracted gameplay information, do not return any other redundant information.\nArticle type: Auto-identify\nPlease extract information according to the following rules:\n1. playName: Gameplay name, referring to specific gameplay or activity names mentioned in the article.\n2. briefDesc: One-sentence description, required to summarize gameplay highlights and features, excluding operational time, practical information, negative descriptions, 68-100 characters (include space, number...).\n3. location: Gameplay geographical location, referring to specific reference points or landmarks within scenic areas or venues, cannot be cities or provinces.\n4. startDate/endDate: Gameplay time range, date format is xxxx-xx-xx, return empty string if not identified.\n5. detailDesc: Detailed gameplay introduction, required 315-400 characters (include space, number...), describing gameplay highlights and features, excluding third-party perspective words.\n6. price: Ticket price information, return format [\"\",\"\"], return empty list if not identified.\n7. issueTime: If gameplay belongs to concerts, music festivals, Livehouse, crosstalk and other types, need to identify ticket release time, date format is xxxx-xx-xx, return empty string if none.\n8. hasNightView: Whether it is a nighttime activity (Yes/No).\n9. isParentChildFriendly: Whether it is suitable for parent-child (Yes/No).\n10. isOutdoor: Whether it is outdoor gameplay (Yes/No).\n11. hasCulturalShow: Whether it includes cultural performances (Yes/No).\n12. hasHotSpring: Whether it has hot spring projects (Yes/No).\nOutput requirements:\n1. Use JSON format to return extracted information\n2. Each gameplay as an object, containing all fields\n3. All gameplay objects form an array\n4. Do not return any characters other than JSON format\nOutput format example:\n[\n  {\"playName\":\"Gameplay Name\",\"briefDesc\":\"One-sentence description\",\"location\":\"Geographical location\",\"startDate\":\"Start time\",\"endDate\":\"End time\",\"detailDesc\":\"Detailed gameplay introduction\",\"price\":[],\"issueTime\":\"Ticket release time\",\"hasNightView\":\"Yes/No\",\"isParentChildFriendly\":\"Yes/No\",\"isOutdoor\":\"Yes/No\",\"hasCulturalShow\":\"Yes/No\",\"hasHotSpring\":\"Yes/No\"}\n]\nArticle content:Shanghai Disneyland Christmas parade, all Mickey family members are out, the Christmas tree lighting ceremony is warm and romantic. The night fireworks show and light show complement each other.",
+        "json_schema": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "playName": {
+                        "type": "string",
+                        "description": "Gameplay name",
+                        "能力项": "JSON"
+                    },
+                    "briefDesc": {
+                        "type": "string",
+                        "description": "One-sentence description",
+                        "能力项": "范围、50~200字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 68,
+                        "maxLength": 100
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "Gameplay geographical location",
+                        "能力项": "JSON"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "Start time"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "End time"
+                    },
+                    "detailDesc": {
+                        "type": "string",
+                        "description": "Detailed gameplay introduction",
+                        "能力项": "范围、200字以上",
+                        "pattern": "^.*$|^$",
+                        "minLength": 315,
+                        "maxLength": 400
+                    },
+                    "price": {
+                        "type": "array",
+                        "description": "Ticket price information",
+                        "items": {
+                            "type": "string"
+                        },
+                        "能力项": "主题约束"
+                    },
+                    "issueTime": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "Ticket release time"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is a nighttime activity",
+                        "能力项": "特定格式"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is suitable for parent-child",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is outdoor gameplay",
+                        "能力项": "特定格式"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it includes cultural performances",
+                        "能力项": "特定格式"
+                    },
+                    "hasHotSpring": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it has hot spring projects",
+                        "能力项": "特定格式"
+                    }
+                },
+                "required": [
+                    "playName",
+                    "briefDesc",
+                    "location",
+                    "startDate",
+                    "endDate",
+                    "detailDesc",
+                    "price",
+                    "issueTime",
+                    "hasNightView",
+                    "isParentChildFriendly",
+                    "isOutdoor",
+                    "hasCulturalShow",
+                    "hasHotSpring"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Whether it meets schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a professional travel hotspot article analyst. I will provide you with article content and article type. You need to execute different identification strategies based on different article types. Only return the extracted gameplay information, do not return any other redundant information.\nArticle type: Auto-identify\nPlease extract information according to the following rules:\n1. playName: Gameplay name, referring to specific gameplay or activity names mentioned in the article.\n2. briefDesc: One-sentence description, required to summarize gameplay highlights and features, excluding operational time, practical information, negative descriptions, 68-100 characters (include space, number...).\n3. location: Gameplay geographical location, referring to specific reference points or landmarks within scenic areas or venues, cannot be cities or provinces.\n4. startDate/endDate: Gameplay time range, date format is xxxx-xx-xx, return empty string if not identified.\n5. detailDesc: Detailed gameplay introduction, required 315-400 characters (include space, number...), describing gameplay highlights and features, excluding third-party perspective words.\n6. price: Ticket price information, return format [\"\",\"\"], return empty list if not identified.\n7. issueTime: If gameplay belongs to concerts, music festivals, Livehouse, crosstalk and other types, need to identify ticket release time, date format is xxxx-xx-xx, return empty string if none.\n8. hasNightView: Whether it is a nighttime activity (Yes/No).\n9. isParentChildFriendly: Whether it is suitable for parent-child (Yes/No).\n10. isOutdoor: Whether it is outdoor gameplay (Yes/No).\n11. hasCulturalShow: Whether it includes cultural performances (Yes/No).\n12. hasHotSpring: Whether it has hot spring projects (Yes/No).\nOutput requirements:\n1. Use JSON format to return extracted information\n2. Each gameplay as an object, containing all fields\n3. All gameplay objects form an array\n4. Do not return any characters other than JSON format\nOutput format example:\n[\n  {\"playName\":\"Gameplay Name\",\"briefDesc\":\"One-sentence description\",\"location\":\"Geographical location\",\"startDate\":\"Start time\",\"endDate\":\"End time\",\"detailDesc\":\"Detailed gameplay introduction\",\"price\":[],\"issueTime\":\"Ticket release time\",\"hasNightView\":\"Yes/No\",\"isParentChildFriendly\":\"Yes/No\",\"isOutdoor\":\"Yes/No\",\"hasCulturalShow\":\"Yes/No\",\"hasHotSpring\":\"Yes/No\"}\n]\nArticle content:Chongqing Hongyadong Night Market Music Festival, independent bands take turns to perform, the night view of the riverside and the music are perfectly integrated, parents and children, couples are suitable for night check-ins.",
+        "json_schema": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "playName": {
+                        "type": "string",
+                        "description": "Gameplay name",
+                        "能力项": "JSON"
+                    },
+                    "briefDesc": {
+                        "type": "string",
+                        "description": "One-sentence description",
+                        "能力项": "范围、50~200字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 68,
+                        "maxLength": 100
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "Gameplay geographical location",
+                        "能力项": "JSON"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "Start time"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "End time"
+                    },
+                    "detailDesc": {
+                        "type": "string",
+                        "description": "Detailed gameplay introduction",
+                        "能力项": "范围、200字以上",
+                        "pattern": "^.*$|^$",
+                        "minLength": 315,
+                        "maxLength": 400
+                    },
+                    "price": {
+                        "type": "array",
+                        "description": "Ticket price information",
+                        "items": {
+                            "type": "string"
+                        },
+                        "能力项": "主题约束"
+                    },
+                    "issueTime": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "Ticket release time"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is a nighttime activity",
+                        "能力项": "特定格式"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is suitable for parent-child",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is outdoor gameplay",
+                        "能力项": "特定格式"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it includes cultural performances",
+                        "能力项": "特定格式"
+                    },
+                    "hasHotSpring": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it has hot spring projects",
+                        "能力项": "特定格式"
+                    }
+                },
+                "required": [
+                    "playName",
+                    "briefDesc",
+                    "location",
+                    "startDate",
+                    "endDate",
+                    "detailDesc",
+                    "price",
+                    "issueTime",
+                    "hasNightView",
+                    "isParentChildFriendly",
+                    "isOutdoor",
+                    "hasCulturalShow",
+                    "hasHotSpring"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Whether it meets schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a professional travel hotspot article analyst. I will provide you with article content and article type. You need to execute different identification strategies based on different article types. Only return the extracted gameplay information, do not return any other redundant information.\nArticle type: Auto-identify\nPlease extract information according to the following rules:\n1. playName: Gameplay name, referring to specific gameplay or activity names mentioned in the article.\n2. briefDesc: One-sentence description, required to summarize gameplay highlights and features, excluding operational time, practical information, negative descriptions, 68-100 characters (include space, number...).\n3. location: Gameplay geographical location, referring to specific reference points or landmarks within scenic areas or venues, cannot be cities or provinces.\n4. startDate/endDate: Gameplay time range, date format is xxxx-xx-xx, return empty string if not identified.\n5. detailDesc: Detailed gameplay introduction, required 315-400 characters (include space, number...), describing gameplay highlights and features, excluding third-party perspective words.\n6. price: Ticket price information, return format [\"\",\"\"], return empty list if not identified.\n7. issueTime: If gameplay belongs to concerts, music festivals, Livehouse, crosstalk and other types, need to identify ticket release time, date format is xxxx-xx-xx, return empty string if none.\n8. hasNightView: Whether it is a nighttime activity (Yes/No).\n9. isParentChildFriendly: Whether it is suitable for parent-child (Yes/No).\n10. isOutdoor: Whether it is outdoor gameplay (Yes/No).\n11. hasCulturalShow: Whether it includes cultural performances (Yes/No).\n12. hasHotSpring: Whether it has hot spring projects (Yes/No).\nOutput requirements:\n1. Use JSON format to return extracted information\n2. Each gameplay as an object, containing all fields\n3. All gameplay objects form an array\n4. Do not return any characters other than JSON format\nOutput format example:\n[\n  {\"playName\":\"Gameplay Name\",\"briefDesc\":\"One-sentence description\",\"location\":\"Geographical location\",\"startDate\":\"Start time\",\"endDate\":\"End time\",\"detailDesc\":\"Detailed gameplay introduction\",\"price\":[],\"issueTime\":\"Ticket release time\",\"hasNightView\":\"Yes/No\",\"isParentChildFriendly\":\"Yes/No\",\"isOutdoor\":\"Yes/No\",\"hasCulturalShow\":\"Yes/No\",\"hasHotSpring\":\"Yes/No\"}\n]\nArticle content:Dali Ancient City New Year Temple Fair, Bai dance, folk market, fireworks show light up the night sky of the ancient city, hot spring experience and night market food are rich and colorful.",
+        "json_schema": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "playName": {
+                        "type": "string",
+                        "description": "Gameplay name",
+                        "能力项": "JSON"
+                    },
+                    "briefDesc": {
+                        "type": "string",
+                        "description": "One-sentence description",
+                        "能力项": "范围、50~200字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 68,
+                        "maxLength": 100
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "Gameplay geographical location",
+                        "能力项": "JSON"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "Start time"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "End time"
+                    },
+                    "detailDesc": {
+                        "type": "string",
+                        "description": "Detailed gameplay introduction",
+                        "能力项": "范围、200字以上",
+                        "pattern": "^.*$|^$",
+                        "minLength": 315,
+                        "maxLength": 400
+                    },
+                    "price": {
+                        "type": "array",
+                        "description": "Ticket price information",
+                        "items": {
+                            "type": "string"
+                        },
+                        "能力项": "主题约束"
+                    },
+                    "issueTime": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "Ticket release time"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is a nighttime activity",
+                        "能力项": "特定格式"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is suitable for parent-child",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is outdoor gameplay",
+                        "能力项": "特定格式"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it includes cultural performances",
+                        "能力项": "特定格式"
+                    },
+                    "hasHotSpring": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it has hot spring projects",
+                        "能力项": "特定格式"
+                    }
+                },
+                "required": [
+                    "playName",
+                    "briefDesc",
+                    "location",
+                    "startDate",
+                    "endDate",
+                    "detailDesc",
+                    "price",
+                    "issueTime",
+                    "hasNightView",
+                    "isParentChildFriendly",
+                    "isOutdoor",
+                    "hasCulturalShow",
+                    "hasHotSpring"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Whether it meets schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a professional travel hotspot article analyst. I will provide you with article content and article type. You need to execute different identification strategies based on different article types. Only return the extracted gameplay information, do not return any other redundant information.\nArticle type: Auto-identify\nPlease extract information according to the following rules:\n1. playName: Gameplay name, referring to specific gameplay or activity names mentioned in the article.\n2. briefDesc: One-sentence description, required to summarize gameplay highlights and features, excluding operational time, practical information, negative descriptions, 68-100 characters (include space, number...).\n3. location: Gameplay geographical location, referring to specific reference points or landmarks within scenic areas or venues, cannot be cities or provinces.\n4. startDate/endDate: Gameplay time range, date format is xxxx-xx-xx, return empty string if not identified.\n5. detailDesc: Detailed gameplay introduction, required 315-400 characters (include space, number...), describing gameplay highlights and features, excluding third-party perspective words.\n6. price: Ticket price information, return format [\"\",\"\"], return empty list if not identified.\n7. issueTime: If gameplay belongs to concerts, music festivals, Livehouse, crosstalk and other types, need to identify ticket release time, date format is xxxx-xx-xx, return empty string if none.\n8. hasNightView: Whether it is a nighttime activity (Yes/No).\n9. isParentChildFriendly: Whether it is suitable for parent-child (Yes/No).\n10. isOutdoor: Whether it is outdoor gameplay (Yes/No).\n11. hasCulturalShow: Whether it includes cultural performances (Yes/No).\n12. hasHotSpring: Whether it has hot spring projects (Yes/No).\nOutput requirements:\n1. Use JSON format to return extracted information\n2. Each gameplay as an object, containing all fields\n3. All gameplay objects form an array\n4. Do not return any characters other than JSON format\nOutput format example:\n[\n  {\"playName\":\"Gameplay Name\",\"briefDesc\":\"One-sentence description\",\"location\":\"Geographical location\",\"startDate\":\"Start time\",\"endDate\":\"End time\",\"detailDesc\":\"Detailed gameplay introduction\",\"price\":[],\"issueTime\":\"Ticket release time\",\"hasNightView\":\"Yes/No\",\"isParentChildFriendly\":\"Yes/No\",\"isOutdoor\":\"Yes/No\",\"hasCulturalShow\":\"Yes/No\",\"hasHotSpring\":\"Yes/No\"}\n]\nArticle content:Chengdu Panda Base Parent-Child Science Tour, panda explanation, hand-made experience, rich and colorful theme souvenirs, the park has a small night light show.",
+        "json_schema": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "playName": {
+                        "type": "string",
+                        "description": "Gameplay name",
+                        "能力项": "JSON"
+                    },
+                    "briefDesc": {
+                        "type": "string",
+                        "description": "One-sentence description",
+                        "能力项": "范围、50~200字",
+                        "pattern": "^.*$|^$",
+                        "minLength": 68,
+                        "maxLength": 100
+                    },
+                    "location": {
+                        "type": "string",
+                        "description": "Gameplay geographical location",
+                        "能力项": "JSON"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "Start time"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "End time"
+                    },
+                    "detailDesc": {
+                        "type": "string",
+                        "description": "Detailed gameplay introduction",
+                        "能力项": "范围、200字以上",
+                        "pattern": "^.*$|^$",
+                        "minLength": 315,
+                        "maxLength": 400
+                    },
+                    "price": {
+                        "type": "array",
+                        "description": "Ticket price information",
+                        "items": {
+                            "type": "string"
+                        },
+                        "能力项": "主题约束"
+                    },
+                    "issueTime": {
+                        "type": "string",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}$|^$",
+                        "能力项": "日期格式",
+                        "description": "Ticket release time"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is a nighttime activity",
+                        "能力项": "特定格式"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is suitable for parent-child",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it is outdoor gameplay",
+                        "能力项": "特定格式"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it includes cultural performances",
+                        "能力项": "特定格式"
+                    },
+                    "hasHotSpring": {
+                        "type": "string",
+                        "enum": [
+                            "Yes",
+                            "No"
+                        ],
+                        "description": "Whether it has hot spring projects",
+                        "能力项": "特定格式"
+                    }
+                },
+                "required": [
+                    "playName",
+                    "briefDesc",
+                    "location",
+                    "startDate",
+                    "endDate",
+                    "detailDesc",
+                    "price",
+                    "issueTime",
+                    "hasNightView",
+                    "isParentChildFriendly",
+                    "isOutdoor",
+                    "hasCulturalShow",
+                    "hasHotSpring"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Whether it meets schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ]
+    }
+]

@@ -1,0 +1,342 @@
+[
+    {
+        "category": "SCHEMA",
+        "question": "Task:\n\nYou are an advertising copywriter and planner in the medical aesthetics industry. You need to write 5-8 efficacy phrases based on the project's name, efficacy, and advantages. Each efficacy phrase should be one English word and exactly have 10 characters; please output the results in JSON list format, with each element in the list output as a JSON object. It should include the following JSON key: AIGCSubjectEffect, where \"AIGCSubjectEffect\" represents the generated project efficacy phrase.\nProject information is as follows: Project advantages: 1. No hospitalization required, can be done and leave immediately, does not affect normal work and life; 2. Can design beard shape according to beauty seeker's requirements, improve face shape, enhance appearance; 3. No rejection or allergy safety issues; 4. Minimally invasive surgery, inconspicuous traces, post-operative scars are hidden and not easily noticed; 5. Natural transplant results, hair density after planting can approach normal density; 6. New hair grown after survival maintains original hair's biological characteristics; 7. Can transplant according to required area's shape, direction, angle, and thickness. Project efficacy: Improve sparse beard hair Project name: Beard transplantation\n\nRequirements:\n\n1) Language style should be friendly and natural, concise and clear: Use concise and powerful everyday language to directly describe project effects and medical institution advantages, emphasizing positive treatment effects and service quality;\n2) Produce authentic content: Ensure the provided information is true and reliable, avoid exaggerating or fabricating effects;\n3) Do not copy existing project information, each efficacy phrase must be exactly 4 characters;\n4) Cannot use the following words: such as advertisement, epidemic, first, ceiling, user, etc., ensure the copy does not contain emoticons;",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "AIGCSubjectEffect": {
+                        "type": "string",
+                        "minLength": 10,
+                        "maxLength": 10,
+                        "能力项": "主题约束"
+                    }
+                },
+                "required": [
+                    "AIGCSubjectEffect"
+                ]
+            },
+            "minItems": 5,
+            "maxItems": 8
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema requirements",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "Task:\n\nYou are an advertising copywriter and planner in the medical aesthetics industry. You need to write 5-8 efficacy phrases based on the project's name, efficacy, and advantages. Each efficacy phrase should be one English word and exactly have 10 characters; please output the results in JSON list format, with each element in the list output as a JSON object. It should include the following JSON key: AIGCSubjectEffect, where \"AIGCSubjectEffect\" represents the generated project efficacy phrase.\nProject information is as follows: Project advantages: 1. Non-invasive and painless, fast recovery; 2. Fade pigmentation, even skin tone; 3. Improve fine lines, enhance radiance; 4. No obvious side effects, suitable for various skin types; 5. Convenient operation, can be done and leave immediately. Project efficacy: Whitening and skin rejuvenation Project name: IPL photofacial\n\nRequirements:\n\n1) Language style should be friendly and natural, concise and clear: Use concise and powerful everyday language to directly describe project effects and medical institution advantages, emphasizing positive treatment effects and service quality;\n2) Produce authentic content: Ensure the provided information is true and reliable, avoid exaggerating or fabricating effects;\n3) Do not copy existing project information, each efficacy phrase must be exactly 4 characters;\n4) Cannot use the following words: such as advertisement, epidemic, first, ceiling, user, etc., ensure the copy does not contain emoticons;",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "AIGCSubjectEffect": {
+                        "type": "string",
+                        "minLength": 10,
+                        "maxLength": 10,
+                        "能力项": "主题约束"
+                    }
+                },
+                "required": [
+                    "AIGCSubjectEffect"
+                ]
+            },
+            "minItems": 5,
+            "maxItems": 8
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema requirements",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "Task:\n\nYou are an advertising copywriter and planner in the medical aesthetics industry. You need to write 5-8 efficacy phrases based on the project's name, efficacy, and advantages. Each efficacy phrase should be one English word and exactly have 10 characters; please output the results in JSON list format, with each element in the list output as a JSON object. It should include the following JSON key: AIGCSubjectEffect, where \"AIGCSubjectEffect\" represents the generated project efficacy phrase.\nProject information is as follows: Project advantages: 1. Precise injection, natural shaping; 2. Three-dimensional facial contour enhancement; 3. No recovery period, quick results; 4. Safe ingredients, high compatibility; 5. Multi-layer injection possible, lasting effects. Project efficacy: Facial filling Project name: Hyaluronic acid filling\n\nRequirements:\n\n1) Language style should be friendly and natural, concise and clear: Use concise and powerful everyday language to directly describe project effects and medical institution advantages, emphasizing positive treatment effects and service quality;\n2) Produce authentic content: Ensure the provided information is true and reliable, avoid exaggerating or fabricating effects;\n3) Do not copy existing project information, each efficacy phrase must be exactly 4 characters;\n4) Cannot use the following words: such as advertisement, epidemic, first, ceiling, user, etc., ensure the copy does not contain emoticons;",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "AIGCSubjectEffect": {
+                        "type": "string",
+                        "minLength": 10,
+                        "maxLength": 10,
+                        "能力项": "主题约束"
+                    }
+                },
+                "required": [
+                    "AIGCSubjectEffect"
+                ]
+            },
+            "minItems": 5,
+            "maxItems": 8
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema requirements",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "Task:\n\nYou are an advertising copywriter and planner in the medical aesthetics industry. You need to write 5-8 efficacy phrases based on the project's name, efficacy, and advantages. Each efficacy phrase should be one English word and exactly have 10 characters; please output the results in JSON list format, with each element in the list output as a JSON object. It should include the following JSON key: AIGCSubjectEffect, where \"AIGCSubjectEffect\" represents the generated project efficacy phrase.\nProject information is as follows: Project advantages: 1. Minimally invasive and traceless, short recovery period; 2. Tightening and lifting, improve sagging; 3. Stimulate collagen regeneration, improve skin quality; 4. Convenient operation, suitable for multiple areas; 5. Natural effects, long maintenance time. Project efficacy: Anti-aging and firming Project name: Thread lift\n\nRequirements:\n\n1) Language style should be friendly and natural, concise and clear: Use concise and powerful everyday language to directly describe project effects and medical institution advantages, emphasizing positive treatment effects and service quality;\n2) Produce authentic content: Ensure the provided information is true and reliable, avoid exaggerating or fabricating effects;\n3) Do not copy existing project information, each efficacy phrase must be exactly 4 characters;\n4) Cannot use the following words: such as advertisement, epidemic, first, ceiling, user, etc., ensure the copy does not contain emoticons;",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "AIGCSubjectEffect": {
+                        "type": "string",
+                        "minLength": 10,
+                        "maxLength": 10,
+                        "能力项": "主题约束"
+                    }
+                },
+                "required": [
+                    "AIGCSubjectEffect"
+                ]
+            },
+            "minItems": 5,
+            "maxItems": 8
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema requirements",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "Task:\n\nYou are an advertising copywriter and planner in the medical aesthetics industry. You need to write 5-8 efficacy phrases based on the project's name, efficacy, and advantages. Each efficacy phrase should be one English word and exactly have 10 characters; please output the results in JSON list format, with each element in the list output as a JSON object. It should include the following JSON key: AIGCSubjectEffect, where \"AIGCSubjectEffect\" represents the generated project efficacy phrase.\nProject information is as follows: Project advantages: 1. Layer-by-layer spot removal, obvious effects; 2. Non-invasive and painless, high safety; 3. Improve uneven skin tone, brighten complexion; 4. Stimulate collagen production, refine skin; 5. Suitable for various skin types. Project efficacy: Spot removal and whitening Project name: Laser spot removal\n\nRequirements:\n\n1) Language style should be friendly and natural, concise and clear: Use concise and powerful everyday language to directly describe project effects and medical institution advantages, emphasizing positive treatment effects and service quality;\n2) Produce authentic content: Ensure the provided information is true and reliable, avoid exaggerating or fabricating effects;\n3) Do not copy existing project information, each efficacy phrase must be exactly 4 characters;\n4) Cannot use the following words: such as advertisement, epidemic, first, ceiling, user, etc., ensure the copy does not contain emoticons;",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "AIGCSubjectEffect": {
+                        "type": "string",
+                        "minLength": 10,
+                        "maxLength": 10,
+                        "能力项": "主题约束"
+                    }
+                },
+                "required": [
+                    "AIGCSubjectEffect"
+                ]
+            },
+            "minItems": 5,
+            "maxItems": 8
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema requirements",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "Task:\n\nYou are an advertising copywriter and planner in the medical aesthetics industry. You need to write 5-8 efficacy phrases based on the project's name, efficacy, and advantages. Each efficacy phrase should be one English word and exactly have 10 characters; please output the results in JSON list format, with each element in the list output as a JSON object. It should include the following JSON key: AIGCSubjectEffect, where \"AIGCSubjectEffect\" represents the generated project efficacy phrase.\nProject information is as follows: Project advantages: 1. Improve nose shape, enhance facial three-dimensionality; 2. Safe materials, good compatibility; 3. Minimally invasive surgery, fast recovery; 4. Personalized customization, meet different needs; 5. Natural effects, long maintenance time. Project efficacy: Create beautiful nose Project name: Rhinoplasty\n\nRequirements:\n\n1) Language style should be friendly and natural, concise and clear: Use concise and powerful everyday language to directly describe project effects and medical institution advantages, emphasizing positive treatment effects and service quality;\n2) Produce authentic content: Ensure the provided information is true and reliable, avoid exaggerating or fabricating effects;\n3) Do not copy existing project information, each efficacy phrase must be exactly 4 characters;\n4) Cannot use the following words: such as advertisement, epidemic, first, ceiling, user, etc., ensure the copy does not contain emoticons;",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "AIGCSubjectEffect": {
+                        "type": "string",
+                        "minLength": 10,
+                        "maxLength": 10,
+                        "能力项": "主题约束"
+                    }
+                },
+                "required": [
+                    "AIGCSubjectEffect"
+                ]
+            },
+            "minItems": 5,
+            "maxItems": 8
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema requirements",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "Task:\n\nYou are an advertising copywriter and planner in the medical aesthetics industry. You need to write 5-8 efficacy phrases based on the project's name, efficacy, and advantages. Each efficacy phrase should be one English word and exactly have 10 characters; please output the results in JSON list format, with each element in the list output as a JSON object. It should include the following JSON key: AIGCSubjectEffect, where \"AIGCSubjectEffect\" represents the generated project efficacy phrase.\nProject information is as follows: Project advantages: 1. Deep clean pores, remove excess oil; 2. Improve blackheads and comedones, prevent acne; 3. Gentle and non-irritating, suitable for sensitive skin; 4. Hydrating and moisturizing, enhance skin radiance. Project efficacy: Purify skin and control oil Project name: Deep cleansing\n\nRequirements:\n\n1) Language style should be friendly and natural, concise and clear: Use concise and powerful everyday language to directly describe project effects and medical institution advantages, emphasizing positive treatment effects and service quality;\n2) Produce authentic content: Ensure the provided information is true and reliable, avoid exaggerating or fabricating effects;\n3) Do not copy existing project information, each efficacy phrase must be exactly 4 characters;\n4) Cannot use the following words: such as advertisement, epidemic, first, ceiling, user, etc., ensure the copy does not contain emoticons;",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "AIGCSubjectEffect": {
+                        "type": "string",
+                        "minLength": 10,
+                        "maxLength": 10,
+                        "能力项": "主题约束"
+                    }
+                },
+                "required": [
+                    "AIGCSubjectEffect"
+                ]
+            },
+            "minItems": 5,
+            "maxItems": 8
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema requirements",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "Task:\n\nYou are an advertising copywriter and planner in the medical aesthetics industry. You need to write 5-8 efficacy phrases based on the project's name, efficacy, and advantages. Each efficacy phrase should be one English word and exactly have 10 characters; please output the results in JSON list format, with each element in the list output as a JSON object. It should include the following JSON key: AIGCSubjectEffect, where \"AIGCSubjectEffect\" represents the generated project efficacy phrase.\nProject information is as follows: Project advantages: 1. Enhance hairline, modify face shape; 2. Minimally invasive surgery, fast recovery; 3. High survival rate of transplanted follicles; 4. Natural effects, high density; 5. Simple post-operative care. Project efficacy: Improve hairline Project name: Hairline transplantation\n\nRequirements:\n\n1) Language style should be friendly and natural, concise and clear: Use concise and powerful everyday language to directly describe project effects and medical institution advantages, emphasizing positive treatment effects and service quality;\n2) Produce authentic content: Ensure the provided information is true and reliable, avoid exaggerating or fabricating effects;\n3) Do not copy existing project information, each efficacy phrase must be exactly 4 characters;\n4) Cannot use the following words: such as advertisement, epidemic, first, ceiling, user, etc., ensure the copy does not contain emoticons;",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "AIGCSubjectEffect": {
+                        "type": "string",
+                        "minLength": 10,
+                        "maxLength": 10,
+                        "能力项": "主题约束"
+                    }
+                },
+                "required": [
+                    "AIGCSubjectEffect"
+                ]
+            },
+            "minItems": 5,
+            "maxItems": 8
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema requirements",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "Task:\n\nYou are an advertising copywriter and planner in the medical aesthetics industry. You need to write 5-8 efficacy phrases based on the project's name, efficacy, and advantages. Each efficacy phrase should be one English word and exactly have 10 characters; please output the results in JSON list format, with each element in the list output as a JSON object. It should include the following JSON key: AIGCSubjectEffect, where \"AIGCSubjectEffect\" represents the generated project efficacy phrase.\nProject information is as follows: Project advantages: 1. Precise hair removal, reduce regrowth; 2. Low pain sensation, high comfort; 3. Suitable for multiple body areas; 4. Convenient operation, can be done and leave immediately; 5. Lasting effects. Project efficacy: Hair removal Project name: Laser hair removal\n\nRequirements:\n\n1) Language style should be friendly and natural, concise and clear: Use concise and powerful everyday language to directly describe project effects and medical institution advantages, emphasizing positive treatment effects and service quality;\n2) Produce authentic content: Ensure the provided information is true and reliable, avoid exaggerating or fabricating effects;\n3) Do not copy existing project information, each efficacy phrase must be exactly 4 characters;\n4) Cannot use the following words: such as advertisement, epidemic, first, ceiling, user, etc., ensure the copy does not contain emoticons;",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "AIGCSubjectEffect": {
+                        "type": "string",
+                        "minLength": 10,
+                        "maxLength": 10,
+                        "能力项": "主题约束"
+                    }
+                },
+                "required": [
+                    "AIGCSubjectEffect"
+                ]
+            },
+            "minItems": 5,
+            "maxItems": 8
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema requirements",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "Task:\n\nYou are an advertising copywriter and planner in the medical aesthetics industry. You need to write 5-8 efficacy phrases based on the project's name, efficacy, and advantages. Each efficacy phrase should be one English word and exactly have 10 characters; please output the results in JSON list format, with each element in the list output as a JSON object. It should include the following JSON key: AIGCSubjectEffect, where \"AIGCSubjectEffect\" represents the generated project efficacy phrase.\nProject information is as follows: Project advantages: 1. Non-invasive injection, short recovery period; 2. Improve dynamic wrinkles, smooth skin; 3. Suitable for multiple injection sites; 4. Quick results, long maintenance time; 5. High safety. Project efficacy: Wrinkle removal Project name: Botulinum toxin injection\n\nRequirements:\n\n1) Language style should be friendly and natural, concise and clear: Use concise and powerful everyday language to directly describe project effects and medical institution advantages, emphasizing positive treatment effects and service quality;\n2) Produce authentic content: Ensure the provided information is true and reliable, avoid exaggerating or fabricating effects;\n3) Do not copy existing project information, each efficacy phrase must be exactly 4 characters;\n4) Cannot use the following words: such as advertisement, epidemic, first, ceiling, user, etc., ensure the copy does not contain emoticons;",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "AIGCSubjectEffect": {
+                        "type": "string",
+                        "minLength": 10,
+                        "maxLength": 10,
+                        "能力项": "主题约束"
+                    }
+                },
+                "required": [
+                    "AIGCSubjectEffect"
+                ]
+            },
+            "minItems": 5,
+            "maxItems": 8
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema requirements",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    }
+]

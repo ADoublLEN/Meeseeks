@@ -1,0 +1,242 @@
+{
+    "round": 2,
+    "meeseeks_score": 0.48803283284724336,
+    "utility_score": 0.15283842794759825,
+    "capability_stats": {
+        "任务意图理解": {
+            "percentage": 0.0,
+            "correct": 0,
+            "wrong": 10,
+            "total": 10,
+            "children": {
+                "在干扰下完成指令": {
+                    "percentage": 0.0,
+                    "correct": 0,
+                    "wrong": 10,
+                    "total": 10,
+                    "children": {}
+                }
+            }
+        },
+        "单元细节合规": {
+            "percentage": 0.5606361829025845,
+            "correct": 846,
+            "wrong": 663,
+            "total": 1509,
+            "children": {
+                "主题约束": {
+                    "percentage": 0.949671772428884,
+                    "correct": 434,
+                    "wrong": 23,
+                    "total": 457,
+                    "children": {}
+                },
+                "文体约束": {
+                    "percentage": 0.9696969696969697,
+                    "correct": 32,
+                    "wrong": 1,
+                    "total": 33,
+                    "children": {
+                        "生成特定文案": {
+                            "percentage": 1.0,
+                            "correct": 21,
+                            "wrong": 0,
+                            "total": 21,
+                            "children": {}
+                        },
+                        "生成名字/标题": {
+                            "percentage": 0.9166666666666666,
+                            "correct": 11,
+                            "wrong": 1,
+                            "total": 12,
+                            "children": {}
+                        }
+                    }
+                },
+                "语言约束": {
+                    "percentage": 0.0,
+                    "correct": 0,
+                    "wrong": 8,
+                    "total": 8,
+                    "children": {
+                        "中英文混杂": {
+                            "percentage": 0.0,
+                            "correct": 0,
+                            "wrong": 8,
+                            "total": 8,
+                            "children": {}
+                        }
+                    }
+                },
+                "格式约束": {
+                    "percentage": 0.9575471698113207,
+                    "correct": 203,
+                    "wrong": 9,
+                    "total": 212,
+                    "children": {
+                        "特定格式": {
+                            "percentage": 0.949438202247191,
+                            "correct": 169,
+                            "wrong": 9,
+                            "total": 178,
+                            "children": {}
+                        },
+                        "日期格式": {
+                            "percentage": 1.0,
+                            "correct": 34,
+                            "wrong": 0,
+                            "total": 34,
+                            "children": {}
+                        }
+                    }
+                },
+                "字数约束": {
+                    "percentage": 0.16703786191536749,
+                    "correct": 75,
+                    "wrong": 374,
+                    "total": 449,
+                    "children": {
+                        "精确": {
+                            "percentage": 0.0,
+                            "correct": 0,
+                            "wrong": 12,
+                            "total": 12,
+                            "children": {}
+                        },
+                        "范围": {
+                            "percentage": 0.21341463414634146,
+                            "correct": 35,
+                            "wrong": 129,
+                            "total": 164,
+                            "children": {}
+                        },
+                        "倍数": {
+                            "percentage": 0.06930693069306931,
+                            "correct": 7,
+                            "wrong": 94,
+                            "total": 101,
+                            "children": {}
+                        },
+                        "0~10字": {
+                            "percentage": 0.4,
+                            "correct": 8,
+                            "wrong": 12,
+                            "total": 20,
+                            "children": {}
+                        },
+                        "10~50字": {
+                            "percentage": 0.26666666666666666,
+                            "correct": 4,
+                            "wrong": 11,
+                            "total": 15,
+                            "children": {}
+                        },
+                        "50~200字": {
+                            "percentage": 0.35714285714285715,
+                            "correct": 10,
+                            "wrong": 18,
+                            "total": 28,
+                            "children": {}
+                        },
+                        "200字以上": {
+                            "percentage": 0.10091743119266056,
+                            "correct": 11,
+                            "wrong": 98,
+                            "total": 109,
+                            "children": {}
+                        }
+                    }
+                },
+                "其他特殊规则": {
+                    "percentage": 0.2914285714285714,
+                    "correct": 102,
+                    "wrong": 248,
+                    "total": 350,
+                    "children": {
+                        "押韵": {
+                            "percentage": 0.06666666666666667,
+                            "correct": 1,
+                            "wrong": 14,
+                            "total": 15,
+                            "children": {}
+                        },
+                        "关键词": {
+                            "percentage": 0.0,
+                            "correct": 0,
+                            "wrong": 42,
+                            "total": 42,
+                            "children": {}
+                        },
+                        "重复": {
+                            "percentage": 0.4225352112676056,
+                            "correct": 30,
+                            "wrong": 41,
+                            "total": 71,
+                            "children": {}
+                        },
+                        "写作手法": {
+                            "percentage": 1.0,
+                            "correct": 14,
+                            "wrong": 0,
+                            "total": 14,
+                            "children": {}
+                        },
+                        "词频": {
+                            "percentage": 0.27403846153846156,
+                            "correct": 57,
+                            "wrong": 151,
+                            "total": 208,
+                            "children": {}
+                        }
+                    }
+                }
+            }
+        },
+        "整体结构合规": {
+            "percentage": 0.8637413394919169,
+            "correct": 374,
+            "wrong": 59,
+            "total": 433,
+            "children": {
+                "模版合规": {
+                    "percentage": 0.8892045454545454,
+                    "correct": 313,
+                    "wrong": 39,
+                    "total": 352,
+                    "children": {
+                        "JSON": {
+                            "percentage": 0.8892045454545454,
+                            "correct": 313,
+                            "wrong": 39,
+                            "total": 352,
+                            "children": {}
+                        }
+                    }
+                },
+                "单元数量合规": {
+                    "percentage": 0.7397260273972602,
+                    "correct": 54,
+                    "wrong": 19,
+                    "total": 73,
+                    "children": {}
+                },
+                "答题逻辑合规": {
+                    "percentage": 0.875,
+                    "correct": 7,
+                    "wrong": 1,
+                    "total": 8,
+                    "children": {
+                        "答题结构合规": {
+                            "percentage": 0.875,
+                            "correct": 7,
+                            "wrong": 1,
+                            "total": 8,
+                            "children": {}
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "total_items": 229
+}

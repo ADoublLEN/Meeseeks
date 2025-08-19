@@ -1,0 +1,242 @@
+{
+    "round": 1,
+    "meeseeks_score": 0.6599518361828968,
+    "utility_score": 0.3691460055096419,
+    "capability_stats": {
+        "Intent Recognition": {
+            "percentage": 0.0,
+            "correct": 0,
+            "wrong": 10,
+            "total": 10,
+            "children": {
+                "Follow instruction under distraction": {
+                    "percentage": 0.0,
+                    "correct": 0,
+                    "wrong": 10,
+                    "total": 10,
+                    "children": {}
+                }
+            }
+        },
+        "Granular Content Validation": {
+            "percentage": 0.724609375,
+            "correct": 1855,
+            "wrong": 705,
+            "total": 2560,
+            "children": {
+                "Theme requirement": {
+                    "percentage": 0.9655172413793104,
+                    "correct": 980,
+                    "wrong": 35,
+                    "total": 1015,
+                    "children": {}
+                },
+                "Stylistic requirement": {
+                    "percentage": 0.9393939393939394,
+                    "correct": 31,
+                    "wrong": 2,
+                    "total": 33,
+                    "children": {
+                        "Generate in certain style": {
+                            "percentage": 1.0,
+                            "correct": 21,
+                            "wrong": 0,
+                            "total": 21,
+                            "children": {}
+                        },
+                        "Generate names/titles": {
+                            "percentage": 0.8333333333333334,
+                            "correct": 10,
+                            "wrong": 2,
+                            "total": 12,
+                            "children": {}
+                        }
+                    }
+                },
+                "Language requirement": {
+                    "percentage": 0.0,
+                    "correct": 0,
+                    "wrong": 8,
+                    "total": 8,
+                    "children": {
+                        "Generate Chinese-English-mixed article": {
+                            "percentage": 0.0,
+                            "correct": 0,
+                            "wrong": 8,
+                            "total": 8,
+                            "children": {}
+                        }
+                    }
+                },
+                "Granular format requirement": {
+                    "percentage": 0.948306595365419,
+                    "correct": 532,
+                    "wrong": 29,
+                    "total": 561,
+                    "children": {
+                        "Generate in other format": {
+                            "percentage": 0.9452054794520548,
+                            "correct": 483,
+                            "wrong": 28,
+                            "total": 511,
+                            "children": {}
+                        },
+                        "Generate result in date-format": {
+                            "percentage": 0.98,
+                            "correct": 49,
+                            "wrong": 1,
+                            "total": 50,
+                            "children": {}
+                        }
+                    }
+                },
+                "Word count requirement": {
+                    "percentage": 0.34856175972927245,
+                    "correct": 206,
+                    "wrong": 385,
+                    "total": 591,
+                    "children": {
+                        "Generate at accurate word number": {
+                            "percentage": 0.0,
+                            "correct": 0,
+                            "wrong": 12,
+                            "total": 12,
+                            "children": {}
+                        },
+                        "Generate in rough/range word number": {
+                            "percentage": 0.4708171206225681,
+                            "correct": 121,
+                            "wrong": 136,
+                            "total": 257,
+                            "children": {}
+                        },
+                        "Generate in X times word number of reference text": {
+                            "percentage": 0.12264150943396226,
+                            "correct": 13,
+                            "wrong": 93,
+                            "total": 106,
+                            "children": {}
+                        },
+                        "Generate in 0~10 words": {
+                            "percentage": 0.5862068965517241,
+                            "correct": 17,
+                            "wrong": 12,
+                            "total": 29,
+                            "children": {}
+                        },
+                        "Generate in 10~50 words": {
+                            "percentage": 0.7142857142857143,
+                            "correct": 25,
+                            "wrong": 10,
+                            "total": 35,
+                            "children": {}
+                        },
+                        "Generate in 50~200 words": {
+                            "percentage": 0.4473684210526316,
+                            "correct": 17,
+                            "wrong": 21,
+                            "total": 38,
+                            "children": {}
+                        },
+                        "Generate in above 200 words": {
+                            "percentage": 0.11403508771929824,
+                            "correct": 13,
+                            "wrong": 101,
+                            "total": 114,
+                            "children": {}
+                        }
+                    }
+                },
+                "Other granular requirements": {
+                    "percentage": 0.30113636363636365,
+                    "correct": 106,
+                    "wrong": 246,
+                    "total": 352,
+                    "children": {
+                        "Generate rhyming content": {
+                            "percentage": 0.0625,
+                            "correct": 1,
+                            "wrong": 15,
+                            "total": 16,
+                            "children": {}
+                        },
+                        "Generate with certain keywords": {
+                            "percentage": 0.0,
+                            "correct": 0,
+                            "wrong": 42,
+                            "total": 42,
+                            "children": {}
+                        },
+                        "Generate repeat/non-repeat content": {
+                            "percentage": 0.4788732394366197,
+                            "correct": 34,
+                            "wrong": 37,
+                            "total": 71,
+                            "children": {}
+                        },
+                        "Generate with certain rhetoric": {
+                            "percentage": 1.0,
+                            "correct": 15,
+                            "wrong": 0,
+                            "total": 15,
+                            "children": {}
+                        },
+                        "Generate with certain number of word X": {
+                            "percentage": 0.2692307692307692,
+                            "correct": 56,
+                            "wrong": 152,
+                            "total": 208,
+                            "children": {}
+                        }
+                    }
+                }
+            }
+        },
+        "Output Structure Validation": {
+            "percentage": 0.9096,
+            "correct": 1137,
+            "wrong": 113,
+            "total": 1250,
+            "children": {
+                "Output format requirement": {
+                    "percentage": 0.9402597402597402,
+                    "correct": 1086,
+                    "wrong": 69,
+                    "total": 1155,
+                    "children": {
+                        "JSON format": {
+                            "percentage": 0.9402597402597402,
+                            "correct": 1086,
+                            "wrong": 69,
+                            "total": 1155,
+                            "children": {}
+                        }
+                    }
+                },
+                "Element number requirement": {
+                    "percentage": 0.4266666666666667,
+                    "correct": 32,
+                    "wrong": 43,
+                    "total": 75,
+                    "children": {}
+                },
+                "Output logic requirement": {
+                    "percentage": 0.95,
+                    "correct": 19,
+                    "wrong": 1,
+                    "total": 20,
+                    "children": {
+                        "Generate by certain steps": {
+                            "percentage": 0.95,
+                            "correct": 19,
+                            "wrong": 1,
+                            "total": 20,
+                            "children": {}
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "total_items": 363
+}

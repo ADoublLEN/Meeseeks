@@ -1,0 +1,1082 @@
+[
+    {
+        "category": "SCHEMA",
+        "question": "你是一名资深的游玩达人和专业的文章分析师，我会给你提供一篇文章，文章内容为推荐某些适宜的游玩地点。你的任务是分析这篇文章，并以景点名称为维度提取文章中的信息。\n\n1. poiName: 提取文章中提到的景点的名称。景点必须是一个地点级别的地理位置，绝对不能是城市、省份。例如:植物园、公园、古镇、景区、博物馆、寺庙等具体景点（如太原植物园，景山公园，古北水镇）。\n\n输出要求：\n1. 使用JSON格式返回提取的信息\n2. 每个景点作为一个单独的对象，包含poiName字段\n3. 所有景点对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n你需要识别每个景点的类型（如公园、古镇、博物馆、寺庙、主题乐园、景区等），并在json中返回poiType字段。\n你需要识别每个景点是否适合亲子游玩（适合返回“是”，否则返回“否”），并在json中返回isParentChildFriendly字段。\n你需要识别每个景点是否有夜景（有夜景返回“是”，否则返回“否”），并在json中返回hasNightView字段。\n输出格式示例:\n[\n  {\"poiName\": \"示例值\", \"poiType\": \"示例类型\", \"isParentChildFriendly\": \"是/否\", \"hasNightView\": \"是/否\"}\n]\n\n文章内容:北京周边游推荐:\n1. 太原植物园是华北地区最大的植物园，适合亲子游\n2. 景山公园可俯瞰故宫全景\n3. 古北水镇的夜景堪称一绝，推荐住在景区内",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "poiName",
+                    "poiType",
+                    "isParentChildFriendly",
+                    "hasNightView"
+                ],
+                "properties": {
+                    "poiName": {
+                        "type": "string",
+                        "description": "景点名称，必须是具体地点级别的地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "poiType": {
+                        "type": "string",
+                        "description": "景点类型，如公园、古镇、博物馆、寺庙、主题乐园、景区等",
+                        "能力项": "范围、10~50字"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否适合亲子",
+                        "能力项": "特定格式"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有夜景",
+                        "能力项": "特定格式"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"poiName\": \"太原植物园\", \"poiType\": \"植物园\", \"isParentChildFriendly\": \"是\", \"hasNightView\": \"否\"}, {\"poiName\": \"景山公园\", \"poiType\": \"公园\", \"isParentChildFriendly\": \"否\", \"hasNightView\": \"否\"}, {\"poiName\": \"古北水镇\", \"poiType\": \"古镇\", \"isParentChildFriendly\": \"否\", \"hasNightView\": \"是\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一名资深的游玩达人和专业的文章分析师，我会给你提供一篇文章，文章内容为推荐某些适宜的游玩地点。你的任务是分析这篇文章，并以景点名称为维度提取文章中的信息。\n\n1. poiName: 提取文章中提到的景点的名称。景点必须是一个地点级别的地理位置，绝对不能是城市、省份。例如:植物园、公园、古镇、景区、博物馆、寺庙等具体景点（如太原植物园，景山公园，古北水镇）。\n\n输出要求：\n1. 使用JSON格式返回提取的信息\n2. 每个景点作为一个单独的对象，包含poiName字段\n3. 所有景点对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n你需要识别每个景点的类型（如公园、古镇、博物馆、寺庙、主题乐园、景区等），并在json中返回poiType字段。\n你需要识别每个景点是否有夜景（有夜景返回“是”，否则返回“否”），并在json中返回hasNightView字段。\n输出格式示例:\n[\n  {\"poiName\": \"示例值\", \"poiType\": \"示例类型\", \"hasNightView\": \"是/否\"}\n]\n\n文章内容:上海城市漫步:\n1. 上海迪士尼乐园适合全家出游，夜间烟花秀不能错过\n2. 外滩灯光秀夜景迷人\n3. 上海博物馆可体验中华文化",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "poiName",
+                    "poiType",
+                    "hasNightView"
+                ],
+                "properties": {
+                    "poiName": {
+                        "type": "string",
+                        "description": "景点名称，必须是具体地点级别的地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "poiType": {
+                        "type": "string",
+                        "description": "景点类型，如公园、古镇、博物馆、寺庙、主题乐园、景区等",
+                        "能力项": "范围、10~50字"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有夜景",
+                        "能力项": "特定格式"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"poiName\": \"上海迪士尼乐园\", \"poiType\": \"主题乐园\", \"hasNightView\": \"是\"}, {\"poiName\": \"外滩\", \"poiType\": \"景区\", \"hasNightView\": \"是\"}, {\"poiName\": \"上海博物馆\", \"poiType\": \"博物馆\", \"hasNightView\": \"否\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一名资深的游玩达人和专业的文章分析师，我会给你提供一篇文章，文章内容为推荐某些适宜的游玩地点。你的任务是分析这篇文章，并以景点名称为维度提取文章中的信息。\n\n1. poiName: 提取文章中提到的景点的名称。景点必须是一个地点级别的地理位置，绝对不能是城市、省份。例如:植物园、公园、古镇、景区、博物馆、寺庙等具体景点（如太原植物园，景山公园，古北水镇）。\n\n输出要求：\n1. 使用JSON格式返回提取的信息\n2. 每个景点作为一个单独的对象，包含poiName字段\n3. 所有景点对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n你需要识别每个景点的类型（如公园、古镇、博物馆、寺庙、主题乐园、景区等），并在json中返回poiType字段。\n你需要识别每个景点是否适合亲子游玩（适合返回“是”，否则返回“否”），并在json中返回isParentChildFriendly字段。\n输出格式示例:\n[\n  {\"poiName\": \"示例值\", \"poiType\": \"示例类型\", \"isParentChildFriendly\": \"是/否\"}\n]\n\n文章内容:广州亲子游:\n1. 长隆野生动物世界适合亲子家庭\n2. 白云山是徒步的好去处\n3. 沙面岛有欧式建筑和咖啡馆",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "poiName",
+                    "poiType",
+                    "isParentChildFriendly"
+                ],
+                "properties": {
+                    "poiName": {
+                        "type": "string",
+                        "description": "景点名称，必须是具体地点级别的地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "poiType": {
+                        "type": "string",
+                        "description": "景点类型，如公园、古镇、博物馆、寺庙、主题乐园、景区等",
+                        "能力项": "范围、10~50字"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否适合亲子",
+                        "能力项": "特定格式"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"poiName\": \"长隆野生动物世界\", \"poiType\": \"主题乐园\", \"isParentChildFriendly\": \"是\"}, {\"poiName\": \"白云山\", \"poiType\": \"山\", \"isParentChildFriendly\": \"否\"}, {\"poiName\": \"沙面岛\", \"poiType\": \"景区\", \"isParentChildFriendly\": \"否\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一名资深的游玩达人和专业的文章分析师，我会给你提供一篇文章，文章内容为推荐某些适宜的游玩地点。你的任务是分析这篇文章，并以景点名称为维度提取文章中的信息。\n\n1. poiName: 提取文章中提到的景点的名称。景点必须是一个地点级别的地理位置，绝对不能是城市、省份。例如:植物园、公园、古镇、景区、博物馆、寺庙等具体景点（如太原植物园，景山公园，古北水镇）。\n\n输出要求：\n1. 使用JSON格式返回提取的信息\n2. 每个景点作为一个单独的对象，包含poiName字段\n3. 所有景点对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n你需要识别每个景点的类型（如公园、古镇、博物馆、寺庙、主题乐园、景区等），并在json中返回poiType字段。\n你需要识别每个景点是否有文化演出（有返回“是”，否则返回“否”），并在json中返回hasCulturalShow字段。\n你需要识别每个景点是否有夜景（有夜景返回“是”，否则返回“否”），并在json中返回hasNightView字段。\n输出格式示例:\n[\n  {\"poiName\": \"示例值\", \"poiType\": \"示例类型\", \"hasCulturalShow\": \"是/否\", \"hasNightView\": \"是/否\"}\n]\n\n文章内容:成都文化游:\n1. 武侯祠有三国文化演出\n2. 杜甫草堂展示唐诗文化\n3. 宽窄巷子适合夜游和品尝小吃",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "poiName",
+                    "poiType",
+                    "hasCulturalShow",
+                    "hasNightView"
+                ],
+                "properties": {
+                    "poiName": {
+                        "type": "string",
+                        "description": "景点名称，必须是具体地点级别的地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "poiType": {
+                        "type": "string",
+                        "description": "景点类型，如公园、古镇、博物馆、寺庙、主题乐园、景区等",
+                        "能力项": "范围、10~50字"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有文化演出",
+                        "能力项": "特定格式"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有夜景",
+                        "能力项": "特定格式"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"poiName\": \"武侯祠\", \"poiType\": \"寺庙\", \"hasCulturalShow\": \"是\", \"hasNightView\": \"否\"}, {\"poiName\": \"杜甫草堂\", \"poiType\": \"景区\", \"hasCulturalShow\": \"否\", \"hasNightView\": \"否\"}, {\"poiName\": \"宽窄巷子\", \"poiType\": \"景区\", \"hasCulturalShow\": \"否\", \"hasNightView\": \"是\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一名资深的游玩达人和专业的文章分析师，我会给你提供一篇文章，文章内容为推荐某些适宜的游玩地点。你的任务是分析这篇文章，并以景点名称为维度提取文章中的信息。\n\n1. poiName: 提取文章中提到的景点的名称。景点必须是一个地点级别的地理位置，绝对不能是城市、省份。例如:植物园、公园、古镇、景区、博物馆、寺庙等具体景点（如太原植物园，景山公园，古北水镇）。\n\n输出要求：\n1. 使用JSON格式返回提取的信息\n2. 每个景点作为一个单独的对象，包含poiName字段\n3. 所有景点对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n你需要识别每个景点的类型（如公园、古镇、博物馆、寺庙、主题乐园、景区等），并在json中返回poiType字段。\n你需要识别每个景点是否有夜景（有夜景返回“是”，否则返回“否”），并在json中返回hasNightView字段。\n输出格式示例:\n[\n  {\"poiName\": \"示例值\", \"poiType\": \"示例类型\", \"hasNightView\": \"是/否\"}\n]\n\n文章内容:西安历史探秘:\n1. 大雁塔广场有夜间喷泉表演\n2. 秦始皇兵马俑博物馆世界著名\n3. 回民街是美食打卡地",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "poiName",
+                    "poiType",
+                    "hasNightView"
+                ],
+                "properties": {
+                    "poiName": {
+                        "type": "string",
+                        "description": "景点名称，必须是具体地点级别的地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "poiType": {
+                        "type": "string",
+                        "description": "景点类型，如公园、古镇、博物馆、寺庙、主题乐园、景区等",
+                        "能力项": "范围、10~50字"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有夜景",
+                        "能力项": "特定格式"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"poiName\": \"大雁塔广场\", \"poiType\": \"广场\", \"hasNightView\": \"是\"}, {\"poiName\": \"秦始皇兵马俑博物馆\", \"poiType\": \"博物馆\", \"hasNightView\": \"否\"}, {\"poiName\": \"回民街\", \"poiType\": \"景区\", \"hasNightView\": \"否\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一名资深的游玩达人和专业的文章分析师，我会给你提供一篇文章，文章内容为推荐某些适宜的游玩地点。你的任务是分析这篇文章，并以景点名称为维度提取文章中的信息。\n\n1. poiName: 提取文章中提到的景点的名称。景点必须是一个地点级别的地理位置，绝对不能是城市、省份。例如:植物园、公园、古镇、景区、博物馆、寺庙等具体景点（如太原植物园，景山公园，古北水镇）。\n\n输出要求：\n1. 使用JSON格式返回提取的信息\n2. 每个景点作为一个单独的对象，包含poiName字段\n3. 所有景点对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n你需要识别每个景点的类型（如公园、古镇、博物馆、寺庙、主题乐园、景区等），并在json中返回poiType字段。\n你需要识别每个景点是否有夜景（有夜景返回“是”，否则返回“否”），并在json中返回hasNightView字段。\n你需要识别每个景点是否为户外景点（是/否），并在json中返回isOutdoor字段。\n输出格式示例:\n[\n  {\"poiName\": \"示例值\", \"poiType\": \"示例类型\", \"hasNightView\": \"是/否\", \"isOutdoor\": \"是/否\"}\n]\n\n文章内容:杭州湖光山色:\n1. 西湖景区夜景优美，雷峰塔灯光秀迷人\n2. 灵隐寺是著名佛教寺庙\n3. 千岛湖适合户外骑行",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "poiName",
+                    "poiType",
+                    "hasNightView",
+                    "isOutdoor"
+                ],
+                "properties": {
+                    "poiName": {
+                        "type": "string",
+                        "description": "景点名称，必须是具体地点级别的地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "poiType": {
+                        "type": "string",
+                        "description": "景点类型，如公园、古镇、博物馆、寺庙、主题乐园、景区等",
+                        "能力项": "范围、10~50字"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有夜景",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否为户外景点",
+                        "能力项": "特定格式"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"poiName\": \"西湖景区\", \"poiType\": \"景区\", \"hasNightView\": \"是\", \"isOutdoor\": \"是\"}, {\"poiName\": \"灵隐寺\", \"poiType\": \"寺庙\", \"hasNightView\": \"否\", \"isOutdoor\": \"否\"}, {\"poiName\": \"千岛湖\", \"poiType\": \"景区\", \"hasNightView\": \"否\", \"isOutdoor\": \"是\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一名资深的游玩达人和专业的文章分析师，我会给你提供一篇文章，文章内容为推荐某些适宜的游玩地点。你的任务是分析这篇文章，并以景点名称为维度提取文章中的信息。\n\n1. poiName: 提取文章中提到的景点的名称。景点必须是一个地点级别的地理位置，绝对不能是城市、省份。例如:植物园、公园、古镇、景区、博物馆、寺庙等具体景点（如太原植物园，景山公园，古北水镇）。\n\n输出要求：\n1. 使用JSON格式返回提取的信息\n2. 每个景点作为一个单独的对象，包含poiName字段\n3. 所有景点对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n你需要识别每个景点的类型（如公园、古镇、博物馆、寺庙、主题乐园、景区等），并在json中返回poiType字段。\n你需要识别每个景点是否有夜景（有夜景返回“是”，否则返回“否”），并在json中返回hasNightView字段。\n你需要识别每个景点是否有文化演出（有返回“是”，否则返回“否”），并在json中返回hasCulturalShow字段。\n输出格式示例:\n[\n  {\"poiName\": \"示例值\", \"poiType\": \"示例类型\", \"hasNightView\": \"是/否\", \"hasCulturalShow\": \"是/否\"}\n]\n\n文章内容:重庆夜游体验:\n1. 洪崖洞夜景吸引大量游客\n2. 南山植物园有观景台\n3. 磁器口古镇有丰富的民俗表演",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "poiName",
+                    "poiType",
+                    "hasNightView",
+                    "hasCulturalShow"
+                ],
+                "properties": {
+                    "poiName": {
+                        "type": "string",
+                        "description": "景点名称，必须是具体地点级别的地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "poiType": {
+                        "type": "string",
+                        "description": "景点类型，如公园、古镇、博物馆、寺庙、主题乐园、景区等",
+                        "能力项": "范围、10~50字"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有夜景",
+                        "能力项": "特定格式"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有文化演出",
+                        "能力项": "特定格式"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"poiName\": \"洪崖洞\", \"poiType\": \"景区\", \"hasNightView\": \"是\", \"hasCulturalShow\": \"否\"}, {\"poiName\": \"南山植物园\", \"poiType\": \"植物园\", \"hasNightView\": \"否\", \"hasCulturalShow\": \"否\"}, {\"poiName\": \"磁器口古镇\", \"poiType\": \"古镇\", \"hasNightView\": \"否\", \"hasCulturalShow\": \"是\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一名资深的游玩达人和专业的文章分析师，我会给你提供一篇文章，文章内容为推荐某些适宜的游玩地点。你的任务是分析这篇文章，并以景点名称为维度提取文章中的信息。\n\n1. poiName: 提取文章中提到的景点的名称。景点必须是一个地点级别的地理位置，绝对不能是城市、省份。例如:植物园、公园、古镇、景区、博物馆、寺庙等具体景点（如太原植物园，景山公园，古北水镇）。\n\n输出要求：\n1. 使用JSON格式返回提取的信息\n2. 每个景点作为一个单独的对象，包含poiName字段\n3. 所有景点对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n你需要识别每个景点的类型（如公园、古镇、博物馆、寺庙、主题乐园、景区等），并在json中返回poiType字段。\n你需要识别每个景点是否有夜景（有夜景返回“是”，否则返回“否”），并在json中返回hasNightView字段。\n输出格式示例:\n[\n  {\"poiName\": \"示例值\", \"poiType\": \"示例类型\", \"hasNightView\": \"是/否\"}\n]\n\n文章内容:苏州园林之旅:\n1. 拙政园是江南园林代表\n2. 狮子林以假山著称\n3. 金鸡湖景区夜景浪漫",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "poiName",
+                    "poiType",
+                    "hasNightView"
+                ],
+                "properties": {
+                    "poiName": {
+                        "type": "string",
+                        "description": "景点名称，必须是具体地点级别的地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "poiType": {
+                        "type": "string",
+                        "description": "景点类型，如公园、古镇、博物馆、寺庙、主题乐园、景区等",
+                        "能力项": "范围、10~50字"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有夜景",
+                        "能力项": "特定格式"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"poiName\": \"拙政园\", \"poiType\": \"园林\", \"hasNightView\": \"否\"}, {\"poiName\": \"狮子林\", \"poiType\": \"园林\", \"hasNightView\": \"否\"}, {\"poiName\": \"金鸡湖景区\", \"poiType\": \"景区\", \"hasNightView\": \"是\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一名资深的游玩达人和专业的文章分析师，我会给你提供一篇文章，文章内容为推荐某些适宜的游玩地点。你的任务是分析这篇文章，并以景点名称为维度提取文章中的信息。\n\n1. poiName: 提取文章中提到的景点的名称。景点必须是一个地点级别的地理位置，绝对不能是城市、省份。例如:植物园、公园、古镇、景区、博物馆、寺庙等具体景点（如太原植物园，景山公园，古北水镇）。\n\n输出要求：\n1. 使用JSON格式返回提取的信息\n2. 每个景点作为一个单独的对象，包含poiName字段\n3. 所有景点对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n你需要识别每个景点的类型（如公园、古镇、博物馆、寺庙、主题乐园、景区等），并在json中返回poiType字段。\n你需要识别每个景点是否为户外景点（是/否），并在json中返回isOutdoor字段。\n你需要识别每个景点是否有夜景（有夜景返回“是”，否则返回“否”），并在json中返回hasNightView字段。\n输出格式示例:\n[\n  {\"poiName\": \"示例值\", \"poiType\": \"示例类型\", \"isOutdoor\": \"是/否\", \"hasNightView\": \"是/否\"}\n]\n\n文章内容:桂林山水游:\n1. 象鼻山公园是桂林地标\n2. 漓江漂流适合户外\n3. 阳朔西街有夜市和酒吧",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "poiName",
+                    "poiType",
+                    "isOutdoor",
+                    "hasNightView"
+                ],
+                "properties": {
+                    "poiName": {
+                        "type": "string",
+                        "description": "景点名称，必须是具体地点级别的地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "poiType": {
+                        "type": "string",
+                        "description": "景点类型，如公园、古镇、博物馆、寺庙、主题乐园、景区等",
+                        "能力项": "范围、10~50字"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否为户外景点",
+                        "能力项": "特定格式"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有夜景",
+                        "能力项": "特定格式"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"poiName\": \"象鼻山公园\", \"poiType\": \"公园\", \"isOutdoor\": \"是\", \"hasNightView\": \"否\"}, {\"poiName\": \"漓江\", \"poiType\": \"景区\", \"isOutdoor\": \"是\", \"hasNightView\": \"否\"}, {\"poiName\": \"阳朔西街\", \"poiType\": \"景区\", \"isOutdoor\": \"否\", \"hasNightView\": \"是\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一名资深的游玩达人和专业的文章分析师，我会给你提供一篇文章，文章内容为推荐某些适宜的游玩地点。你的任务是分析这篇文章，并以景点名称为维度提取文章中的信息。\n\n1. poiName: 提取文章中提到的景点的名称。景点必须是一个地点级别的地理位置，绝对不能是城市、省份。例如:植物园、公园、古镇、景区、博物馆、寺庙等具体景点（如太原植物园，景山公园，古北水镇）。\n\n输出要求：\n1. 使用JSON格式返回提取的信息\n2. 每个景点作为一个单独的对象，包含poiName字段\n3. 所有景点对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n你需要识别每个景点的类型（如公园、古镇、博物馆、寺庙、主题乐园、景区等），并在json中返回poiType字段。\n你需要识别每个景点是否有文化演出（有返回“是”，否则返回“否”），并在json中返回hasCulturalShow字段。\n输出格式示例:\n[\n  {\"poiName\": \"示例值\", \"poiType\": \"示例类型\", \"hasCulturalShow\": \"是/否\"}\n]\n\n文章内容:厦门文化休闲:\n1. 鼓浪屿音乐厅有钢琴演出\n2. 南普陀寺香火旺盛\n3. 曾厝垵文艺小店林立",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "poiName",
+                    "poiType",
+                    "hasCulturalShow"
+                ],
+                "properties": {
+                    "poiName": {
+                        "type": "string",
+                        "description": "景点名称，必须是具体地点级别的地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "poiType": {
+                        "type": "string",
+                        "description": "景点类型，如公园、古镇、博物馆、寺庙、主题乐园、景区等",
+                        "能力项": "范围、10~50字"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有文化演出",
+                        "能力项": "特定格式"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"poiName\": \"鼓浪屿音乐厅\", \"poiType\": \"音乐厅\", \"hasCulturalShow\": \"是\"}, {\"poiName\": \"南普陀寺\", \"poiType\": \"寺庙\", \"hasCulturalShow\": \"否\"}, {\"poiName\": \"曾厝垵\", \"poiType\": \"景区\", \"hasCulturalShow\": \"否\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一名资深的游玩达人和专业的文章分析师，我会给你提供一篇文章，文章内容为推荐某些适宜的游玩地点。你的任务是分析这篇文章，并以景点名称为维度提取文章中的信息。\n\n1. poiName: 提取文章中提到的景点的名称。景点必须是一个地点级别的地理位置，绝对不能是城市、省份。例如:植物园、公园、古镇、景区、博物馆、寺庙等具体景点（如太原植物园，景山公园，古北水镇）。\n\n输出要求：\n1. 使用JSON格式返回提取的信息\n2. 每个景点作为一个单独的对象，包含poiName字段\n3. 所有景点对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n你需要识别每个景点的类型（如公园、古镇、博物馆、寺庙、主题乐园、景区等），并在json中返回poiType字段。\n你需要识别每个景点是否有夜景（有夜景返回“是”，否则返回“否”），并在json中返回hasNightView字段。\n你需要识别每个景点是否有温泉（有温泉返回“是”，否则返回“否”），并在json中返回hasHotSpring字段。\n输出格式示例:\n[\n  {\"poiName\": \"示例值\", \"poiType\": \"示例类型\", \"hasNightView\": \"是/否\", \"hasHotSpring\": \"是/否\"}\n]\n\n文章内容:青岛滨海风情:\n1. 五四广场夜景迷人\n2. 八大关景区适合骑行\n3. 崂山有天然温泉",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "poiName",
+                    "poiType",
+                    "hasNightView",
+                    "hasHotSpring"
+                ],
+                "properties": {
+                    "poiName": {
+                        "type": "string",
+                        "description": "景点名称，必须是具体地点级别的地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "poiType": {
+                        "type": "string",
+                        "description": "景点类型，如公园、古镇、博物馆、寺庙、主题乐园、景区等",
+                        "能力项": "范围、10~50字"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有夜景",
+                        "能力项": "特定格式"
+                    },
+                    "hasHotSpring": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有温泉",
+                        "能力项": "特定格式"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"poiName\": \"五四广场\", \"poiType\": \"广场\", \"hasNightView\": \"是\", \"hasHotSpring\": \"否\"}, {\"poiName\": \"八大关景区\", \"poiType\": \"景区\", \"hasNightView\": \"否\", \"hasHotSpring\": \"否\"}, {\"poiName\": \"崂山\", \"poiType\": \"山\", \"hasNightView\": \"否\", \"hasHotSpring\": \"是\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一名资深的游玩达人和专业的文章分析师，我会给你提供一篇文章，文章内容为推荐某些适宜的游玩地点。你的任务是分析这篇文章，并以景点名称为维度提取文章中的信息。\n\n1. poiName: 提取文章中提到的景点的名称。景点必须是一个地点级别的地理位置，绝对不能是城市、省份。例如:植物园、公园、古镇、景区、博物馆、寺庙等具体景点（如太原植物园，景山公园，古北水镇）。\n\n输出要求：\n1. 使用JSON格式返回提取的信息\n2. 每个景点作为一个单独的对象，包含poiName字段\n3. 所有景点对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n你需要识别每个景点的类型（如公园、古镇、博物馆、寺庙、主题乐园、景区等），并在json中返回poiType字段。\n你需要识别每个景点是否有夜景（有夜景返回“是”，否则返回“否”），并在json中返回hasNightView字段。\n输出格式示例:\n[\n  {\"poiName\": \"示例值\", \"poiType\": \"示例类型\", \"hasNightView\": \"是/否\"}\n]\n\n文章内容:南京人文打卡:\n1. 夫子庙秦淮河夜游浪漫\n2. 中山陵庄严肃穆\n3. 老门东有民国风情",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "poiName",
+                    "poiType",
+                    "hasNightView"
+                ],
+                "properties": {
+                    "poiName": {
+                        "type": "string",
+                        "description": "景点名称，必须是具体地点级别的地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "poiType": {
+                        "type": "string",
+                        "description": "景点类型，如公园、古镇、博物馆、寺庙、主题乐园、景区等",
+                        "能力项": "范围、10~50字"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有夜景",
+                        "能力项": "特定格式"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"poiName\": \"夫子庙秦淮河\", \"poiType\": \"景区\", \"hasNightView\": \"是\"}, {\"poiName\": \"中山陵\", \"poiType\": \"景区\", \"hasNightView\": \"否\"}, {\"poiName\": \"老门东\", \"poiType\": \"景区\", \"hasNightView\": \"否\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一名资深的游玩达人和专业的文章分析师，我会给你提供一篇文章，文章内容为推荐某些适宜的游玩地点。你的任务是分析这篇文章，并以景点名称为维度提取文章中的信息。\n\n1. poiName: 提取文章中提到的景点的名称。景点必须是一个地点级别的地理位置，绝对不能是城市、省份。例如:植物园、公园、古镇、景区、博物馆、寺庙等具体景点（如太原植物园，景山公园，古北水镇）。\n\n输出要求：\n1. 使用JSON格式返回提取的信息\n2. 每个景点作为一个单独的对象，包含poiName字段\n3. 所有景点对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n你需要识别每个景点的类型（如公园、古镇、博物馆、寺庙、主题乐园、景区等），并在json中返回poiType字段。\n你需要识别每个景点是否有夜景（有夜景返回“是”，否则返回“否”），并在json中返回hasNightView字段。\n你需要识别每个景点是否有文化演出（有返回“是”，否则返回“否”），并在json中返回hasCulturalShow字段。\n输出格式示例:\n[\n  {\"poiName\": \"示例值\", \"poiType\": \"示例类型\", \"hasNightView\": \"是/否\", \"hasCulturalShow\": \"是/否\"}\n]\n\n文章内容:天津欧陆风情:\n1. 意式风情区有教堂和咖啡馆\n2. 古文化街有传统手工艺\n3. 海河游船夜景绚烂",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "poiName",
+                    "poiType",
+                    "hasNightView",
+                    "hasCulturalShow"
+                ],
+                "properties": {
+                    "poiName": {
+                        "type": "string",
+                        "description": "景点名称，必须是具体地点级别的地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "poiType": {
+                        "type": "string",
+                        "description": "景点类型，如公园、古镇、博物馆、寺庙、主题乐园、景区等",
+                        "能力项": "范围、10~50字"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有夜景",
+                        "能力项": "特定格式"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有文化演出",
+                        "能力项": "特定格式"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"poiName\": \"意式风情区\", \"poiType\": \"景区\", \"hasNightView\": \"否\", \"hasCulturalShow\": \"否\"}, {\"poiName\": \"古文化街\", \"poiType\": \"街区\", \"hasNightView\": \"否\", \"hasCulturalShow\": \"是\"}, {\"poiName\": \"海河游船\", \"poiType\": \"游船\", \"hasNightView\": \"是\", \"hasCulturalShow\": \"否\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一名资深的游玩达人和专业的文章分析师，我会给你提供一篇文章，文章内容为推荐某些适宜的游玩地点。你的任务是分析这篇文章，并以景点名称为维度提取文章中的信息。\n\n1. poiName: 提取文章中提到的景点的名称。景点必须是一个地点级别的地理位置，绝对不能是城市、省份。例如:植物园、公园、古镇、景区、博物馆、寺庙等具体景点（如太原植物园，景山公园，古北水镇）。\n\n输出要求：\n1. 使用JSON格式返回提取的信息\n2. 每个景点作为一个单独的对象，包含poiName字段\n3. 所有景点对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n你需要识别每个景点的类型（如公园、古镇、博物馆、寺庙、主题乐园、景区等），并在json中返回poiType字段。\n你需要识别每个景点是否有夜景（有夜景返回“是”，否则返回“否”），并在json中返回hasNightView字段。\n你需要识别每个景点是否为户外景点（是/否），并在json中返回isOutdoor字段。\n输出格式示例:\n[\n  {\"poiName\": \"示例值\", \"poiType\": \"示例类型\", \"hasNightView\": \"是/否\", \"isOutdoor\": \"是/否\"}\n]\n\n文章内容:哈尔滨冰雪世界:\n1. 冰雪大世界夜景灯光璀璨\n2. 圣索菲亚教堂建筑宏伟\n3. 松花江冬季可滑雪",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "poiName",
+                    "poiType",
+                    "hasNightView",
+                    "isOutdoor"
+                ],
+                "properties": {
+                    "poiName": {
+                        "type": "string",
+                        "description": "景点名称，必须是具体地点级别的地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "poiType": {
+                        "type": "string",
+                        "description": "景点类型，如公园、古镇、博物馆、寺庙、主题乐园、景区等",
+                        "能力项": "范围、10~50字"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有夜景",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否为户外景点",
+                        "能力项": "特定格式"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"poiName\": \"冰雪大世界\", \"poiType\": \"主题乐园\", \"hasNightView\": \"是\", \"isOutdoor\": \"是\"}, {\"poiName\": \"圣索菲亚教堂\", \"poiType\": \"教堂\", \"hasNightView\": \"否\", \"isOutdoor\": \"否\"}, {\"poiName\": \"松花江\", \"poiType\": \"景区\", \"hasNightView\": \"否\", \"isOutdoor\": \"是\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一名资深的游玩达人和专业的文章分析师，我会给你提供一篇文章，文章内容为推荐某些适宜的游玩地点。你的任务是分析这篇文章，并以景点名称为维度提取文章中的信息。\n\n1. poiName: 提取文章中提到的景点的名称。景点必须是一个地点级别的地理位置，绝对不能是城市、省份。例如:植物园、公园、古镇、景区、博物馆、寺庙等具体景点（如太原植物园，景山公园，古北水镇）。\n\n输出要求：\n1. 使用JSON格式返回提取的信息\n2. 每个景点作为一个单独的对象，包含poiName字段\n3. 所有景点对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n你需要识别每个景点的类型（如公园、古镇、博物馆、寺庙、主题乐园、景区等），并在json中返回poiType字段。\n你需要识别每个景点是否有夜景（有夜景返回“是”，否则返回“否”），并在json中返回hasNightView字段。\n输出格式示例:\n[\n  {\"poiName\": \"示例值\", \"poiType\": \"示例类型\", \"hasNightView\": \"是/否\"}\n]\n\n文章内容:昆明春日花海:\n1. 世纪公园樱花盛开\n2. 石林景区地貌奇特\n3. 滇池湿地适合观鸟",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "poiName",
+                    "poiType",
+                    "hasNightView"
+                ],
+                "properties": {
+                    "poiName": {
+                        "type": "string",
+                        "description": "景点名称，必须是具体地点级别的地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "poiType": {
+                        "type": "string",
+                        "description": "景点类型，如公园、古镇、博物馆、寺庙、主题乐园、景区等",
+                        "能力项": "范围、10~50字"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有夜景",
+                        "能力项": "特定格式"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"poiName\": \"世纪公园\", \"poiType\": \"公园\", \"hasNightView\": \"否\"}, {\"poiName\": \"石林景区\", \"poiType\": \"景区\", \"hasNightView\": \"否\"}, {\"poiName\": \"滇池湿地\", \"poiType\": \"湿地\", \"hasNightView\": \"否\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一名资深的游玩达人和专业的文章分析师，我会给你提供一篇文章，文章内容为推荐某些适宜的游玩地点。你的任务是分析这篇文章，并以景点名称为维度提取文章中的信息。\n\n1. poiName: 提取文章中提到的景点的名称。景点必须是一个地点级别的地理位置，绝对不能是城市、省份。例如:植物园、公园、古镇、景区、博物馆、寺庙等具体景点（如太原植物园，景山公园，古北水镇）。\n\n输出要求：\n1. 使用JSON格式返回提取的信息\n2. 每个景点作为一个单独的对象，包含poiName字段\n3. 所有景点对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n你需要识别每个景点的类型（如公园、古镇、博物馆、寺庙、主题乐园、景区等），并在json中返回poiType字段。\n你需要识别每个景点是否有文化演出（有返回“是”，否则返回“否”），并在json中返回hasCulturalShow字段。\n你需要识别每个景点是否适合亲子游玩（适合返回“是”，否则返回“否”），并在json中返回isParentChildFriendly字段。\n输出格式示例:\n[\n  {\"poiName\": \"示例值\", \"poiType\": \"示例类型\", \"hasCulturalShow\": \"是/否\", \"isParentChildFriendly\": \"是/否\"}\n]\n\n文章内容:深圳都市休闲:\n1. 欢乐谷主题乐园有夜场演出\n2. 大梅沙海滨公园适合亲子\n3. 世界之窗有环球灯光秀",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "poiName",
+                    "poiType",
+                    "hasCulturalShow",
+                    "isParentChildFriendly"
+                ],
+                "properties": {
+                    "poiName": {
+                        "type": "string",
+                        "description": "景点名称，必须是具体地点级别的地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "poiType": {
+                        "type": "string",
+                        "description": "景点类型，如公园、古镇、博物馆、寺庙、主题乐园、景区等",
+                        "能力项": "范围、10~50字"
+                    },
+                    "hasCulturalShow": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有文化演出",
+                        "能力项": "特定格式"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否适合亲子",
+                        "能力项": "特定格式"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"poiName\": \"欢乐谷\", \"poiType\": \"主题乐园\", \"hasCulturalShow\": \"是\", \"isParentChildFriendly\": \"是\"}, {\"poiName\": \"大梅沙海滨公园\", \"poiType\": \"公园\", \"hasCulturalShow\": \"否\", \"isParentChildFriendly\": \"是\"}, {\"poiName\": \"世界之窗\", \"poiType\": \"主题乐园\", \"hasCulturalShow\": \"是\", \"isParentChildFriendly\": \"否\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一名资深的游玩达人和专业的文章分析师，我会给你提供一篇文章，文章内容为推荐某些适宜的游玩地点。你的任务是分析这篇文章，并以景点名称为维度提取文章中的信息。\n\n1. poiName: 提取文章中提到的景点的名称。景点必须是一个地点级别的地理位置，绝对不能是城市、省份。例如:植物园、公园、古镇、景区、博物馆、寺庙等具体景点（如太原植物园，景山公园，古北水镇）。\n\n输出要求：\n1. 使用JSON格式返回提取的信息\n2. 每个景点作为一个单独的对象，包含poiName字段\n3. 所有景点对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n你需要识别每个景点的类型（如公园、古镇、博物馆、寺庙、主题乐园、景区等），并在json中返回poiType字段。\n你需要识别每个景点是否有夜景（有夜景返回“是”，否则返回“否”），并在json中返回hasNightView字段。\n你需要识别每个景点是否为户外景点（是/否），并在json中返回isOutdoor字段。\n输出格式示例:\n[\n  {\"poiName\": \"示例值\", \"poiType\": \"示例类型\", \"hasNightView\": \"是/否\", \"isOutdoor\": \"是/否\"}\n]\n\n文章内容:长沙文艺青年路线:\n1. 橘子洲头可看烟花\n2. 岳麓山适合徒步\n3. 太平街有特色小吃",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "poiName",
+                    "poiType",
+                    "hasNightView",
+                    "isOutdoor"
+                ],
+                "properties": {
+                    "poiName": {
+                        "type": "string",
+                        "description": "景点名称，必须是具体地点级别的地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "poiType": {
+                        "type": "string",
+                        "description": "景点类型，如公园、古镇、博物馆、寺庙、主题乐园、景区等",
+                        "能力项": "范围、10~50字"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有夜景",
+                        "能力项": "特定格式"
+                    },
+                    "isOutdoor": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否为户外景点",
+                        "能力项": "特定格式"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"poiName\": \"橘子洲头\", \"poiType\": \"景区\", \"hasNightView\": \"是\", \"isOutdoor\": \"是\"}, {\"poiName\": \"岳麓山\", \"poiType\": \"山\", \"hasNightView\": \"否\", \"isOutdoor\": \"是\"}, {\"poiName\": \"太平街\", \"poiType\": \"街区\", \"hasNightView\": \"否\", \"isOutdoor\": \"否\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一名资深的游玩达人和专业的文章分析师，我会给你提供一篇文章，文章内容为推荐某些适宜的游玩地点。你的任务是分析这篇文章，并以景点名称为维度提取文章中的信息。\n\n1. poiName: 提取文章中提到的景点的名称。景点必须是一个地点级别的地理位置，绝对不能是城市、省份。例如:植物园、公园、古镇、景区、博物馆、寺庙等具体景点（如太原植物园，景山公园，古北水镇）。\n\n输出要求：\n1. 使用JSON格式返回提取的信息\n2. 每个景点作为一个单独的对象，包含poiName字段\n3. 所有景点对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n你需要识别每个景点的类型（如公园、古镇、博物馆、寺庙、主题乐园、景区等），并在json中返回poiType字段。\n你需要识别每个景点是否有夜景（有夜景返回“是”，否则返回“否”），并在json中返回hasNightView字段。\n输出格式示例:\n[\n  {\"poiName\": \"示例值\", \"poiType\": \"示例类型\", \"hasNightView\": \"是/否\"}\n]\n\n文章内容:济南泉水游:\n1. 大明湖公园有荷花展\n2. 趵突泉是泉城象征\n3. 千佛山适合登高望远",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "poiName",
+                    "poiType",
+                    "hasNightView"
+                ],
+                "properties": {
+                    "poiName": {
+                        "type": "string",
+                        "description": "景点名称，必须是具体地点级别的地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "poiType": {
+                        "type": "string",
+                        "description": "景点类型，如公园、古镇、博物馆、寺庙、主题乐园、景区等",
+                        "能力项": "范围、10~50字"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有夜景",
+                        "能力项": "特定格式"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"poiName\": \"大明湖公园\", \"poiType\": \"公园\", \"hasNightView\": \"是\"}, {\"poiName\": \"趵突泉\", \"poiType\": \"泉\", \"hasNightView\": \"否\"}, {\"poiName\": \"千佛山\", \"poiType\": \"山\", \"hasNightView\": \"否\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一名资深的游玩达人和专业的文章分析师，我会给你提供一篇文章，文章内容为推荐某些适宜的游玩地点。你的任务是分析这篇文章，并以景点名称为维度提取文章中的信息。\n\n1. poiName: 提取文章中提到的景点的名称。景点必须是一个地点级别的地理位置，绝对不能是城市、省份。例如:植物园、公园、古镇、景区、博物馆、寺庙等具体景点（如太原植物园，景山公园，古北水镇）。\n\n输出要求：\n1. 使用JSON格式返回提取的信息\n2. 每个景点作为一个单独的对象，包含poiName字段\n3. 所有景点对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n你需要识别每个景点的类型（如公园、古镇、博物馆、寺庙、主题乐园、景区等），并在json中返回poiType字段。\n你需要识别每个景点是否适合亲子游玩（适合返回“是”，否则返回“否”），并在json中返回isParentChildFriendly字段。\n输出格式示例:\n[\n  {\"poiName\": \"示例值\", \"poiType\": \"示例类型\", \"isParentChildFriendly\": \"是/否\"}\n]\n\n文章内容:合肥周末游:\n1. 包公园有包公文化展\n2. 三河古镇夜市热闹\n3. 合肥植物园适合亲子活动",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "poiName",
+                    "poiType",
+                    "isParentChildFriendly"
+                ],
+                "properties": {
+                    "poiName": {
+                        "type": "string",
+                        "description": "景点名称，必须是具体地点级别的地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "poiType": {
+                        "type": "string",
+                        "description": "景点类型，如公园、古镇、博物馆、寺庙、主题乐园、景区等",
+                        "能力项": "范围、10~50字"
+                    },
+                    "isParentChildFriendly": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否适合亲子",
+                        "能力项": "特定格式"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"poiName\": \"包公园\", \"poiType\": \"公园\", \"isParentChildFriendly\": \"否\"}, {\"poiName\": \"三河古镇\", \"poiType\": \"古镇\", \"isParentChildFriendly\": \"否\"}, {\"poiName\": \"合肥植物园\", \"poiType\": \"植物园\", \"isParentChildFriendly\": \"是\"}]"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一名资深的游玩达人和专业的文章分析师，我会给你提供一篇文章，文章内容为推荐某些适宜的游玩地点。你的任务是分析这篇文章，并以景点名称为维度提取文章中的信息。\n\n1. poiName: 提取文章中提到的景点的名称。景点必须是一个地点级别的地理位置，绝对不能是城市、省份。例如:植物园、公园、古镇、景区、博物馆、寺庙等具体景点（如太原植物园，景山公园，古北水镇）。\n\n输出要求：\n1. 使用JSON格式返回提取的信息\n2. 每个景点作为一个单独的对象，包含poiName字段\n3. 所有景点对象组成一个数组\n4. 不要返回JSON格式以外的任何字符\n你需要识别每个景点的类型（如公园、古镇、博物馆、寺庙、主题乐园、景区等），并在json中返回poiType字段。\n你需要识别每个景点是否有夜景（有夜景返回“是”，否则返回“否”），并在json中返回hasNightView字段。\n输出格式示例:\n[\n  {\"poiName\": \"示例值\", \"poiType\": \"示例类型\", \"hasNightView\": \"是/否\"}\n]\n\n文章内容:洛阳历史游:\n1. 龙门石窟雕刻精美\n2. 白马寺是中国最早佛寺\n3. 隋唐遗址植物园有夜景",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "poiName",
+                    "poiType",
+                    "hasNightView"
+                ],
+                "properties": {
+                    "poiName": {
+                        "type": "string",
+                        "description": "景点名称，必须是具体地点级别的地理位置",
+                        "能力项": "范围、10~50字"
+                    },
+                    "poiType": {
+                        "type": "string",
+                        "description": "景点类型，如公园、古镇、博物馆、寺庙、主题乐园、景区等",
+                        "能力项": "范围、10~50字"
+                    },
+                    "hasNightView": {
+                        "type": "string",
+                        "enum": [
+                            "是",
+                            "否"
+                        ],
+                        "description": "是否有夜景",
+                        "能力项": "特定格式"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "[{\"poiName\": \"龙门石窟\", \"poiType\": \"景区\", \"hasNightView\": \"否\"}, {\"poiName\": \"白马寺\", \"poiType\": \"寺庙\", \"hasNightView\": \"否\"}, {\"poiName\": \"隋唐遗址植物园\", \"poiType\": \"植物园\", \"hasNightView\": \"是\"}]"
+    }
+]

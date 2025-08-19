@@ -1,0 +1,962 @@
+[
+    {
+        "category": "general_single",
+        "question": "Hello, large language model. I'm not a native of Shanghai, but I want to work here. My work involves developing apps and data mining. My boss asked me to prepare a self-introduction speech. This self-introduction speech must be very detailed. First, I should introduce myself with content unrelated to work, then write about my work experience in app development, and finally write about my work experience in data mining. In the conclusion, I need to express my enthusiasm for work. However, the resume can only contain English and no other languages. Due to privacy reasons, I won't provide you with my resume this time. Just give it a try first, and I'll see your level. The resume doesn't require a special format, just write it in a plain way without dividing it into paragraphs, and don't output any additional content. Moreover, the use of 'the' cannot be over than 1 times，'Shanghai' cannot be over 1 times，'job' cannot be over 1 times. I will be asked to read my resume so you shall keep the resume to be around 10 minutes。In order to ensure strong readability, please do not output any content outside the article.",
+        "corresponding_parts": {
+            "工作经历": "#CODE#自我介绍演讲稿内容，注意演讲稿内容中的开场白，比如大家好之类的是不用删除的，这也是演讲稿的一部分"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 2,
+                "question": "稿子是否是10分钟左右",
+                "corresponding_part": "工作经历",
+                "rule": "each_length:[1000.0,1500.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "'shanghai'的使用是否不超过1次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq1:[\"shanghai\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "'the的使用是否不超过1次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq1:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 10,
+                "question": "'job'字的使用是否不超过1次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq1:[\"job\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "Hello, large language model. I'm not a native of Shanghai, but I want to work here. My work involves developing apps and data mining. My boss asked me to prepare a self-introduction speech. This self-introduction speech must be very detailed. First, I should introduce myself with content unrelated to work, then write about my work experience in app development, and finally write about my work experience in data mining. In the conclusion, I need to express my enthusiasm for work. However, the resume can only contain English and no other languages. Due to privacy reasons, I won't provide you with my resume this time. Just give it a try first, and I'll see your level. The resume doesn't require a special format, just write it in a plain way without dividing it into paragraphs, and don't output any additional content. Moreover, the use of 'the' cannot be over than 1 times，'Shanghai' cannot be over 1 times，'job' cannot be over 1 times. I will be asked to read my resume so you shall keep the resume to be around 20 minutes。In order to ensure strong readability, please do not output any content outside the article.",
+        "corresponding_parts": {
+            "工作经历": "#CODE#自我介绍演讲稿内容，注意演讲稿内容中的开场白，比如大家好之类的是不用删除的，这也是演讲稿的一部分"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 2,
+                "question": "稿子是否是20分钟左右",
+                "corresponding_part": "工作经历",
+                "rule": "each_length:[2000.0,3000.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "'shanghai'的使用是否不超过1次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq1:[\"shanghai\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "'the的使用是否不超过1次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq1:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 10,
+                "question": "'job'字的使用是否不超过1次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq1:[\"job\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "Hello, large language model. I'm not a native of Shanghai, but I want to work here. My work involves developing apps and data mining. My boss asked me to prepare a self-introduction speech. This self-introduction speech must be very detailed. First, I should introduce myself with content unrelated to work, then write about my work experience in app development, and finally write about my work experience in data mining. In the conclusion, I need to express my enthusiasm for work. However, the resume can only contain English and no other languages. Due to privacy reasons, I won't provide you with my resume this time. Just give it a try first, and I'll see your level. The resume doesn't require a special format, just write it in a plain way without dividing it into paragraphs, and don't output any additional content. Moreover, the use of 'the' cannot be over than 1 times，'Shanghai' cannot be over 1 times，'job' cannot be over 1 times. I will be asked to read my resume so you shall keep the resume to be around 40 minutes。In order to ensure strong readability, please do not output any content outside the article.",
+        "corresponding_parts": {
+            "工作经历": "#CODE#自我介绍演讲稿内容，注意演讲稿内容中的开场白，比如大家好之类的是不用删除的，这也是演讲稿的一部分"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 2,
+                "question": "稿子是否是40分钟左右",
+                "corresponding_part": "工作经历",
+                "rule": "each_length:[4000.0,6000.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "'shanghai'的使用是否不超过1次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq1:[\"shanghai\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "'the的使用是否不超过1次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq1:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 10,
+                "question": "'job'字的使用是否不超过1次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq1:[\"job\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "Hello, large language model. I'm not a native of Shanghai, but I want to work here. My work involves developing apps and data mining. My boss asked me to prepare a self-introduction speech. This self-introduction speech must be very detailed. First, I should introduce myself with content unrelated to work, then write about my work experience in app development, and finally write about my work experience in data mining. In the conclusion, I need to express my enthusiasm for work. However, the resume can only contain English and no other languages. Due to privacy reasons, I won't provide you with my resume this time. Just give it a try first, and I'll see your level. The resume doesn't require a special format, just write it in a plain way without dividing it into paragraphs, and don't output any additional content. Moreover, the use of 'the' cannot be over than 1 times，'Shanghai' cannot be over 1 times，'job' cannot be over 1 times. I will be asked to read my resume so you shall keep the resume to be around 50 minutes。In order to ensure strong readability, please do not output any content outside the article.",
+        "corresponding_parts": {
+            "工作经历": "#CODE#自我介绍演讲稿内容，注意演讲稿内容中的开场白，比如大家好之类的是不用删除的，这也是演讲稿的一部分"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 2,
+                "question": "稿子是否是50分钟左右",
+                "corresponding_part": "工作经历",
+                "rule": "each_length:[5000.0,7500.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "'shanghai'的使用是否不超过1次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq1:[\"shanghai\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "'the的使用是否不超过1次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq1:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 10,
+                "question": "'job'字的使用是否不超过1次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq1:[\"job\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "Hello, large language model. I'm not a native of Shanghai, but I want to work here. My work involves developing apps and data mining. My boss asked me to prepare a self-introduction speech. This self-introduction speech must be very detailed. First, I should introduce myself with content unrelated to work, then write about my work experience in app development, and finally write about my work experience in data mining. In the conclusion, I need to express my enthusiasm for work. However, the resume can only contain English and no other languages. Due to privacy reasons, I won't provide you with my resume this time. Just give it a try first, and I'll see your level. The resume doesn't require a special format, just write it in a plain way without dividing it into paragraphs, and don't output any additional content. Moreover, the use of 'the' cannot be over than 2 times，'Shanghai' cannot be over 2 times，'job' cannot be over 2 times. I will be asked to read my resume so you shall keep the resume to be around 10 minutes。In order to ensure strong readability, please do not output any content outside the article.",
+        "corresponding_parts": {
+            "工作经历": "#CODE#自我介绍演讲稿内容，注意演讲稿内容中的开场白，比如大家好之类的是不用删除的，这也是演讲稿的一部分"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 2,
+                "question": "稿子是否是10分钟左右",
+                "corresponding_part": "工作经历",
+                "rule": "each_length:[1000.0,1500.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "'shanghai'的使用是否不超过2次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq2:[\"shanghai\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "'the的使用是否不超过2次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 10,
+                "question": "'job'字的使用是否不超过2次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq2:[\"job\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "Hello, large language model. I'm not a native of Shanghai, but I want to work here. My work involves developing apps and data mining. My boss asked me to prepare a self-introduction speech. This self-introduction speech must be very detailed. First, I should introduce myself with content unrelated to work, then write about my work experience in app development, and finally write about my work experience in data mining. In the conclusion, I need to express my enthusiasm for work. However, the resume can only contain English and no other languages. Due to privacy reasons, I won't provide you with my resume this time. Just give it a try first, and I'll see your level. The resume doesn't require a special format, just write it in a plain way without dividing it into paragraphs, and don't output any additional content. Moreover, the use of 'the' cannot be over than 2 times，'Shanghai' cannot be over 2 times，'job' cannot be over 2 times. I will be asked to read my resume so you shall keep the resume to be around 20 minutes。In order to ensure strong readability, please do not output any content outside the article.",
+        "corresponding_parts": {
+            "工作经历": "#CODE#自我介绍演讲稿内容，注意演讲稿内容中的开场白，比如大家好之类的是不用删除的，这也是演讲稿的一部分"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 2,
+                "question": "稿子是否是20分钟左右",
+                "corresponding_part": "工作经历",
+                "rule": "each_length:[2000.0,3000.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "'shanghai'的使用是否不超过2次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq2:[\"shanghai\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "'the的使用是否不超过2次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 10,
+                "question": "'job'字的使用是否不超过2次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq2:[\"job\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "Hello, large language model. I'm not a native of Shanghai, but I want to work here. My work involves developing apps and data mining. My boss asked me to prepare a self-introduction speech. This self-introduction speech must be very detailed. First, I should introduce myself with content unrelated to work, then write about my work experience in app development, and finally write about my work experience in data mining. In the conclusion, I need to express my enthusiasm for work. However, the resume can only contain English and no other languages. Due to privacy reasons, I won't provide you with my resume this time. Just give it a try first, and I'll see your level. The resume doesn't require a special format, just write it in a plain way without dividing it into paragraphs, and don't output any additional content. Moreover, the use of 'the' cannot be over than 2 times，'Shanghai' cannot be over 2 times，'job' cannot be over 2 times. I will be asked to read my resume so you shall keep the resume to be around 40 minutes。In order to ensure strong readability, please do not output any content outside the article.",
+        "corresponding_parts": {
+            "工作经历": "#CODE#自我介绍演讲稿内容，注意演讲稿内容中的开场白，比如大家好之类的是不用删除的，这也是演讲稿的一部分"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 2,
+                "question": "稿子是否是40分钟左右",
+                "corresponding_part": "工作经历",
+                "rule": "each_length:[4000.0,6000.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "'shanghai'的使用是否不超过2次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq2:[\"shanghai\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "'the的使用是否不超过2次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 10,
+                "question": "'job'字的使用是否不超过2次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq2:[\"job\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "Hello, large language model. I'm not a native of Shanghai, but I want to work here. My work involves developing apps and data mining. My boss asked me to prepare a self-introduction speech. This self-introduction speech must be very detailed. First, I should introduce myself with content unrelated to work, then write about my work experience in app development, and finally write about my work experience in data mining. In the conclusion, I need to express my enthusiasm for work. However, the resume can only contain English and no other languages. Due to privacy reasons, I won't provide you with my resume this time. Just give it a try first, and I'll see your level. The resume doesn't require a special format, just write it in a plain way without dividing it into paragraphs, and don't output any additional content. Moreover, the use of 'the' cannot be over than 2 times，'Shanghai' cannot be over 2 times，'job' cannot be over 2 times. I will be asked to read my resume so you shall keep the resume to be around 50 minutes。In order to ensure strong readability, please do not output any content outside the article.",
+        "corresponding_parts": {
+            "工作经历": "#CODE#自我介绍演讲稿内容，注意演讲稿内容中的开场白，比如大家好之类的是不用删除的，这也是演讲稿的一部分"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 2,
+                "question": "稿子是否是50分钟左右",
+                "corresponding_part": "工作经历",
+                "rule": "each_length:[5000.0,7500.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "'shanghai'的使用是否不超过2次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq2:[\"shanghai\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "'the的使用是否不超过2次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 10,
+                "question": "'job'字的使用是否不超过2次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq2:[\"job\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "Hello, large language model. I'm not a native of Shanghai, but I want to work here. My work involves developing apps and data mining. My boss asked me to prepare a self-introduction speech. This self-introduction speech must be very detailed. First, I should introduce myself with content unrelated to work, then write about my work experience in app development, and finally write about my work experience in data mining. In the conclusion, I need to express my enthusiasm for work. However, the resume can only contain English and no other languages. Due to privacy reasons, I won't provide you with my resume this time. Just give it a try first, and I'll see your level. The resume doesn't require a special format, just write it in a plain way without dividing it into paragraphs, and don't output any additional content. Moreover, the use of 'the' cannot be over than 3 times，'Shanghai' cannot be over 3 times，'job' cannot be over 3 times. I will be asked to read my resume so you shall keep the resume to be around 10 minutes。In order to ensure strong readability, please do not output any content outside the article.",
+        "corresponding_parts": {
+            "工作经历": "#CODE#自我介绍演讲稿内容，注意演讲稿内容中的开场白，比如大家好之类的是不用删除的，这也是演讲稿的一部分"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 2,
+                "question": "稿子是否是10分钟左右",
+                "corresponding_part": "工作经历",
+                "rule": "each_length:[1000.0,1500.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "'shanghai'的使用是否不超过3次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq3:[\"shanghai\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "'the的使用是否不超过3次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq3:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 10,
+                "question": "'job'字的使用是否不超过3次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq3:[\"job\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "Hello, large language model. I'm not a native of Shanghai, but I want to work here. My work involves developing apps and data mining. My boss asked me to prepare a self-introduction speech. This self-introduction speech must be very detailed. First, I should introduce myself with content unrelated to work, then write about my work experience in app development, and finally write about my work experience in data mining. In the conclusion, I need to express my enthusiasm for work. However, the resume can only contain English and no other languages. Due to privacy reasons, I won't provide you with my resume this time. Just give it a try first, and I'll see your level. The resume doesn't require a special format, just write it in a plain way without dividing it into paragraphs, and don't output any additional content. Moreover, the use of 'the' cannot be over than 3 times，'Shanghai' cannot be over 3 times，'job' cannot be over 3 times. I will be asked to read my resume so you shall keep the resume to be around 20 minutes。In order to ensure strong readability, please do not output any content outside the article.",
+        "corresponding_parts": {
+            "工作经历": "#CODE#自我介绍演讲稿内容，注意演讲稿内容中的开场白，比如大家好之类的是不用删除的，这也是演讲稿的一部分"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 2,
+                "question": "稿子是否是20分钟左右",
+                "corresponding_part": "工作经历",
+                "rule": "each_length:[2000.0,3000.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "'shanghai'的使用是否不超过3次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq3:[\"shanghai\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "'the的使用是否不超过3次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq3:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 10,
+                "question": "'job'字的使用是否不超过3次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq3:[\"job\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "Hello, large language model. I'm not a native of Shanghai, but I want to work here. My work involves developing apps and data mining. My boss asked me to prepare a self-introduction speech. This self-introduction speech must be very detailed. First, I should introduce myself with content unrelated to work, then write about my work experience in app development, and finally write about my work experience in data mining. In the conclusion, I need to express my enthusiasm for work. However, the resume can only contain English and no other languages. Due to privacy reasons, I won't provide you with my resume this time. Just give it a try first, and I'll see your level. The resume doesn't require a special format, just write it in a plain way without dividing it into paragraphs, and don't output any additional content. Moreover, the use of 'the' cannot be over than 3 times，'Shanghai' cannot be over 3 times，'job' cannot be over 3 times. I will be asked to read my resume so you shall keep the resume to be around 40 minutes。In order to ensure strong readability, please do not output any content outside the article.",
+        "corresponding_parts": {
+            "工作经历": "#CODE#自我介绍演讲稿内容，注意演讲稿内容中的开场白，比如大家好之类的是不用删除的，这也是演讲稿的一部分"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 2,
+                "question": "稿子是否是40分钟左右",
+                "corresponding_part": "工作经历",
+                "rule": "each_length:[4000.0,6000.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "'shanghai'的使用是否不超过3次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq3:[\"shanghai\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "'the的使用是否不超过3次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq3:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 10,
+                "question": "'job'字的使用是否不超过3次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq3:[\"job\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "Hello, large language model. I'm not a native of Shanghai, but I want to work here. My work involves developing apps and data mining. My boss asked me to prepare a self-introduction speech. This self-introduction speech must be very detailed. First, I should introduce myself with content unrelated to work, then write about my work experience in app development, and finally write about my work experience in data mining. In the conclusion, I need to express my enthusiasm for work. However, the resume can only contain English and no other languages. Due to privacy reasons, I won't provide you with my resume this time. Just give it a try first, and I'll see your level. The resume doesn't require a special format, just write it in a plain way without dividing it into paragraphs, and don't output any additional content. Moreover, the use of 'the' cannot be over than 3 times，'Shanghai' cannot be over 3 times，'job' cannot be over 3 times. I will be asked to read my resume so you shall keep the resume to be around 50 minutes。In order to ensure strong readability, please do not output any content outside the article.",
+        "corresponding_parts": {
+            "工作经历": "#CODE#自我介绍演讲稿内容，注意演讲稿内容中的开场白，比如大家好之类的是不用删除的，这也是演讲稿的一部分"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 2,
+                "question": "稿子是否是50分钟左右",
+                "corresponding_part": "工作经历",
+                "rule": "each_length:[5000.0,7500.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "'shanghai'的使用是否不超过3次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq3:[\"shanghai\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "'the的使用是否不超过3次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq3:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 10,
+                "question": "'job'字的使用是否不超过3次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq3:[\"job\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "Hello, large language model. I'm not a native of Shanghai, but I want to work here. My work involves developing apps and data mining. My boss asked me to prepare a self-introduction speech. This self-introduction speech must be very detailed. First, I should introduce myself with content unrelated to work, then write about my work experience in app development, and finally write about my work experience in data mining. In the conclusion, I need to express my enthusiasm for work. However, the resume can only contain English and no other languages. Due to privacy reasons, I won't provide you with my resume this time. Just give it a try first, and I'll see your level. The resume doesn't require a special format, just write it in a plain way without dividing it into paragraphs, and don't output any additional content. Moreover, the use of 'the' cannot be over than 1 times，'Shanghai' cannot be over 2 times，'job' cannot be over 1 times. I will be asked to read my resume so you shall keep the resume to be around 10 minutes。In order to ensure strong readability, please do not output any content outside the article.",
+        "corresponding_parts": {
+            "工作经历": "#CODE#自我介绍演讲稿内容，注意演讲稿内容中的开场白，比如大家好之类的是不用删除的，这也是演讲稿的一部分"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 2,
+                "question": "稿子是否是10分钟左右",
+                "corresponding_part": "工作经历",
+                "rule": "each_length:[1000.0,1500.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "'shanghai'的使用是否不超过1次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq1:[\"shanghai\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "'the的使用是否不超过2次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 10,
+                "question": "'job'字的使用是否不超过1次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq1:[\"job\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "Hello, large language model. I'm not a native of Shanghai, but I want to work here. My work involves developing apps and data mining. My boss asked me to prepare a self-introduction speech. This self-introduction speech must be very detailed. First, I should introduce myself with content unrelated to work, then write about my work experience in app development, and finally write about my work experience in data mining. In the conclusion, I need to express my enthusiasm for work. However, the resume can only contain English and no other languages. Due to privacy reasons, I won't provide you with my resume this time. Just give it a try first, and I'll see your level. The resume doesn't require a special format, just write it in a plain way without dividing it into paragraphs, and don't output any additional content. Moreover, the use of 'the' cannot be over than 1 times，'Shanghai' cannot be over 2 times，'job' cannot be over 1 times. I will be asked to read my resume so you shall keep the resume to be around 20 minutes。In order to ensure strong readability, please do not output any content outside the article.",
+        "corresponding_parts": {
+            "工作经历": "#CODE#自我介绍演讲稿内容，注意演讲稿内容中的开场白，比如大家好之类的是不用删除的，这也是演讲稿的一部分"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 2,
+                "question": "稿子是否是20分钟左右",
+                "corresponding_part": "工作经历",
+                "rule": "each_length:[2000.0,3000.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "'shanghai'的使用是否不超过1次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq1:[\"shanghai\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "'the的使用是否不超过2次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 10,
+                "question": "'job'字的使用是否不超过1次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq1:[\"job\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "Hello, large language model. I'm not a native of Shanghai, but I want to work here. My work involves developing apps and data mining. My boss asked me to prepare a self-introduction speech. This self-introduction speech must be very detailed. First, I should introduce myself with content unrelated to work, then write about my work experience in app development, and finally write about my work experience in data mining. In the conclusion, I need to express my enthusiasm for work. However, the resume can only contain English and no other languages. Due to privacy reasons, I won't provide you with my resume this time. Just give it a try first, and I'll see your level. The resume doesn't require a special format, just write it in a plain way without dividing it into paragraphs, and don't output any additional content. Moreover, the use of 'the' cannot be over than 1 times，'Shanghai' cannot be over 2 times，'job' cannot be over 1 times. I will be asked to read my resume so you shall keep the resume to be around 40 minutes。In order to ensure strong readability, please do not output any content outside the article.",
+        "corresponding_parts": {
+            "工作经历": "#CODE#自我介绍演讲稿内容，注意演讲稿内容中的开场白，比如大家好之类的是不用删除的，这也是演讲稿的一部分"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 2,
+                "question": "稿子是否是40分钟左右",
+                "corresponding_part": "工作经历",
+                "rule": "each_length:[4000.0,6000.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "'shanghai'的使用是否不超过1次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq1:[\"shanghai\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "'the的使用是否不超过2次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 10,
+                "question": "'job'字的使用是否不超过1次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq1:[\"job\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "Hello, large language model. I'm not a native of Shanghai, but I want to work here. My work involves developing apps and data mining. My boss asked me to prepare a self-introduction speech. This self-introduction speech must be very detailed. First, I should introduce myself with content unrelated to work, then write about my work experience in app development, and finally write about my work experience in data mining. In the conclusion, I need to express my enthusiasm for work. However, the resume can only contain English and no other languages. Due to privacy reasons, I won't provide you with my resume this time. Just give it a try first, and I'll see your level. The resume doesn't require a special format, just write it in a plain way without dividing it into paragraphs, and don't output any additional content. Moreover, the use of 'the' cannot be over than 1 times，'Shanghai' cannot be over 2 times，'job' cannot be over 1 times. I will be asked to read my resume so you shall keep the resume to be around 50 minutes。In order to ensure strong readability, please do not output any content outside the article.",
+        "corresponding_parts": {
+            "工作经历": "#CODE#自我介绍演讲稿内容，注意演讲稿内容中的开场白，比如大家好之类的是不用删除的，这也是演讲稿的一部分"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 2,
+                "question": "稿子是否是50分钟左右",
+                "corresponding_part": "工作经历",
+                "rule": "each_length:[5000.0,7500.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "'shanghai'的使用是否不超过1次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq1:[\"shanghai\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "'the的使用是否不超过2次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq2:[\"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            },
+            {
+                "point_id": 10,
+                "question": "'job'字的使用是否不超过1次",
+                "corresponding_part": "工作经历",
+                "rule": "non_word_freq1:[\"job\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "词频",
+                "被依赖": false
+            }
+        ]
+    }
+]

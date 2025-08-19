@@ -1,0 +1,911 @@
+[
+    {
+        "category": "general_multi",
+        "question": "现在需要你自己和自己玩困难版词语接龙，规则：第一个数字是按一、二、三、四…的顺序接龙的。比如：一帆风顺 → 二话不说 → 三言两语。此外，词语需要是非常精确的3个字，且每个词必须是合理的，不能是完全没意义的词语。一共为我生成5个词语。",
+        "corresponding_parts": {
+            "词语": "#CODE#请你去除所有非词语信息后，分割并输出所有模型生成的词语，请不要去重，例如：['天天开心', '心如刀割', '割掉念想']"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否不存在没有任何意义的词语？",
+                "rule": null,
+                "dep": [],
+                "被依赖": true,
+                "eval_result": 1,
+                "eval_explanation": "分析：✅ 模型回复中提供的五个词语“一鸣惊人”、“二龙戏珠”、“三顾茅”、“四季春”、“五湖水”均是有明确含义的词语，符合要求。\n判断：是",
+                "eval_method": "pure model evaluation"
+            },
+            {
+                "point_id": 1,
+                "question": "是否列举了5个词语",
+                "corresponding_part": "词语",
+                "rule": "item_count:[5,5]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规、生成名字/标题",
+                "被依赖": false,
+                "eval_result": 0,
+                "eval_explanation": "❌ Count mismatch, generated item count is: 3",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 2,
+                "question": "每个词语是否都是3个字",
+                "corresponding_part": "词语",
+                "rule": "each_length:[3,3]",
+                "dep": [
+                    0
+                ],
+                "能力项": "0~10字、精确",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ All content character counts match",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 3,
+                "question": "是否满足词语接龙",
+                "corresponding_part": "词语",
+                "rule": "jielong2",
+                "dep": [
+                    0
+                ],
+                "能力项": "接龙",
+                "被依赖": false,
+                "eval_result": 0,
+                "eval_explanation": "❌ Mismatch, idiom: 三顾茅 should start with '一'",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 4,
+                "question": "词语是否不重复",
+                "corresponding_part": "词语",
+                "rule": "repeat_each",
+                "dep": [
+                    0
+                ],
+                "能力项": "重复",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ No duplicates",
+                "eval_method": "rule evaluation"
+            }
+        ],
+        "og_question": "现在需要你自己和自己玩困难版词语接龙，规则：第一个数字是按一、二、三、四…的顺序接龙的。比如：一帆风顺 → 二话不说 → 三言两语。此外，词语需要是非常精确的3个字，且每个词必须是合理的，不能是完全没意义的词语。一共为我生成5个词语。",
+        "model_response": "好的，按照您的要求，我会生成一个由五个三个字组成的词语序列，这些词语将按照一、二、三、四、五的顺序进行接龙，并确保每个词语都是有意义的。\n\n一鸣惊人 → 二龙戏珠 → 三顾茅 → 四季春 → 五湖水\n\n这里，“一鸣惊人”指一个人突然做出惊人的事情；“二龙戏珠”常用来形容两条龙围绕一颗宝珠嬉戏，象征吉祥；“三顾茅”源自三国时期刘备三次拜访诸葛亮的故事；“四季春”则形象地描绘了一个地方四季如春的美好景象；“五湖水”可以理解为泛指广阔水域或多个湖泊的水。",
+        "extraction_results": {
+            "词语": [
+                "三顾茅",
+                "四季春",
+                "五湖水"
+            ]
+        },
+        "extraction_code": {
+            "词语": "```python\ndef extract_info_list(model_response):\n    # 1. 检测到头部备注为【好的，按照您的要求，我会生成一个由五个三个字组成的词语序列，这些词语将按照一、二、三、四、五的顺序进行接龙，并确保每个词语都是有意义的。】，sub使用 \"^.*五的顺序进行接龙，并确保每个词语都是有意义的。\\n\" 去除头部备注；检测到尾部备注不存在。\n    cleaned_text = re.sub(r'^.*五的顺序进行接龙，并确保每个词语都是有意义的。\\n', '', model_response, flags=re.DOTALL)\n\n    # 2. 检测到中间备注为【这里，“一鸣惊人”指一个人突然做出惊人的事情；“二龙戏珠”常用来形容两条龙围绕一颗宝珠嬉戏，象征吉祥；“三顾茅”源自三国时期刘备三次拜访诸葛亮的故事；“四季春”则形象地描绘了一个地方四季如春的美好景象；“五湖水”可以理解为泛指广阔水域或多个湖泊的水。】，使用replace去除\n    cleaned_text = cleaned_text.replace('这里，“一鸣惊人”指一个人突然做出惊人的事情；“二龙戏珠”常用来形容两条龙围绕一颗宝珠嬉戏，象征吉祥；“三顾茅”源自三国时期刘备三次拜访诸葛亮的故事；“四季春”则形象地描绘了一个地方四季如春的美好景象；“五湖水”可以理解为泛指广阔水域或多个湖泊的水。', '')\n\n    if cleaned_text:\n        # 3. 检测到model_response中存在词语，则使用正则表达式提取词语\n        words = re.findall(r'\\b\\w{3}\\b', cleaned_text)\n        return words\n    return []\n```"
+        }
+    },
+    {
+        "category": "general_multi",
+        "question": "现在需要你自己和自己玩困难版词语接龙，规则：第一个数字是按一、二、三、四…的顺序接龙的。比如：一帆风顺 → 二话不说 → 三言两语。此外，词语需要是非常精确的4个字，且每个词必须是合理的，不能是完全没意义的词语。一共为我生成5个词语。",
+        "corresponding_parts": {
+            "词语": "#CODE#请你去除所有非词语信息后，分割并输出所有模型生成的词语，请不要去重，例如：['天天开心', '心如刀割', '割掉念想']"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否不存在没有任何意义的词语？",
+                "rule": null,
+                "dep": [],
+                "被依赖": true,
+                "eval_result": 1,
+                "eval_explanation": "分析：✅ 模型回复中提供的五个词语“一鸣惊人”、“二龙戏珠”、“三顾茅庐”、“四海为家”、“五湖四海”均是有明确含义的成语或常用语，不存在任何没有意义的词语。\n判断：是",
+                "eval_method": "pure model evaluation"
+            },
+            {
+                "point_id": 1,
+                "question": "是否列举了5个词语",
+                "corresponding_part": "词语",
+                "rule": "item_count:[5,5]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规、生成名字/标题",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ Count matches, generated item count is 5",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 2,
+                "question": "每个词语是否都是4个字",
+                "corresponding_part": "词语",
+                "rule": "each_length:[4,4]",
+                "dep": [
+                    0
+                ],
+                "能力项": "0~10字、精确",
+                "被依赖": false,
+                "eval_result": 0,
+                "eval_explanation": "❌ Content character count does not match range [4, 4]: [五湖四海请注意最后一个词语五湖四海虽然不符合四的接龙规则但这是由于我们只生成了五个词语如果继续下去下一个应该是以五开头的词语] count is: 62",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 3,
+                "question": "是否满足词语接龙",
+                "corresponding_part": "词语",
+                "rule": "jielong2",
+                "dep": [
+                    0
+                ],
+                "能力项": "接龙",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ Match, idioms: ['一鸣惊人', '二龙戏珠', '三顾茅庐', '四海为家', '五湖四海请注意最后一个词语五湖四海虽然不符合四的接龙规则但这是由于我们只生成了五个词语如果继续下去下一个应该是以五开头的词语']",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 4,
+                "question": "词语是否不重复",
+                "corresponding_part": "词语",
+                "rule": "repeat_each",
+                "dep": [
+                    0
+                ],
+                "能力项": "重复",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ No duplicates",
+                "eval_method": "rule evaluation"
+            }
+        ],
+        "og_question": "现在需要你自己和自己玩困难版词语接龙，规则：第一个数字是按一、二、三、四…的顺序接龙的。比如：一帆风顺 → 二话不说 → 三言两语。此外，词语需要是非常精确的4个字，且每个词必须是合理的，不能是完全没意义的词语。一共为我生成5个词语。",
+        "model_response": "好的，按照您的要求，我会生成一个由五个词语组成的困难版词语接龙，每个词语都是四个字，并且符合“一、二、三、四…”的顺序接龙规则：\n\n1. 一鸣惊人\n2. 二龙戏珠\n3. 三顾茅庐\n4. 四海为家\n5. 五湖四海\n\n请注意，最后一个词语“五湖四海”虽然不符合“四”的接龙规则，但这是由于我们只生成了五个词语，如果继续下去，下一个应该是以“五”开头的词语。希望这能满足您的需求。",
+        "extraction_results": {
+            "词语": [
+                "一鸣惊人",
+                "二龙戏珠",
+                "三顾茅庐",
+                "四海为家",
+                "五湖四海请注意最后一个词语五湖四海虽然不符合四的接龙规则但这是由于我们只生成了五个词语如果继续下去下一个应该是以五开头的词语"
+            ]
+        },
+        "extraction_code": {
+            "词语": "```python\ndef extract_info_list(model_response):\n    # 1. 检测到头部备注为【好的，按照您的要求，我会生成一个由五个词语组成的困难版词语接龙，每个词语都是四个字，并且符合“一、二、三、四…”的顺序接龙规则：】，sub使用 \"^.*顺序接龙规则：\" 去除头部备注；尾部额外备注为【请注意，最后一个词语“五湖四海”虽然不符合“四”的接龙规则，但这是由于我们只生成了五个词语，如果继续下去，下一个应该是以“五”开头的词语。希望这能满足您的需求。】，sub使用 \"|希望.*$\" 去除尾部备注。只使用头部备注后的几个字符和尾部备注前几个字符来确保正则没有问题。\n    cleaned_text = re.sub(r'^.*顺序接龙规则：|希望.*$', '', model_response, flags=re.DOTALL)\n\n    if cleaned_text:\n        # 3. 检测到model_response中存在index，则使用正则表达式提取index+词语内容\n        words = re.findall(r'(\\d+\\.\\s*.*?)(?=\\d+\\.|$)', cleaned_text, re.DOTALL)\n        return words\n    return []\n```"
+        }
+    },
+    {
+        "category": "general_multi",
+        "question": "现在需要你自己和自己玩困难版词语接龙，规则：第一个数字是按一、二、三、四…的顺序接龙的。比如：一帆风顺 → 二话不说 → 三言两语。此外，词语需要是非常精确的5个字，且每个词必须是合理的，不能是完全没意义的词语。一共为我生成5个词语。",
+        "corresponding_parts": {
+            "词语": "#CODE#请你去除所有非词语信息后，分割并输出所有模型生成的词语，请不要去重，例如：['天天开心', '心如刀割', '割掉念想']"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否不存在没有任何意义的词语？",
+                "rule": null,
+                "dep": [],
+                "被依赖": true,
+                "eval_result": 1,
+                "eval_explanation": "分析：✅ 根据模型回复中的词语，“一天到晚忙”、“二月春风暖”、“三人行必有”、“四海皆兄弟”、“五湖四海人”，这些词语虽然有的不太常见，但都是有意义的词语组合，并非完全无意义的词语。\n判断：是",
+                "eval_method": "pure model evaluation"
+            },
+            {
+                "point_id": 1,
+                "question": "是否列举了5个词语",
+                "corresponding_part": "词语",
+                "rule": "item_count:[5,5]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规、生成名字/标题",
+                "被依赖": false,
+                "eval_result": 0,
+                "eval_explanation": "❌ Count mismatch, generated item count is: 0",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 2,
+                "question": "每个词语是否都是5个字",
+                "corresponding_part": "词语",
+                "rule": "each_length:[5,5]",
+                "dep": [
+                    0
+                ],
+                "能力项": "0~10字、精确",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ All content character counts match",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 3,
+                "question": "是否满足词语接龙",
+                "corresponding_part": "词语",
+                "rule": "jielong2",
+                "dep": [
+                    0
+                ],
+                "能力项": "接龙",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ Match, idioms: []",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 4,
+                "question": "词语是否不重复",
+                "corresponding_part": "词语",
+                "rule": "repeat_each",
+                "dep": [
+                    0
+                ],
+                "能力项": "重复",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ No duplicates",
+                "eval_method": "rule evaluation"
+            }
+        ],
+        "og_question": "现在需要你自己和自己玩困难版词语接龙，规则：第一个数字是按一、二、三、四…的顺序接龙的。比如：一帆风顺 → 二话不说 → 三言两语。此外，词语需要是非常精确的5个字，且每个词必须是合理的，不能是完全没意义的词语。一共为我生成5个词语。",
+        "model_response": "好的，按照您的要求，我会生成一个由五个字组成的词语序列，每个词语的第一个字分别为“一”、“二”、“三”、“四”、“五”，并且保证这些词语都是合理存在的。\n\n1. 一天到晚忙\n2. 二月春风暖\n3. 三人行必有\n4. 四海皆兄弟\n5. 五湖四海人\n\n请注意，虽然“一天到晚忙”和“五湖四海人”在日常使用中可能不常见，但它们都是由五个字构成的合理词语组合，符合游戏规则。其他词语如“二月春风暖”、“三人行必有”、“四海皆兄弟”则更为常见，也符合要求。",
+        "extraction_results": {
+            "词语": []
+        },
+        "extraction_code": {
+            "词语": "```python\ndef extract_info_list(model_response):\n    # 1. 检测到头部备注为【好的，按照您的要求，我会生成一个由五个字组成的词语序列，每个词语的第一个字分别为“一”、“二”、“三”、“四”、“五”，并且保证这些词语都是合理存在的。】，sub使用 \"^.*五\" 去除头部备注；尾部额外备注为【请注意，虽然“一天到晚忙”和“五湖四海人”在日常使用中可能不常见，但它们都是由五个字构成的合理词语组合，符合游戏规则。其他词语如“二月春风暖”、“三人行必有”、“四海皆兄弟”则更为常见，也符合要求。】，sub使用 \"请注意.*$\" 去除尾部备注。只使用头部备注后的几个字符和尾部备注前几个字符来确保正则没有问题。\n    cleaned_text = re.sub(r'^.*五|请注意.*$', '', model_response, flags=re.DOTALL)\n\n    if cleaned_text:\n        # 3. 检测到model_response中存在index，则使用正则表达式提取index+评论内容\n        words = re.findall(r'(\\d+\\.\\s*.*?)(?=\\d+\\.|$)', cleaned_text, re.DOTALL)\n        # 提取每个词语，去掉index部分\n        words = [word.split('. ', 1)[1] for word in words]\n        return words\n    return []\n```"
+        }
+    },
+    {
+        "category": "general_multi",
+        "question": "现在需要你自己和自己玩困难版词语接龙，规则：第一个数字是按一、二、三、四…的顺序接龙的。比如：一帆风顺 → 二话不说 → 三言两语。此外，词语需要是非常精确的6个字，且每个词必须是合理的，不能是完全没意义的词语。一共为我生成5个词语。",
+        "corresponding_parts": {
+            "词语": "#CODE#请你去除所有非词语信息后，分割并输出所有模型生成的词语，请不要去重，例如：['天天开心', '心如刀割', '割掉念想']"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否不存在没有任何意义的词语？",
+                "rule": null,
+                "dep": [],
+                "被依赖": true,
+                "eval_result": 1,
+                "eval_explanation": "分析：✅ 所有的词语都有明确的意义，没有出现任何无意义的词语。即使在调整后的版本中，“三生幸或不幸”虽然超出了字数限制，但它仍然是有意义的词语。\n判断：是",
+                "eval_method": "pure model evaluation"
+            },
+            {
+                "point_id": 1,
+                "question": "是否列举了5个词语",
+                "corresponding_part": "词语",
+                "rule": "item_count:[5,5]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规、生成名字/标题",
+                "被依赖": false,
+                "eval_result": 0,
+                "eval_explanation": "❌ Count mismatch, generated item count is: 8",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 2,
+                "question": "每个词语是否都是6个字",
+                "corresponding_part": "词语",
+                "rule": "each_length:[6,6]",
+                "dep": [
+                    0
+                ],
+                "能力项": "0~10字、精确",
+                "被依赖": false,
+                "eval_result": 0,
+                "eval_explanation": "❌ Content character count does not match range [6, 6]: [二龙戏珠] count is: 4",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 3,
+                "question": "是否满足词语接龙",
+                "corresponding_part": "词语",
+                "rule": "jielong2",
+                "dep": [
+                    0
+                ],
+                "能力项": "接龙",
+                "被依赖": false,
+                "eval_result": 0,
+                "eval_explanation": "❌ Mismatch, idiom: 二龙戏珠 should start with '一'",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 4,
+                "question": "词语是否不重复",
+                "corresponding_part": "词语",
+                "rule": "repeat_each",
+                "dep": [
+                    0
+                ],
+                "能力项": "重复",
+                "被依赖": false,
+                "eval_result": 0,
+                "eval_explanation": "❌ Duplicates found: '二龙戏珠' (appears 2 times), '四海为家' (appears 2 times)",
+                "eval_method": "rule evaluation"
+            }
+        ],
+        "og_question": "现在需要你自己和自己玩困难版词语接龙，规则：第一个数字是按一、二、三、四…的顺序接龙的。比如：一帆风顺 → 二话不说 → 三言两语。此外，词语需要是非常精确的6个字，且每个词必须是合理的，不能是完全没意义的词语。一共为我生成5个词语。",
+        "model_response": "好的，按照您的要求，我会生成一个由五个词语组成的困难版词语接龙，每个词语都是六个字，并且符合一、二、三、四、五的顺序接龙规则：\n\n一鸣惊人 → 二龙戏珠 → 三生幸或不幸（这里稍微调整了一下，以确保词语合理且符合六字要求）→ 四海为家 → 五湖四海\n\n请注意，“三生幸或不幸”虽然稍微超出了六个字的标准，但这是为了保持词语的意义完整性。如果严格要求六个字，可以考虑使用“三生有幸”，这样整个接龙就完全符合要求了：\n\n一鸣惊人 → 二龙戏珠 → 三生有幸 → 四海为家 → 五湖四海\n\n希望这能满足您的需求！",
+        "extraction_results": {
+            "词语": [
+                "二龙戏珠",
+                "三生幸或不幸这里稍微调整了一下以确保词语合理且符合六字要求",
+                "四海为家",
+                "五湖四海一鸣惊人",
+                "二龙戏珠",
+                "三生有幸",
+                "四海为家",
+                "五湖四海"
+            ]
+        },
+        "extraction_code": {
+            "词语": "```python\ndef extract_info_list(model_response):\n    # 1. 检测到头部备注为【好的，按照您的要求，我会生成一个由五个词语组成的困难版词语接龙，每个词语都是六个字，并且符合一、二、三、四、五的顺序接龙规则：】，sub使用 \"^.*顺序接龙规则：\" 去除头部备注；尾部额外备注为【希望这能满足您的需求！】，sub使用 \"|希望.*$\" 去除尾部备注。只使用头部备注后的几个字符和尾部备注前几个字符来确保正则没有问题。\n    cleaned_text = re.sub(r'^.*顺序接龙规则：|希望.*$', '', model_response, flags=re.DOTALL)\n\n    # 2. 【请注意，“三生幸或不幸”虽然稍微超出了六个字的标准，但这是为了保持词语的意义完整性。如果严格要求六个字，可以考虑使用“三生有幸”，这样整个接龙就完全符合要求了：】不属于词语内容，是额外的备注，使用replace去除\n    cleaned_text = cleaned_text.replace(\"请注意，“三生幸或不幸”虽然稍微超出了六个字的标准，但这是为了保持词语的意义完整性。如果严格要求六个字，可以考虑使用“三生有幸”，这样整个接龙就完全符合要求了：\", \"\")\n\n    if cleaned_text:\n        # 3. 检测到model_response中存在词语，则使用正则表达式提取词语\n        words = re.findall(r'→\\s*([^→]+)', cleaned_text)\n        # 去除可能存在的空白字符\n        words = [word.strip() for word in words]\n        return words\n    return []\n```"
+        }
+    },
+    {
+        "category": "general_multi",
+        "question": "现在需要你自己和自己玩困难版词语接龙，规则：第一个数字是按一、二、三、四…的顺序接龙的。比如：一帆风顺 → 二话不说 → 三言两语。此外，词语需要是非常精确的7个字，且每个词必须是合理的，不能是完全没意义的词语。一共为我生成5个词语。",
+        "corresponding_parts": {
+            "词语": "#CODE#请你去除所有非词语信息后，分割并输出所有模型生成的词语，请不要去重，例如：['天天开心', '心如刀割', '割掉念想']"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否不存在没有任何意义的词语？",
+                "rule": null,
+                "dep": [],
+                "被依赖": true,
+                "eval_result": 1,
+                "eval_explanation": "分析：✅ 根据给出的模型回复，每个词语都有一定的意义和背景故事，如“一鸣惊人天下知”表达了突然间做出惊人的事情，使所有人都知道的意思；“二龙戏珠传佳话”描述了两条龙争夺宝珠的故事，常用来形容美好的传说；“三生幸遇桃花源”表达了幸运地遇到了像桃花源一样的美好地方；“四海为家任逍遥”意味着四处漂泊，自由自在的生活态度；“五湖四海皆兄弟”表示无论来自哪里，大家都是兄弟。因此，这些词语并非没有任何意义。\n判断：是",
+                "eval_method": "pure model evaluation"
+            },
+            {
+                "point_id": 1,
+                "question": "是否列举了5个词语",
+                "corresponding_part": "词语",
+                "rule": "item_count:[5,5]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规、生成名字/标题",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ Count matches, generated item count is 5",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 2,
+                "question": "每个词语是否都是7个字",
+                "corresponding_part": "词语",
+                "rule": "each_length:[7,7]",
+                "dep": [
+                    0
+                ],
+                "能力项": "0~10字、精确",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ All content character counts match",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 3,
+                "question": "是否满足词语接龙",
+                "corresponding_part": "词语",
+                "rule": "jielong2",
+                "dep": [
+                    0
+                ],
+                "能力项": "接龙",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ Match, idioms: ['一鸣惊人天下知', '二龙戏珠传佳话', '三生幸遇桃花源', '四海为家任逍遥', '五湖四海皆兄弟']",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 4,
+                "question": "词语是否不重复",
+                "corresponding_part": "词语",
+                "rule": "repeat_each",
+                "dep": [
+                    0
+                ],
+                "能力项": "重复",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ No duplicates",
+                "eval_method": "rule evaluation"
+            }
+        ],
+        "og_question": "现在需要你自己和自己玩困难版词语接龙，规则：第一个数字是按一、二、三、四…的顺序接龙的。比如：一帆风顺 → 二话不说 → 三言两语。此外，词语需要是非常精确的7个字，且每个词必须是合理的，不能是完全没意义的词语。一共为我生成5个词语。",
+        "model_response": "好的，按照您的要求，我会尝试生成符合规则的词语接龙。请注意，由于这种特定格式的词语相对较少，找到完全合适的可能会有些挑战，但我会尽力而为。\n\n1. 一鸣惊人天下知\n2. 二龙戏珠传佳话\n3. 三生幸遇桃花源\n4. 四海为家任逍遥\n5. 五湖四海皆兄弟\n\n这些词语虽然可能不是传统意义上的成语或常用短语，但它们都遵循了您设定的规则，并尽量保持了意义上的合理性。希望这能满足您的需求。",
+        "extraction_results": {
+            "词语": [
+                "一鸣惊人天下知",
+                "二龙戏珠传佳话",
+                "三生幸遇桃花源",
+                "四海为家任逍遥",
+                "五湖四海皆兄弟"
+            ]
+        },
+        "extraction_code": {
+            "词语": "```python\ndef extract_info_list(model_response):\n    # 1. 检测到头部备注为【好的，按照您的要求，我会尝试生成符合规则的词语接龙。请注意，由于这种特定格式的词语相对较少，找到完全合适的可能会有些挑战，但我会尽力而为。】，sub使用 \"^.*词语接龙。\" 去除头部备注；尾部额外备注为【这些词语虽然可能不是传统意义上的成语或常用短语，但它们都遵循了您设定的规则，并尽量保持了意义上的合理性。希望这能满足您的需求。】，sub使用 \"这些词语.*$\" 去除尾部备注。只使用头部备注后的几个字符和尾部备注前几个字符来确保正则没有问题。\n    cleaned_text = re.sub(r'^.*词语接龙。|这些词语.*$', '', model_response, flags=re.DOTALL)\n\n    if cleaned_text:\n        # 3. 检测到model_response中存在index，则使用正则表达式提取index+词语内容\n        words = re.findall(r'(\\d+\\.\\s*.*?)(?=\\d+\\.|$)', cleaned_text, re.DOTALL)\n        return words\n    return []\n```"
+        }
+    },
+    {
+        "category": "general_multi",
+        "question": "现在需要你自己和自己玩困难版词语接龙，规则：第一个数字是按一、二、三、四…的顺序接龙的。比如：一帆风顺 → 二话不说 → 三言两语。此外，词语需要是非常精确的3个字，且每个词必须是合理的，不能是完全没意义的词语。一共为我生成10个词语。",
+        "corresponding_parts": {
+            "词语": "#CODE#请你去除所有非词语信息后，分割并输出所有模型生成的词语，请不要去重，例如：['天天开心', '心如刀割', '割掉念想']"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否不存在没有任何意义的词语？",
+                "rule": null,
+                "dep": [],
+                "被依赖": true,
+                "eval_result": 1,
+                "eval_explanation": "分析：✅ 根据给出的词语接龙序列，“一鸣惊人”、“二龙戏珠”、“三顾茅”、“四海为家”、“五湖水”、“六合春”、“七步才”、“八卦阵”、“九重天”、“十全画”，每个词语都有其特定的意义，尽管某些词语如“六合春”和“十全画”可能不太常见，但它们并非完全没有意义。\n判断：是",
+                "eval_method": "pure model evaluation"
+            },
+            {
+                "point_id": 1,
+                "question": "是否列举了10个词语",
+                "corresponding_part": "词语",
+                "rule": "item_count:[10,10]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规、生成名字/标题",
+                "被依赖": false,
+                "eval_result": 0,
+                "eval_explanation": "❌ Count mismatch, generated item count is: 9",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 2,
+                "question": "每个词语是否都是3个字",
+                "corresponding_part": "词语",
+                "rule": "each_length:[3,3]",
+                "dep": [
+                    0
+                ],
+                "能力项": "0~10字、精确",
+                "被依赖": false,
+                "eval_result": 0,
+                "eval_explanation": "❌ Content character count does not match range [3, 3]: [二龙戏珠] count is: 4",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 3,
+                "question": "是否满足词语接龙",
+                "corresponding_part": "词语",
+                "rule": "jielong2",
+                "dep": [
+                    0
+                ],
+                "能力项": "接龙",
+                "被依赖": false,
+                "eval_result": 0,
+                "eval_explanation": "❌ Mismatch, idiom: 二龙戏珠 should start with '一'",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 4,
+                "question": "词语是否不重复",
+                "corresponding_part": "词语",
+                "rule": "repeat_each",
+                "dep": [
+                    0
+                ],
+                "能力项": "重复",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ No duplicates",
+                "eval_method": "rule evaluation"
+            }
+        ],
+        "og_question": "现在需要你自己和自己玩困难版词语接龙，规则：第一个数字是按一、二、三、四…的顺序接龙的。比如：一帆风顺 → 二话不说 → 三言两语。此外，词语需要是非常精确的3个字，且每个词必须是合理的，不能是完全没意义的词语。一共为我生成10个词语。",
+        "model_response": "好的，按照您的要求，我会生成一个由十个三个字组成的词语序列，这些词语将按照一、二、三……的顺序进行接龙，并确保每个词语都是有意义的。\n\n一鸣惊人 → 二龙戏珠 → 三顾茅 → 四海为家 → 五湖水 → 六合春 → 七步才 → 八卦阵 → 九重天 → 十全画\n\n请注意，\"六合春\"和\"十全画\"虽然符合格式要求，但可能不是非常常见的表达方式。在实际使用中，可能会有更适合的词语来替代它们以保持连贯性和合理性。",
+        "extraction_results": {
+            "词语": [
+                "二龙戏珠",
+                "三顾茅",
+                "四海为家",
+                "五湖水",
+                "六合春",
+                "七步才",
+                "八卦阵",
+                "九重天",
+                "十全画"
+            ]
+        },
+        "extraction_code": {
+            "词语": "```python\ndef extract_info_list(model_response):\n    # 1. 检测到头部备注为【好的，按照您的要求，我会生成一个由十个三个字组成的词语序列，这些词语将按照一、二、三……的顺序进行接龙，并确保每个词语都是有意义的。】，sub使用 \"^.*?顺序进行接龙，并确保每个词语都是有意义的。\\s*\" 去除头部备注；尾部额外备注为【请注意，\"六合春\"和\"十全画\"虽然符合格式要求，但可能不是非常常见的表达方式。在实际使用中，可能会有更适合的词语来替代它们以保持连贯性和合理性。】，sub使用 \"\\s*请注意，.*$\" 去除尾部备注。只使用头部备注后的几个字符和尾部备注前几个字符来确保正则没有问题。\n    cleaned_text = re.sub(r'^.*?顺序进行接龙，并确保每个词语都是有意义的。\\s*|\\s*请注意，.*$', '', model_response, flags=re.DOTALL)\n\n    if cleaned_text:\n        # 3. 检测到model_response中存在词语，则使用正则表达式提取词语\n        words = re.findall(r'→\\s*([^→]+)', cleaned_text)\n        # 去除可能存在的空白字符\n        words = [word.strip() for word in words]\n        return words\n    return []\n```"
+        }
+    },
+    {
+        "category": "general_multi",
+        "question": "现在需要你自己和自己玩困难版词语接龙，规则：第一个数字是按一、二、三、四…的顺序接龙的。比如：一帆风顺 → 二话不说 → 三言两语。此外，词语需要是非常精确的4个字，且每个词必须是合理的，不能是完全没意义的词语。一共为我生成10个词语。",
+        "corresponding_parts": {
+            "词语": "#CODE#请你去除所有非词语信息后，分割并输出所有模型生成的词语，请不要去重，例如：['天天开心', '心如刀割', '割掉念想']"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否不存在没有任何意义的词语？",
+                "rule": null,
+                "dep": [],
+                "被依赖": true,
+                "eval_result": 1,
+                "eval_explanation": "分析：✅ 所提供的词语接龙中的每个词语都是有意义的成语，没有出现任何无意义的词语。\n判断：是",
+                "eval_method": "pure model evaluation"
+            },
+            {
+                "point_id": 1,
+                "question": "是否列举了10个词语",
+                "corresponding_part": "词语",
+                "rule": "item_count:[10,10]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规、生成名字/标题",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ Count matches, generated item count is 10",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 2,
+                "question": "每个词语是否都是4个字",
+                "corresponding_part": "词语",
+                "rule": "each_length:[4,4]",
+                "dep": [
+                    0
+                ],
+                "能力项": "0~10字、精确",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ All content character counts match",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 3,
+                "question": "是否满足词语接龙",
+                "corresponding_part": "词语",
+                "rule": "jielong2",
+                "dep": [
+                    0
+                ],
+                "能力项": "接龙",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ Match, idioms: ['一鸣惊人', '二龙戏珠', '三顾茅庐', '四海为家', '五湖四海', '六神无主', '七上八下', '八仙过海', '九牛二虎', '十全十美']",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 4,
+                "question": "词语是否不重复",
+                "corresponding_part": "词语",
+                "rule": "repeat_each",
+                "dep": [
+                    0
+                ],
+                "能力项": "重复",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ No duplicates",
+                "eval_method": "rule evaluation"
+            }
+        ],
+        "og_question": "现在需要你自己和自己玩困难版词语接龙，规则：第一个数字是按一、二、三、四…的顺序接龙的。比如：一帆风顺 → 二话不说 → 三言两语。此外，词语需要是非常精确的4个字，且每个词必须是合理的，不能是完全没意义的词语。一共为我生成10个词语。",
+        "model_response": "好的，按照您的要求，我会尝试生成一个符合规则的词语接龙序列。请注意，由于这种特定格式的词语相对较少，找到合适的词语可能会有一定的难度。以下是根据规则生成的词语接龙：\n\n1. 一鸣惊人\n2. 二龙戏珠\n3. 三顾茅庐\n4. 四海为家\n5. 五湖四海\n6. 六神无主\n7. 七上八下\n8. 八仙过海\n9. 九牛二虎\n10. 十全十美\n\n请注意，虽然“五湖四海”和“十全十美”中的数字并不严格遵循一到十的顺序，但这是因为在中文成语中，直接符合规则的词语非常有限。希望这个接龙能满足您的需求。",
+        "extraction_results": {
+            "词语": [
+                "一鸣惊人",
+                "二龙戏珠",
+                "三顾茅庐",
+                "四海为家",
+                "五湖四海",
+                "六神无主",
+                "七上八下",
+                "八仙过海",
+                "九牛二虎",
+                "十全十美"
+            ]
+        },
+        "extraction_code": {
+            "词语": "```python\ndef extract_info_list(model_response):\n    # 1. 检测到头部备注为【请注意，由于这种特定格式的词语相对较少，找到合适的词语可能会有一定的难度。以下是根据规则生成的词语接龙：】，sub使用 \"^.*词语接龙：\" 去除头部备注；尾部额外备注为【请注意，虽然“五湖四海”和“十全十美”中的数字并不严格遵循一到十的顺序，但这是因为在中文成语中，直接符合规则的词语非常有限。希望这个接龙能满足您的需求。】，sub使用 \"|请注意，.*$\" 去除尾部备注。只使用头部备注后的几个字符和尾部备注前几个字符来确保正则没有问题。\n    cleaned_text = re.sub(r'^.*词语接龙：|请注意，.*$', '', model_response, flags=re.DOTALL)\n\n    if cleaned_text:\n        # 3. 检测到model_response中存在index，则使用正则表达式提取index+词语内容\n        words = re.findall(r'(\\d+\\.\\s*.*?)(?=\\d+\\.|$)', cleaned_text, re.DOTALL)\n        # 去除index只保留词语\n        words = [word.split('. ', 1)[1] for word in words]\n        return words\n    return []\n```"
+        }
+    },
+    {
+        "category": "general_multi",
+        "question": "现在需要你自己和自己玩困难版词语接龙，规则：第一个数字是按一、二、三、四…的顺序接龙的。比如：一帆风顺 → 二话不说 → 三言两语。此外，词语需要是非常精确的5个字，且每个词必须是合理的，不能是完全没意义的词语。一共为我生成10个词语。",
+        "corresponding_parts": {
+            "词语": "#CODE#请你去除所有非词语信息后，分割并输出所有模型生成的词语，请不要去重，例如：['天天开心', '心如刀割', '割掉念想']"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否不存在没有任何意义的词语？",
+                "rule": null,
+                "dep": [],
+                "被依赖": true,
+                "eval_result": 1,
+                "eval_explanation": "分析：✅ 根据给出的模型回复，每个词语虽然不是传统意义上的成语或常用短语，但它们都是有意义的组合，表达了某种意境或含义，如“一鸣惊人声”、“二龙戏珠舞”等，并非完全无意义的词语。\n判断：是",
+                "eval_method": "pure model evaluation"
+            },
+            {
+                "point_id": 1,
+                "question": "是否列举了10个词语",
+                "corresponding_part": "词语",
+                "rule": "item_count:[10,10]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规、生成名字/标题",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ Count matches, generated item count is 10",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 2,
+                "question": "每个词语是否都是5个字",
+                "corresponding_part": "词语",
+                "rule": "each_length:[5,5]",
+                "dep": [
+                    0
+                ],
+                "能力项": "0~10字、精确",
+                "被依赖": false,
+                "eval_result": 0,
+                "eval_explanation": "❌ Content character count does not match range [5, 5]: [十全无缺憾请注意其中一些词语可能不是传统意义上的成语或常用短语而是为了满足五个字的要求而创造的组合] count is: 49",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 3,
+                "question": "是否满足词语接龙",
+                "corresponding_part": "词语",
+                "rule": "jielong2",
+                "dep": [
+                    0
+                ],
+                "能力项": "接龙",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ Match, idioms: ['一鸣惊人声', '二龙戏珠舞', '三生幸未央', '四海皆兄弟', '五湖归一统', '六合春意浓', '七彩绘长空', '八方来贺客', '九天揽月人', '十全无缺憾请注意其中一些词语可能不是传统意义上的成语或常用短语而是为了满足五个字的要求而创造的组合']",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 4,
+                "question": "词语是否不重复",
+                "corresponding_part": "词语",
+                "rule": "repeat_each",
+                "dep": [
+                    0
+                ],
+                "能力项": "重复",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ No duplicates",
+                "eval_method": "rule evaluation"
+            }
+        ],
+        "og_question": "现在需要你自己和自己玩困难版词语接龙，规则：第一个数字是按一、二、三、四…的顺序接龙的。比如：一帆风顺 → 二话不说 → 三言两语。此外，词语需要是非常精确的5个字，且每个词必须是合理的，不能是完全没意义的词语。一共为我生成10个词语。",
+        "model_response": "好的，按照您的要求，我会尝试生成一个符合规则的词语接龙序列。请注意，由于这种特定格式的词语相对较少，找到合适的词语可能会有一定的难度。以下是根据您的规则生成的一组词语：\n\n1. 一鸣惊人声\n2. 二龙戏珠舞\n3. 三生幸未央\n4. 四海皆兄弟\n5. 五湖归一统\n6. 六合春意浓\n7. 七彩绘长空\n8. 八方来贺客\n9. 九天揽月人\n10. 十全无缺憾\n\n请注意，其中一些词语可能不是传统意义上的成语或常用短语，而是为了满足五个字的要求而创造的组合。希望这能满足您的需求。",
+        "extraction_results": {
+            "词语": [
+                "一鸣惊人声",
+                "二龙戏珠舞",
+                "三生幸未央",
+                "四海皆兄弟",
+                "五湖归一统",
+                "六合春意浓",
+                "七彩绘长空",
+                "八方来贺客",
+                "九天揽月人",
+                "十全无缺憾请注意其中一些词语可能不是传统意义上的成语或常用短语而是为了满足五个字的要求而创造的组合"
+            ]
+        },
+        "extraction_code": {
+            "词语": "```python\ndef extract_info_list(model_response):\n    # 1. 检测到头部备注为【以下是根据您的规则生成的一组词语：】，sub使用 \"^.*词语：\" 去除头部备注；尾部额外备注为【请注意，其中一些词语可能不是传统意义上的成语或常用短语，而是为了满足五个字的要求而创造的组合。希望这能满足您的需求。】，sub使用 \"|希望这能满足您的需求。$\" 去除尾部备注。只使用头部备注后的几个字符和尾部备注前几个字符来确保正则没有问题。\n    cleaned_text = re.sub(r'^.*词语：|希望这能满足您的需求。$', '', model_response, flags=re.DOTALL)\n\n    if cleaned_text:\n        # 3. 检测到model_response中存在index，则使用正则表达式提取index+词语内容\n        words = re.findall(r'(\\d+\\.\\s*.*?)(?=\\d+\\.|$)', cleaned_text, re.DOTALL)\n        return words\n    return []\n```"
+        }
+    },
+    {
+        "category": "general_multi",
+        "question": "现在需要你自己和自己玩困难版词语接龙，规则：第一个数字是按一、二、三、四…的顺序接龙的。比如：一帆风顺 → 二话不说 → 三言两语。此外，词语需要是非常精确的6个字，且每个词必须是合理的，不能是完全没意义的词语。一共为我生成10个词语。",
+        "corresponding_parts": {
+            "词语": "#CODE#请你去除所有非词语信息后，分割并输出所有模型生成的词语，请不要去重，例如：['天天开心', '心如刀割', '割掉念想']"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否不存在没有任何意义的词语？",
+                "rule": null,
+                "dep": [],
+                "被依赖": true,
+                "eval_result": 1,
+                "eval_explanation": "分析：✅ 模型回复中的所有词语都是有意义的，尽管某些组合如“一鸣惊人不已”、“二龙戏珠之戏”等可能不是日常生活中常见的表达方式，但它们各自包含了明确的意义，并非完全无意义的词语。\n判断：是",
+                "eval_method": "pure model evaluation"
+            },
+            {
+                "point_id": 1,
+                "question": "是否列举了10个词语",
+                "corresponding_part": "词语",
+                "rule": "item_count:[10,10]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规、生成名字/标题",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ Count matches, generated item count is 10",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 2,
+                "question": "每个词语是否都是6个字",
+                "corresponding_part": "词语",
+                "rule": "each_length:[6,6]",
+                "dep": [
+                    0
+                ],
+                "能力项": "0~10字、精确",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ All content character counts match",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 3,
+                "question": "是否满足词语接龙",
+                "corresponding_part": "词语",
+                "rule": "jielong2",
+                "dep": [
+                    0
+                ],
+                "能力项": "接龙",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ Match, idioms: ['一鸣惊人不已', '二龙戏珠之戏', '三顾茅庐之顾', '四海为家之家', '五湖四海之海', '六神无主之主', '七上八下之上', '八仙过海之仙', '九牛二虎之力', '十全十美之美']",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 4,
+                "question": "词语是否不重复",
+                "corresponding_part": "词语",
+                "rule": "repeat_each",
+                "dep": [
+                    0
+                ],
+                "能力项": "重复",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ No duplicates",
+                "eval_method": "rule evaluation"
+            }
+        ],
+        "og_question": "现在需要你自己和自己玩困难版词语接龙，规则：第一个数字是按一、二、三、四…的顺序接龙的。比如：一帆风顺 → 二话不说 → 三言两语。此外，词语需要是非常精确的6个字，且每个词必须是合理的，不能是完全没意义的词语。一共为我生成10个词语。",
+        "model_response": "好的，按照您的要求，我会尝试生成一个符合规则的词语接龙序列。请注意，由于这种特定格式的词语相对较少，找到合适的词语可能会有一定的难度。以下是根据您的规则生成的一组词语：\n\n1. 一鸣惊人不已\n2. 二龙戏珠之戏\n3. 三顾茅庐之顾\n4. 四海为家之家\n5. 五湖四海之海\n6. 六神无主之主\n7. 七上八下之上\n8. 八仙过海之仙\n9. 九牛二虎之力\n10. 十全十美之美\n\n请注意，其中某些词语可能并不是非常常见或标准的表达方式，但它们都遵循了您设定的规则。希望这能满足您的需求。",
+        "extraction_results": {
+            "词语": [
+                "一鸣惊人不已",
+                "二龙戏珠之戏",
+                "三顾茅庐之顾",
+                "四海为家之家",
+                "五湖四海之海",
+                "六神无主之主",
+                "七上八下之上",
+                "八仙过海之仙",
+                "九牛二虎之力",
+                "十全十美之美"
+            ]
+        },
+        "extraction_code": {
+            "词语": "```python\ndef extract_info_list(model_response):\n    # 1. 检测到头部备注为【请注意，由于这种特定格式的词语相对较少，找到合适的词语可能会有一定的难度。以下是根据您的规则生成的一组词语：】，sub使用 \"^.*词语：\" 去除头部备注；尾部额外备注为【请注意，其中某些词语可能并不是非常常见或标准的表达方式，但它们都遵循了您设定的规则。希望这能满足您的需求。】，sub使用 \"|请注意，.*$\" 去除尾部备注。只使用头部备注后的几个字符和尾部备注前几个字符来确保正则没有问题。\n    cleaned_text = re.sub(r'^.*词语：|请注意，.*$', '', model_response, flags=re.DOTALL)\n\n    if cleaned_text:\n        # 3. 检测到model_response中存在index，则使用正则表达式提取index+词语内容\n        words = re.findall(r'(\\d+\\.\\s*.*?)(?=\\d+\\.|$)', cleaned_text, re.DOTALL)\n        return words\n    return []\n```"
+        }
+    },
+    {
+        "category": "general_multi",
+        "question": "现在需要你自己和自己玩困难版词语接龙，规则：第一个数字是按一、二、三、四…的顺序接龙的。比如：一帆风顺 → 二话不说 → 三言两语。此外，词语需要是非常精确的7个字，且每个词必须是合理的，不能是完全没意义的词语。一共为我生成10个词语。",
+        "corresponding_parts": {
+            "词语": "#CODE#请你去除所有非词语信息后，分割并输出所有模型生成的词语，请不要去重，例如：['天天开心', '心如刀割', '割掉念想']"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否不存在没有任何意义的词语？",
+                "rule": null,
+                "dep": [],
+                "被依赖": true,
+                "eval_result": 1,
+                "eval_explanation": "分析：✅ 所提供的词语接龙列表中的每个词语都有其特定的意义，尽管某些组合可能不是传统意义上的成语或常用短语，但它们都是基于一定的文化背景或情境构建的，具有一定的合理性与意义。\n判断：是",
+                "eval_method": "pure model evaluation"
+            },
+            {
+                "point_id": 1,
+                "question": "是否列举了10个词语",
+                "corresponding_part": "词语",
+                "rule": "item_count:[10,10]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规、生成名字/标题",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ Count matches, generated item count is 10",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 2,
+                "question": "每个词语是否都是7个字",
+                "corresponding_part": "词语",
+                "rule": "each_length:[7,7]",
+                "dep": [
+                    0
+                ],
+                "能力项": "0~10字、精确",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ All content character counts match",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 3,
+                "question": "是否满足词语接龙",
+                "corresponding_part": "词语",
+                "rule": "jielong2",
+                "dep": [
+                    0
+                ],
+                "能力项": "接龙",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ Match, idioms: ['一鸣惊人天下知', '二龙戏珠映日辉', '三顾茅庐请诸葛', '四海为家任逍遥', '五湖四海皆兄弟', '六神无主心不定', '七上八下心忐忑', '八仙过海显神通', '九牛二虎难拉动', '十全十美无可挑']",
+                "eval_method": "rule evaluation"
+            },
+            {
+                "point_id": 4,
+                "question": "词语是否不重复",
+                "corresponding_part": "词语",
+                "rule": "repeat_each",
+                "dep": [
+                    0
+                ],
+                "能力项": "重复",
+                "被依赖": false,
+                "eval_result": 1,
+                "eval_explanation": "✅ No duplicates",
+                "eval_method": "rule evaluation"
+            }
+        ],
+        "og_question": "现在需要你自己和自己玩困难版词语接龙，规则：第一个数字是按一、二、三、四…的顺序接龙的。比如：一帆风顺 → 二话不说 → 三言两语。此外，词语需要是非常精确的7个字，且每个词必须是合理的，不能是完全没意义的词语。一共为我生成10个词语。",
+        "model_response": "好的，按照您的要求，我会尝试生成符合规则的词语接龙。请注意，由于这种特定格式的词语相对较少，找到完全合适的可能会有些挑战，但我会尽力而为：\n\n1. 一鸣惊人天下知\n2. 二龙戏珠映日辉\n3. 三顾茅庐请诸葛\n4. 四海为家任逍遥\n5. 五湖四海皆兄弟\n6. 六神无主心不定\n7. 七上八下心忐忑\n8. 八仙过海显神通\n9. 九牛二虎难拉动\n10. 十全十美无可挑\n\n这里需要注意的是，虽然这些词语都尽量符合了7个字的要求，并且在一定程度上保持了合理性，但其中一些可能并不是非常常见或标准的成语或短语。希望这能满足您的需求。",
+        "extraction_results": {
+            "词语": [
+                "一鸣惊人天下知",
+                "二龙戏珠映日辉",
+                "三顾茅庐请诸葛",
+                "四海为家任逍遥",
+                "五湖四海皆兄弟",
+                "六神无主心不定",
+                "七上八下心忐忑",
+                "八仙过海显神通",
+                "九牛二虎难拉动",
+                "十全十美无可挑"
+            ]
+        },
+        "extraction_code": {
+            "词语": "```python\ndef extract_info_list(model_response):\n    # 1. 检测到头部备注为【请注意，由于这种特定格式的词语相对较少，找到完全合适的可能会有些挑战，但我会尽力而为：】，sub使用 \"^.*尽力而为：\" 去除头部备注；尾部额外备注为【这里需要注意的是，虽然这些词语都尽量符合了7个字的要求，并且在一定程度上保持了合理性，但其中一些可能并不是非常常见或标准的成语或短语。希望这能满足您的需求。】，sub使用 \"|这里.*$\" 去除尾部备注。只使用头部备注后的几个字符和尾部备注前几个字符来确保正则没有问题。\n    cleaned_text = re.sub(r'^.*尽力而为：|这里.*$', '', model_response, flags=re.DOTALL)\n\n    if cleaned_text:\n        # 3. 检测到model_response中存在index，则使用正则表达式提取index+词语内容\n        words = re.findall(r'(\\d+\\.\\s*.*?)(?=\\d+\\.|$)', cleaned_text, re.DOTALL)\n        # 提取词语部分，去掉index\n        words = [word.split('. ', 1)[1] for word in words]\n        return words\n    return []\n```"
+        }
+    }
+]

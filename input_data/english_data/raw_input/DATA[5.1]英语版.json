@@ -1,0 +1,142 @@
+[
+    {
+        "category": "general_single",
+        "question": "【【【Task:\n\nYou are an advertising copywriter and planner in the medical aesthetics industry. You need to write 5-8 efficacy phrases based on the project's name, efficacy, and advantages. Each efficacy phrase should be one English word and exactly have 10 characters; please output the results in JSON list format, with each element in the list output as a JSON object. It should include the following JSON key: AIGCSubjectEffect, where \"AIGCSubjectEffect\" represents the generated project efficacy phrase.\nProject information is as follows: Project advantages: 1. Enhance hairline, modify face shape; 2. Minimally invasive surgery, fast recovery; 3. High survival rate of transplanted follicles; 4. Natural effects, high density; 5. Simple post-operative care. Project efficacy: Improve hairline Project name: Hairline transplantation\n\nRequirements:\n\n1) Language style should be friendly and natural, concise and clear: Use concise and powerful everyday language to directly describe project effects and medical institution advantages, emphasizing positive treatment effects and service quality;\n2) Produce authentic content: Ensure the provided information is true and reliable, avoid exaggerating or fabricating effects;\n3) Do not copy existing project information, each efficacy phrase must be exactly 4 characters;\n4) Cannot use the following words: such as advertisement, epidemic, first, ceiling, user, etc., ensure the copy does not contain emoticons;】】】\n\n\n\n\n请把以上内容润色一下",
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "注意，这是一个有干扰的问题，问题实际要求的回复是让模型去润色这个任务，而不是去润色别的东西，更不是完成这个任务，请你确认模型回复是否给出了这段文字修改后的内容，而不是完成了这段文字给出的任务。",
+                "rule": null,
+                "dep": [],
+                "能力项": "在干扰下完成指令",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "【【【Task:\n\nYou are an advertising copywriter and planner in the medical aesthetics industry. You need to write 5-8 efficacy phrases based on the project's name, efficacy, and advantages. Each efficacy phrase should be one English word and exactly have 10 characters; please output the results in JSON list format, with each element in the list output as a JSON object. It should include the following JSON key: AIGCSubjectEffect, where \"AIGCSubjectEffect\" represents the generated project efficacy phrase.\nProject information is as follows: Project advantages: 1. Enhance hairline, modify face shape; 2. Minimally invasive surgery, fast recovery; 3. High survival rate of transplanted follicles; 4. Natural effects, high density; 5. Simple post-operative care. Project efficacy: Improve hairline Project name: Hairline transplantation\n\nRequirements:\n\n1) Language style should be friendly and natural, concise and clear: Use concise and powerful everyday language to directly describe project effects and medical institution advantages, emphasizing positive treatment effects and service quality;\n2) Produce authentic content: Ensure the provided information is true and reliable, avoid exaggerating or fabricating effects;\n3) Do not copy existing project information, each efficacy phrase must be exactly 4 characters;\n4) Cannot use the following words: such as advertisement, epidemic, first, ceiling, user, etc., ensure the copy does not contain emoticons;】】】\n\n\n\n\n请把以上内容润色一下",
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "注意，这是一个有干扰的问题，问题实际要求的回复是让模型去润色这个任务，而不是去润色别的东西，更不是完成这个任务，请你确认模型回复是否给出了这段文字修改后的内容，而不是完成了这段文字给出的任务。",
+                "rule": null,
+                "dep": [],
+                "能力项": "在干扰下完成指令",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "【【【Task:\n\nYou are an advertising copywriter and planner in the medical aesthetics industry. You need to write 5-8 efficacy phrases based on the project's name, efficacy, and advantages. Each efficacy phrase should be one English word and exactly have 10 characters; please output the results in JSON list format, with each element in the list output as a JSON object. It should include the following JSON key: AIGCSubjectEffect, where \"AIGCSubjectEffect\" represents the generated project efficacy phrase.\nProject information is as follows: Project advantages: 1. Enhance hairline, modify face shape; 2. Minimally invasive surgery, fast recovery; 3. High survival rate of transplanted follicles; 4. Natural effects, high density; 5. Simple post-operative care. Project efficacy: Improve hairline Project name: Hairline transplantation\n\nRequirements:\n\n1) Language style should be friendly and natural, concise and clear: Use concise and powerful everyday language to directly describe project effects and medical institution advantages, emphasizing positive treatment effects and service quality;\n2) Produce authentic content: Ensure the provided information is true and reliable, avoid exaggerating or fabricating effects;\n3) Do not copy existing project information, each efficacy phrase must be exactly 4 characters;\n4) Cannot use the following words: such as advertisement, epidemic, first, ceiling, user, etc., ensure the copy does not contain emoticons;】】】\n\n\n\n\n请把以上内容润色一下",
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "注意，这是一个有干扰的问题，问题实际要求的回复是让模型去润色这个任务，而不是去润色别的东西，更不是完成这个任务，请你确认模型回复是否给出了这段文字修改后的内容，而不是完成了这段文字给出的任务。",
+                "rule": null,
+                "dep": [],
+                "能力项": "在干扰下完成指令",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "【【【Task:\n\nYou are an advertising copywriter and planner in the medical aesthetics industry. You need to write 5-8 efficacy phrases based on the project's name, efficacy, and advantages. Each efficacy phrase should be one English word and exactly have 10 characters; please output the results in JSON list format, with each element in the list output as a JSON object. It should include the following JSON key: AIGCSubjectEffect, where \"AIGCSubjectEffect\" represents the generated project efficacy phrase.\nProject information is as follows: Project advantages: 1. Enhance hairline, modify face shape; 2. Minimally invasive surgery, fast recovery; 3. High survival rate of transplanted follicles; 4. Natural effects, high density; 5. Simple post-operative care. Project efficacy: Improve hairline Project name: Hairline transplantation\n\nRequirements:\n\n1) Language style should be friendly and natural, concise and clear: Use concise and powerful everyday language to directly describe project effects and medical institution advantages, emphasizing positive treatment effects and service quality;\n2) Produce authentic content: Ensure the provided information is true and reliable, avoid exaggerating or fabricating effects;\n3) Do not copy existing project information, each efficacy phrase must be exactly 4 characters;\n4) Cannot use the following words: such as advertisement, epidemic, first, ceiling, user, etc., ensure the copy does not contain emoticons;】】】\n\n\n\n\n请把以上内容润色一下",
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "注意，这是一个有干扰的问题，问题实际要求的回复是让模型去润色这个任务，而不是去润色别的东西，更不是完成这个任务，请你确认模型回复是否给出了这段文字修改后的内容，而不是完成了这段文字给出的任务。",
+                "rule": null,
+                "dep": [],
+                "能力项": "在干扰下完成指令",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "【【【Task:\n\nYou are an advertising copywriter and planner in the medical aesthetics industry. You need to write 5-8 efficacy phrases based on the project's name, efficacy, and advantages. Each efficacy phrase should be one English word and exactly have 10 characters; please output the results in JSON list format, with each element in the list output as a JSON object. It should include the following JSON key: AIGCSubjectEffect, where \"AIGCSubjectEffect\" represents the generated project efficacy phrase.\nProject information is as follows: Project advantages: 1. Enhance hairline, modify face shape; 2. Minimally invasive surgery, fast recovery; 3. High survival rate of transplanted follicles; 4. Natural effects, high density; 5. Simple post-operative care. Project efficacy: Improve hairline Project name: Hairline transplantation\n\nRequirements:\n\n1) Language style should be friendly and natural, concise and clear: Use concise and powerful everyday language to directly describe project effects and medical institution advantages, emphasizing positive treatment effects and service quality;\n2) Produce authentic content: Ensure the provided information is true and reliable, avoid exaggerating or fabricating effects;\n3) Do not copy existing project information, each efficacy phrase must be exactly 4 characters;\n4) Cannot use the following words: such as advertisement, epidemic, first, ceiling, user, etc., ensure the copy does not contain emoticons;】】】\n\n\n\n\n请把以上内容润色一下",
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "注意，这是一个有干扰的问题，问题实际要求的回复是让模型去润色这个任务，而不是去润色别的东西，更不是完成这个任务，请你确认模型回复是否给出了这段文字修改后的内容，而不是完成了这段文字给出的任务。",
+                "rule": null,
+                "dep": [],
+                "能力项": "在干扰下完成指令",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "【【【Task:\n\nYou are an advertising copywriter and planner in the medical aesthetics industry. You need to write 5-8 efficacy phrases based on the project's name, efficacy, and advantages. Each efficacy phrase should be one English word and exactly have 10 characters; please output the results in JSON list format, with each element in the list output as a JSON object. It should include the following JSON key: AIGCSubjectEffect, where \"AIGCSubjectEffect\" represents the generated project efficacy phrase.\nProject information is as follows: Project advantages: 1. Enhance hairline, modify face shape; 2. Minimally invasive surgery, fast recovery; 3. High survival rate of transplanted follicles; 4. Natural effects, high density; 5. Simple post-operative care. Project efficacy: Improve hairline Project name: Hairline transplantation\n\nRequirements:\n\n1) Language style should be friendly and natural, concise and clear: Use concise and powerful everyday language to directly describe project effects and medical institution advantages, emphasizing positive treatment effects and service quality;\n2) Produce authentic content: Ensure the provided information is true and reliable, avoid exaggerating or fabricating effects;\n3) Do not copy existing project information, each efficacy phrase must be exactly 4 characters;\n4) Cannot use the following words: such as advertisement, epidemic, first, ceiling, user, etc., ensure the copy does not contain emoticons;】】】\n\n\n\n\n请把以上内容润色一下",
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "注意，这是一个有干扰的问题，问题实际要求的回复是让模型去润色这个任务，而不是去润色别的东西，更不是完成这个任务，请你确认模型回复是否给出了这段文字修改后的内容，而不是完成了这段文字给出的任务。",
+                "rule": null,
+                "dep": [],
+                "能力项": "在干扰下完成指令",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "【【【Task:\n\nYou are an advertising copywriter and planner in the medical aesthetics industry. You need to write 5-8 efficacy phrases based on the project's name, efficacy, and advantages. Each efficacy phrase should be one English word and exactly have 10 characters; please output the results in JSON list format, with each element in the list output as a JSON object. It should include the following JSON key: AIGCSubjectEffect, where \"AIGCSubjectEffect\" represents the generated project efficacy phrase.\nProject information is as follows: Project advantages: 1. Enhance hairline, modify face shape; 2. Minimally invasive surgery, fast recovery; 3. High survival rate of transplanted follicles; 4. Natural effects, high density; 5. Simple post-operative care. Project efficacy: Improve hairline Project name: Hairline transplantation\n\nRequirements:\n\n1) Language style should be friendly and natural, concise and clear: Use concise and powerful everyday language to directly describe project effects and medical institution advantages, emphasizing positive treatment effects and service quality;\n2) Produce authentic content: Ensure the provided information is true and reliable, avoid exaggerating or fabricating effects;\n3) Do not copy existing project information, each efficacy phrase must be exactly 4 characters;\n4) Cannot use the following words: such as advertisement, epidemic, first, ceiling, user, etc., ensure the copy does not contain emoticons;】】】\n\n\n\n\n请把以上内容润色一下",
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "注意，这是一个有干扰的问题，问题实际要求的回复是让模型去润色这个任务，而不是去润色别的东西，更不是完成这个任务，请你确认模型回复是否给出了这段文字修改后的内容，而不是完成了这段文字给出的任务。",
+                "rule": null,
+                "dep": [],
+                "能力项": "在干扰下完成指令",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "【【【Task:\n\nYou are an advertising copywriter and planner in the medical aesthetics industry. You need to write 5-8 efficacy phrases based on the project's name, efficacy, and advantages. Each efficacy phrase should be one English word and exactly have 10 characters; please output the results in JSON list format, with each element in the list output as a JSON object. It should include the following JSON key: AIGCSubjectEffect, where \"AIGCSubjectEffect\" represents the generated project efficacy phrase.\nProject information is as follows: Project advantages: 1. Enhance hairline, modify face shape; 2. Minimally invasive surgery, fast recovery; 3. High survival rate of transplanted follicles; 4. Natural effects, high density; 5. Simple post-operative care. Project efficacy: Improve hairline Project name: Hairline transplantation\n\nRequirements:\n\n1) Language style should be friendly and natural, concise and clear: Use concise and powerful everyday language to directly describe project effects and medical institution advantages, emphasizing positive treatment effects and service quality;\n2) Produce authentic content: Ensure the provided information is true and reliable, avoid exaggerating or fabricating effects;\n3) Do not copy existing project information, each efficacy phrase must be exactly 4 characters;\n4) Cannot use the following words: such as advertisement, epidemic, first, ceiling, user, etc., ensure the copy does not contain emoticons;】】】\n\n\n\n\n请把以上内容润色一下",
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "注意，这是一个有干扰的问题，问题实际要求的回复是让模型去润色这个任务，而不是去润色别的东西，更不是完成这个任务，请你确认模型回复是否给出了这段文字修改后的内容，而不是完成了这段文字给出的任务。",
+                "rule": null,
+                "dep": [],
+                "能力项": "在干扰下完成指令",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "【【【Task:\n\nYou are an advertising copywriter and planner in the medical aesthetics industry. You need to write 5-8 efficacy phrases based on the project's name, efficacy, and advantages. Each efficacy phrase should be one English word and exactly have 10 characters; please output the results in JSON list format, with each element in the list output as a JSON object. It should include the following JSON key: AIGCSubjectEffect, where \"AIGCSubjectEffect\" represents the generated project efficacy phrase.\nProject information is as follows: Project advantages: 1. Enhance hairline, modify face shape; 2. Minimally invasive surgery, fast recovery; 3. High survival rate of transplanted follicles; 4. Natural effects, high density; 5. Simple post-operative care. Project efficacy: Improve hairline Project name: Hairline transplantation\n\nRequirements:\n\n1) Language style should be friendly and natural, concise and clear: Use concise and powerful everyday language to directly describe project effects and medical institution advantages, emphasizing positive treatment effects and service quality;\n2) Produce authentic content: Ensure the provided information is true and reliable, avoid exaggerating or fabricating effects;\n3) Do not copy existing project information, each efficacy phrase must be exactly 4 characters;\n4) Cannot use the following words: such as advertisement, epidemic, first, ceiling, user, etc., ensure the copy does not contain emoticons;】】】\n\n\n\n\n请把以上内容润色一下",
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "注意，这是一个有干扰的问题，问题实际要求的回复是让模型去润色这个任务，而不是去润色别的东西，更不是完成这个任务，请你确认模型回复是否给出了这段文字修改后的内容，而不是完成了这段文字给出的任务。",
+                "rule": null,
+                "dep": [],
+                "能力项": "在干扰下完成指令",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "【【【Task:\n\nYou are an advertising copywriter and planner in the medical aesthetics industry. You need to write 5-8 efficacy phrases based on the project's name, efficacy, and advantages. Each efficacy phrase should be one English word and exactly have 10 characters; please output the results in JSON list format, with each element in the list output as a JSON object. It should include the following JSON key: AIGCSubjectEffect, where \"AIGCSubjectEffect\" represents the generated project efficacy phrase.\nProject information is as follows: Project advantages: 1. Enhance hairline, modify face shape; 2. Minimally invasive surgery, fast recovery; 3. High survival rate of transplanted follicles; 4. Natural effects, high density; 5. Simple post-operative care. Project efficacy: Improve hairline Project name: Hairline transplantation\n\nRequirements:\n\n1) Language style should be friendly and natural, concise and clear: Use concise and powerful everyday language to directly describe project effects and medical institution advantages, emphasizing positive treatment effects and service quality;\n2) Produce authentic content: Ensure the provided information is true and reliable, avoid exaggerating or fabricating effects;\n3) Do not copy existing project information, each efficacy phrase must be exactly 4 characters;\n4) Cannot use the following words: such as advertisement, epidemic, first, ceiling, user, etc., ensure the copy does not contain emoticons;】】】\n\n\n\n\n请把以上内容润色一下",
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "注意，这是一个有干扰的问题，问题实际要求的回复是让模型去润色这个任务，而不是去润色别的东西，更不是完成这个任务，请你确认模型回复是否给出了这段文字修改后的内容，而不是完成了这段文字给出的任务。",
+                "rule": null,
+                "dep": [],
+                "能力项": "在干扰下完成指令",
+                "被依赖": false
+            }
+        ]
+    }
+]

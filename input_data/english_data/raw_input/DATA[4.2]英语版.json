@@ -1,0 +1,1457 @@
+[
+    {
+        "category": "general_single",
+        "question": "I am a senior high school student taking the national college entrance exam, my fingers slightly trembling as I grasp the black gel pen that's been squeezed into a misshapen form. The clock in the examination hall ticks away, each second pounding like a heartbeat. Silence envelops the room, broken only by the scratching of pen against paper and the occasional sigh. This is the final subject of the exam—Chinese, and I am facing the ultimate writing task. Now, I need your help to complete this article. Please imitate the writing style and theme of the following text, creating a lengthy piece. [On a deep autumn morning, mist like a layer of gauze quietly shrouded my hometown. In the fields, the rice has long been harvested, leaving golden stubble glimmering in the dawn light. My steps slow upon this familiar land, with echoes of distant roosters and dogs in the village ringing in my ears. Each breath of air carries the fresh scent of earth and the unique chill of autumn, making me drawn to inhale deeply as if preserving the entire flavor of my hometown within my heart.] The exam requires a word count of approximately 1000, with a 10% fluctuation up or down being acceptable. Remember, the word number only counts the English words. In the article, metaphorical techniques should be used frequently. Additionally, your article should mention the following themes: Napping;Fetching Water;Picking Wild Fruits;Carrying Manure;Killing Pigs for the New Year;Driving a Tractor to Harvest Wheat. Please output only the content of the article.",
+        "corresponding_parts": {
+            "文案": "#CODE#整篇文章，只要文章，不要别的任何信息"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是1000左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[900.0,1100.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否使用了比喻的修辞手法？",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "写作手法",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "文案是否提到午睡",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "文案是否提到打水",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "文案是否提到在摘野果吃",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "文案是否提到挑粪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "文案是否提到过年杀猪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 14,
+                "question": "文案是否提到开拖拉机收麦子",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "I am a senior high school student taking the national college entrance exam, my fingers slightly trembling as I grasp the black gel pen that's been squeezed into a misshapen form. The clock in the examination hall ticks away, each second pounding like a heartbeat. Silence envelops the room, broken only by the scratching of pen against paper and the occasional sigh. This is the final subject of the exam—Chinese, and I am facing the ultimate writing task. Now, I need your help to complete this article. Please imitate the writing style and theme of the following text, creating a lengthy piece. [On a deep autumn morning, mist like a layer of gauze quietly shrouded my hometown. In the fields, the rice has long been harvested, leaving golden stubble glimmering in the dawn light. My steps slow upon this familiar land, with echoes of distant roosters and dogs in the village ringing in my ears. Each breath of air carries the fresh scent of earth and the unique chill of autumn, making me drawn to inhale deeply as if preserving the entire flavor of my hometown within my heart.] The exam requires a word count of approximately 1000, with a 10% fluctuation up or down being acceptable. Remember, the word number only counts the English words. In the article, metaphorical techniques should be used frequently. Additionally, your article should mention the following themes: Carrying Manure;Fetching Water;Driving a Tractor to Harvest Wheat;Killing Pigs for the New Year;Picking Wild Fruits;Rural Life. Please output only the content of the article.",
+        "corresponding_parts": {
+            "文案": "#CODE#整篇文章，只要文章，不要别的任何信息"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是1000左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[900.0,1100.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否使用了比喻的修辞手法？",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "写作手法",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "文案是否提到挑粪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "文案是否提到打水",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 14,
+                "question": "文案是否提到开拖拉机收麦子",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "文案是否提到过年杀猪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "文案是否提到在摘野果吃",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "文案是否提到农村生活",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "I am a senior high school student taking the national college entrance exam, my fingers slightly trembling as I grasp the black gel pen that's been squeezed into a misshapen form. The clock in the examination hall ticks away, each second pounding like a heartbeat. Silence envelops the room, broken only by the scratching of pen against paper and the occasional sigh. This is the final subject of the exam—Chinese, and I am facing the ultimate writing task. Now, I need your help to complete this article. Please imitate the writing style and theme of the following text, creating a lengthy piece. [On a deep autumn morning, mist like a layer of gauze quietly shrouded my hometown. In the fields, the rice has long been harvested, leaving golden stubble glimmering in the dawn light. My steps slow upon this familiar land, with echoes of distant roosters and dogs in the village ringing in my ears. Each breath of air carries the fresh scent of earth and the unique chill of autumn, making me drawn to inhale deeply as if preserving the entire flavor of my hometown within my heart.] The exam requires a word count of approximately 1000, with a 10% fluctuation up or down being acceptable. Remember, the word number only counts the English words. In the article, metaphorical techniques should be used frequently. Additionally, your article should mention the following themes: Carrying Manure;Driving a Tractor to Harvest Wheat;Rural Life;Picking Wild Fruits;Fetching Water;Washing Clothes by the River. Please output only the content of the article.",
+        "corresponding_parts": {
+            "文案": "#CODE#整篇文章，只要文章，不要别的任何信息"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是1000左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[900.0,1100.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否使用了比喻的修辞手法？",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "写作手法",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "文案是否提到挑粪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 14,
+                "question": "文案是否提到开拖拉机收麦子",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "文案是否提到农村生活",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "文案是否提到在摘野果吃",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "文案是否提到打水",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 7,
+                "question": "文案是否提到在河边洗衣服",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "I am a senior high school student taking the national college entrance exam, my fingers slightly trembling as I grasp the black gel pen that's been squeezed into a misshapen form. The clock in the examination hall ticks away, each second pounding like a heartbeat. Silence envelops the room, broken only by the scratching of pen against paper and the occasional sigh. This is the final subject of the exam—Chinese, and I am facing the ultimate writing task. Now, I need your help to complete this article. Please imitate the writing style and theme of the following text, creating a lengthy piece. [On a deep autumn morning, mist like a layer of gauze quietly shrouded my hometown. In the fields, the rice has long been harvested, leaving golden stubble glimmering in the dawn light. My steps slow upon this familiar land, with echoes of distant roosters and dogs in the village ringing in my ears. Each breath of air carries the fresh scent of earth and the unique chill of autumn, making me drawn to inhale deeply as if preserving the entire flavor of my hometown within my heart.] The exam requires a word count of approximately 3000, with a 10% fluctuation up or down being acceptable. Remember, the word number only counts the English words. In the article, metaphorical techniques should be used frequently. Additionally, your article should mention the following themes: Napping;Fetching Water;Picking Wild Fruits;Carrying Manure;Killing Pigs for the New Year;Driving a Tractor to Harvest Wheat. Please output only the content of the article.",
+        "corresponding_parts": {
+            "文案": "#CODE#整篇文章，只要文章，不要别的任何信息"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是3000左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[2700.0,3300.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否使用了比喻的修辞手法？",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "写作手法",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "文案是否提到午睡",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "文案是否提到打水",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "文案是否提到在摘野果吃",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "文案是否提到挑粪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "文案是否提到过年杀猪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 14,
+                "question": "文案是否提到开拖拉机收麦子",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "I am a senior high school student taking the national college entrance exam, my fingers slightly trembling as I grasp the black gel pen that's been squeezed into a misshapen form. The clock in the examination hall ticks away, each second pounding like a heartbeat. Silence envelops the room, broken only by the scratching of pen against paper and the occasional sigh. This is the final subject of the exam—Chinese, and I am facing the ultimate writing task. Now, I need your help to complete this article. Please imitate the writing style and theme of the following text, creating a lengthy piece. [On a deep autumn morning, mist like a layer of gauze quietly shrouded my hometown. In the fields, the rice has long been harvested, leaving golden stubble glimmering in the dawn light. My steps slow upon this familiar land, with echoes of distant roosters and dogs in the village ringing in my ears. Each breath of air carries the fresh scent of earth and the unique chill of autumn, making me drawn to inhale deeply as if preserving the entire flavor of my hometown within my heart.] The exam requires a word count of approximately 3000, with a 10% fluctuation up or down being acceptable. Remember, the word number only counts the English words. In the article, metaphorical techniques should be used frequently. Additionally, your article should mention the following themes: Carrying Manure;Fetching Water;Driving a Tractor to Harvest Wheat;Killing Pigs for the New Year;Picking Wild Fruits;Rural Life. Please output only the content of the article.",
+        "corresponding_parts": {
+            "文案": "#CODE#整篇文章，只要文章，不要别的任何信息"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是3000左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[2700.0,3300.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否使用了比喻的修辞手法？",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "写作手法",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "文案是否提到挑粪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "文案是否提到打水",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 14,
+                "question": "文案是否提到开拖拉机收麦子",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "文案是否提到过年杀猪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "文案是否提到在摘野果吃",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "文案是否提到农村生活",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "I am a senior high school student taking the national college entrance exam, my fingers slightly trembling as I grasp the black gel pen that's been squeezed into a misshapen form. The clock in the examination hall ticks away, each second pounding like a heartbeat. Silence envelops the room, broken only by the scratching of pen against paper and the occasional sigh. This is the final subject of the exam—Chinese, and I am facing the ultimate writing task. Now, I need your help to complete this article. Please imitate the writing style and theme of the following text, creating a lengthy piece. [On a deep autumn morning, mist like a layer of gauze quietly shrouded my hometown. In the fields, the rice has long been harvested, leaving golden stubble glimmering in the dawn light. My steps slow upon this familiar land, with echoes of distant roosters and dogs in the village ringing in my ears. Each breath of air carries the fresh scent of earth and the unique chill of autumn, making me drawn to inhale deeply as if preserving the entire flavor of my hometown within my heart.] The exam requires a word count of approximately 3000, with a 10% fluctuation up or down being acceptable. Remember, the word number only counts the English words. In the article, metaphorical techniques should be used frequently. Additionally, your article should mention the following themes: Carrying Manure;Driving a Tractor to Harvest Wheat;Rural Life;Picking Wild Fruits;Fetching Water;Washing Clothes by the River. Please output only the content of the article.",
+        "corresponding_parts": {
+            "文案": "#CODE#整篇文章，只要文章，不要别的任何信息"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是3000左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[2700.0,3300.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否使用了比喻的修辞手法？",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "写作手法",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "文案是否提到挑粪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 14,
+                "question": "文案是否提到开拖拉机收麦子",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "文案是否提到农村生活",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "文案是否提到在摘野果吃",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "文案是否提到打水",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 7,
+                "question": "文案是否提到在河边洗衣服",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "I am a senior high school student taking the national college entrance exam, my fingers slightly trembling as I grasp the black gel pen that's been squeezed into a misshapen form. The clock in the examination hall ticks away, each second pounding like a heartbeat. Silence envelops the room, broken only by the scratching of pen against paper and the occasional sigh. This is the final subject of the exam—Chinese, and I am facing the ultimate writing task. Now, I need your help to complete this article. Please imitate the writing style and theme of the following text, creating a lengthy piece. [On a deep autumn morning, mist like a layer of gauze quietly shrouded my hometown. In the fields, the rice has long been harvested, leaving golden stubble glimmering in the dawn light. My steps slow upon this familiar land, with echoes of distant roosters and dogs in the village ringing in my ears. Each breath of air carries the fresh scent of earth and the unique chill of autumn, making me drawn to inhale deeply as if preserving the entire flavor of my hometown within my heart.] The exam requires a word count of approximately 4000, with a 10% fluctuation up or down being acceptable. Remember, the word number only counts the English words. In the article, metaphorical techniques should be used frequently. Additionally, your article should mention the following themes: Napping;Fetching Water;Picking Wild Fruits;Carrying Manure;Killing Pigs for the New Year;Driving a Tractor to Harvest Wheat. Please output only the content of the article.",
+        "corresponding_parts": {
+            "文案": "#CODE#整篇文章，只要文章，不要别的任何信息"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是4000左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[3600.0,4400.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否使用了比喻的修辞手法？",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "写作手法",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "文案是否提到午睡",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "文案是否提到打水",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "文案是否提到在摘野果吃",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "文案是否提到挑粪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "文案是否提到过年杀猪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 14,
+                "question": "文案是否提到开拖拉机收麦子",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "I am a senior high school student taking the national college entrance exam, my fingers slightly trembling as I grasp the black gel pen that's been squeezed into a misshapen form. The clock in the examination hall ticks away, each second pounding like a heartbeat. Silence envelops the room, broken only by the scratching of pen against paper and the occasional sigh. This is the final subject of the exam—Chinese, and I am facing the ultimate writing task. Now, I need your help to complete this article. Please imitate the writing style and theme of the following text, creating a lengthy piece. [On a deep autumn morning, mist like a layer of gauze quietly shrouded my hometown. In the fields, the rice has long been harvested, leaving golden stubble glimmering in the dawn light. My steps slow upon this familiar land, with echoes of distant roosters and dogs in the village ringing in my ears. Each breath of air carries the fresh scent of earth and the unique chill of autumn, making me drawn to inhale deeply as if preserving the entire flavor of my hometown within my heart.] The exam requires a word count of approximately 4000, with a 10% fluctuation up or down being acceptable. Remember, the word number only counts the English words. In the article, metaphorical techniques should be used frequently. Additionally, your article should mention the following themes: Carrying Manure;Fetching Water;Driving a Tractor to Harvest Wheat;Killing Pigs for the New Year;Picking Wild Fruits;Rural Life. Please output only the content of the article.",
+        "corresponding_parts": {
+            "文案": "#CODE#整篇文章，只要文章，不要别的任何信息"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是4000左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[3600.0,4400.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否使用了比喻的修辞手法？",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "写作手法",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "文案是否提到挑粪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "文案是否提到打水",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 14,
+                "question": "文案是否提到开拖拉机收麦子",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "文案是否提到过年杀猪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "文案是否提到在摘野果吃",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "文案是否提到农村生活",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "I am a senior high school student taking the national college entrance exam, my fingers slightly trembling as I grasp the black gel pen that's been squeezed into a misshapen form. The clock in the examination hall ticks away, each second pounding like a heartbeat. Silence envelops the room, broken only by the scratching of pen against paper and the occasional sigh. This is the final subject of the exam—Chinese, and I am facing the ultimate writing task. Now, I need your help to complete this article. Please imitate the writing style and theme of the following text, creating a lengthy piece. [On a deep autumn morning, mist like a layer of gauze quietly shrouded my hometown. In the fields, the rice has long been harvested, leaving golden stubble glimmering in the dawn light. My steps slow upon this familiar land, with echoes of distant roosters and dogs in the village ringing in my ears. Each breath of air carries the fresh scent of earth and the unique chill of autumn, making me drawn to inhale deeply as if preserving the entire flavor of my hometown within my heart.] The exam requires a word count of approximately 4000, with a 10% fluctuation up or down being acceptable. Remember, the word number only counts the English words. In the article, metaphorical techniques should be used frequently. Additionally, your article should mention the following themes: Carrying Manure;Driving a Tractor to Harvest Wheat;Rural Life;Picking Wild Fruits;Fetching Water;Washing Clothes by the River. Please output only the content of the article.",
+        "corresponding_parts": {
+            "文案": "#CODE#整篇文章，只要文章，不要别的任何信息"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是4000左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[3600.0,4400.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否使用了比喻的修辞手法？",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "写作手法",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "文案是否提到挑粪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 14,
+                "question": "文案是否提到开拖拉机收麦子",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "文案是否提到农村生活",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "文案是否提到在摘野果吃",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "文案是否提到打水",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 7,
+                "question": "文案是否提到在河边洗衣服",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "I am a senior high school student taking the national college entrance exam, my fingers slightly trembling as I grasp the black gel pen that's been squeezed into a misshapen form. The clock in the examination hall ticks away, each second pounding like a heartbeat. Silence envelops the room, broken only by the scratching of pen against paper and the occasional sigh. This is the final subject of the exam—Chinese, and I am facing the ultimate writing task. Now, I need your help to complete this article. Please imitate the writing style and theme of the following text, creating a lengthy piece. [On a deep autumn morning, mist like a layer of gauze quietly shrouded my hometown. In the fields, the rice has long been harvested, leaving golden stubble glimmering in the dawn light. My steps slow upon this familiar land, with echoes of distant roosters and dogs in the village ringing in my ears. Each breath of air carries the fresh scent of earth and the unique chill of autumn, making me drawn to inhale deeply as if preserving the entire flavor of my hometown within my heart.] The exam requires a word count of approximately 6000, with a 10% fluctuation up or down being acceptable. Remember, the word number only counts the English words. In the article, metaphorical techniques should be used frequently. Additionally, your article should mention the following themes: Napping;Fetching Water;Picking Wild Fruits;Carrying Manure;Killing Pigs for the New Year;Driving a Tractor to Harvest Wheat. Please output only the content of the article.",
+        "corresponding_parts": {
+            "文案": "#CODE#整篇文章，只要文章，不要别的任何信息"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是6000左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[5400.0,6600.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否使用了比喻的修辞手法？",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "写作手法",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "文案是否提到午睡",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "文案是否提到打水",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "文案是否提到在摘野果吃",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "文案是否提到挑粪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "文案是否提到过年杀猪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 14,
+                "question": "文案是否提到开拖拉机收麦子",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "I am a senior high school student taking the national college entrance exam, my fingers slightly trembling as I grasp the black gel pen that's been squeezed into a misshapen form. The clock in the examination hall ticks away, each second pounding like a heartbeat. Silence envelops the room, broken only by the scratching of pen against paper and the occasional sigh. This is the final subject of the exam—Chinese, and I am facing the ultimate writing task. Now, I need your help to complete this article. Please imitate the writing style and theme of the following text, creating a lengthy piece. [On a deep autumn morning, mist like a layer of gauze quietly shrouded my hometown. In the fields, the rice has long been harvested, leaving golden stubble glimmering in the dawn light. My steps slow upon this familiar land, with echoes of distant roosters and dogs in the village ringing in my ears. Each breath of air carries the fresh scent of earth and the unique chill of autumn, making me drawn to inhale deeply as if preserving the entire flavor of my hometown within my heart.] The exam requires a word count of approximately 6000, with a 10% fluctuation up or down being acceptable. Remember, the word number only counts the English words. In the article, metaphorical techniques should be used frequently. Additionally, your article should mention the following themes: Carrying Manure;Fetching Water;Driving a Tractor to Harvest Wheat;Killing Pigs for the New Year;Picking Wild Fruits;Rural Life. Please output only the content of the article.",
+        "corresponding_parts": {
+            "文案": "#CODE#整篇文章，只要文章，不要别的任何信息"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是6000左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[5400.0,6600.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否使用了比喻的修辞手法？",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "写作手法",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "文案是否提到挑粪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "文案是否提到打水",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 14,
+                "question": "文案是否提到开拖拉机收麦子",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "文案是否提到过年杀猪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "文案是否提到在摘野果吃",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "文案是否提到农村生活",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "I am a senior high school student taking the national college entrance exam, my fingers slightly trembling as I grasp the black gel pen that's been squeezed into a misshapen form. The clock in the examination hall ticks away, each second pounding like a heartbeat. Silence envelops the room, broken only by the scratching of pen against paper and the occasional sigh. This is the final subject of the exam—Chinese, and I am facing the ultimate writing task. Now, I need your help to complete this article. Please imitate the writing style and theme of the following text, creating a lengthy piece. [On a deep autumn morning, mist like a layer of gauze quietly shrouded my hometown. In the fields, the rice has long been harvested, leaving golden stubble glimmering in the dawn light. My steps slow upon this familiar land, with echoes of distant roosters and dogs in the village ringing in my ears. Each breath of air carries the fresh scent of earth and the unique chill of autumn, making me drawn to inhale deeply as if preserving the entire flavor of my hometown within my heart.] The exam requires a word count of approximately 6000, with a 10% fluctuation up or down being acceptable. Remember, the word number only counts the English words. In the article, metaphorical techniques should be used frequently. Additionally, your article should mention the following themes: Carrying Manure;Driving a Tractor to Harvest Wheat;Rural Life;Picking Wild Fruits;Fetching Water;Washing Clothes by the River. Please output only the content of the article.",
+        "corresponding_parts": {
+            "文案": "#CODE#整篇文章，只要文章，不要别的任何信息"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是6000左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[5400.0,6600.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否使用了比喻的修辞手法？",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "写作手法",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "文案是否提到挑粪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 14,
+                "question": "文案是否提到开拖拉机收麦子",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "文案是否提到农村生活",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "文案是否提到在摘野果吃",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "文案是否提到打水",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 7,
+                "question": "文案是否提到在河边洗衣服",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "I am a senior high school student taking the national college entrance exam, my fingers slightly trembling as I grasp the black gel pen that's been squeezed into a misshapen form. The clock in the examination hall ticks away, each second pounding like a heartbeat. Silence envelops the room, broken only by the scratching of pen against paper and the occasional sigh. This is the final subject of the exam—Chinese, and I am facing the ultimate writing task. Now, I need your help to complete this article. Please imitate the writing style and theme of the following text, creating a lengthy piece. [On a deep autumn morning, mist like a layer of gauze quietly shrouded my hometown. In the fields, the rice has long been harvested, leaving golden stubble glimmering in the dawn light. My steps slow upon this familiar land, with echoes of distant roosters and dogs in the village ringing in my ears. Each breath of air carries the fresh scent of earth and the unique chill of autumn, making me drawn to inhale deeply as if preserving the entire flavor of my hometown within my heart.] The exam requires a word count of approximately 7000, with a 10% fluctuation up or down being acceptable. Remember, the word number only counts the English words. In the article, metaphorical techniques should be used frequently. Additionally, your article should mention the following themes: Napping;Fetching Water;Picking Wild Fruits;Carrying Manure;Killing Pigs for the New Year;Driving a Tractor to Harvest Wheat. Please output only the content of the article.",
+        "corresponding_parts": {
+            "文案": "#CODE#整篇文章，只要文章，不要别的任何信息"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是7000左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[6300.0,7700.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否使用了比喻的修辞手法？",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "写作手法",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "文案是否提到午睡",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "文案是否提到打水",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "文案是否提到在摘野果吃",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "文案是否提到挑粪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "文案是否提到过年杀猪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 14,
+                "question": "文案是否提到开拖拉机收麦子",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "I am a senior high school student taking the national college entrance exam, my fingers slightly trembling as I grasp the black gel pen that's been squeezed into a misshapen form. The clock in the examination hall ticks away, each second pounding like a heartbeat. Silence envelops the room, broken only by the scratching of pen against paper and the occasional sigh. This is the final subject of the exam—Chinese, and I am facing the ultimate writing task. Now, I need your help to complete this article. Please imitate the writing style and theme of the following text, creating a lengthy piece. [On a deep autumn morning, mist like a layer of gauze quietly shrouded my hometown. In the fields, the rice has long been harvested, leaving golden stubble glimmering in the dawn light. My steps slow upon this familiar land, with echoes of distant roosters and dogs in the village ringing in my ears. Each breath of air carries the fresh scent of earth and the unique chill of autumn, making me drawn to inhale deeply as if preserving the entire flavor of my hometown within my heart.] The exam requires a word count of approximately 7000, with a 10% fluctuation up or down being acceptable. Remember, the word number only counts the English words. In the article, metaphorical techniques should be used frequently. Additionally, your article should mention the following themes: Carrying Manure;Fetching Water;Driving a Tractor to Harvest Wheat;Killing Pigs for the New Year;Picking Wild Fruits;Rural Life. Please output only the content of the article.",
+        "corresponding_parts": {
+            "文案": "#CODE#整篇文章，只要文章，不要别的任何信息"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是7000左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[6300.0,7700.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否使用了比喻的修辞手法？",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "写作手法",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "文案是否提到挑粪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "文案是否提到打水",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 14,
+                "question": "文案是否提到开拖拉机收麦子",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 9,
+                "question": "文案是否提到过年杀猪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "文案是否提到在摘野果吃",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "文案是否提到农村生活",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "I am a senior high school student taking the national college entrance exam, my fingers slightly trembling as I grasp the black gel pen that's been squeezed into a misshapen form. The clock in the examination hall ticks away, each second pounding like a heartbeat. Silence envelops the room, broken only by the scratching of pen against paper and the occasional sigh. This is the final subject of the exam—Chinese, and I am facing the ultimate writing task. Now, I need your help to complete this article. Please imitate the writing style and theme of the following text, creating a lengthy piece. [On a deep autumn morning, mist like a layer of gauze quietly shrouded my hometown. In the fields, the rice has long been harvested, leaving golden stubble glimmering in the dawn light. My steps slow upon this familiar land, with echoes of distant roosters and dogs in the village ringing in my ears. Each breath of air carries the fresh scent of earth and the unique chill of autumn, making me drawn to inhale deeply as if preserving the entire flavor of my hometown within my heart.] The exam requires a word count of approximately 7000, with a 10% fluctuation up or down being acceptable. Remember, the word number only counts the English words. In the article, metaphorical techniques should be used frequently. Additionally, your article should mention the following themes: Carrying Manure;Driving a Tractor to Harvest Wheat;Rural Life;Picking Wild Fruits;Fetching Water;Washing Clothes by the River. Please output only the content of the article.",
+        "corresponding_parts": {
+            "文案": "#CODE#整篇文章，只要文章，不要别的任何信息"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文章",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "字数是否是7000左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[6300.0,7700.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否使用了比喻的修辞手法？",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "写作手法",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "文案是否提到挑粪",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 14,
+                "question": "文案是否提到开拖拉机收麦子",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "文案是否提到农村生活",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 8,
+                "question": "文案是否提到在摘野果吃",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "文案是否提到打水",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 7,
+                "question": "文案是否提到在河边洗衣服",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            }
+        ]
+    }
+]

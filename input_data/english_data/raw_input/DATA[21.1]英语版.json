@@ -1,0 +1,1007 @@
+[
+    {
+        "category": "general_single",
+        "question": "You are a merchant in the healthy living industry 【Lingjiang Yoga】, and you want to create short videos that can inspire users to visit your store. Your target audience is refined urban white-collar workers, aged 30-35, who pursue physical relaxation and improvement of mind-body balance. Please provide 1 short video pure descriptive voiceover script. Requirements are as follows:\n\n1. Audience pain points: Long hours of desk work, body stiffness, high stress, poor sleep quality, lack of effective self-regulation methods, not knowing how to improve physical and mental state?\n\n2. Merchant service scope: Professional yoga courses, meditation relaxation, personalized posture adjustment\n\n3. Merchant highlights: Experienced instructors, diverse courses, tranquil environment, professional equipment, exclusive customized services for members, one-on-one guidance\n\n4. Script should follow PREP structure: 【Point】+【Reason】+【Example】+【Restate Point】 structure\n\n5. Copy should not be verbose or repetitive, around 200 words, with inspirational writing style, such as \"Every woman should love herself well, be good to herself, and everything will be good\"\nNote: Word count only includes English words, only generate the script, do not generate any additional information. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "脚本": "#CODE#模型回答的所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了脚本",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的脚本中，是否包含PERP中的“观点”【Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "给出的脚本中，是否包含PERP结构中的“理由”【Reason】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "给出的脚本中，是否包含PERP结构中的“例子”【Example】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "给出的脚本中，是否包含PERP结构中的“重复观点“【Restate Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "字数是否是200左右",
+                "corresponding_part": "脚本",
+                "rule": "each_length:[180.0,220.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a merchant of the new Chinese-style tea space【A Cup of Clear Tea】, and you want to create short videos that can inspire users to visit your store. Your target audience is urban white-collar workers who pursue refined living, aged 30-35, seeking inner tranquility and life rituals. Please provide 1 short video pure descriptive voiceover script. Requirements are as follows:\n\n1. Audience pain points: High work pressure, prone to anxiety, narrow social circles, lack of ways to relax body and mind, don't know how to achieve inner peace?\n\n2. Merchant service scope: Tea tasting experience, tea ceremony teaching, meditation space\n\n3. Merchant highlights: Elegant environment, high-end tea products, professional tea masters, private space, customized tea gatherings, rich cultural atmosphere\n\n4. Script should follow PREP structure:【Point】+【Reason】+【Example】+【Restate Point】structure\n\n5. Copy should not be verbose or repetitive, around 200 words, with inspirational writing style, such as \"Every woman should love herself well, be good to herself, and everything will be good\"\nNote: Word count only includes English words, only generate the script, do not generate any additional information. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "脚本": "#CODE#模型回答的所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了脚本",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的脚本中，是否包含PERP中的“观点”【Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "给出的脚本中，是否包含PERP结构中的“理由”【Reason】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "给出的脚本中，是否包含PERP结构中的“例子”【Example】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "给出的脚本中，是否包含PERP结构中的“重复观点“【Restate Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "字数是否是200左右",
+                "corresponding_part": "脚本",
+                "rule": "each_length:[180.0,220.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a merchant of the high-end fitness personal training studio [Liixing Fitness]. You want to create short videos that can inspire users to visit your store. The target audience is sophisticated urban white-collar workers, aged 30-35, who focus on body management and health improvement. Please provide 1 short video pure descriptive voiceover script. Requirements are as follows:\n\n1. Audience pain points: Easy to gain weight from prolonged sitting, lack of exercise habits, high work pressure, unsatisfactory body shape, don't know how to scientifically shape the body?\n\n2. Merchant service scope: Personal training, physical fitness assessment, healthy diet advice\n\n3. Merchant highlights: Customized courses, professional coaches, private space, advanced equipment, motivational atmosphere, integrated health management\n\n4. Script should follow PREP structure: [Point] + [Reason] + [Example] + [Restate Point] structure\n\n5. The copy should not be verbose and repetitive, around 200 words, with inspirational expression like \"Every woman should love herself well, be good to herself, and everything will be good\"\nNote: Word count only counts English words, only generate the script, do not generate any additional information. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "脚本": "#CODE#模型回答的所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了脚本",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的脚本中，是否包含PERP中的“观点”【Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "给出的脚本中，是否包含PERP结构中的“理由”【Reason】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "给出的脚本中，是否包含PERP结构中的“例子”【Example】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "给出的脚本中，是否包含PERP结构中的“重复观点“【Restate Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "字数是否是200左右",
+                "corresponding_part": "脚本",
+                "rule": "each_length:[180.0,220.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a merchant of the floral lifestyle studio【Floral Whispers】, and you want to create short videos that can inspire users to visit your store. Your target audience is sophisticated urban white-collar workers, aged 30-35, who pursue aesthetic living and self-healing. Please provide 1 short video pure descriptive voiceover script. Requirements are as follows:\n\n1. Audience pain points: High work pressure, monotonous life, lack of emotional outlets, longing for beautiful rituals, not knowing how to improve life happiness?\n\n2. Merchant service scope: Floral DIY, flower arrangement courses, customized floral gifts\n\n3. Merchant highlights: Warm environment, fresh flowers, professional teachers, diverse courses, customization services, strong experiential feeling\n\n4. Script should follow PREP structure: 【Point】+【Reason】+【Example】+【Restate Point】 structure\n\n5. Copy should not be verbose or repetitive, around 200 words, with inspirational expression like \"Every woman should love herself well, be good to herself, and everything will be good\"\nNote: Word count only includes English words, only generate the script, do not generate any additional information. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "脚本": "#CODE#模型回答的所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了脚本",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的脚本中，是否包含PERP中的“观点”【Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "给出的脚本中，是否包含PERP结构中的“理由”【Reason】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "给出的脚本中，是否包含PERP结构中的“例子”【Example】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "给出的脚本中，是否包含PERP结构中的“重复观点“【Restate Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "字数是否是200左右",
+                "corresponding_part": "脚本",
+                "rule": "each_length:[180.0,220.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a merchant of the high-end light meal restaurant 【Light Enjoyment Time】. You want to create short videos that can inspire users to explore your store. The target audience is sophisticated urban white-collar workers, aged 30-35, who focus on healthy eating and quality of life. Please provide 1 short video pure descriptive voiceover script. Requirements are as follows:\n\n1. Audience pain points: Takeout food is heavy in oil and salt, irregular eating habits, difficulty in weight management, lack of healthy and delicious options, not knowing how to eat healthily while being satisfied?\n\n2. Merchant service scope: Low-calorie light meals, nutritional pairing, takeout delivery\n\n3. Merchant highlights: Fresh ingredients, scientific pairing, comfortable environment, diverse flavors, thoughtful service, health concept runs throughout\n\n4. Script should follow PREP structure: 【Point】+【Reason】+【Example】+【Restate Point】 structure\n\n5. The copy should not be verbose and repetitive, around 200 words, with a soul-nourishing expression style, such as \"Every woman should love herself well, be good to herself, and everything will be good\"\nNote: Word count only counts English words, only generate the script, do not generate any additional information. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "脚本": "#CODE#模型回答的所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了脚本",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的脚本中，是否包含PERP中的“观点”【Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "给出的脚本中，是否包含PERP结构中的“理由”【Reason】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "给出的脚本中，是否包含PERP结构中的“例子”【Example】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "给出的脚本中，是否包含PERP结构中的“重复观点“【Restate Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "字数是否是200左右",
+                "corresponding_part": "脚本",
+                "rule": "each_length:[180.0,220.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a merchant in the healthy living industry 【Lingjiang Yoga】, and you want to create short videos that can inspire users to visit your store. Your target audience is refined urban white-collar workers, aged 30-35, who pursue physical relaxation and improvement of mind-body balance. Please provide 1 short video pure descriptive voiceover script. Requirements are as follows:\n\n1. Audience pain points: Long hours of desk work, body stiffness, high stress, poor sleep quality, lack of effective self-regulation methods, not knowing how to improve physical and mental state?\n\n2. Merchant service scope: Professional yoga courses, meditation relaxation, personalized posture adjustment\n\n3. Merchant highlights: Experienced instructors, diverse courses, tranquil environment, professional equipment, exclusive customized services for members, one-on-one guidance\n\n4. Script should follow PREP structure: 【Point】+【Reason】+【Example】+【Restate Point】 structure\n\n5. Copy should not be verbose or repetitive, around 300 words, with inspirational writing style, such as \"Every woman should love herself well, be good to herself, and everything will be good\"\nNote: Word count only includes English words, only generate the script, do not generate any additional information. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "脚本": "#CODE#模型回答的所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了脚本",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的脚本中，是否包含PERP中的“观点”【Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "给出的脚本中，是否包含PERP结构中的“理由”【Reason】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "给出的脚本中，是否包含PERP结构中的“例子”【Example】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "给出的脚本中，是否包含PERP结构中的“重复观点“【Restate Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "字数是否是300左右",
+                "corresponding_part": "脚本",
+                "rule": "each_length:[270.0,330.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a merchant of the new Chinese-style tea space【A Cup of Clear Tea】, and you want to create short videos that can inspire users to visit your store. Your target audience is urban white-collar workers who pursue refined living, aged 30-35, seeking inner tranquility and life rituals. Please provide 1 short video pure descriptive voiceover script. Requirements are as follows:\n\n1. Audience pain points: High work pressure, prone to anxiety, narrow social circles, lack of ways to relax body and mind, don't know how to achieve inner peace?\n\n2. Merchant service scope: Tea tasting experience, tea ceremony teaching, meditation space\n\n3. Merchant highlights: Elegant environment, high-end tea products, professional tea masters, private space, customized tea gatherings, rich cultural atmosphere\n\n4. Script should follow PREP structure:【Point】+【Reason】+【Example】+【Restate Point】structure\n\n5. Copy should not be verbose or repetitive, around 300 words, with inspirational writing style, such as \"Every woman should love herself well, be good to herself, and everything will be good\"\nNote: Word count only includes English words, only generate the script, do not generate any additional information. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "脚本": "#CODE#模型回答的所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了脚本",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的脚本中，是否包含PERP中的“观点”【Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "给出的脚本中，是否包含PERP结构中的“理由”【Reason】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "给出的脚本中，是否包含PERP结构中的“例子”【Example】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "给出的脚本中，是否包含PERP结构中的“重复观点“【Restate Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "字数是否是300左右",
+                "corresponding_part": "脚本",
+                "rule": "each_length:[270.0,330.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a merchant of the high-end fitness personal training studio [Liixing Fitness]. You want to create short videos that can inspire users to visit your store. The target audience is sophisticated urban white-collar workers, aged 30-35, who focus on body management and health improvement. Please provide 1 short video pure descriptive voiceover script. Requirements are as follows:\n\n1. Audience pain points: Easy to gain weight from prolonged sitting, lack of exercise habits, high work pressure, unsatisfactory body shape, don't know how to scientifically shape the body?\n\n2. Merchant service scope: Personal training, physical fitness assessment, healthy diet advice\n\n3. Merchant highlights: Customized courses, professional coaches, private space, advanced equipment, motivational atmosphere, integrated health management\n\n4. Script should follow PREP structure: [Point] + [Reason] + [Example] + [Restate Point] structure\n\n5. The copy should not be verbose and repetitive, around 300 words, with inspirational expression like \"Every woman should love herself well, be good to herself, and everything will be good\"\nNote: Word count only counts English words, only generate the script, do not generate any additional information. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "脚本": "#CODE#模型回答的所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了脚本",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的脚本中，是否包含PERP中的“观点”【Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "给出的脚本中，是否包含PERP结构中的“理由”【Reason】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "给出的脚本中，是否包含PERP结构中的“例子”【Example】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "给出的脚本中，是否包含PERP结构中的“重复观点“【Restate Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "字数是否是300左右",
+                "corresponding_part": "脚本",
+                "rule": "each_length:[270.0,330.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a merchant of the floral lifestyle studio【Floral Whispers】, and you want to create short videos that can inspire users to visit your store. Your target audience is sophisticated urban white-collar workers, aged 30-35, who pursue aesthetic living and self-healing. Please provide 1 short video pure descriptive voiceover script. Requirements are as follows:\n\n1. Audience pain points: High work pressure, monotonous life, lack of emotional outlets, longing for beautiful rituals, not knowing how to improve life happiness?\n\n2. Merchant service scope: Floral DIY, flower arrangement courses, customized floral gifts\n\n3. Merchant highlights: Warm environment, fresh flowers, professional teachers, diverse courses, customization services, strong experiential feeling\n\n4. Script should follow PREP structure: 【Point】+【Reason】+【Example】+【Restate Point】 structure\n\n5. Copy should not be verbose or repetitive, around 300 words, with inspirational expression like \"Every woman should love herself well, be good to herself, and everything will be good\"\nNote: Word count only includes English words, only generate the script, do not generate any additional information. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "脚本": "#CODE#模型回答的所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了脚本",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的脚本中，是否包含PERP中的“观点”【Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "给出的脚本中，是否包含PERP结构中的“理由”【Reason】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "给出的脚本中，是否包含PERP结构中的“例子”【Example】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "给出的脚本中，是否包含PERP结构中的“重复观点“【Restate Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "字数是否是300左右",
+                "corresponding_part": "脚本",
+                "rule": "each_length:[270.0,330.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a merchant of the high-end light meal restaurant 【Light Enjoyment Time】. You want to create short videos that can inspire users to explore your store. The target audience is sophisticated urban white-collar workers, aged 30-35, who focus on healthy eating and quality of life. Please provide 1 short video pure descriptive voiceover script. Requirements are as follows:\n\n1. Audience pain points: Takeout food is heavy in oil and salt, irregular eating habits, difficulty in weight management, lack of healthy and delicious options, not knowing how to eat healthily while being satisfied?\n\n2. Merchant service scope: Low-calorie light meals, nutritional pairing, takeout delivery\n\n3. Merchant highlights: Fresh ingredients, scientific pairing, comfortable environment, diverse flavors, thoughtful service, health concept runs throughout\n\n4. Script should follow PREP structure: 【Point】+【Reason】+【Example】+【Restate Point】 structure\n\n5. The copy should not be verbose and repetitive, around 300 words, with a soul-nourishing expression style, such as \"Every woman should love herself well, be good to herself, and everything will be good\"\nNote: Word count only counts English words, only generate the script, do not generate any additional information. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "脚本": "#CODE#模型回答的所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了脚本",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的脚本中，是否包含PERP中的“观点”【Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "给出的脚本中，是否包含PERP结构中的“理由”【Reason】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "给出的脚本中，是否包含PERP结构中的“例子”【Example】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "给出的脚本中，是否包含PERP结构中的“重复观点“【Restate Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "字数是否是300左右",
+                "corresponding_part": "脚本",
+                "rule": "each_length:[270.0,330.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a merchant in the healthy living industry 【Lingjiang Yoga】, and you want to create short videos that can inspire users to visit your store. Your target audience is refined urban white-collar workers, aged 30-35, who pursue physical relaxation and improvement of mind-body balance. Please provide 1 short video pure descriptive voiceover script. Requirements are as follows:\n\n1. Audience pain points: Long hours of desk work, body stiffness, high stress, poor sleep quality, lack of effective self-regulation methods, not knowing how to improve physical and mental state?\n\n2. Merchant service scope: Professional yoga courses, meditation relaxation, personalized posture adjustment\n\n3. Merchant highlights: Experienced instructors, diverse courses, tranquil environment, professional equipment, exclusive customized services for members, one-on-one guidance\n\n4. Script should follow PREP structure: 【Point】+【Reason】+【Example】+【Restate Point】 structure\n\n5. Copy should not be verbose or repetitive, around 400 words, with inspirational writing style, such as \"Every woman should love herself well, be good to herself, and everything will be good\"\nNote: Word count only includes English words, only generate the script, do not generate any additional information. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "脚本": "#CODE#模型回答的所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了脚本",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的脚本中，是否包含PERP中的“观点”【Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "给出的脚本中，是否包含PERP结构中的“理由”【Reason】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "给出的脚本中，是否包含PERP结构中的“例子”【Example】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "给出的脚本中，是否包含PERP结构中的“重复观点“【Restate Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "字数是否是400左右",
+                "corresponding_part": "脚本",
+                "rule": "each_length:[360.0,440.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a merchant of the new Chinese-style tea space【A Cup of Clear Tea】, and you want to create short videos that can inspire users to visit your store. Your target audience is urban white-collar workers who pursue refined living, aged 30-35, seeking inner tranquility and life rituals. Please provide 1 short video pure descriptive voiceover script. Requirements are as follows:\n\n1. Audience pain points: High work pressure, prone to anxiety, narrow social circles, lack of ways to relax body and mind, don't know how to achieve inner peace?\n\n2. Merchant service scope: Tea tasting experience, tea ceremony teaching, meditation space\n\n3. Merchant highlights: Elegant environment, high-end tea products, professional tea masters, private space, customized tea gatherings, rich cultural atmosphere\n\n4. Script should follow PREP structure:【Point】+【Reason】+【Example】+【Restate Point】structure\n\n5. Copy should not be verbose or repetitive, around 400 words, with inspirational writing style, such as \"Every woman should love herself well, be good to herself, and everything will be good\"\nNote: Word count only includes English words, only generate the script, do not generate any additional information. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "脚本": "#CODE#模型回答的所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了脚本",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的脚本中，是否包含PERP中的“观点”【Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "给出的脚本中，是否包含PERP结构中的“理由”【Reason】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "给出的脚本中，是否包含PERP结构中的“例子”【Example】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "给出的脚本中，是否包含PERP结构中的“重复观点“【Restate Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "字数是否是400左右",
+                "corresponding_part": "脚本",
+                "rule": "each_length:[360.0,440.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a merchant of the high-end fitness personal training studio [Liixing Fitness]. You want to create short videos that can inspire users to visit your store. The target audience is sophisticated urban white-collar workers, aged 30-35, who focus on body management and health improvement. Please provide 1 short video pure descriptive voiceover script. Requirements are as follows:\n\n1. Audience pain points: Easy to gain weight from prolonged sitting, lack of exercise habits, high work pressure, unsatisfactory body shape, don't know how to scientifically shape the body?\n\n2. Merchant service scope: Personal training, physical fitness assessment, healthy diet advice\n\n3. Merchant highlights: Customized courses, professional coaches, private space, advanced equipment, motivational atmosphere, integrated health management\n\n4. Script should follow PREP structure: [Point] + [Reason] + [Example] + [Restate Point] structure\n\n5. The copy should not be verbose and repetitive, around 400 words, with inspirational expression like \"Every woman should love herself well, be good to herself, and everything will be good\"\nNote: Word count only counts English words, only generate the script, do not generate any additional information. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "脚本": "#CODE#模型回答的所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了脚本",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的脚本中，是否包含PERP中的“观点”【Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "给出的脚本中，是否包含PERP结构中的“理由”【Reason】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "给出的脚本中，是否包含PERP结构中的“例子”【Example】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "给出的脚本中，是否包含PERP结构中的“重复观点“【Restate Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "字数是否是400左右",
+                "corresponding_part": "脚本",
+                "rule": "each_length:[360.0,440.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a merchant of the floral lifestyle studio【Floral Whispers】, and you want to create short videos that can inspire users to visit your store. Your target audience is sophisticated urban white-collar workers, aged 30-35, who pursue aesthetic living and self-healing. Please provide 1 short video pure descriptive voiceover script. Requirements are as follows:\n\n1. Audience pain points: High work pressure, monotonous life, lack of emotional outlets, longing for beautiful rituals, not knowing how to improve life happiness?\n\n2. Merchant service scope: Floral DIY, flower arrangement courses, customized floral gifts\n\n3. Merchant highlights: Warm environment, fresh flowers, professional teachers, diverse courses, customization services, strong experiential feeling\n\n4. Script should follow PREP structure: 【Point】+【Reason】+【Example】+【Restate Point】 structure\n\n5. Copy should not be verbose or repetitive, around 400 words, with inspirational expression like \"Every woman should love herself well, be good to herself, and everything will be good\"\nNote: Word count only includes English words, only generate the script, do not generate any additional information. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "脚本": "#CODE#模型回答的所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了脚本",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的脚本中，是否包含PERP中的“观点”【Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "给出的脚本中，是否包含PERP结构中的“理由”【Reason】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "给出的脚本中，是否包含PERP结构中的“例子”【Example】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "给出的脚本中，是否包含PERP结构中的“重复观点“【Restate Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "字数是否是400左右",
+                "corresponding_part": "脚本",
+                "rule": "each_length:[360.0,440.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "You are a merchant of the high-end light meal restaurant 【Light Enjoyment Time】. You want to create short videos that can inspire users to explore your store. The target audience is sophisticated urban white-collar workers, aged 30-35, who focus on healthy eating and quality of life. Please provide 1 short video pure descriptive voiceover script. Requirements are as follows:\n\n1. Audience pain points: Takeout food is heavy in oil and salt, irregular eating habits, difficulty in weight management, lack of healthy and delicious options, not knowing how to eat healthily while being satisfied?\n\n2. Merchant service scope: Low-calorie light meals, nutritional pairing, takeout delivery\n\n3. Merchant highlights: Fresh ingredients, scientific pairing, comfortable environment, diverse flavors, thoughtful service, health concept runs throughout\n\n4. Script should follow PREP structure: 【Point】+【Reason】+【Example】+【Restate Point】 structure\n\n5. The copy should not be verbose and repetitive, around 400 words, with a soul-nourishing expression style, such as \"Every woman should love herself well, be good to herself, and everything will be good\"\nNote: Word count only counts English words, only generate the script, do not generate any additional information. Remember, the word number only counts the English words.",
+        "corresponding_parts": {
+            "脚本": "#CODE#模型回答的所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了脚本",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的脚本中，是否包含PERP中的“观点”【Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "给出的脚本中，是否包含PERP结构中的“理由”【Reason】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "给出的脚本中，是否包含PERP结构中的“例子”【Example】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "给出的脚本中，是否包含PERP结构中的“重复观点“【Restate Point】",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "字数是否是400左右",
+                "corresponding_part": "脚本",
+                "rule": "each_length:[360.0,440.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "200字以上、范围、倍数",
+                "被依赖": false
+            }
+        ]
+    }
+]

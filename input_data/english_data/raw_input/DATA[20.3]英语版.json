@@ -1,0 +1,290 @@
+[
+    {
+        "category": "general_single",
+        "question": "Hello large language model, I am not a local from Shanghai, and I want to work in Shanghai. The job content is: developing APPs and data mining. My boss requires me to provide a resume. This resume must be very detailed, must first write a self-introduction unrelated to work, then write work experience in APP development, and finally write work experience in data mining, ending with my passion for work. Since my boss speaks pidgin English, my resume must have a foreign accent and tone. Therefore, the ratio of Chinese to English in my resume is 1:9, (must strictly follow this ratio to generate content, there cannot be incorrect proportions, the word count calculation method is Chinese character count + English word count). Due to privacy reasons, I won't give you my resume for this task first, you can just improvise and let me see your level. The resume doesn't need special formatting, just write it plainly without paragraphs, don't output any additional content. For better readability, please don't output anything other than the resume. I emphasize again! Please do not output anything other than the resume!\n",
+        "corresponding_parts": {
+            "工作经历": "#CODE#模型回答所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了一份工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "是否没有分段",
+                "corresponding_part": "工作经历",
+                "rule": "non_special_notation:\n",
+                "dep": [],
+                "能力项": "答题结构合规",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "中文和英文的比例是否为1:9",
+                "corresponding_part": "工作经历",
+                "rule": "language_ratio:english:[1,9]",
+                "dep": [
+                    0
+                ],
+                "能力项": "倍数、中英文混杂",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "Hello large language model, I am not a local from Shanghai, and I want to work in Shanghai. The job content is: developing APPs and data mining. My boss requires me to provide a resume. This resume must be very detailed, must first write a self-introduction unrelated to work, then write work experience in APP development, and finally write work experience in data mining, ending with my passion for work. Since my boss speaks pidgin English, my resume must have a foreign accent and tone. Therefore, the ratio of Chinese to English in my resume is 9:1, (must strictly follow this ratio to generate content, there cannot be incorrect proportions, the word count calculation method is Chinese character count + English word count). Due to privacy reasons, I won't give you my resume for this task first, you can just improvise and let me see your level. The resume doesn't need special formatting, just write it plainly without paragraphs, don't output any additional content. For better readability, please don't output anything other than the resume. I emphasize again! Please do not output anything other than the resume!\n",
+        "corresponding_parts": {
+            "工作经历": "#CODE#模型回答所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了一份工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "是否没有分段",
+                "corresponding_part": "工作经历",
+                "rule": "non_special_notation:\n",
+                "dep": [],
+                "能力项": "答题结构合规",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "中文和英文的比例是否为9:1",
+                "corresponding_part": "工作经历",
+                "rule": "language_ratio:english:[9,1]",
+                "dep": [
+                    0
+                ],
+                "能力项": "倍数、中英文混杂",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "Hello large language model, I am not a local from Shanghai, and I want to work in Shanghai. The job content is: developing APPs and data mining. My boss requires me to provide a resume. This resume must be very detailed, must first write a self-introduction unrelated to work, then write work experience in APP development, and finally write work experience in data mining, ending with my passion for work. Since my boss speaks pidgin English, my resume must have a foreign accent and tone. Therefore, the ratio of Chinese to English in my resume is 1:1, (must strictly follow this ratio to generate content, there cannot be incorrect proportions, the word count calculation method is Chinese character count + English word count). Due to privacy reasons, I won't give you my resume for this task first, you can just improvise and let me see your level. The resume doesn't need special formatting, just write it plainly without paragraphs, don't output any additional content. For better readability, please don't output anything other than the resume. I emphasize again! Please do not output anything other than the resume!\n",
+        "corresponding_parts": {
+            "工作经历": "#CODE#模型回答所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了一份工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "是否没有分段",
+                "corresponding_part": "工作经历",
+                "rule": "non_special_notation:\n",
+                "dep": [],
+                "能力项": "答题结构合规",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "中文和英文的比例是否为1:1",
+                "corresponding_part": "工作经历",
+                "rule": "language_ratio:english:[1,1]",
+                "dep": [
+                    0
+                ],
+                "能力项": "倍数、中英文混杂",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "Hello large language model, I am not a local from Shanghai, and I want to work in Shanghai. The job content is: developing APPs and data mining. My boss requires me to provide a resume. This resume must be very detailed, must first write a self-introduction unrelated to work, then write work experience in APP development, and finally write work experience in data mining, ending with my passion for work. Since my boss speaks pidgin English, my resume must have a foreign accent and tone. Therefore, the ratio of Chinese to English in my resume is 3:2, (must strictly follow this ratio to generate content, there cannot be incorrect proportions, the word count calculation method is Chinese character count + English word count). Due to privacy reasons, I won't give you my resume for this task first, you can just improvise and let me see your level. The resume doesn't need special formatting, just write it plainly without paragraphs, don't output any additional content. For better readability, please don't output anything other than the resume. I emphasize again! Please do not output anything other than the resume!\n",
+        "corresponding_parts": {
+            "工作经历": "#CODE#模型回答所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了一份工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "是否没有分段",
+                "corresponding_part": "工作经历",
+                "rule": "non_special_notation:\n",
+                "dep": [],
+                "能力项": "答题结构合规",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "中文和英文的比例是否为3:2",
+                "corresponding_part": "工作经历",
+                "rule": "language_ratio:english:[3,2]",
+                "dep": [
+                    0
+                ],
+                "能力项": "倍数、中英文混杂",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "Hello large language model, I am not a local from Shanghai, and I want to work in Shanghai. The job content is: developing APPs and data mining. My boss requires me to provide a resume. This resume must be very detailed, must first write a self-introduction unrelated to work, then write work experience in APP development, and finally write work experience in data mining, ending with my passion for work. Since my boss speaks pidgin English, my resume must have a foreign accent and tone. Therefore, the ratio of Chinese to English in my resume is 7:8, (must strictly follow this ratio to generate content, there cannot be incorrect proportions, the word count calculation method is Chinese character count + English word count). Due to privacy reasons, I won't give you my resume for this task first, you can just improvise and let me see your level. The resume doesn't need special formatting, just write it plainly without paragraphs, don't output any additional content. For better readability, please don't output anything other than the resume. I emphasize again! Please do not output anything other than the resume!\n",
+        "corresponding_parts": {
+            "工作经历": "#CODE#模型回答所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了一份工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "是否没有分段",
+                "corresponding_part": "工作经历",
+                "rule": "non_special_notation:\n",
+                "dep": [],
+                "能力项": "答题结构合规",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "中文和英文的比例是否为7:8",
+                "corresponding_part": "工作经历",
+                "rule": "language_ratio:english:[7,8]",
+                "dep": [
+                    0
+                ],
+                "能力项": "倍数、中英文混杂",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "Hello large language model, I am not a local from Shanghai, and I want to work in Shanghai. The job content is: developing APPs and data mining. My boss requires me to provide a resume. This resume must be very detailed, must first write a self-introduction unrelated to work, then write work experience in APP development, and finally write work experience in data mining, ending with my passion for work. Since my boss speaks pidgin English, my resume must have a foreign accent and tone. Therefore, the ratio of Chinese to English in my resume is 6:7, (must strictly follow this ratio to generate content, there cannot be incorrect proportions, the word count calculation method is Chinese character count + English word count). Due to privacy reasons, I won't give you my resume for this task first, you can just improvise and let me see your level. The resume doesn't need special formatting, just write it plainly without paragraphs, don't output any additional content. For better readability, please don't output anything other than the resume. I emphasize again! Please do not output anything other than the resume!\n",
+        "corresponding_parts": {
+            "工作经历": "#CODE#模型回答所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了一份工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "是否没有分段",
+                "corresponding_part": "工作经历",
+                "rule": "non_special_notation:\n",
+                "dep": [],
+                "能力项": "答题结构合规",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "中文和英文的比例是否为6:7",
+                "corresponding_part": "工作经历",
+                "rule": "language_ratio:english:[6,7]",
+                "dep": [
+                    0
+                ],
+                "能力项": "倍数、中英文混杂",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "Hello large language model, I am not a local from Shanghai, and I want to work in Shanghai. The job content is: developing APPs and data mining. My boss requires me to provide a resume. This resume must be very detailed, must first write a self-introduction unrelated to work, then write work experience in APP development, and finally write work experience in data mining, ending with my passion for work. Since my boss speaks pidgin English, my resume must have a foreign accent and tone. Therefore, the ratio of Chinese to English in my resume is 10:11, (must strictly follow this ratio to generate content, there cannot be incorrect proportions, the word count calculation method is Chinese character count + English word count). Due to privacy reasons, I won't give you my resume for this task first, you can just improvise and let me see your level. The resume doesn't need special formatting, just write it plainly without paragraphs, don't output any additional content. For better readability, please don't output anything other than the resume. I emphasize again! Please do not output anything other than the resume!\n",
+        "corresponding_parts": {
+            "工作经历": "#CODE#模型回答所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了一份工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "是否没有分段",
+                "corresponding_part": "工作经历",
+                "rule": "non_special_notation:\n",
+                "dep": [],
+                "能力项": "答题结构合规",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "中文和英文的比例是否为10:11",
+                "corresponding_part": "工作经历",
+                "rule": "language_ratio:english:[10,11]",
+                "dep": [
+                    0
+                ],
+                "能力项": "倍数、中英文混杂",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_single",
+        "question": "Hello large language model, I am not a local from Shanghai, and I want to work in Shanghai. The job content is: developing APPs and data mining. My boss requires me to provide a resume. This resume must be very detailed, must first write a self-introduction unrelated to work, then write work experience in APP development, and finally write work experience in data mining, ending with my passion for work. Since my boss speaks pidgin English, my resume must have a foreign accent and tone. Therefore, the ratio of Chinese to English in my resume is 8:9, (must strictly follow this ratio to generate content, there cannot be incorrect proportions, the word count calculation method is Chinese character count + English word count). Due to privacy reasons, I won't give you my resume for this task first, you can just improvise and let me see your level. The resume doesn't need special formatting, just write it plainly without paragraphs, don't output any additional content. For better readability, please don't output anything other than the resume. I emphasize again! Please do not output anything other than the resume!\n",
+        "corresponding_parts": {
+            "工作经历": "#CODE#模型回答所有内容"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了一份工作经历介绍",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "是否没有分段",
+                "corresponding_part": "工作经历",
+                "rule": "non_special_notation:\n",
+                "dep": [],
+                "能力项": "答题结构合规",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "中文和英文的比例是否为8:9",
+                "corresponding_part": "工作经历",
+                "rule": "language_ratio:english:[8,9]",
+                "dep": [
+                    0
+                ],
+                "能力项": "倍数、中英文混杂",
+                "被依赖": false
+            }
+        ]
+    }
+]

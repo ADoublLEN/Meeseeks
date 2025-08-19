@@ -1,0 +1,1092 @@
+[
+    {
+        "category": "SCHEMA",
+        "question": "Assume you are a professional pharmacist. Please decompose \"Vitamin A acetate, β-carotene, Vitamin D3, Vitamin E acetate, thiamine nitrate, riboflavin, pyridoxine hydrochloride, ascorbic acid, cyanocobalamin, biotin, folic acid, nicotinamide, calcium pantothenate, calcium carbonate, magnesium oxide, ferrous fumarate, copper sulfate, zinc sulfate, manganese sulfate, chromium picolinate, microcrystalline cellulose, sodium carboxymethyl starch, sodium carboxymethyl cellulose, silicon dioxide, stearic acid, magnesium stearate, coating powder.\" into JSON format according to the following structure.\n{\n  \"type\": 2,\n  \"data\": [\n     {\n        \"Weight identifier per serving\": \"XX\",\n        \"Component name\": \"XX\",\n        \"Effective content number\": \"XX\",\n        \"Effective content unit\": \"SS\"\n     }\n   ]\n}\nRequirements:\n1. type equals 2 as a fixed value. Must exist.\n2. The value range of Effective content unit is g、mg、µg、ml、l、µl、U、IU、spoon、teaspoon、%、c㎡、cm、mm、kcal、CFU、LSU、pill、grain、tablet、stick、pack、bag、piece、unit、drop、spray、bottle、patch、inhalation、sheet、roll、tube、lozenge、box、small box、press、unit、international unit. For all other units, replace \"XX\" with \"\"\n3. The same functional component and content structured data should be stored as one data object. Return the result strictly according to the JSON example data format. If data has multiple groups, they need to be concatenated into a JSON format array. Only JSON data is needed, no extra data should be output.\n4. Remove relevant modifiers from efficacy\n5. \"XX\" is the decomposed result. If no result exists, \"XX\" needs to be replaced with \"\"",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "integer",
+                    "enum": [
+                        2
+                    ],
+                    "description": "Structured type identifier",
+                    "能力项": "特定格式"
+                },
+                "data": {
+                    "type": "array",
+                    "description": "Component structured details",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "Weight identifier per serving": {
+                                "type": "string",
+                                "description": "Weight identifier per serving",
+                                "能力项": "主题约束"
+                            },
+                            "Component name": {
+                                "type": "string",
+                                "description": "Component name",
+                                "能力项": "主题约束"
+                            },
+                            "Effective content number": {
+                                "type": "string",
+                                "description": "Numeric part of effective content",
+                                "能力项": "主题约束"
+                            },
+                            "Effective content unit": {
+                                "type": "string",
+                                "enum": [
+                                    "g",
+                                    "mg",
+                                    "µg",
+                                    "ml",
+                                    "l",
+                                    "µl",
+                                    "U",
+                                    "IU",
+                                    "spoon",
+                                    "teaspoon",
+                                    "%",
+                                    "c㎡",
+                                    "cm",
+                                    "mm",
+                                    "kcal",
+                                    "CFU",
+                                    "LSU",
+                                    "pill",
+                                    "grain",
+                                    "tablet",
+                                    "stick",
+                                    "pack",
+                                    "bag",
+                                    "piece",
+                                    "unit",
+                                    "drop",
+                                    "spray",
+                                    "bottle",
+                                    "patch",
+                                    "inhalation",
+                                    "sheet",
+                                    "roll",
+                                    "tube",
+                                    "lozenge",
+                                    "box",
+                                    "small box",
+                                    "press",
+                                    "unit",
+                                    "international unit",
+                                    ""
+                                ],
+                                "description": "Unit part of effective content",
+                                "能力项": "特定格式"
+                            }
+                        },
+                        "required": [
+                            "Weight identifier per serving",
+                            "Component name",
+                            "Effective content number",
+                            "Effective content unit"
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "type",
+                "data"
+            ]
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "Assume you are a professional pharmacist. Please decompose \"Glucose (content per bag: 10g), sodium chloride (9mg), potassium chloride (0.5g), citric acid (0.2g), lemon flavor, edible yellow pigment, sucrose.\" into JSON format according to the following structure.\n{\n  \"type\": 2,\n  \"data\": [\n     {\n        \"Weight identifier per serving\": \"XX\",\n        \"Component name\": \"XX\",\n        \"Effective content number\": \"XX\",\n        \"Effective content unit\": \"SS\"\n     }\n   ]\n}\nRequirements:\n1. type equals 2 as a fixed value. Must exist.\n2. The value range of Effective content unit is g、mg、µg、ml、l、µl、U、IU、spoon、teaspoon、%、c㎡、cm、mm、kcal、CFU、LSU、pill、grain、tablet、stick、pack、bag、piece、unit、drop、spray、bottle、patch、inhalation、sheet、roll、tube、lozenge、box、small box、press、unit、international unit. For all other units, replace \"XX\" with \"\"\n3. The same functional component and content structured data should be stored as one data object. Return the result strictly according to the JSON example data format. If data has multiple groups, they need to be concatenated into a JSON format array. Only JSON data is needed, no extra data should be output.\n4. Remove relevant modifiers from efficacy\n5. \"XX\" is the decomposed result. If no result exists, \"XX\" needs to be replaced with \"\"",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "integer",
+                    "enum": [
+                        2
+                    ],
+                    "description": "Structured type identifier",
+                    "能力项": "特定格式"
+                },
+                "data": {
+                    "type": "array",
+                    "description": "Component structured details",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "Weight identifier per serving": {
+                                "type": "string",
+                                "description": "Weight identifier per serving",
+                                "能力项": "主题约束"
+                            },
+                            "Component name": {
+                                "type": "string",
+                                "description": "Component name",
+                                "能力项": "主题约束"
+                            },
+                            "Effective content number": {
+                                "type": "string",
+                                "description": "Numeric part of effective content",
+                                "能力项": "主题约束"
+                            },
+                            "Effective content unit": {
+                                "type": "string",
+                                "enum": [
+                                    "g",
+                                    "mg",
+                                    "µg",
+                                    "ml",
+                                    "l",
+                                    "µl",
+                                    "U",
+                                    "IU",
+                                    "spoon",
+                                    "teaspoon",
+                                    "%",
+                                    "c㎡",
+                                    "cm",
+                                    "mm",
+                                    "kcal",
+                                    "CFU",
+                                    "LSU",
+                                    "pill",
+                                    "grain",
+                                    "tablet",
+                                    "stick",
+                                    "pack",
+                                    "bag",
+                                    "piece",
+                                    "unit",
+                                    "drop",
+                                    "spray",
+                                    "bottle",
+                                    "patch",
+                                    "inhalation",
+                                    "sheet",
+                                    "roll",
+                                    "tube",
+                                    "lozenge",
+                                    "box",
+                                    "small box",
+                                    "press",
+                                    "unit",
+                                    "international unit",
+                                    ""
+                                ],
+                                "description": "Unit part of effective content",
+                                "能力项": "特定格式"
+                            }
+                        },
+                        "required": [
+                            "Weight identifier per serving",
+                            "Component name",
+                            "Effective content number",
+                            "Effective content unit"
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "type",
+                "data"
+            ]
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "Assume you are a professional pharmacist. Please decompose \"Cefixime (50mg/tablet), lactose, starch, sodium carboxymethyl starch, magnesium stearate.\" into JSON format according to the following structure.\n{\n  \"type\": 2,\n  \"data\": [\n     {\n        \"Weight identifier per serving\": \"XX\",\n        \"Component name\": \"XX\",\n        \"Effective content number\": \"XX\",\n        \"Effective content unit\": \"SS\"\n     }\n   ]\n}\nRequirements:\n1. type equals 2 as a fixed value. Must exist.\n2. The value range of Effective content unit is g、mg、µg、ml、l、µl、U、IU、spoon、teaspoon、%、c㎡、cm、mm、kcal、CFU、LSU、pill、grain、tablet、stick、pack、bag、piece、unit、drop、spray、bottle、patch、inhalation、sheet、roll、tube、lozenge、box、small box、press、unit、international unit. For all other units, replace \"XX\" with \"\"\n3. The same functional component and content structured data should be stored as one data object. Return the result strictly according to the JSON example data format. If data has multiple groups, they need to be concatenated into a JSON format array. Only JSON data is needed, no extra data should be output.\n4. Remove relevant modifiers from efficacy\n5. \"XX\" is the decomposed result. If no result exists, \"XX\" needs to be replaced with \"\"",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "integer",
+                    "enum": [
+                        2
+                    ],
+                    "description": "Structured type identifier",
+                    "能力项": "特定格式"
+                },
+                "data": {
+                    "type": "array",
+                    "description": "Component structured details",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "Weight identifier per serving": {
+                                "type": "string",
+                                "description": "Weight identifier per serving",
+                                "能力项": "主题约束"
+                            },
+                            "Component name": {
+                                "type": "string",
+                                "description": "Component name",
+                                "能力项": "主题约束"
+                            },
+                            "Effective content number": {
+                                "type": "string",
+                                "description": "Numeric part of effective content",
+                                "能力项": "主题约束"
+                            },
+                            "Effective content unit": {
+                                "type": "string",
+                                "enum": [
+                                    "g",
+                                    "mg",
+                                    "µg",
+                                    "ml",
+                                    "l",
+                                    "µl",
+                                    "U",
+                                    "IU",
+                                    "spoon",
+                                    "teaspoon",
+                                    "%",
+                                    "c㎡",
+                                    "cm",
+                                    "mm",
+                                    "kcal",
+                                    "CFU",
+                                    "LSU",
+                                    "pill",
+                                    "grain",
+                                    "tablet",
+                                    "stick",
+                                    "pack",
+                                    "bag",
+                                    "piece",
+                                    "unit",
+                                    "drop",
+                                    "spray",
+                                    "bottle",
+                                    "patch",
+                                    "inhalation",
+                                    "sheet",
+                                    "roll",
+                                    "tube",
+                                    "lozenge",
+                                    "box",
+                                    "small box",
+                                    "press",
+                                    "unit",
+                                    "international unit",
+                                    ""
+                                ],
+                                "description": "Unit part of effective content",
+                                "能力项": "特定格式"
+                            }
+                        },
+                        "required": [
+                            "Weight identifier per serving",
+                            "Component name",
+                            "Effective content number",
+                            "Effective content unit"
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "type",
+                "data"
+            ]
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "Assume you are a professional pharmacist. Please decompose \"Amoxicillin (0.25g/capsule), clavulanate potassium (0.0625g/capsule), microcrystalline cellulose, croscarmellose sodium, silicon dioxide, hydroxypropyl methylcellulose, polyethylene glycol 6000.\" into JSON format according to the following structure.\n{\n  \"type\": 2,\n  \"data\": [\n     {\n        \"Weight identifier per serving\": \"XX\",\n        \"Component name\": \"XX\",\n        \"Effective content number\": \"XX\",\n        \"Effective content unit\": \"SS\"\n     }\n   ]\n}\nRequirements:\n1. type equals 2 as a fixed value. Must exist.\n2. The value range of Effective content unit is g、mg、µg、ml、l、µl、U、IU、spoon、teaspoon、%、c㎡、cm、mm、kcal、CFU、LSU、pill、grain、tablet、stick、pack、bag、piece、unit、drop、spray、bottle、patch、inhalation、sheet、roll、tube、lozenge、box、small box、press、unit、international unit. For all other units, replace \"XX\" with \"\"\n3. The same functional component and content structured data should be stored as one data object. Return the result strictly according to the JSON example data format. If data has multiple groups, they need to be concatenated into a JSON format array. Only JSON data is needed, no extra data should be output.\n4. Remove relevant modifiers from efficacy\n5. \"XX\" is the decomposed result. If no result exists, \"XX\" needs to be replaced with \"\"",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "integer",
+                    "enum": [
+                        2
+                    ],
+                    "description": "Structured type identifier",
+                    "能力项": "特定格式"
+                },
+                "data": {
+                    "type": "array",
+                    "description": "Component structured details",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "Weight identifier per serving": {
+                                "type": "string",
+                                "description": "Weight identifier per serving",
+                                "能力项": "主题约束"
+                            },
+                            "Component name": {
+                                "type": "string",
+                                "description": "Component name",
+                                "能力项": "主题约束"
+                            },
+                            "Effective content number": {
+                                "type": "string",
+                                "description": "Numeric part of effective content",
+                                "能力项": "主题约束"
+                            },
+                            "Effective content unit": {
+                                "type": "string",
+                                "enum": [
+                                    "g",
+                                    "mg",
+                                    "µg",
+                                    "ml",
+                                    "l",
+                                    "µl",
+                                    "U",
+                                    "IU",
+                                    "spoon",
+                                    "teaspoon",
+                                    "%",
+                                    "c㎡",
+                                    "cm",
+                                    "mm",
+                                    "kcal",
+                                    "CFU",
+                                    "LSU",
+                                    "pill",
+                                    "grain",
+                                    "tablet",
+                                    "stick",
+                                    "pack",
+                                    "bag",
+                                    "piece",
+                                    "unit",
+                                    "drop",
+                                    "spray",
+                                    "bottle",
+                                    "patch",
+                                    "inhalation",
+                                    "sheet",
+                                    "roll",
+                                    "tube",
+                                    "lozenge",
+                                    "box",
+                                    "small box",
+                                    "press",
+                                    "unit",
+                                    "international unit",
+                                    ""
+                                ],
+                                "description": "Unit part of effective content",
+                                "能力项": "特定格式"
+                            }
+                        },
+                        "required": [
+                            "Weight identifier per serving",
+                            "Component name",
+                            "Effective content number",
+                            "Effective content unit"
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "type",
+                "data"
+            ]
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "Assume you are a professional pharmacist. Please decompose \"Vitamin C (100mg), Vitamin E (10mg), glucose (5g), citric acid, flavor, pigment.\" into JSON format according to the following structure.\n{\n  \"type\": 2,\n  \"data\": [\n     {\n        \"Weight identifier per serving\": \"XX\",\n        \"Component name\": \"XX\",\n        \"Effective content number\": \"XX\",\n        \"Effective content unit\": \"SS\"\n     }\n   ]\n}\nRequirements:\n1. type equals 2 as a fixed value. Must exist.\n2. The value range of Effective content unit is g、mg、µg、ml、l、µl、U、IU、spoon、teaspoon、%、c㎡、cm、mm、kcal、CFU、LSU、pill、grain、tablet、stick、pack、bag、piece、unit、drop、spray、bottle、patch、inhalation、sheet、roll、tube、lozenge、box、small box、press、unit、international unit. For all other units, replace \"XX\" with \"\"\n3. The same functional component and content structured data should be stored as one data object. Return the result strictly according to the JSON example data format. If data has multiple groups, they need to be concatenated into a JSON format array. Only JSON data is needed, no extra data should be output.\n4. Remove relevant modifiers from efficacy\n5. \"XX\" is the decomposed result. If no result exists, \"XX\" needs to be replaced with \"\"",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "integer",
+                    "enum": [
+                        2
+                    ],
+                    "description": "Structured type identifier",
+                    "能力项": "特定格式"
+                },
+                "data": {
+                    "type": "array",
+                    "description": "Component structured details",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "Weight identifier per serving": {
+                                "type": "string",
+                                "description": "Weight identifier per serving",
+                                "能力项": "主题约束"
+                            },
+                            "Component name": {
+                                "type": "string",
+                                "description": "Component name",
+                                "能力项": "主题约束"
+                            },
+                            "Effective content number": {
+                                "type": "string",
+                                "description": "Numeric part of effective content",
+                                "能力项": "主题约束"
+                            },
+                            "Effective content unit": {
+                                "type": "string",
+                                "enum": [
+                                    "g",
+                                    "mg",
+                                    "µg",
+                                    "ml",
+                                    "l",
+                                    "µl",
+                                    "U",
+                                    "IU",
+                                    "spoon",
+                                    "teaspoon",
+                                    "%",
+                                    "c㎡",
+                                    "cm",
+                                    "mm",
+                                    "kcal",
+                                    "CFU",
+                                    "LSU",
+                                    "pill",
+                                    "grain",
+                                    "tablet",
+                                    "stick",
+                                    "pack",
+                                    "bag",
+                                    "piece",
+                                    "unit",
+                                    "drop",
+                                    "spray",
+                                    "bottle",
+                                    "patch",
+                                    "inhalation",
+                                    "sheet",
+                                    "roll",
+                                    "tube",
+                                    "lozenge",
+                                    "box",
+                                    "small box",
+                                    "press",
+                                    "unit",
+                                    "international unit",
+                                    ""
+                                ],
+                                "description": "Unit part of effective content",
+                                "能力项": "特定格式"
+                            }
+                        },
+                        "required": [
+                            "Weight identifier per serving",
+                            "Component name",
+                            "Effective content number",
+                            "Effective content unit"
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "type",
+                "data"
+            ]
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "Assume you are a professional pharmacist. Please decompose \"Loratadine (10mg/tablet), lactose, starch, sodium carboxymethyl starch, magnesium stearate.\" into JSON format according to the following structure.\n{\n  \"type\": 2,\n  \"data\": [\n     {\n        \"Weight identifier per serving\": \"XX\",\n        \"Component name\": \"XX\",\n        \"Effective content number\": \"XX\",\n        \"Effective content unit\": \"SS\"\n     }\n   ]\n}\nRequirements:\n1. type equals 2 as a fixed value. Must exist.\n2. The value range of Effective content unit is g、mg、µg、ml、l、µl、U、IU、spoon、teaspoon、%、c㎡、cm、mm、kcal、CFU、LSU、pill、grain、tablet、stick、pack、bag、piece、unit、drop、spray、bottle、patch、inhalation、sheet、roll、tube、lozenge、box、small box、press、unit、international unit. For all other units, replace \"XX\" with \"\"\n3. The same functional component and content structured data should be stored as one data object. Return the result strictly according to the JSON example data format. If data has multiple groups, they need to be concatenated into a JSON format array. Only JSON data is needed, no extra data should be output.\n4. Remove relevant modifiers from efficacy\n5. \"XX\" is the decomposed result. If no result exists, \"XX\" needs to be replaced with \"\"",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "integer",
+                    "enum": [
+                        2
+                    ],
+                    "description": "Structured type identifier",
+                    "能力项": "特定格式"
+                },
+                "data": {
+                    "type": "array",
+                    "description": "Component structured details",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "Weight identifier per serving": {
+                                "type": "string",
+                                "description": "Weight identifier per serving",
+                                "能力项": "主题约束"
+                            },
+                            "Component name": {
+                                "type": "string",
+                                "description": "Component name",
+                                "能力项": "主题约束"
+                            },
+                            "Effective content number": {
+                                "type": "string",
+                                "description": "Numeric part of effective content",
+                                "能力项": "主题约束"
+                            },
+                            "Effective content unit": {
+                                "type": "string",
+                                "enum": [
+                                    "g",
+                                    "mg",
+                                    "µg",
+                                    "ml",
+                                    "l",
+                                    "µl",
+                                    "U",
+                                    "IU",
+                                    "spoon",
+                                    "teaspoon",
+                                    "%",
+                                    "c㎡",
+                                    "cm",
+                                    "mm",
+                                    "kcal",
+                                    "CFU",
+                                    "LSU",
+                                    "pill",
+                                    "grain",
+                                    "tablet",
+                                    "stick",
+                                    "pack",
+                                    "bag",
+                                    "piece",
+                                    "unit",
+                                    "drop",
+                                    "spray",
+                                    "bottle",
+                                    "patch",
+                                    "inhalation",
+                                    "sheet",
+                                    "roll",
+                                    "tube",
+                                    "lozenge",
+                                    "box",
+                                    "small box",
+                                    "press",
+                                    "unit",
+                                    "international unit",
+                                    ""
+                                ],
+                                "description": "Unit part of effective content",
+                                "能力项": "特定格式"
+                            }
+                        },
+                        "required": [
+                            "Weight identifier per serving",
+                            "Component name",
+                            "Effective content number",
+                            "Effective content unit"
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "type",
+                "data"
+            ]
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "Assume you are a professional pharmacist. Please decompose \"Lactic acid bacteria (1 billion CFU/bag), glucose, maltodextrin, citric acid, flavor.\" into JSON format according to the following structure.\n{\n  \"type\": 2,\n  \"data\": [\n     {\n        \"Weight identifier per serving\": \"XX\",\n        \"Component name\": \"XX\",\n        \"Effective content number\": \"XX\",\n        \"Effective content unit\": \"SS\"\n     }\n   ]\n}\nRequirements:\n1. type equals 2 as a fixed value. Must exist.\n2. The value range of Effective content unit is g、mg、µg、ml、l、µl、U、IU、spoon、teaspoon、%、c㎡、cm、mm、kcal、CFU、LSU、pill、grain、tablet、stick、pack、bag、piece、unit、drop、spray、bottle、patch、inhalation、sheet、roll、tube、lozenge、box、small box、press、unit、international unit. For all other units, replace \"XX\" with \"\"\n3. The same functional component and content structured data should be stored as one data object. Return the result strictly according to the JSON example data format. If data has multiple groups, they need to be concatenated into a JSON format array. Only JSON data is needed, no extra data should be output.\n4. Remove relevant modifiers from efficacy\n5. \"XX\" is the decomposed result. If no result exists, \"XX\" needs to be replaced with \"\"",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "integer",
+                    "enum": [
+                        2
+                    ],
+                    "description": "Structured type identifier",
+                    "能力项": "特定格式"
+                },
+                "data": {
+                    "type": "array",
+                    "description": "Component structured details",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "Weight identifier per serving": {
+                                "type": "string",
+                                "description": "Weight identifier per serving",
+                                "能力项": "主题约束"
+                            },
+                            "Component name": {
+                                "type": "string",
+                                "description": "Component name",
+                                "能力项": "主题约束"
+                            },
+                            "Effective content number": {
+                                "type": "string",
+                                "description": "Numeric part of effective content",
+                                "能力项": "主题约束"
+                            },
+                            "Effective content unit": {
+                                "type": "string",
+                                "enum": [
+                                    "g",
+                                    "mg",
+                                    "µg",
+                                    "ml",
+                                    "l",
+                                    "µl",
+                                    "U",
+                                    "IU",
+                                    "spoon",
+                                    "teaspoon",
+                                    "%",
+                                    "c㎡",
+                                    "cm",
+                                    "mm",
+                                    "kcal",
+                                    "CFU",
+                                    "LSU",
+                                    "pill",
+                                    "grain",
+                                    "tablet",
+                                    "stick",
+                                    "pack",
+                                    "bag",
+                                    "piece",
+                                    "unit",
+                                    "drop",
+                                    "spray",
+                                    "bottle",
+                                    "patch",
+                                    "inhalation",
+                                    "sheet",
+                                    "roll",
+                                    "tube",
+                                    "lozenge",
+                                    "box",
+                                    "small box",
+                                    "press",
+                                    "unit",
+                                    "international unit",
+                                    ""
+                                ],
+                                "description": "Unit part of effective content",
+                                "能力项": "特定格式"
+                            }
+                        },
+                        "required": [
+                            "Weight identifier per serving",
+                            "Component name",
+                            "Effective content number",
+                            "Effective content unit"
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "type",
+                "data"
+            ]
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "Assume you are a professional pharmacist. Please decompose \"Vitamin B complex (Vitamin B1, B2, B6, B12, nicotinamide, folic acid, calcium pantothenate), lactose, starch.\" into JSON format according to the following structure.\n{\n  \"type\": 2,\n  \"data\": [\n     {\n        \"Weight identifier per serving\": \"XX\",\n        \"Component name\": \"XX\",\n        \"Effective content number\": \"XX\",\n        \"Effective content unit\": \"SS\"\n     }\n   ]\n}\nRequirements:\n1. type equals 2 as a fixed value. Must exist.\n2. The value range of Effective content unit is g、mg、µg、ml、l、µl、U、IU、spoon、teaspoon、%、c㎡、cm、mm、kcal、CFU、LSU、pill、grain、tablet、stick、pack、bag、piece、unit、drop、spray、bottle、patch、inhalation、sheet、roll、tube、lozenge、box、small box、press、unit、international unit. For all other units, replace \"XX\" with \"\"\n3. The same functional component and content structured data should be stored as one data object. Return the result strictly according to the JSON example data format. If data has multiple groups, they need to be concatenated into a JSON format array. Only JSON data is needed, no extra data should be output.\n4. Remove relevant modifiers from efficacy\n5. \"XX\" is the decomposed result. If no result exists, \"XX\" needs to be replaced with \"\"",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "integer",
+                    "enum": [
+                        2
+                    ],
+                    "description": "Structured type identifier",
+                    "能力项": "特定格式"
+                },
+                "data": {
+                    "type": "array",
+                    "description": "Component structured details",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "Weight identifier per serving": {
+                                "type": "string",
+                                "description": "Weight identifier per serving",
+                                "能力项": "主题约束"
+                            },
+                            "Component name": {
+                                "type": "string",
+                                "description": "Component name",
+                                "能力项": "主题约束"
+                            },
+                            "Effective content number": {
+                                "type": "string",
+                                "description": "Numeric part of effective content",
+                                "能力项": "主题约束"
+                            },
+                            "Effective content unit": {
+                                "type": "string",
+                                "enum": [
+                                    "g",
+                                    "mg",
+                                    "µg",
+                                    "ml",
+                                    "l",
+                                    "µl",
+                                    "U",
+                                    "IU",
+                                    "spoon",
+                                    "teaspoon",
+                                    "%",
+                                    "c㎡",
+                                    "cm",
+                                    "mm",
+                                    "kcal",
+                                    "CFU",
+                                    "LSU",
+                                    "pill",
+                                    "grain",
+                                    "tablet",
+                                    "stick",
+                                    "pack",
+                                    "bag",
+                                    "piece",
+                                    "unit",
+                                    "drop",
+                                    "spray",
+                                    "bottle",
+                                    "patch",
+                                    "inhalation",
+                                    "sheet",
+                                    "roll",
+                                    "tube",
+                                    "lozenge",
+                                    "box",
+                                    "small box",
+                                    "press",
+                                    "unit",
+                                    "international unit",
+                                    ""
+                                ],
+                                "description": "Unit part of effective content",
+                                "能力项": "特定格式"
+                            }
+                        },
+                        "required": [
+                            "Weight identifier per serving",
+                            "Component name",
+                            "Effective content number",
+                            "Effective content unit"
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "type",
+                "data"
+            ]
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "Assume you are a professional pharmacist. Please decompose \"Calcium carbonate (500mg/tablet), Vitamin D3 (200IU/tablet), lactose, starch, magnesium stearate.\" into JSON format according to the following structure.\n{\n  \"type\": 2,\n  \"data\": [\n     {\n        \"Weight identifier per serving\": \"XX\",\n        \"Component name\": \"XX\",\n        \"Effective content number\": \"XX\",\n        \"Effective content unit\": \"SS\"\n     }\n   ]\n}\nRequirements:\n1. type equals 2 as a fixed value. Must exist.\n2. The value range of Effective content unit is g、mg、µg、ml、l、µl、U、IU、spoon、teaspoon、%、c㎡、cm、mm、kcal、CFU、LSU、pill、grain、tablet、stick、pack、bag、piece、unit、drop、spray、bottle、patch、inhalation、sheet、roll、tube、lozenge、box、small box、press、unit、international unit. For all other units, replace \"XX\" with \"\"\n3. The same functional component and content structured data should be stored as one data object. Return the result strictly according to the JSON example data format. If data has multiple groups, they need to be concatenated into a JSON format array. Only JSON data is needed, no extra data should be output.\n4. Remove relevant modifiers from efficacy\n5. \"XX\" is the decomposed result. If no result exists, \"XX\" needs to be replaced with \"\"",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "integer",
+                    "enum": [
+                        2
+                    ],
+                    "description": "Structured type identifier",
+                    "能力项": "特定格式"
+                },
+                "data": {
+                    "type": "array",
+                    "description": "Component structured details",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "Weight identifier per serving": {
+                                "type": "string",
+                                "description": "Weight identifier per serving",
+                                "能力项": "主题约束"
+                            },
+                            "Component name": {
+                                "type": "string",
+                                "description": "Component name",
+                                "能力项": "主题约束"
+                            },
+                            "Effective content number": {
+                                "type": "string",
+                                "description": "Numeric part of effective content",
+                                "能力项": "主题约束"
+                            },
+                            "Effective content unit": {
+                                "type": "string",
+                                "enum": [
+                                    "g",
+                                    "mg",
+                                    "µg",
+                                    "ml",
+                                    "l",
+                                    "µl",
+                                    "U",
+                                    "IU",
+                                    "spoon",
+                                    "teaspoon",
+                                    "%",
+                                    "c㎡",
+                                    "cm",
+                                    "mm",
+                                    "kcal",
+                                    "CFU",
+                                    "LSU",
+                                    "pill",
+                                    "grain",
+                                    "tablet",
+                                    "stick",
+                                    "pack",
+                                    "bag",
+                                    "piece",
+                                    "unit",
+                                    "drop",
+                                    "spray",
+                                    "bottle",
+                                    "patch",
+                                    "inhalation",
+                                    "sheet",
+                                    "roll",
+                                    "tube",
+                                    "lozenge",
+                                    "box",
+                                    "small box",
+                                    "press",
+                                    "unit",
+                                    "international unit",
+                                    ""
+                                ],
+                                "description": "Unit part of effective content",
+                                "能力项": "特定格式"
+                            }
+                        },
+                        "required": [
+                            "Weight identifier per serving",
+                            "Component name",
+                            "Effective content number",
+                            "Effective content unit"
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "type",
+                "data"
+            ]
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "Assume you are a professional pharmacist. Please decompose \"Zinc gluconate (10mg), lactose, starch, flavor, pigment.\" into JSON format according to the following structure.\n{\n  \"type\": 2,\n  \"data\": [\n     {\n        \"Weight identifier per serving\": \"XX\",\n        \"Component name\": \"XX\",\n        \"Effective content number\": \"XX\",\n        \"Effective content unit\": \"SS\"\n     }\n   ]\n}\nRequirements:\n1. type equals 2 as a fixed value. Must exist.\n2. The value range of Effective content unit is g、mg、µg、ml、l、µl、U、IU、spoon、teaspoon、%、c㎡、cm、mm、kcal、CFU、LSU、pill、grain、tablet、stick、pack、bag、piece、unit、drop、spray、bottle、patch、inhalation、sheet、roll、tube、lozenge、box、small box、press、unit、international unit. For all other units, replace \"XX\" with \"\"\n3. The same functional component and content structured data should be stored as one data object. Return the result strictly according to the JSON example data format. If data has multiple groups, they need to be concatenated into a JSON format array. Only JSON data is needed, no extra data should be output.\n4. Remove relevant modifiers from efficacy\n5. \"XX\" is the decomposed result. If no result exists, \"XX\" needs to be replaced with \"\"",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "integer",
+                    "enum": [
+                        2
+                    ],
+                    "description": "Structured type identifier",
+                    "能力项": "特定格式"
+                },
+                "data": {
+                    "type": "array",
+                    "description": "Component structured details",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "Weight identifier per serving": {
+                                "type": "string",
+                                "description": "Weight identifier per serving",
+                                "能力项": "主题约束"
+                            },
+                            "Component name": {
+                                "type": "string",
+                                "description": "Component name",
+                                "能力项": "主题约束"
+                            },
+                            "Effective content number": {
+                                "type": "string",
+                                "description": "Numeric part of effective content",
+                                "能力项": "主题约束"
+                            },
+                            "Effective content unit": {
+                                "type": "string",
+                                "enum": [
+                                    "g",
+                                    "mg",
+                                    "µg",
+                                    "ml",
+                                    "l",
+                                    "µl",
+                                    "U",
+                                    "IU",
+                                    "spoon",
+                                    "teaspoon",
+                                    "%",
+                                    "c㎡",
+                                    "cm",
+                                    "mm",
+                                    "kcal",
+                                    "CFU",
+                                    "LSU",
+                                    "pill",
+                                    "grain",
+                                    "tablet",
+                                    "stick",
+                                    "pack",
+                                    "bag",
+                                    "piece",
+                                    "unit",
+                                    "drop",
+                                    "spray",
+                                    "bottle",
+                                    "patch",
+                                    "inhalation",
+                                    "sheet",
+                                    "roll",
+                                    "tube",
+                                    "lozenge",
+                                    "box",
+                                    "small box",
+                                    "press",
+                                    "unit",
+                                    "international unit",
+                                    ""
+                                ],
+                                "description": "Unit part of effective content",
+                                "能力项": "特定格式"
+                            }
+                        },
+                        "required": [
+                            "Weight identifier per serving",
+                            "Component name",
+                            "Effective content number",
+                            "Effective content unit"
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "type",
+                "data"
+            ]
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    }
+]

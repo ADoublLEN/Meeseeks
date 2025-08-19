@@ -1,0 +1,2342 @@
+[
+    {
+        "category": "SCHEMA",
+        "question": "你是一个旅游达人，我会给你提供一篇旅游攻略文章，包含文章标题和文章内容。请分析文章，判断其中是否包含游玩路线（containRoute）、包含了几条游玩路线（routeCount）、是否包含时效性项目（containTimelinessProject），并提取每条路线的详细信息（如路线名、天数、游玩点、是否含时效性项目、涉及的时效性项目名称）。最后将结果按照指定的JSON格式输出。\n名词解释:\n游玩路线: 按照时间顺序规划多个游玩点，得到的一条耗时在1～3天左右的游玩路线。通常游玩路线的多个游玩点，会使用时间顺序（如上午11点去地点A，下午2点去地点B）或者位置顺序（如当前在地点A，下一站去地点B）构成关联关系。注意如果只是在介绍多个独立的游玩点，并不能构成游玩路线。\n是否包含游玩路线: 如果文章中包含至少一条完整的游玩路线，返回1，否则返回0。\n游玩路线数量: 文章中包含的完整游玩路线的数量，如果没有则为0。\n是否包含时效性项目: 时效性项目是指在特定时间举行的项目，比如演唱会、展览、集会、脱口秀、音乐节等限时活动。如果游玩路线中包含任何时效性项目，返回1，否则返回0。\nroutes字段: 若包含游玩路线，则需输出每条路线的详细结构化信息，包括：routeName（路线名）、days（天数）、routePoints（游玩点列表）、hasTimelinessProject（该路线是否含时效性项目）、timelinessProjects（该路线涉及的时效性项目列表，若无则为空数组，每个项目名称为2-30字）。\n输出格式要求: 请严格按照以下JSON格式输出分析结果，不要添加任何额外的文字说明:{\"containRoute\": 0或1,\"routeCount\": 数字(0,1,2...),\"containTimelinessProject\": 0或1, \"routes\": [{\"routeName\": \"路线名\", \"days\": 1-3, \"routePoints\": [\"游玩点A\", \"游玩点B\"], \"hasTimelinessProject\": 0或1, \"timelinessProjects\": [\"时效性项目名称\"]}]}\n文章内容:\n【半日游安排】14:00 集合参观百年工厂（需预约）15:30 转场至隔壁文创商店 16:00 参加手工体验课（每日16:00-17:00）",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "required": [
+                "containRoute",
+                "routeCount",
+                "containTimelinessProject",
+                "routes"
+            ],
+            "properties": {
+                "containRoute": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "文章是否包含游玩路线，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routeCount": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "description": "文章中包含的游玩路线数量",
+                    "能力项": "范围"
+                },
+                "containTimelinessProject": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "游玩路线中是否包含时效性项目，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routes": {
+                    "type": "array",
+                    "description": "所有游玩路线详情",
+                    "能力项": "范围",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "routeName",
+                            "days",
+                            "routePoints",
+                            "hasTimelinessProject",
+                            "timelinessProjects"
+                        ],
+                        "properties": {
+                            "routeName": {
+                                "type": "string",
+                                "minLength": 2,
+                                "maxLength": 30,
+                                "description": "路线名称，不得为空",
+                                "能力项": "范围、10~50字"
+                            },
+                            "days": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3,
+                                "description": "路线天数，取值1-3",
+                                "能力项": "范围"
+                            },
+                            "routePoints": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 20,
+                                    "能力项": "范围、0~10字"
+                                },
+                                "minItems": 2,
+                                "description": "游玩点列表，至少包含两个点",
+                                "能力项": "范围"
+                            },
+                            "hasTimelinessProject": {
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ],
+                                "description": "该路线是否含时效性项目",
+                                "能力项": "特定格式"
+                            },
+                            "timelinessProjects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 30,
+                                    "能力项": "范围、10~50字"
+                                },
+                                "description": "该路线涉及的时效性项目，每个项目名称为2-30字",
+                                "能力项": "范围"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "{\"containRoute\": 1, \"routeCount\": 1, \"containTimelinessProject\": 0, \"routes\": [{\"routeName\": \"半日游工厂文创路线\", \"days\": 1, \"routePoints\": [\"百年工厂\", \"文创商店\", \"手工体验课\"], \"hasTimelinessProject\": 0, \"timelinessProjects\": []}]}"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个旅游达人，我会给你提供一篇旅游攻略文章，包含文章标题和文章内容。请分析文章，判断其中是否包含游玩路线（containRoute）、包含了几条游玩路线（routeCount）、是否包含时效性项目（containTimelinessProject），并提取每条路线的详细信息（如路线名、天数、游玩点、是否含时效性项目、涉及的时效性项目名称）。最后将结果按照指定的JSON格式输出。\n名词解释:\n游玩路线: 按照时间顺序规划多个游玩点，得到的一条耗时在1～3天左右的游玩路线。通常游玩路线的多个游玩点，会使用时间顺序（如上午11点去地点A，下午2点去地点B）或者位置顺序（如当前在地点A，下一站去地点B）构成关联关系。注意如果只是在介绍多个独立的游玩点，并不能构成游玩路线。\n是否包含游玩路线: 如果文章中包含至少一条完整的游玩路线，返回1，否则返回0。\n游玩路线数量: 文章中包含的完整游玩路线的数量，如果没有则为0。\n是否包含时效性项目: 时效性项目是指在特定时间举行的项目，比如演唱会、展览、集会、脱口秀、音乐节等限时活动。如果游玩路线中包含任何时效性项目，返回1，否则返回0。\nroutes字段: 若包含游玩路线，则需输出每条路线的详细结构化信息，包括：routeName（路线名）、days（天数）、routePoints（游玩点列表）、hasTimelinessProject（该路线是否含时效性项目）、timelinessProjects（该路线涉及的时效性项目列表，若无则为空数组，每个项目名称为2-30字）。\n输出格式要求: 请严格按照以下JSON格式输出分析结果，不要添加任何额外的文字说明:{\"containRoute\": 0或1,\"routeCount\": 数字(0,1,2...),\"containTimelinessProject\": 0或1, \"routes\": [{\"routeName\": \"路线名\", \"days\": 1-3, \"routePoints\": [\"游玩点A\", \"游玩点B\"], \"hasTimelinessProject\": 0或1, \"timelinessProjects\": [\"时效性项目名称\"]}]}\n文章内容:\n【一天深度游】上午10点在博物馆集合，随后步行至美术馆，中午在附近餐厅用餐，下午参加限时展览，晚上观看音乐节演出。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "required": [
+                "containRoute",
+                "routeCount",
+                "containTimelinessProject",
+                "routes"
+            ],
+            "properties": {
+                "containRoute": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "文章是否包含游玩路线，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routeCount": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "description": "文章中包含的游玩路线数量",
+                    "能力项": "范围"
+                },
+                "containTimelinessProject": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "游玩路线中是否包含时效性项目，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routes": {
+                    "type": "array",
+                    "description": "所有游玩路线详情",
+                    "能力项": "范围",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "routeName",
+                            "days",
+                            "routePoints",
+                            "hasTimelinessProject",
+                            "timelinessProjects"
+                        ],
+                        "properties": {
+                            "routeName": {
+                                "type": "string",
+                                "minLength": 2,
+                                "maxLength": 30,
+                                "description": "路线名称，不得为空",
+                                "能力项": "范围、10~50字"
+                            },
+                            "days": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3,
+                                "description": "路线天数，取值1-3",
+                                "能力项": "范围"
+                            },
+                            "routePoints": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 20,
+                                    "能力项": "范围、0~10字"
+                                },
+                                "minItems": 2,
+                                "description": "游玩点列表，至少包含两个点",
+                                "能力项": "范围"
+                            },
+                            "hasTimelinessProject": {
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ],
+                                "description": "该路线是否含时效性项目",
+                                "能力项": "特定格式"
+                            },
+                            "timelinessProjects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 30,
+                                    "能力项": "范围、10~50字"
+                                },
+                                "description": "该路线涉及的时效性项目，每个项目名称为2-30字",
+                                "能力项": "范围"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "{\"containRoute\": 1, \"routeCount\": 1, \"containTimelinessProject\": 1, \"routes\": [{\"routeName\": \"一天深度文化路线\", \"days\": 1, \"routePoints\": [\"博物馆\", \"美术馆\", \"限时展览\", \"音乐节\"], \"hasTimelinessProject\": 1, \"timelinessProjects\": [\"限时展览\", \"音乐节\"]}]}"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个旅游达人，我会给你提供一篇旅游攻略文章，包含文章标题和文章内容。请分析文章，判断其中是否包含游玩路线（containRoute）、包含了几条游玩路线（routeCount）、是否包含时效性项目（containTimelinessProject），并提取每条路线的详细信息（如路线名、天数、游玩点、是否含时效性项目、涉及的时效性项目名称）。最后将结果按照指定的JSON格式输出。\n名词解释:\n游玩路线: 按照时间顺序规划多个游玩点，得到的一条耗时在1～3天左右的游玩路线。通常游玩路线的多个游玩点，会使用时间顺序（如上午11点去地点A，下午2点去地点B）或者位置顺序（如当前在地点A，下一站去地点B）构成关联关系。注意如果只是在介绍多个独立的游玩点，并不能构成游玩路线。\n是否包含游玩路线: 如果文章中包含至少一条完整的游玩路线，返回1，否则返回0。\n游玩路线数量: 文章中包含的完整游玩路线的数量，如果没有则为0。\n是否包含时效性项目: 时效性项目是指在特定时间举行的项目，比如演唱会、展览、集会、脱口秀、音乐节等限时活动。如果游玩路线中包含任何时效性项目，返回1，否则返回0。\nroutes字段: 若包含游玩路线，则需输出每条路线的详细结构化信息，包括：routeName（路线名）、days（天数）、routePoints（游玩点列表）、hasTimelinessProject（该路线是否含时效性项目）、timelinessProjects（该路线涉及的时效性项目列表，若无则为空数组，每个项目名称为2-30字）。\n输出格式要求: 请严格按照以下JSON格式输出分析结果，不要添加任何额外的文字说明:{\"containRoute\": 0或1,\"routeCount\": 数字(0,1,2...),\"containTimelinessProject\": 0或1, \"routes\": [{\"routeName\": \"路线名\", \"days\": 1-3, \"routePoints\": [\"游玩点A\", \"游玩点B\"], \"hasTimelinessProject\": 0或1, \"timelinessProjects\": [\"时效性项目名称\"]}]}\n文章内容:\n【美食推荐】本地小吃街有多家老字号，推荐早点铺、糕点店、烧烤摊，无时间顺序，适合随意打卡。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "required": [
+                "containRoute",
+                "routeCount",
+                "containTimelinessProject",
+                "routes"
+            ],
+            "properties": {
+                "containRoute": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "文章是否包含游玩路线，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routeCount": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "description": "文章中包含的游玩路线数量",
+                    "能力项": "范围"
+                },
+                "containTimelinessProject": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "游玩路线中是否包含时效性项目，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routes": {
+                    "type": "array",
+                    "description": "所有游玩路线详情",
+                    "能力项": "范围",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "routeName",
+                            "days",
+                            "routePoints",
+                            "hasTimelinessProject",
+                            "timelinessProjects"
+                        ],
+                        "properties": {
+                            "routeName": {
+                                "type": "string",
+                                "minLength": 2,
+                                "maxLength": 30,
+                                "description": "路线名称，不得为空",
+                                "能力项": "范围、10~50字"
+                            },
+                            "days": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3,
+                                "description": "路线天数，取值1-3",
+                                "能力项": "范围"
+                            },
+                            "routePoints": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 20,
+                                    "能力项": "范围、0~10字"
+                                },
+                                "minItems": 2,
+                                "description": "游玩点列表，至少包含两个点",
+                                "能力项": "范围"
+                            },
+                            "hasTimelinessProject": {
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ],
+                                "description": "该路线是否含时效性项目",
+                                "能力项": "特定格式"
+                            },
+                            "timelinessProjects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 30,
+                                    "能力项": "范围、10~50字"
+                                },
+                                "description": "该路线涉及的时效性项目，每个项目名称为2-30字",
+                                "能力项": "范围"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "{\"containRoute\": 0, \"routeCount\": 0, \"containTimelinessProject\": 0, \"routes\": []}"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个旅游达人，我会给你提供一篇旅游攻略文章，包含文章标题和文章内容。请分析文章，判断其中是否包含游玩路线（containRoute）、包含了几条游玩路线（routeCount）、是否包含时效性项目（containTimelinessProject），并提取每条路线的详细信息（如路线名、天数、游玩点、是否含时效性项目、涉及的时效性项目名称）。最后将结果按照指定的JSON格式输出。\n名词解释:\n游玩路线: 按照时间顺序规划多个游玩点，得到的一条耗时在1～3天左右的游玩路线。通常游玩路线的多个游玩点，会使用时间顺序（如上午11点去地点A，下午2点去地点B）或者位置顺序（如当前在地点A，下一站去地点B）构成关联关系。注意如果只是在介绍多个独立的游玩点，并不能构成游玩路线。\n是否包含游玩路线: 如果文章中包含至少一条完整的游玩路线，返回1，否则返回0。\n游玩路线数量: 文章中包含的完整游玩路线的数量，如果没有则为0。\n是否包含时效性项目: 时效性项目是指在特定时间举行的项目，比如演唱会、展览、集会、脱口秀、音乐节等限时活动。如果游玩路线中包含任何时效性项目，返回1，否则返回0。\nroutes字段: 若包含游玩路线，则需输出每条路线的详细结构化信息，包括：routeName（路线名）、days（天数）、routePoints（游玩点列表）、hasTimelinessProject（该路线是否含时效性项目）、timelinessProjects（该路线涉及的时效性项目列表，若无则为空数组，每个项目名称为2-30字）。\n输出格式要求: 请严格按照以下JSON格式输出分析结果，不要添加任何额外的文字说明:{\"containRoute\": 0或1,\"routeCount\": 数字(0,1,2...),\"containTimelinessProject\": 0或1, \"routes\": [{\"routeName\": \"路线名\", \"days\": 1-3, \"routePoints\": [\"游玩点A\", \"游玩点B\"], \"hasTimelinessProject\": 0或1, \"timelinessProjects\": [\"时效性项目名称\"]}]}\n文章内容:\n【两日游路线】Day1：上午游览古镇，下午参观陶瓷馆，晚上参加夜市灯光秀。Day2：上午登山，下午泡温泉。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "required": [
+                "containRoute",
+                "routeCount",
+                "containTimelinessProject",
+                "routes"
+            ],
+            "properties": {
+                "containRoute": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "文章是否包含游玩路线，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routeCount": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "description": "文章中包含的游玩路线数量",
+                    "能力项": "范围"
+                },
+                "containTimelinessProject": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "游玩路线中是否包含时效性项目，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routes": {
+                    "type": "array",
+                    "description": "所有游玩路线详情",
+                    "能力项": "范围",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "routeName",
+                            "days",
+                            "routePoints",
+                            "hasTimelinessProject",
+                            "timelinessProjects"
+                        ],
+                        "properties": {
+                            "routeName": {
+                                "type": "string",
+                                "minLength": 2,
+                                "maxLength": 30,
+                                "description": "路线名称，不得为空",
+                                "能力项": "范围、10~50字"
+                            },
+                            "days": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3,
+                                "description": "路线天数，取值1-3",
+                                "能力项": "范围"
+                            },
+                            "routePoints": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 20,
+                                    "能力项": "范围、0~10字"
+                                },
+                                "minItems": 2,
+                                "description": "游玩点列表，至少包含两个点",
+                                "能力项": "范围"
+                            },
+                            "hasTimelinessProject": {
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ],
+                                "description": "该路线是否含时效性项目",
+                                "能力项": "特定格式"
+                            },
+                            "timelinessProjects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 30,
+                                    "能力项": "范围、10~50字"
+                                },
+                                "description": "该路线涉及的时效性项目，每个项目名称为2-30字",
+                                "能力项": "范围"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "{\"containRoute\": 1, \"routeCount\": 1, \"containTimelinessProject\": 1, \"routes\": [{\"routeName\": \"古镇温泉两日游\", \"days\": 2, \"routePoints\": [\"古镇\", \"陶瓷馆\", \"夜市灯光秀\", \"登山\", \"温泉\"], \"hasTimelinessProject\": 1, \"timelinessProjects\": [\"夜市灯光秀\"]}]}"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个旅游达人，我会给你提供一篇旅游攻略文章，包含文章标题和文章内容。请分析文章，判断其中是否包含游玩路线（containRoute）、包含了几条游玩路线（routeCount）、是否包含时效性项目（containTimelinessProject），并提取每条路线的详细信息（如路线名、天数、游玩点、是否含时效性项目、涉及的时效性项目名称）。最后将结果按照指定的JSON格式输出。\n名词解释:\n游玩路线: 按照时间顺序规划多个游玩点，得到的一条耗时在1～3天左右的游玩路线。通常游玩路线的多个游玩点，会使用时间顺序（如上午11点去地点A，下午2点去地点B）或者位置顺序（如当前在地点A，下一站去地点B）构成关联关系。注意如果只是在介绍多个独立的游玩点，并不能构成游玩路线。\n是否包含游玩路线: 如果文章中包含至少一条完整的游玩路线，返回1，否则返回0。\n游玩路线数量: 文章中包含的完整游玩路线的数量，如果没有则为0。\n是否包含时效性项目: 时效性项目是指在特定时间举行的项目，比如演唱会、展览、集会、脱口秀、音乐节等限时活动。如果游玩路线中包含任何时效性项目，返回1，否则返回0。\nroutes字段: 若包含游玩路线，则需输出每条路线的详细结构化信息，包括：routeName（路线名）、days（天数）、routePoints（游玩点列表）、hasTimelinessProject（该路线是否含时效性项目）、timelinessProjects（该路线涉及的时效性项目列表，若无则为空数组，每个项目名称为2-30字）。\n输出格式要求: 请严格按照以下JSON格式输出分析结果，不要添加任何额外的文字说明:{\"containRoute\": 0或1,\"routeCount\": 数字(0,1,2...),\"containTimelinessProject\": 0或1, \"routes\": [{\"routeName\": \"路线名\", \"days\": 1-3, \"routePoints\": [\"游玩点A\", \"游玩点B\"], \"hasTimelinessProject\": 0或1, \"timelinessProjects\": [\"时效性项目名称\"]}]}\n文章内容:\n【周末亲子游】上午动物园看大熊猫，下午科技馆体验机器人展，晚上参加儿童剧场演出。第二天上午植物园，下午返回。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "required": [
+                "containRoute",
+                "routeCount",
+                "containTimelinessProject",
+                "routes"
+            ],
+            "properties": {
+                "containRoute": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "文章是否包含游玩路线，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routeCount": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "description": "文章中包含的游玩路线数量",
+                    "能力项": "范围"
+                },
+                "containTimelinessProject": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "游玩路线中是否包含时效性项目，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routes": {
+                    "type": "array",
+                    "description": "所有游玩路线详情",
+                    "能力项": "范围",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "routeName",
+                            "days",
+                            "routePoints",
+                            "hasTimelinessProject",
+                            "timelinessProjects"
+                        ],
+                        "properties": {
+                            "routeName": {
+                                "type": "string",
+                                "minLength": 2,
+                                "maxLength": 30,
+                                "description": "路线名称，不得为空",
+                                "能力项": "范围、10~50字"
+                            },
+                            "days": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3,
+                                "description": "路线天数，取值1-3",
+                                "能力项": "范围"
+                            },
+                            "routePoints": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 20,
+                                    "能力项": "范围、0~10字"
+                                },
+                                "minItems": 2,
+                                "description": "游玩点列表，至少包含两个点",
+                                "能力项": "范围"
+                            },
+                            "hasTimelinessProject": {
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ],
+                                "description": "该路线是否含时效性项目",
+                                "能力项": "特定格式"
+                            },
+                            "timelinessProjects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 30,
+                                    "能力项": "范围、10~50字"
+                                },
+                                "description": "该路线涉及的时效性项目，每个项目名称为2-30字",
+                                "能力项": "范围"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "{\"containRoute\": 1, \"routeCount\": 1, \"containTimelinessProject\": 1, \"routes\": [{\"routeName\": \"亲子动物园科技馆路线\", \"days\": 2, \"routePoints\": [\"动物园\", \"科技馆\", \"儿童剧场\", \"植物园\"], \"hasTimelinessProject\": 1, \"timelinessProjects\": [\"儿童剧场\"]}]}"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个旅游达人，我会给你提供一篇旅游攻略文章，包含文章标题和文章内容。请分析文章，判断其中是否包含游玩路线（containRoute）、包含了几条游玩路线（routeCount）、是否包含时效性项目（containTimelinessProject），并提取每条路线的详细信息（如路线名、天数、游玩点、是否含时效性项目、涉及的时效性项目名称）。最后将结果按照指定的JSON格式输出。\n名词解释:\n游玩路线: 按照时间顺序规划多个游玩点，得到的一条耗时在1～3天左右的游玩路线。通常游玩路线的多个游玩点，会使用时间顺序（如上午11点去地点A，下午2点去地点B）或者位置顺序（如当前在地点A，下一站去地点B）构成关联关系。注意如果只是在介绍多个独立的游玩点，并不能构成游玩路线。\n是否包含游玩路线: 如果文章中包含至少一条完整的游玩路线，返回1，否则返回0。\n游玩路线数量: 文章中包含的完整游玩路线的数量，如果没有则为0。\n是否包含时效性项目: 时效性项目是指在特定时间举行的项目，比如演唱会、展览、集会、脱口秀、音乐节等限时活动。如果游玩路线中包含任何时效性项目，返回1，否则返回0。\nroutes字段: 若包含游玩路线，则需输出每条路线的详细结构化信息，包括：routeName（路线名）、days（天数）、routePoints（游玩点列表）、hasTimelinessProject（该路线是否含时效性项目）、timelinessProjects（该路线涉及的时效性项目列表，若无则为空数组，每个项目名称为2-30字）。\n输出格式要求: 请严格按照以下JSON格式输出分析结果，不要添加任何额外的文字说明:{\"containRoute\": 0或1,\"routeCount\": 数字(0,1,2...),\"containTimelinessProject\": 0或1, \"routes\": [{\"routeName\": \"路线名\", \"days\": 1-3, \"routePoints\": [\"游玩点A\", \"游玩点B\"], \"hasTimelinessProject\": 0或1, \"timelinessProjects\": [\"时效性项目名称\"]}]}\n文章内容:\n【展览打卡】本周末美术馆有新展，周六下午2点有艺术家见面会，晚上有脱口秀专场，需提前预约。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "required": [
+                "containRoute",
+                "routeCount",
+                "containTimelinessProject",
+                "routes"
+            ],
+            "properties": {
+                "containRoute": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "文章是否包含游玩路线，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routeCount": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "description": "文章中包含的游玩路线数量",
+                    "能力项": "范围"
+                },
+                "containTimelinessProject": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "游玩路线中是否包含时效性项目，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routes": {
+                    "type": "array",
+                    "description": "所有游玩路线详情",
+                    "能力项": "范围",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "routeName",
+                            "days",
+                            "routePoints",
+                            "hasTimelinessProject",
+                            "timelinessProjects"
+                        ],
+                        "properties": {
+                            "routeName": {
+                                "type": "string",
+                                "minLength": 2,
+                                "maxLength": 30,
+                                "description": "路线名称，不得为空",
+                                "能力项": "范围、10~50字"
+                            },
+                            "days": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3,
+                                "description": "路线天数，取值1-3",
+                                "能力项": "范围"
+                            },
+                            "routePoints": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 20,
+                                    "能力项": "范围、0~10字"
+                                },
+                                "minItems": 2,
+                                "description": "游玩点列表，至少包含两个点",
+                                "能力项": "范围"
+                            },
+                            "hasTimelinessProject": {
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ],
+                                "description": "该路线是否含时效性项目",
+                                "能力项": "特定格式"
+                            },
+                            "timelinessProjects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 30,
+                                    "能力项": "范围、10~50字"
+                                },
+                                "description": "该路线涉及的时效性项目，每个项目名称为2-30字",
+                                "能力项": "范围"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "{\"containRoute\": 1, \"routeCount\": 1, \"containTimelinessProject\": 1, \"routes\": [{\"routeName\": \"美术馆展览脱口秀路线\", \"days\": 1, \"routePoints\": [\"美术馆\", \"艺术家见面会\", \"脱口秀\"], \"hasTimelinessProject\": 1, \"timelinessProjects\": [\"脱口秀\"]}]}"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个旅游达人，我会给你提供一篇旅游攻略文章，包含文章标题和文章内容。请分析文章，判断其中是否包含游玩路线（containRoute）、包含了几条游玩路线（routeCount）、是否包含时效性项目（containTimelinessProject），并提取每条路线的详细信息（如路线名、天数、游玩点、是否含时效性项目、涉及的时效性项目名称）。最后将结果按照指定的JSON格式输出。\n名词解释:\n游玩路线: 按照时间顺序规划多个游玩点，得到的一条耗时在1～3天左右的游玩路线。通常游玩路线的多个游玩点，会使用时间顺序（如上午11点去地点A，下午2点去地点B）或者位置顺序（如当前在地点A，下一站去地点B）构成关联关系。注意如果只是在介绍多个独立的游玩点，并不能构成游玩路线。\n是否包含游玩路线: 如果文章中包含至少一条完整的游玩路线，返回1，否则返回0。\n游玩路线数量: 文章中包含的完整游玩路线的数量，如果没有则为0。\n是否包含时效性项目: 时效性项目是指在特定时间举行的项目，比如演唱会、展览、集会、脱口秀、音乐节等限时活动。如果游玩路线中包含任何时效性项目，返回1，否则返回0。\nroutes字段: 若包含游玩路线，则需输出每条路线的详细结构化信息，包括：routeName（路线名）、days（天数）、routePoints（游玩点列表）、hasTimelinessProject（该路线是否含时效性项目）、timelinessProjects（该路线涉及的时效性项目列表，若无则为空数组，每个项目名称为2-30字）。\n输出格式要求: 请严格按照以下JSON格式输出分析结果，不要添加任何额外的文字说明:{\"containRoute\": 0或1,\"routeCount\": 数字(0,1,2...),\"containTimelinessProject\": 0或1, \"routes\": [{\"routeName\": \"路线名\", \"days\": 1-3, \"routePoints\": [\"游玩点A\", \"游玩点B\"], \"hasTimelinessProject\": 0或1, \"timelinessProjects\": [\"时效性项目名称\"]}]}\n文章内容:\n【自由行攻略】推荐景点有公园、古街、博物馆、夜市，每个都可以单独前往，无固定路线。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "required": [
+                "containRoute",
+                "routeCount",
+                "containTimelinessProject",
+                "routes"
+            ],
+            "properties": {
+                "containRoute": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "文章是否包含游玩路线，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routeCount": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "description": "文章中包含的游玩路线数量",
+                    "能力项": "范围"
+                },
+                "containTimelinessProject": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "游玩路线中是否包含时效性项目，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routes": {
+                    "type": "array",
+                    "description": "所有游玩路线详情",
+                    "能力项": "范围",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "routeName",
+                            "days",
+                            "routePoints",
+                            "hasTimelinessProject",
+                            "timelinessProjects"
+                        ],
+                        "properties": {
+                            "routeName": {
+                                "type": "string",
+                                "minLength": 2,
+                                "maxLength": 30,
+                                "description": "路线名称，不得为空",
+                                "能力项": "范围、10~50字"
+                            },
+                            "days": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3,
+                                "description": "路线天数，取值1-3",
+                                "能力项": "范围"
+                            },
+                            "routePoints": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 20,
+                                    "能力项": "范围、0~10字"
+                                },
+                                "minItems": 2,
+                                "description": "游玩点列表，至少包含两个点",
+                                "能力项": "范围"
+                            },
+                            "hasTimelinessProject": {
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ],
+                                "description": "该路线是否含时效性项目",
+                                "能力项": "特定格式"
+                            },
+                            "timelinessProjects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 30,
+                                    "能力项": "范围、10~50字"
+                                },
+                                "description": "该路线涉及的时效性项目，每个项目名称为2-30字",
+                                "能力项": "范围"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "{\"containRoute\": 0, \"routeCount\": 0, \"containTimelinessProject\": 0, \"routes\": []}"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个旅游达人，我会给你提供一篇旅游攻略文章，包含文章标题和文章内容。请分析文章，判断其中是否包含游玩路线（containRoute）、包含了几条游玩路线（routeCount）、是否包含时效性项目（containTimelinessProject），并提取每条路线的详细信息（如路线名、天数、游玩点、是否含时效性项目、涉及的时效性项目名称）。最后将结果按照指定的JSON格式输出。\n名词解释:\n游玩路线: 按照时间顺序规划多个游玩点，得到的一条耗时在1～3天左右的游玩路线。通常游玩路线的多个游玩点，会使用时间顺序（如上午11点去地点A，下午2点去地点B）或者位置顺序（如当前在地点A，下一站去地点B）构成关联关系。注意如果只是在介绍多个独立的游玩点，并不能构成游玩路线。\n是否包含游玩路线: 如果文章中包含至少一条完整的游玩路线，返回1，否则返回0。\n游玩路线数量: 文章中包含的完整游玩路线的数量，如果没有则为0。\n是否包含时效性项目: 时效性项目是指在特定时间举行的项目，比如演唱会、展览、集会、脱口秀、音乐节等限时活动。如果游玩路线中包含任何时效性项目，返回1，否则返回0。\nroutes字段: 若包含游玩路线，则需输出每条路线的详细结构化信息，包括：routeName（路线名）、days（天数）、routePoints（游玩点列表）、hasTimelinessProject（该路线是否含时效性项目）、timelinessProjects（该路线涉及的时效性项目列表，若无则为空数组，每个项目名称为2-30字）。\n输出格式要求: 请严格按照以下JSON格式输出分析结果，不要添加任何额外的文字说明:{\"containRoute\": 0或1,\"routeCount\": 数字(0,1,2...),\"containTimelinessProject\": 0或1, \"routes\": [{\"routeName\": \"路线名\", \"days\": 1-3, \"routePoints\": [\"游玩点A\", \"游玩点B\"], \"hasTimelinessProject\": 0或1, \"timelinessProjects\": [\"时效性项目名称\"]}]}\n文章内容:\n【一日游】上午8点在火车站集合，9点到达景区，10点游览山顶，12点下山午餐，下午参观民俗村，16点返程。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "required": [
+                "containRoute",
+                "routeCount",
+                "containTimelinessProject",
+                "routes"
+            ],
+            "properties": {
+                "containRoute": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "文章是否包含游玩路线，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routeCount": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "description": "文章中包含的游玩路线数量",
+                    "能力项": "范围"
+                },
+                "containTimelinessProject": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "游玩路线中是否包含时效性项目，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routes": {
+                    "type": "array",
+                    "description": "所有游玩路线详情",
+                    "能力项": "范围",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "routeName",
+                            "days",
+                            "routePoints",
+                            "hasTimelinessProject",
+                            "timelinessProjects"
+                        ],
+                        "properties": {
+                            "routeName": {
+                                "type": "string",
+                                "minLength": 2,
+                                "maxLength": 30,
+                                "description": "路线名称，不得为空",
+                                "能力项": "范围、10~50字"
+                            },
+                            "days": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3,
+                                "description": "路线天数，取值1-3",
+                                "能力项": "范围"
+                            },
+                            "routePoints": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 20,
+                                    "能力项": "范围、0~10字"
+                                },
+                                "minItems": 2,
+                                "description": "游玩点列表，至少包含两个点",
+                                "能力项": "范围"
+                            },
+                            "hasTimelinessProject": {
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ],
+                                "description": "该路线是否含时效性项目",
+                                "能力项": "特定格式"
+                            },
+                            "timelinessProjects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 30,
+                                    "能力项": "范围、10~50字"
+                                },
+                                "description": "该路线涉及的时效性项目，每个项目名称为2-30字",
+                                "能力项": "范围"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "{\"containRoute\": 1, \"routeCount\": 1, \"containTimelinessProject\": 0, \"routes\": [{\"routeName\": \"火车站景区民俗村一日游\", \"days\": 1, \"routePoints\": [\"火车站\", \"景区\", \"山顶\", \"民俗村\"], \"hasTimelinessProject\": 0, \"timelinessProjects\": []}]}"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个旅游达人，我会给你提供一篇旅游攻略文章，包含文章标题和文章内容。请分析文章，判断其中是否包含游玩路线（containRoute）、包含了几条游玩路线（routeCount）、是否包含时效性项目（containTimelinessProject），并提取每条路线的详细信息（如路线名、天数、游玩点、是否含时效性项目、涉及的时效性项目名称）。最后将结果按照指定的JSON格式输出。\n名词解释:\n游玩路线: 按照时间顺序规划多个游玩点，得到的一条耗时在1～3天左右的游玩路线。通常游玩路线的多个游玩点，会使用时间顺序（如上午11点去地点A，下午2点去地点B）或者位置顺序（如当前在地点A，下一站去地点B）构成关联关系。注意如果只是在介绍多个独立的游玩点，并不能构成游玩路线。\n是否包含游玩路线: 如果文章中包含至少一条完整的游玩路线，返回1，否则返回0。\n游玩路线数量: 文章中包含的完整游玩路线的数量，如果没有则为0。\n是否包含时效性项目: 时效性项目是指在特定时间举行的项目，比如演唱会、展览、集会、脱口秀、音乐节等限时活动。如果游玩路线中包含任何时效性项目，返回1，否则返回0。\nroutes字段: 若包含游玩路线，则需输出每条路线的详细结构化信息，包括：routeName（路线名）、days（天数）、routePoints（游玩点列表）、hasTimelinessProject（该路线是否含时效性项目）、timelinessProjects（该路线涉及的时效性项目列表，若无则为空数组，每个项目名称为2-30字）。\n输出格式要求: 请严格按照以下JSON格式输出分析结果，不要添加任何额外的文字说明:{\"containRoute\": 0或1,\"routeCount\": 数字(0,1,2...),\"containTimelinessProject\": 0或1, \"routes\": [{\"routeName\": \"路线名\", \"days\": 1-3, \"routePoints\": [\"游玩点A\", \"游玩点B\"], \"hasTimelinessProject\": 0或1, \"timelinessProjects\": [\"时效性项目名称\"]}]}\n文章内容:\n【夜游路线】18:00在江边集合，18:30乘船夜游，20:00下船后步行至音乐广场观看露天演唱会。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "required": [
+                "containRoute",
+                "routeCount",
+                "containTimelinessProject",
+                "routes"
+            ],
+            "properties": {
+                "containRoute": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "文章是否包含游玩路线，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routeCount": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "description": "文章中包含的游玩路线数量",
+                    "能力项": "范围"
+                },
+                "containTimelinessProject": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "游玩路线中是否包含时效性项目，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routes": {
+                    "type": "array",
+                    "description": "所有游玩路线详情",
+                    "能力项": "范围",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "routeName",
+                            "days",
+                            "routePoints",
+                            "hasTimelinessProject",
+                            "timelinessProjects"
+                        ],
+                        "properties": {
+                            "routeName": {
+                                "type": "string",
+                                "minLength": 2,
+                                "maxLength": 30,
+                                "description": "路线名称，不得为空",
+                                "能力项": "范围、10~50字"
+                            },
+                            "days": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3,
+                                "description": "路线天数，取值1-3",
+                                "能力项": "范围"
+                            },
+                            "routePoints": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 20,
+                                    "能力项": "范围、0~10字"
+                                },
+                                "minItems": 2,
+                                "description": "游玩点列表，至少包含两个点",
+                                "能力项": "范围"
+                            },
+                            "hasTimelinessProject": {
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ],
+                                "description": "该路线是否含时效性项目",
+                                "能力项": "特定格式"
+                            },
+                            "timelinessProjects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 30,
+                                    "能力项": "范围、10~50字"
+                                },
+                                "description": "该路线涉及的时效性项目，每个项目名称为2-30字",
+                                "能力项": "范围"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "{\"containRoute\": 1, \"routeCount\": 1, \"containTimelinessProject\": 1, \"routes\": [{\"routeName\": \"夜游江边音乐广场路线\", \"days\": 1, \"routePoints\": [\"江边\", \"游船\", \"音乐广场\", \"露天演唱会\"], \"hasTimelinessProject\": 1, \"timelinessProjects\": [\"露天演唱会\"]}]}"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个旅游达人，我会给你提供一篇旅游攻略文章，包含文章标题和文章内容。请分析文章，判断其中是否包含游玩路线（containRoute）、包含了几条游玩路线（routeCount）、是否包含时效性项目（containTimelinessProject），并提取每条路线的详细信息（如路线名、天数、游玩点、是否含时效性项目、涉及的时效性项目名称）。最后将结果按照指定的JSON格式输出。\n名词解释:\n游玩路线: 按照时间顺序规划多个游玩点，得到的一条耗时在1～3天左右的游玩路线。通常游玩路线的多个游玩点，会使用时间顺序（如上午11点去地点A，下午2点去地点B）或者位置顺序（如当前在地点A，下一站去地点B）构成关联关系。注意如果只是在介绍多个独立的游玩点，并不能构成游玩路线。\n是否包含游玩路线: 如果文章中包含至少一条完整的游玩路线，返回1，否则返回0。\n游玩路线数量: 文章中包含的完整游玩路线的数量，如果没有则为0。\n是否包含时效性项目: 时效性项目是指在特定时间举行的项目，比如演唱会、展览、集会、脱口秀、音乐节等限时活动。如果游玩路线中包含任何时效性项目，返回1，否则返回0。\nroutes字段: 若包含游玩路线，则需输出每条路线的详细结构化信息，包括：routeName（路线名）、days（天数）、routePoints（游玩点列表）、hasTimelinessProject（该路线是否含时效性项目）、timelinessProjects（该路线涉及的时效性项目列表，若无则为空数组，每个项目名称为2-30字）。\n输出格式要求: 请严格按照以下JSON格式输出分析结果，不要添加任何额外的文字说明:{\"containRoute\": 0或1,\"routeCount\": 数字(0,1,2...),\"containTimelinessProject\": 0或1, \"routes\": [{\"routeName\": \"路线名\", \"days\": 1-3, \"routePoints\": [\"游玩点A\", \"游玩点B\"], \"hasTimelinessProject\": 0或1, \"timelinessProjects\": [\"时效性项目名称\"]}]}\n文章内容:\n【攻略】推荐博物馆、美术馆、科技馆三大场馆，各自有特色展览，适合家庭参观，无明确路线。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "required": [
+                "containRoute",
+                "routeCount",
+                "containTimelinessProject",
+                "routes"
+            ],
+            "properties": {
+                "containRoute": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "文章是否包含游玩路线，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routeCount": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "description": "文章中包含的游玩路线数量",
+                    "能力项": "范围"
+                },
+                "containTimelinessProject": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "游玩路线中是否包含时效性项目，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routes": {
+                    "type": "array",
+                    "description": "所有游玩路线详情",
+                    "能力项": "范围",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "routeName",
+                            "days",
+                            "routePoints",
+                            "hasTimelinessProject",
+                            "timelinessProjects"
+                        ],
+                        "properties": {
+                            "routeName": {
+                                "type": "string",
+                                "minLength": 2,
+                                "maxLength": 30,
+                                "description": "路线名称，不得为空",
+                                "能力项": "范围、10~50字"
+                            },
+                            "days": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3,
+                                "description": "路线天数，取值1-3",
+                                "能力项": "范围"
+                            },
+                            "routePoints": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 20,
+                                    "能力项": "范围、0~10字"
+                                },
+                                "minItems": 2,
+                                "description": "游玩点列表，至少包含两个点",
+                                "能力项": "范围"
+                            },
+                            "hasTimelinessProject": {
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ],
+                                "description": "该路线是否含时效性项目",
+                                "能力项": "特定格式"
+                            },
+                            "timelinessProjects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 30,
+                                    "能力项": "范围、10~50字"
+                                },
+                                "description": "该路线涉及的时效性项目，每个项目名称为2-30字",
+                                "能力项": "范围"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "{\"containRoute\": 0, \"routeCount\": 0, \"containTimelinessProject\": 0, \"routes\": []}"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个旅游达人，我会给你提供一篇旅游攻略文章，包含文章标题和文章内容。请分析文章，判断其中是否包含游玩路线（containRoute）、包含了几条游玩路线（routeCount）、是否包含时效性项目（containTimelinessProject），并提取每条路线的详细信息（如路线名、天数、游玩点、是否含时效性项目、涉及的时效性项目名称）。最后将结果按照指定的JSON格式输出。\n名词解释:\n游玩路线: 按照时间顺序规划多个游玩点，得到的一条耗时在1～3天左右的游玩路线。通常游玩路线的多个游玩点，会使用时间顺序（如上午11点去地点A，下午2点去地点B）或者位置顺序（如当前在地点A，下一站去地点B）构成关联关系。注意如果只是在介绍多个独立的游玩点，并不能构成游玩路线。\n是否包含游玩路线: 如果文章中包含至少一条完整的游玩路线，返回1，否则返回0。\n游玩路线数量: 文章中包含的完整游玩路线的数量，如果没有则为0。\n是否包含时效性项目: 时效性项目是指在特定时间举行的项目，比如演唱会、展览、集会、脱口秀、音乐节等限时活动。如果游玩路线中包含任何时效性项目，返回1，否则返回0。\nroutes字段: 若包含游玩路线，则需输出每条路线的详细结构化信息，包括：routeName（路线名）、days（天数）、routePoints（游玩点列表）、hasTimelinessProject（该路线是否含时效性项目）、timelinessProjects（该路线涉及的时效性项目列表，若无则为空数组，每个项目名称为2-30字）。\n输出格式要求: 请严格按照以下JSON格式输出分析结果，不要添加任何额外的文字说明:{\"containRoute\": 0或1,\"routeCount\": 数字(0,1,2...),\"containTimelinessProject\": 0或1, \"routes\": [{\"routeName\": \"路线名\", \"days\": 1-3, \"routePoints\": [\"游玩点A\", \"游玩点B\"], \"hasTimelinessProject\": 0或1, \"timelinessProjects\": [\"时效性项目名称\"]}]}\n文章内容:\n【三日自驾游】Day1: 上午出发到古北水镇，午餐后游览水镇风光，晚上参加水镇灯光秀。Day2: 上午前往长城脚下，下午登长城，晚上露营。Day3: 上午参观长城博物馆，下午返程。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "required": [
+                "containRoute",
+                "routeCount",
+                "containTimelinessProject",
+                "routes"
+            ],
+            "properties": {
+                "containRoute": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "文章是否包含游玩路线，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routeCount": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "description": "文章中包含的游玩路线数量",
+                    "能力项": "范围"
+                },
+                "containTimelinessProject": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "游玩路线中是否包含时效性项目，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routes": {
+                    "type": "array",
+                    "description": "所有游玩路线详情",
+                    "能力项": "范围",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "routeName",
+                            "days",
+                            "routePoints",
+                            "hasTimelinessProject",
+                            "timelinessProjects"
+                        ],
+                        "properties": {
+                            "routeName": {
+                                "type": "string",
+                                "minLength": 2,
+                                "maxLength": 30,
+                                "description": "路线名称，不得为空",
+                                "能力项": "范围、10~50字"
+                            },
+                            "days": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3,
+                                "description": "路线天数，取值1-3",
+                                "能力项": "范围"
+                            },
+                            "routePoints": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 20,
+                                    "能力项": "范围、0~10字"
+                                },
+                                "minItems": 2,
+                                "description": "游玩点列表，至少包含两个点",
+                                "能力项": "范围"
+                            },
+                            "hasTimelinessProject": {
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ],
+                                "description": "该路线是否含时效性项目",
+                                "能力项": "特定格式"
+                            },
+                            "timelinessProjects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 30,
+                                    "能力项": "范围、10~50字"
+                                },
+                                "description": "该路线涉及的时效性项目，每个项目名称为2-30字",
+                                "能力项": "范围"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "{\"containRoute\": 1, \"routeCount\": 1, \"containTimelinessProject\": 1, \"routes\": [{\"routeName\": \"三日古北水镇长城路线\", \"days\": 3, \"routePoints\": [\"古北水镇\", \"水镇灯光秀\", \"长城脚下\", \"长城\", \"露营\", \"长城博物馆\"], \"hasTimelinessProject\": 1, \"timelinessProjects\": [\"水镇灯光秀\"]}]}"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个旅游达人，我会给你提供一篇旅游攻略文章，包含文章标题和文章内容。请分析文章，判断其中是否包含游玩路线（containRoute）、包含了几条游玩路线（routeCount）、是否包含时效性项目（containTimelinessProject），并提取每条路线的详细信息（如路线名、天数、游玩点、是否含时效性项目、涉及的时效性项目名称）。最后将结果按照指定的JSON格式输出。\n名词解释:\n游玩路线: 按照时间顺序规划多个游玩点，得到的一条耗时在1～3天左右的游玩路线。通常游玩路线的多个游玩点，会使用时间顺序（如上午11点去地点A，下午2点去地点B）或者位置顺序（如当前在地点A，下一站去地点B）构成关联关系。注意如果只是在介绍多个独立的游玩点，并不能构成游玩路线。\n是否包含游玩路线: 如果文章中包含至少一条完整的游玩路线，返回1，否则返回0。\n游玩路线数量: 文章中包含的完整游玩路线的数量，如果没有则为0。\n是否包含时效性项目: 时效性项目是指在特定时间举行的项目，比如演唱会、展览、集会、脱口秀、音乐节等限时活动。如果游玩路线中包含任何时效性项目，返回1，否则返回0。\nroutes字段: 若包含游玩路线，则需输出每条路线的详细结构化信息，包括：routeName（路线名）、days（天数）、routePoints（游玩点列表）、hasTimelinessProject（该路线是否含时效性项目）、timelinessProjects（该路线涉及的时效性项目列表，若无则为空数组，每个项目名称为2-30字）。\n输出格式要求: 请严格按照以下JSON格式输出分析结果，不要添加任何额外的文字说明:{\"containRoute\": 0或1,\"routeCount\": 数字(0,1,2...),\"containTimelinessProject\": 0或1, \"routes\": [{\"routeName\": \"路线名\", \"days\": 1-3, \"routePoints\": [\"游玩点A\", \"游玩点B\"], \"hasTimelinessProject\": 0或1, \"timelinessProjects\": [\"时效性项目名称\"]}]}\n文章内容:\n【暑期亲子夏令营】第一天上午集合，参观科技馆，下午进行科学实验体验，晚上观看科学脱口秀。第二天全天户外拓展，第三天上午参观植物园，下午结营仪式。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "required": [
+                "containRoute",
+                "routeCount",
+                "containTimelinessProject",
+                "routes"
+            ],
+            "properties": {
+                "containRoute": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "文章是否包含游玩路线，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routeCount": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "description": "文章中包含的游玩路线数量",
+                    "能力项": "范围"
+                },
+                "containTimelinessProject": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "游玩路线中是否包含时效性项目，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routes": {
+                    "type": "array",
+                    "description": "所有游玩路线详情",
+                    "能力项": "范围",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "routeName",
+                            "days",
+                            "routePoints",
+                            "hasTimelinessProject",
+                            "timelinessProjects"
+                        ],
+                        "properties": {
+                            "routeName": {
+                                "type": "string",
+                                "minLength": 2,
+                                "maxLength": 30,
+                                "description": "路线名称，不得为空",
+                                "能力项": "范围、10~50字"
+                            },
+                            "days": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3,
+                                "description": "路线天数，取值1-3",
+                                "能力项": "范围"
+                            },
+                            "routePoints": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 20,
+                                    "能力项": "范围、0~10字"
+                                },
+                                "minItems": 2,
+                                "description": "游玩点列表，至少包含两个点",
+                                "能力项": "范围"
+                            },
+                            "hasTimelinessProject": {
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ],
+                                "description": "该路线是否含时效性项目",
+                                "能力项": "特定格式"
+                            },
+                            "timelinessProjects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 30,
+                                    "能力项": "范围、10~50字"
+                                },
+                                "description": "该路线涉及的时效性项目，每个项目名称为2-30字",
+                                "能力项": "范围"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "{\"containRoute\": 1, \"routeCount\": 1, \"containTimelinessProject\": 1, \"routes\": [{\"routeName\": \"暑期亲子夏令营路线\", \"days\": 3, \"routePoints\": [\"科技馆\", \"科学实验体验\", \"科学脱口秀\", \"户外拓展\", \"植物园\"], \"hasTimelinessProject\": 1, \"timelinessProjects\": [\"科学脱口秀\"]}]}"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个旅游达人，我会给你提供一篇旅游攻略文章，包含文章标题和文章内容。请分析文章，判断其中是否包含游玩路线（containRoute）、包含了几条游玩路线（routeCount）、是否包含时效性项目（containTimelinessProject），并提取每条路线的详细信息（如路线名、天数、游玩点、是否含时效性项目、涉及的时效性项目名称）。最后将结果按照指定的JSON格式输出。\n名词解释:\n游玩路线: 按照时间顺序规划多个游玩点，得到的一条耗时在1～3天左右的游玩路线。通常游玩路线的多个游玩点，会使用时间顺序（如上午11点去地点A，下午2点去地点B）或者位置顺序（如当前在地点A，下一站去地点B）构成关联关系。注意如果只是在介绍多个独立的游玩点，并不能构成游玩路线。\n是否包含游玩路线: 如果文章中包含至少一条完整的游玩路线，返回1，否则返回0。\n游玩路线数量: 文章中包含的完整游玩路线的数量，如果没有则为0。\n是否包含时效性项目: 时效性项目是指在特定时间举行的项目，比如演唱会、展览、集会、脱口秀、音乐节等限时活动。如果游玩路线中包含任何时效性项目，返回1，否则返回0。\nroutes字段: 若包含游玩路线，则需输出每条路线的详细结构化信息，包括：routeName（路线名）、days（天数）、routePoints（游玩点列表）、hasTimelinessProject（该路线是否含时效性项目）、timelinessProjects（该路线涉及的时效性项目列表，若无则为空数组，每个项目名称为2-30字）。\n输出格式要求: 请严格按照以下JSON格式输出分析结果，不要添加任何额外的文字说明:{\"containRoute\": 0或1,\"routeCount\": 数字(0,1,2...),\"containTimelinessProject\": 0或1, \"routes\": [{\"routeName\": \"路线名\", \"days\": 1-3, \"routePoints\": [\"游玩点A\", \"游玩点B\"], \"hasTimelinessProject\": 0或1, \"timelinessProjects\": [\"时效性项目名称\"]}]}\n文章内容:\n【城市夜跑路线】晚上7点在市体育公园集合，沿江步道夜跑途经音乐喷泉、灯光桥，终点在市中心广场，适合运动爱好者。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "required": [
+                "containRoute",
+                "routeCount",
+                "containTimelinessProject",
+                "routes"
+            ],
+            "properties": {
+                "containRoute": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "文章是否包含游玩路线，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routeCount": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "description": "文章中包含的游玩路线数量",
+                    "能力项": "范围"
+                },
+                "containTimelinessProject": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "游玩路线中是否包含时效性项目，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routes": {
+                    "type": "array",
+                    "description": "所有游玩路线详情",
+                    "能力项": "范围",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "routeName",
+                            "days",
+                            "routePoints",
+                            "hasTimelinessProject",
+                            "timelinessProjects"
+                        ],
+                        "properties": {
+                            "routeName": {
+                                "type": "string",
+                                "minLength": 2,
+                                "maxLength": 30,
+                                "description": "路线名称，不得为空",
+                                "能力项": "范围、10~50字"
+                            },
+                            "days": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3,
+                                "description": "路线天数，取值1-3",
+                                "能力项": "范围"
+                            },
+                            "routePoints": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 20,
+                                    "能力项": "范围、0~10字"
+                                },
+                                "minItems": 2,
+                                "description": "游玩点列表，至少包含两个点",
+                                "能力项": "范围"
+                            },
+                            "hasTimelinessProject": {
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ],
+                                "description": "该路线是否含时效性项目",
+                                "能力项": "特定格式"
+                            },
+                            "timelinessProjects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 30,
+                                    "能力项": "范围、10~50字"
+                                },
+                                "description": "该路线涉及的时效性项目，每个项目名称为2-30字",
+                                "能力项": "范围"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "{\"containRoute\": 1, \"routeCount\": 1, \"containTimelinessProject\": 0, \"routes\": [{\"routeName\": \"城市夜跑路线\", \"days\": 1, \"routePoints\": [\"市体育公园\", \"江步道\", \"音乐喷泉\", \"灯光桥\", \"市中心广场\"], \"hasTimelinessProject\": 0, \"timelinessProjects\": []}]}"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个旅游达人，我会给你提供一篇旅游攻略文章，包含文章标题和文章内容。请分析文章，判断其中是否包含游玩路线（containRoute）、包含了几条游玩路线（routeCount）、是否包含时效性项目（containTimelinessProject），并提取每条路线的详细信息（如路线名、天数、游玩点、是否含时效性项目、涉及的时效性项目名称）。最后将结果按照指定的JSON格式输出。\n名词解释:\n游玩路线: 按照时间顺序规划多个游玩点，得到的一条耗时在1～3天左右的游玩路线。通常游玩路线的多个游玩点，会使用时间顺序（如上午11点去地点A，下午2点去地点B）或者位置顺序（如当前在地点A，下一站去地点B）构成关联关系。注意如果只是在介绍多个独立的游玩点，并不能构成游玩路线。\n是否包含游玩路线: 如果文章中包含至少一条完整的游玩路线，返回1，否则返回0。\n游玩路线数量: 文章中包含的完整游玩路线的数量，如果没有则为0。\n是否包含时效性项目: 时效性项目是指在特定时间举行的项目，比如演唱会、展览、集会、脱口秀、音乐节等限时活动。如果游玩路线中包含任何时效性项目，返回1，否则返回0。\nroutes字段: 若包含游玩路线，则需输出每条路线的详细结构化信息，包括：routeName（路线名）、days（天数）、routePoints（游玩点列表）、hasTimelinessProject（该路线是否含时效性项目）、timelinessProjects（该路线涉及的时效性项目列表，若无则为空数组，每个项目名称为2-30字）。\n输出格式要求: 请严格按照以下JSON格式输出分析结果，不要添加任何额外的文字说明:{\"containRoute\": 0或1,\"routeCount\": 数字(0,1,2...),\"containTimelinessProject\": 0或1, \"routes\": [{\"routeName\": \"路线名\", \"days\": 1-3, \"routePoints\": [\"游玩点A\", \"游玩点B\"], \"hasTimelinessProject\": 0或1, \"timelinessProjects\": [\"时效性项目名称\"]}]}\n文章内容:\n【周末情侣游】上午游览玫瑰园，下午美术馆看画展，晚上参加爵士音乐会。第二天上午手作陶艺体验，下午老街咖啡厅休息。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "required": [
+                "containRoute",
+                "routeCount",
+                "containTimelinessProject",
+                "routes"
+            ],
+            "properties": {
+                "containRoute": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "文章是否包含游玩路线，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routeCount": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "description": "文章中包含的游玩路线数量",
+                    "能力项": "范围"
+                },
+                "containTimelinessProject": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "游玩路线中是否包含时效性项目，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routes": {
+                    "type": "array",
+                    "description": "所有游玩路线详情",
+                    "能力项": "范围",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "routeName",
+                            "days",
+                            "routePoints",
+                            "hasTimelinessProject",
+                            "timelinessProjects"
+                        ],
+                        "properties": {
+                            "routeName": {
+                                "type": "string",
+                                "minLength": 2,
+                                "maxLength": 30,
+                                "description": "路线名称，不得为空",
+                                "能力项": "范围、10~50字"
+                            },
+                            "days": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3,
+                                "description": "路线天数，取值1-3",
+                                "能力项": "范围"
+                            },
+                            "routePoints": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 20,
+                                    "能力项": "范围、0~10字"
+                                },
+                                "minItems": 2,
+                                "description": "游玩点列表，至少包含两个点",
+                                "能力项": "范围"
+                            },
+                            "hasTimelinessProject": {
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ],
+                                "description": "该路线是否含时效性项目",
+                                "能力项": "特定格式"
+                            },
+                            "timelinessProjects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 30,
+                                    "能力项": "范围、10~50字"
+                                },
+                                "description": "该路线涉及的时效性项目，每个项目名称为2-30字",
+                                "能力项": "范围"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "{\"containRoute\": 1, \"routeCount\": 1, \"containTimelinessProject\": 1, \"routes\": [{\"routeName\": \"情侣美术馆音乐会路线\", \"days\": 2, \"routePoints\": [\"玫瑰园\", \"美术馆\", \"爵士音乐会\", \"陶艺体验\", \"老街咖啡厅\"], \"hasTimelinessProject\": 1, \"timelinessProjects\": [\"爵士音乐会\"]}]}"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个旅游达人，我会给你提供一篇旅游攻略文章，包含文章标题和文章内容。请分析文章，判断其中是否包含游玩路线（containRoute）、包含了几条游玩路线（routeCount）、是否包含时效性项目（containTimelinessProject），并提取每条路线的详细信息（如路线名、天数、游玩点、是否含时效性项目、涉及的时效性项目名称）。最后将结果按照指定的JSON格式输出。\n名词解释:\n游玩路线: 按照时间顺序规划多个游玩点，得到的一条耗时在1～3天左右的游玩路线。通常游玩路线的多个游玩点，会使用时间顺序（如上午11点去地点A，下午2点去地点B）或者位置顺序（如当前在地点A，下一站去地点B）构成关联关系。注意如果只是在介绍多个独立的游玩点，并不能构成游玩路线。\n是否包含游玩路线: 如果文章中包含至少一条完整的游玩路线，返回1，否则返回0。\n游玩路线数量: 文章中包含的完整游玩路线的数量，如果没有则为0。\n是否包含时效性项目: 时效性项目是指在特定时间举行的项目，比如演唱会、展览、集会、脱口秀、音乐节等限时活动。如果游玩路线中包含任何时效性项目，返回1，否则返回0。\nroutes字段: 若包含游玩路线，则需输出每条路线的详细结构化信息，包括：routeName（路线名）、days（天数）、routePoints（游玩点列表）、hasTimelinessProject（该路线是否含时效性项目）、timelinessProjects（该路线涉及的时效性项目列表，若无则为空数组，每个项目名称为2-30字）。\n输出格式要求: 请严格按照以下JSON格式输出分析结果，不要添加任何额外的文字说明:{\"containRoute\": 0或1,\"routeCount\": 数字(0,1,2...),\"containTimelinessProject\": 0或1, \"routes\": [{\"routeName\": \"路线名\", \"days\": 1-3, \"routePoints\": [\"游玩点A\", \"游玩点B\"], \"hasTimelinessProject\": 0或1, \"timelinessProjects\": [\"时效性项目名称\"]}]}\n文章内容:\n【展览+演唱会双路线】上午美术馆新展，下午艺术家讲座，晚上参加限时演唱会。第二天上午自由活动。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "required": [
+                "containRoute",
+                "routeCount",
+                "containTimelinessProject",
+                "routes"
+            ],
+            "properties": {
+                "containRoute": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "文章是否包含游玩路线，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routeCount": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "description": "文章中包含的游玩路线数量",
+                    "能力项": "范围"
+                },
+                "containTimelinessProject": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "游玩路线中是否包含时效性项目，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routes": {
+                    "type": "array",
+                    "description": "所有游玩路线详情",
+                    "能力项": "范围",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "routeName",
+                            "days",
+                            "routePoints",
+                            "hasTimelinessProject",
+                            "timelinessProjects"
+                        ],
+                        "properties": {
+                            "routeName": {
+                                "type": "string",
+                                "minLength": 2,
+                                "maxLength": 30,
+                                "description": "路线名称，不得为空",
+                                "能力项": "范围、10~50字"
+                            },
+                            "days": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3,
+                                "description": "路线天数，取值1-3",
+                                "能力项": "范围"
+                            },
+                            "routePoints": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 20,
+                                    "能力项": "范围、0~10字"
+                                },
+                                "minItems": 2,
+                                "description": "游玩点列表，至少包含两个点",
+                                "能力项": "范围"
+                            },
+                            "hasTimelinessProject": {
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ],
+                                "description": "该路线是否含时效性项目",
+                                "能力项": "特定格式"
+                            },
+                            "timelinessProjects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 30,
+                                    "能力项": "范围、10~50字"
+                                },
+                                "description": "该路线涉及的时效性项目，每个项目名称为2-30字",
+                                "能力项": "范围"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "{\"containRoute\": 1, \"routeCount\": 2, \"containTimelinessProject\": 1, \"routes\": [{\"routeName\": \"展览艺术家讲座路线\", \"days\": 1, \"routePoints\": [\"美术馆新展\", \"艺术家讲座\"], \"hasTimelinessProject\": 0, \"timelinessProjects\": []}, {\"routeName\": \"演唱会路线\", \"days\": 1, \"routePoints\": [\"限时演唱会\"], \"hasTimelinessProject\": 1, \"timelinessProjects\": [\"限时演唱会\"]}]}"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个旅游达人，我会给你提供一篇旅游攻略文章，包含文章标题和文章内容。请分析文章，判断其中是否包含游玩路线（containRoute）、包含了几条游玩路线（routeCount）、是否包含时效性项目（containTimelinessProject），并提取每条路线的详细信息（如路线名、天数、游玩点、是否含时效性项目、涉及的时效性项目名称）。最后将结果按照指定的JSON格式输出。\n名词解释:\n游玩路线: 按照时间顺序规划多个游玩点，得到的一条耗时在1～3天左右的游玩路线。通常游玩路线的多个游玩点，会使用时间顺序（如上午11点去地点A，下午2点去地点B）或者位置顺序（如当前在地点A，下一站去地点B）构成关联关系。注意如果只是在介绍多个独立的游玩点，并不能构成游玩路线。\n是否包含游玩路线: 如果文章中包含至少一条完整的游玩路线，返回1，否则返回0。\n游玩路线数量: 文章中包含的完整游玩路线的数量，如果没有则为0。\n是否包含时效性项目: 时效性项目是指在特定时间举行的项目，比如演唱会、展览、集会、脱口秀、音乐节等限时活动。如果游玩路线中包含任何时效性项目，返回1，否则返回0。\nroutes字段: 若包含游玩路线，则需输出每条路线的详细结构化信息，包括：routeName（路线名）、days（天数）、routePoints（游玩点列表）、hasTimelinessProject（该路线是否含时效性项目）、timelinessProjects（该路线涉及的时效性项目列表，若无则为空数组，每个项目名称为2-30字）。\n输出格式要求: 请严格按照以下JSON格式输出分析结果，不要添加任何额外的文字说明:{\"containRoute\": 0或1,\"routeCount\": 数字(0,1,2...),\"containTimelinessProject\": 0或1, \"routes\": [{\"routeName\": \"路线名\", \"days\": 1-3, \"routePoints\": [\"游玩点A\", \"游玩点B\"], \"hasTimelinessProject\": 0或1, \"timelinessProjects\": [\"时效性项目名称\"]}]}\n文章内容:\n【两日骑行路线】Day1: 上午骑行至湖边公园，午餐后绕湖骑行，下午抵达营地露营。Day2: 早晨观日出，上午骑行至古镇，下午结束行程。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "required": [
+                "containRoute",
+                "routeCount",
+                "containTimelinessProject",
+                "routes"
+            ],
+            "properties": {
+                "containRoute": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "文章是否包含游玩路线，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routeCount": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "description": "文章中包含的游玩路线数量",
+                    "能力项": "范围"
+                },
+                "containTimelinessProject": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "游玩路线中是否包含时效性项目，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routes": {
+                    "type": "array",
+                    "description": "所有游玩路线详情",
+                    "能力项": "范围",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "routeName",
+                            "days",
+                            "routePoints",
+                            "hasTimelinessProject",
+                            "timelinessProjects"
+                        ],
+                        "properties": {
+                            "routeName": {
+                                "type": "string",
+                                "minLength": 2,
+                                "maxLength": 30,
+                                "description": "路线名称，不得为空",
+                                "能力项": "范围、10~50字"
+                            },
+                            "days": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3,
+                                "description": "路线天数，取值1-3",
+                                "能力项": "范围"
+                            },
+                            "routePoints": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 20,
+                                    "能力项": "范围、0~10字"
+                                },
+                                "minItems": 2,
+                                "description": "游玩点列表，至少包含两个点",
+                                "能力项": "范围"
+                            },
+                            "hasTimelinessProject": {
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ],
+                                "description": "该路线是否含时效性项目",
+                                "能力项": "特定格式"
+                            },
+                            "timelinessProjects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 30,
+                                    "能力项": "范围、10~50字"
+                                },
+                                "description": "该路线涉及的时效性项目，每个项目名称为2-30字",
+                                "能力项": "范围"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "{\"containRoute\": 1, \"routeCount\": 1, \"containTimelinessProject\": 0, \"routes\": [{\"routeName\": \"两日骑行露营路线\", \"days\": 2, \"routePoints\": [\"湖边公园\", \"湖边骑行\", \"营地露营\", \"观日出\", \"古镇\"], \"hasTimelinessProject\": 0, \"timelinessProjects\": []}]}"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个旅游达人，我会给你提供一篇旅游攻略文章，包含文章标题和文章内容。请分析文章，判断其中是否包含游玩路线（containRoute）、包含了几条游玩路线（routeCount）、是否包含时效性项目（containTimelinessProject），并提取每条路线的详细信息（如路线名、天数、游玩点、是否含时效性项目、涉及的时效性项目名称）。最后将结果按照指定的JSON格式输出。\n名词解释:\n游玩路线: 按照时间顺序规划多个游玩点，得到的一条耗时在1～3天左右的游玩路线。通常游玩路线的多个游玩点，会使用时间顺序（如上午11点去地点A，下午2点去地点B）或者位置顺序（如当前在地点A，下一站去地点B）构成关联关系。注意如果只是在介绍多个独立的游玩点，并不能构成游玩路线。\n是否包含游玩路线: 如果文章中包含至少一条完整的游玩路线，返回1，否则返回0。\n游玩路线数量: 文章中包含的完整游玩路线的数量，如果没有则为0。\n是否包含时效性项目: 时效性项目是指在特定时间举行的项目，比如演唱会、展览、集会、脱口秀、音乐节等限时活动。如果游玩路线中包含任何时效性项目，返回1，否则返回0。\nroutes字段: 若包含游玩路线，则需输出每条路线的详细结构化信息，包括：routeName（路线名）、days（天数）、routePoints（游玩点列表）、hasTimelinessProject（该路线是否含时效性项目）、timelinessProjects（该路线涉及的时效性项目列表，若无则为空数组，每个项目名称为2-30字）。\n输出格式要求: 请严格按照以下JSON格式输出分析结果，不要添加任何额外的文字说明:{\"containRoute\": 0或1,\"routeCount\": 数字(0,1,2...),\"containTimelinessProject\": 0或1, \"routes\": [{\"routeName\": \"路线名\", \"days\": 1-3, \"routePoints\": [\"游玩点A\", \"游玩点B\"], \"hasTimelinessProject\": 0或1, \"timelinessProjects\": [\"时效性项目名称\"]}]}\n文章内容:\n【一日亲子科普游】上午参观动物园，观看海洋馆表演，下午体验儿童科技乐园，晚上参加亲子互动剧。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "required": [
+                "containRoute",
+                "routeCount",
+                "containTimelinessProject",
+                "routes"
+            ],
+            "properties": {
+                "containRoute": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "文章是否包含游玩路线，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routeCount": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "description": "文章中包含的游玩路线数量",
+                    "能力项": "范围"
+                },
+                "containTimelinessProject": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "游玩路线中是否包含时效性项目，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routes": {
+                    "type": "array",
+                    "description": "所有游玩路线详情",
+                    "能力项": "范围",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "routeName",
+                            "days",
+                            "routePoints",
+                            "hasTimelinessProject",
+                            "timelinessProjects"
+                        ],
+                        "properties": {
+                            "routeName": {
+                                "type": "string",
+                                "minLength": 2,
+                                "maxLength": 30,
+                                "description": "路线名称，不得为空",
+                                "能力项": "范围、10~50字"
+                            },
+                            "days": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3,
+                                "description": "路线天数，取值1-3",
+                                "能力项": "范围"
+                            },
+                            "routePoints": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 20,
+                                    "能力项": "范围、0~10字"
+                                },
+                                "minItems": 2,
+                                "description": "游玩点列表，至少包含两个点",
+                                "能力项": "范围"
+                            },
+                            "hasTimelinessProject": {
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ],
+                                "description": "该路线是否含时效性项目",
+                                "能力项": "特定格式"
+                            },
+                            "timelinessProjects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 30,
+                                    "能力项": "范围、10~50字"
+                                },
+                                "description": "该路线涉及的时效性项目，每个项目名称为2-30字",
+                                "能力项": "范围"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "{\"containRoute\": 1, \"routeCount\": 1, \"containTimelinessProject\": 1, \"routes\": [{\"routeName\": \"亲子科普互动路线\", \"days\": 1, \"routePoints\": [\"动物园\", \"海洋馆表演\", \"儿童科技乐园\", \"亲子互动剧\"], \"hasTimelinessProject\": 1, \"timelinessProjects\": [\"海洋馆表演\", \"亲子互动剧\"]}]}"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个旅游达人，我会给你提供一篇旅游攻略文章，包含文章标题和文章内容。请分析文章，判断其中是否包含游玩路线（containRoute）、包含了几条游玩路线（routeCount）、是否包含时效性项目（containTimelinessProject），并提取每条路线的详细信息（如路线名、天数、游玩点、是否含时效性项目、涉及的时效性项目名称）。最后将结果按照指定的JSON格式输出。\n名词解释:\n游玩路线: 按照时间顺序规划多个游玩点，得到的一条耗时在1～3天左右的游玩路线。通常游玩路线的多个游玩点，会使用时间顺序（如上午11点去地点A，下午2点去地点B）或者位置顺序（如当前在地点A，下一站去地点B）构成关联关系。注意如果只是在介绍多个独立的游玩点，并不能构成游玩路线。\n是否包含游玩路线: 如果文章中包含至少一条完整的游玩路线，返回1，否则返回0。\n游玩路线数量: 文章中包含的完整游玩路线的数量，如果没有则为0。\n是否包含时效性项目: 时效性项目是指在特定时间举行的项目，比如演唱会、展览、集会、脱口秀、音乐节等限时活动。如果游玩路线中包含任何时效性项目，返回1，否则返回0。\nroutes字段: 若包含游玩路线，则需输出每条路线的详细结构化信息，包括：routeName（路线名）、days（天数）、routePoints（游玩点列表）、hasTimelinessProject（该路线是否含时效性项目）、timelinessProjects（该路线涉及的时效性项目列表，若无则为空数组，每个项目名称为2-30字）。\n输出格式要求: 请严格按照以下JSON格式输出分析结果，不要添加任何额外的文字说明:{\"containRoute\": 0或1,\"routeCount\": 数字(0,1,2...),\"containTimelinessProject\": 0或1, \"routes\": [{\"routeName\": \"路线名\", \"days\": 1-3, \"routePoints\": [\"游玩点A\", \"游玩点B\"], \"hasTimelinessProject\": 0或1, \"timelinessProjects\": [\"时效性项目名称\"]}]}\n文章内容:\n【春季赏花路线】上午到世纪公园看樱花，下午去植物园看郁金香，傍晚在滨江步道散步。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "required": [
+                "containRoute",
+                "routeCount",
+                "containTimelinessProject",
+                "routes"
+            ],
+            "properties": {
+                "containRoute": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "文章是否包含游玩路线，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routeCount": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "description": "文章中包含的游玩路线数量",
+                    "能力项": "范围"
+                },
+                "containTimelinessProject": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "游玩路线中是否包含时效性项目，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routes": {
+                    "type": "array",
+                    "description": "所有游玩路线详情",
+                    "能力项": "范围",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "routeName",
+                            "days",
+                            "routePoints",
+                            "hasTimelinessProject",
+                            "timelinessProjects"
+                        ],
+                        "properties": {
+                            "routeName": {
+                                "type": "string",
+                                "minLength": 2,
+                                "maxLength": 30,
+                                "description": "路线名称，不得为空",
+                                "能力项": "范围、10~50字"
+                            },
+                            "days": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3,
+                                "description": "路线天数，取值1-3",
+                                "能力项": "范围"
+                            },
+                            "routePoints": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 20,
+                                    "能力项": "范围、0~10字"
+                                },
+                                "minItems": 2,
+                                "description": "游玩点列表，至少包含两个点",
+                                "能力项": "范围"
+                            },
+                            "hasTimelinessProject": {
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ],
+                                "description": "该路线是否含时效性项目",
+                                "能力项": "特定格式"
+                            },
+                            "timelinessProjects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 30,
+                                    "能力项": "范围、10~50字"
+                                },
+                                "description": "该路线涉及的时效性项目，每个项目名称为2-30字",
+                                "能力项": "范围"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "{\"containRoute\": 1, \"routeCount\": 1, \"containTimelinessProject\": 0, \"routes\": [{\"routeName\": \"春季赏花滨江路线\", \"days\": 1, \"routePoints\": [\"世纪公园\", \"植物园\", \"滨江步道\"], \"hasTimelinessProject\": 0, \"timelinessProjects\": []}]}"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个旅游达人，我会给你提供一篇旅游攻略文章，包含文章标题和文章内容。请分析文章，判断其中是否包含游玩路线（containRoute）、包含了几条游玩路线（routeCount）、是否包含时效性项目（containTimelinessProject），并提取每条路线的详细信息（如路线名、天数、游玩点、是否含时效性项目、涉及的时效性项目名称）。最后将结果按照指定的JSON格式输出。\n名词解释:\n游玩路线: 按照时间顺序规划多个游玩点，得到的一条耗时在1～3天左右的游玩路线。通常游玩路线的多个游玩点，会使用时间顺序（如上午11点去地点A，下午2点去地点B）或者位置顺序（如当前在地点A，下一站去地点B）构成关联关系。注意如果只是在介绍多个独立的游玩点，并不能构成游玩路线。\n是否包含游玩路线: 如果文章中包含至少一条完整的游玩路线，返回1，否则返回0。\n游玩路线数量: 文章中包含的完整游玩路线的数量，如果没有则为0。\n是否包含时效性项目: 时效性项目是指在特定时间举行的项目，比如演唱会、展览、集会、脱口秀、音乐节等限时活动。如果游玩路线中包含任何时效性项目，返回1，否则返回0。\nroutes字段: 若包含游玩路线，则需输出每条路线的详细结构化信息，包括：routeName（路线名）、days（天数）、routePoints（游玩点列表）、hasTimelinessProject（该路线是否含时效性项目）、timelinessProjects（该路线涉及的时效性项目列表，若无则为空数组，每个项目名称为2-30字）。\n输出格式要求: 请严格按照以下JSON格式输出分析结果，不要添加任何额外的文字说明:{\"containRoute\": 0或1,\"routeCount\": 数字(0,1,2...),\"containTimelinessProject\": 0或1, \"routes\": [{\"routeName\": \"路线名\", \"days\": 1-3, \"routePoints\": [\"游玩点A\", \"游玩点B\"], \"hasTimelinessProject\": 0或1, \"timelinessProjects\": [\"时效性项目名称\"]}]}\n文章内容:\n【艺术节全体验】上午画展开幕式，下午参加雕塑工作坊，晚上露天戏剧节演出，次日参加音乐节闭幕式。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "required": [
+                "containRoute",
+                "routeCount",
+                "containTimelinessProject",
+                "routes"
+            ],
+            "properties": {
+                "containRoute": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "文章是否包含游玩路线，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routeCount": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "description": "文章中包含的游玩路线数量",
+                    "能力项": "范围"
+                },
+                "containTimelinessProject": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "游玩路线中是否包含时效性项目，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routes": {
+                    "type": "array",
+                    "description": "所有游玩路线详情",
+                    "能力项": "范围",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "routeName",
+                            "days",
+                            "routePoints",
+                            "hasTimelinessProject",
+                            "timelinessProjects"
+                        ],
+                        "properties": {
+                            "routeName": {
+                                "type": "string",
+                                "minLength": 2,
+                                "maxLength": 30,
+                                "description": "路线名称，不得为空",
+                                "能力项": "范围、10~50字"
+                            },
+                            "days": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3,
+                                "description": "路线天数，取值1-3",
+                                "能力项": "范围"
+                            },
+                            "routePoints": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 20,
+                                    "能力项": "范围、0~10字"
+                                },
+                                "minItems": 2,
+                                "description": "游玩点列表，至少包含两个点",
+                                "能力项": "范围"
+                            },
+                            "hasTimelinessProject": {
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ],
+                                "description": "该路线是否含时效性项目",
+                                "能力项": "特定格式"
+                            },
+                            "timelinessProjects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 30,
+                                    "能力项": "范围、10~50字"
+                                },
+                                "description": "该路线涉及的时效性项目，每个项目名称为2-30字",
+                                "能力项": "范围"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "{\"containRoute\": 1, \"routeCount\": 1, \"containTimelinessProject\": 1, \"routes\": [{\"routeName\": \"艺术节全体验路线\", \"days\": 2, \"routePoints\": [\"画展开幕式\", \"雕塑工作坊\", \"露天戏剧节演出\", \"音乐节闭幕式\"], \"hasTimelinessProject\": 1, \"timelinessProjects\": [\"画展开幕式\", \"露天戏剧节演出\", \"音乐节闭幕式\"]}]}"
+    },
+    {
+        "category": "SCHEMA",
+        "question": "你是一个旅游达人，我会给你提供一篇旅游攻略文章，包含文章标题和文章内容。请分析文章，判断其中是否包含游玩路线（containRoute）、包含了几条游玩路线（routeCount）、是否包含时效性项目（containTimelinessProject），并提取每条路线的详细信息（如路线名、天数、游玩点、是否含时效性项目、涉及的时效性项目名称）。最后将结果按照指定的JSON格式输出。\n名词解释:\n游玩路线: 按照时间顺序规划多个游玩点，得到的一条耗时在1～3天左右的游玩路线。通常游玩路线的多个游玩点，会使用时间顺序（如上午11点去地点A，下午2点去地点B）或者位置顺序（如当前在地点A，下一站去地点B）构成关联关系。注意如果只是在介绍多个独立的游玩点，并不能构成游玩路线。\n是否包含游玩路线: 如果文章中包含至少一条完整的游玩路线，返回1，否则返回0。\n游玩路线数量: 文章中包含的完整游玩路线的数量，如果没有则为0。\n是否包含时效性项目: 时效性项目是指在特定时间举行的项目，比如演唱会、展览、集会、脱口秀、音乐节等限时活动。如果游玩路线中包含任何时效性项目，返回1，否则返回0。\nroutes字段: 若包含游玩路线，则需输出每条路线的详细结构化信息，包括：routeName（路线名）、days（天数）、routePoints（游玩点列表）、hasTimelinessProject（该路线是否含时效性项目）、timelinessProjects（该路线涉及的时效性项目列表，若无则为空数组，每个项目名称为2-30字）。\n输出格式要求: 请严格按照以下JSON格式输出分析结果，不要添加任何额外的文字说明:{\"containRoute\": 0或1,\"routeCount\": 数字(0,1,2...),\"containTimelinessProject\": 0或1, \"routes\": [{\"routeName\": \"路线名\", \"days\": 1-3, \"routePoints\": [\"游玩点A\", \"游玩点B\"], \"hasTimelinessProject\": 0或1, \"timelinessProjects\": [\"时效性项目名称\"]}]}\n文章内容:\n【户外探险路线】清晨登山，上午穿越森林，下午溯溪，傍晚篝火晚会，夜间露营观星。",
+        "json_schema": {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "object",
+            "required": [
+                "containRoute",
+                "routeCount",
+                "containTimelinessProject",
+                "routes"
+            ],
+            "properties": {
+                "containRoute": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "文章是否包含游玩路线，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routeCount": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 10,
+                    "description": "文章中包含的游玩路线数量",
+                    "能力项": "范围"
+                },
+                "containTimelinessProject": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "description": "游玩路线中是否包含时效性项目，1表示包含，0表示不包含",
+                    "能力项": "特定格式"
+                },
+                "routes": {
+                    "type": "array",
+                    "description": "所有游玩路线详情",
+                    "能力项": "范围",
+                    "items": {
+                        "type": "object",
+                        "required": [
+                            "routeName",
+                            "days",
+                            "routePoints",
+                            "hasTimelinessProject",
+                            "timelinessProjects"
+                        ],
+                        "properties": {
+                            "routeName": {
+                                "type": "string",
+                                "minLength": 2,
+                                "maxLength": 30,
+                                "description": "路线名称，不得为空",
+                                "能力项": "范围、10~50字"
+                            },
+                            "days": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 3,
+                                "description": "路线天数，取值1-3",
+                                "能力项": "范围"
+                            },
+                            "routePoints": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 20,
+                                    "能力项": "范围、0~10字"
+                                },
+                                "minItems": 2,
+                                "description": "游玩点列表，至少包含两个点",
+                                "能力项": "范围"
+                            },
+                            "hasTimelinessProject": {
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ],
+                                "description": "该路线是否含时效性项目",
+                                "能力项": "特定格式"
+                            },
+                            "timelinessProjects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "minLength": 2,
+                                    "maxLength": 30,
+                                    "能力项": "范围、10~50字"
+                                },
+                                "description": "该路线涉及的时效性项目，每个项目名称为2-30字",
+                                "能力项": "范围"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否满足schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "被依赖": false,
+                "能力项": "JSON"
+            }
+        ],
+        "ref_answer": "{\"containRoute\": 1, \"routeCount\": 1, \"containTimelinessProject\": 0, \"routes\": [{\"routeName\": \"户外探险露营路线\", \"days\": 1, \"routePoints\": [\"登山\", \"穿越森林\", \"溯溪\", \"篝火晚会\", \"露营观星\"], \"hasTimelinessProject\": 0, \"timelinessProjects\": []}]}"
+    }
+]

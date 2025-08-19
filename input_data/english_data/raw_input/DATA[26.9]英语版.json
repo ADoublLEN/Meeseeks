@@ -1,0 +1,382 @@
+[
+    {
+        "category": "SCHEMA",
+        "question": "You are a product assistant that helps users parse the flavors of products.\nMy input format is: [{\"cspu\":\"Product Name 1\"}, {\"cspu\":\"Product Name 2\"}], where cspu is the product name to be parsed.\nYour response format is (must strictly follow JSON format requirements):[{\"cspu\":\"Product Name 1\", \"type\":\"Flavor 1\"}, {\"cspu\":\"Product Name 2\",\"type\":\"Flavor 2\"}], where type represents the product flavor.\nFor example:\nIf my input is [{\"cspu\":\"Lay's Mango Burst Chips 7.4oz\"},{\"cspu\":\"Takis Fuego Hot Chili Pepper & Lime 4oz\"},{\"cspu\":\"Tyson Onion Chicken Rings 11.6oz\"},{\"cspu\":\"Maruchan Spicy Beef Ramen + Tomato Beef Ramen Variety Pack 12 cups\"}]\nI hope your output is [{\"cspu\":\"Lay's Mango Burst Chips 7.4oz\",\"type\":\"Mango\"},{\"cspu\":\"Takis Fuego Hot Chili Pepper & Lime 4oz\",\"type\":\"Hot Chili Pepper & Lime\"},{\"cspu\":\"Tyson Onion Chicken Rings 11.6oz\",\"type\":\"Onion\"},{\"cspu\":\"Maruchan Spicy Beef Ramen + Tomato Beef Ramen Variety Pack 12 cups\",\"type\":\"Spicy Beef, Tomato Beef\"}]\nNote 1: Product flavor results must exist in the product name, do not abstract or equivalently convert arbitrarily, and flavors must correspond to real food or seasoning types, such as mango flavor, spicy flavor, braised beef flavor, etc.\nNote 2: Sometimes flavor is a descriptive word, for example, red date porridge has red date flavor, cucumber chips have cucumber flavor, lychee soda has lychee flavor, jasmine tea has jasmine flavor\nDistinguish between product type and flavor. If there are multiple flavors, output all flavors separated by commas\nDo not mix in product types! Do not mix in product types!\nFlavors should not include snacks, leisure, place names, etc.\nFlavors will not include words like noodle sheets, rice dumpings, ramen\nIf the product name does not contain flavor, return NULL for the type value\nThere is no relationship between multiple products, and context will not affect the flavor parsing results of individual products\nPlease parse the following product list and return results (strict JSON format):\n[{\"cspu\": \"Jack Link's Spicy Duck Jerky 6.35oz\"}, {\"cspu\": \"Wonderful Pistachios Sweet Chili 5.5oz\"}, {\"cspu\": \"Nature Valley Granola Bar Oats & Honey 17.7oz\"}, {\"cspu\": \"Coca-Cola Zero Sugar 12fl oz 6-pack\"}]",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "cspu": {
+                        "type": "string",
+                        "能力项": "主题约束"
+                    },
+                    "type": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "能力项": "主题约束"
+                    }
+                },
+                "required": [
+                    "cspu",
+                    "type"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a product assistant that helps users parse the flavors of products.\nMy input format is: [{\"cspu\":\"Product Name 1\"}, {\"cspu\":\"Product Name 2\"}], where cspu is the product name to be parsed.\nYour response format is (must strictly follow JSON format requirements):[{\"cspu\":\"Product Name 1\", \"type\":\"Flavor 1\"}, {\"cspu\":\"Product Name 2\",\"type\":\"Flavor 2\"}], where type represents the product flavor.\nFor example:\nIf my input is [{\"cspu\":\"Lay's Mango Burst Chips 7.4oz\"},{\"cspu\":\"Takis Fuego Hot Chili Pepper & Lime 4oz\"},{\"cspu\":\"Tyson Onion Chicken Rings 11.6oz\"},{\"cspu\":\"Maruchan Spicy Beef Ramen + Tomato Beef Ramen Variety Pack 12 cups\"}]\nI hope your output is [{\"cspu\":\"Lay's Mango Burst Chips 7.4oz\",\"type\":\"Mango\"},{\"cspu\":\"Takis Fuego Hot Chili Pepper & Lime 4oz\",\"type\":\"Hot Chili Pepper & Lime\"},{\"cspu\":\"Tyson Onion Chicken Rings 11.6oz\",\"type\":\"Onion\"},{\"cspu\":\"Maruchan Spicy Beef Ramen + Tomato Beef Ramen Variety Pack 12 cups\",\"type\":\"Spicy Beef, Tomato Beef\"}]\nNote 1: Product flavor results must exist in the product name, do not abstract or equivalently convert arbitrarily, and flavors must correspond to real food or seasoning types, such as mango flavor, spicy flavor, braised beef flavor, etc.\nNote 2: Sometimes flavor is a descriptive word, for example, red date porridge has red date flavor, cucumber chips have cucumber flavor, lychee soda has lychee flavor, jasmine tea has jasmine flavor\nDistinguish between product type and flavor. If there are multiple flavors, output all flavors separated by commas\nDo not mix in product types! Do not mix in product types!\nFlavors should not include snacks, leisure, place names, etc.\nFlavors will not include words like noodle sheets, rice dumpings, ramen\nIf the product name does not contain flavor, return NULL for the type value\nThere is no relationship between multiple products, and context will not affect the flavor parsing results of individual products\nPlease parse the following product list and return results (strict JSON format):\n[{\"cspu\": \"Arizona Iced Tea Lemon 23fl oz\"}, {\"cspu\": \"Flamin' Hot Cheetos Crunchy 8.5oz 3-pack\"}, {\"cspu\": \"David Sunflower Seeds Original 5.25oz\"}, {\"cspu\": \"Dannon Two Good Greek Yogurt Vanilla 5.3oz 12-pack\"}]",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "cspu": {
+                        "type": "string",
+                        "能力项": "主题约束"
+                    },
+                    "type": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "能力项": "主题约束"
+                    }
+                },
+                "required": [
+                    "cspu",
+                    "type"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a product assistant that helps users parse the flavors of products.\nMy input format is: [{\"cspu\":\"Product Name 1\"}, {\"cspu\":\"Product Name 2\"}], where cspu is the product name to be parsed.\nYour response format is (must strictly follow JSON format requirements):[{\"cspu\":\"Product Name 1\", \"type\":\"Flavor 1\"}, {\"cspu\":\"Product Name 2\",\"type\":\"Flavor 2\"}], where type represents the product flavor.\nFor example:\nIf my input is [{\"cspu\":\"Lay's Mango Burst Chips 7.4oz\"},{\"cspu\":\"Takis Fuego Hot Chili Pepper & Lime 4oz\"},{\"cspu\":\"Tyson Onion Chicken Rings 11.6oz\"},{\"cspu\":\"Maruchan Spicy Beef Ramen + Tomato Beef Ramen Variety Pack 12 cups\"}]\nI hope your output is [{\"cspu\":\"Lay's Mango Burst Chips 7.4oz\",\"type\":\"Mango\"},{\"cspu\":\"Takis Fuego Hot Chili Pepper & Lime 4oz\",\"type\":\"Hot Chili Pepper & Lime\"},{\"cspu\":\"Tyson Onion Chicken Rings 11.6oz\",\"type\":\"Onion\"},{\"cspu\":\"Maruchan Spicy Beef Ramen + Tomato Beef Ramen Variety Pack 12 cups\",\"type\":\"Spicy Beef, Tomato Beef\"}]\nNote 1: Product flavor results must exist in the product name, do not abstract or equivalently convert arbitrarily, and flavors must correspond to real food or seasoning types, such as mango flavor, spicy flavor, braised beef flavor, etc.\nNote 2: Sometimes flavor is a descriptive word, for example, red date porridge has red date flavor, cucumber chips have cucumber flavor, lychee soda has lychee flavor, jasmine tea has jasmine flavor\nDistinguish between product type and flavor. If there are multiple flavors, output all flavors separated by commas\nDo not mix in product types! Do not mix in product types!\nFlavors should not include snacks, leisure, place names, etc.\nFlavors will not include words like noodle sheets, rice dumpings, ramen\nIf the product name does not contain flavor, return NULL for the type value\nThere is no relationship between multiple products, and context will not affect the flavor parsing results of individual products\nPlease parse the following product list and return results (strict JSON format):\n[{\"cspu\": \"Maruchan Ramen Beef Flavor 3oz\"}, {\"cspu\": \"Kellogg's Rice Krispies Treats 8-count\"}, {\"cspu\": \"Lay's Potato Chips Dill Pickle 7.75oz\"}, {\"cspu\": \"Simply Apple Juice 52fl oz\"}]",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "cspu": {
+                        "type": "string",
+                        "能力项": "主题约束"
+                    },
+                    "type": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "能力项": "主题约束"
+                    }
+                },
+                "required": [
+                    "cspu",
+                    "type"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a product assistant that helps users parse the flavors of products.\nMy input format is: [{\"cspu\":\"Product Name 1\"}, {\"cspu\":\"Product Name 2\"}], where cspu is the product name to be parsed.\nYour response format is (must strictly follow JSON format requirements):[{\"cspu\":\"Product Name 1\", \"type\":\"Flavor 1\"}, {\"cspu\":\"Product Name 2\",\"type\":\"Flavor 2\"}], where type represents the product flavor.\nFor example:\nIf my input is [{\"cspu\":\"Lay's Mango Burst Chips 7.4oz\"},{\"cspu\":\"Takis Fuego Hot Chili Pepper & Lime 4oz\"},{\"cspu\":\"Tyson Onion Chicken Rings 11.6oz\"},{\"cspu\":\"Maruchan Spicy Beef Ramen + Tomato Beef Ramen Variety Pack 12 cups\"}]\nI hope your output is [{\"cspu\":\"Lay's Mango Burst Chips 7.4oz\",\"type\":\"Mango\"},{\"cspu\":\"Takis Fuego Hot Chili Pepper & Lime 4oz\",\"type\":\"Hot Chili Pepper & Lime\"},{\"cspu\":\"Tyson Onion Chicken Rings 11.6oz\",\"type\":\"Onion\"},{\"cspu\":\"Maruchan Spicy Beef Ramen + Tomato Beef Ramen Variety Pack 12 cups\",\"type\":\"Spicy Beef, Tomato Beef\"}]\nNote 1: Product flavor results must exist in the product name, do not abstract or equivalently convert arbitrarily, and flavors must correspond to real food or seasoning types, such as mango flavor, spicy flavor, braised beef flavor, etc.\nNote 2: Sometimes flavor is a descriptive word, for example, red date porridge has red date flavor, cucumber chips have cucumber flavor, lychee soda has lychee flavor, jasmine tea has jasmine flavor\nDistinguish between product type and flavor. If there are multiple flavors, output all flavors separated by commas\nDo not mix in product types! Do not mix in product types!\nFlavors should not include snacks, leisure, place names, etc.\nFlavors will not include words like noodle sheets, rice dumpings, ramen\nIf the product name does not contain flavor, return NULL for the type value\nThere is no relationship between multiple products, and context will not affect the flavor parsing results of individual products\nPlease parse the following product list and return results (strict JSON format):\n[{\"cspu\": \"Pepperidge Farm Goldfish Cheddar Crackers 6.6oz\"}, {\"cspu\": \"Fairlife Core Power Protein Shake Vanilla 14fl oz 12-pack\"}, {\"cspu\": \"LaCroix Sparkling Water White Grape 12fl oz\"}, {\"cspu\": \"Blue Diamond Almonds Variety Pack\"}]",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "cspu": {
+                        "type": "string",
+                        "能力项": "主题约束"
+                    },
+                    "type": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "能力项": "主题约束"
+                    }
+                },
+                "required": [
+                    "cspu",
+                    "type"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a product assistant that helps users parse the flavors of products.\nMy input format is: [{\"cspu\":\"Product Name 1\"}, {\"cspu\":\"Product Name 2\"}], where cspu is the product name to be parsed.\nYour response format is (must strictly follow JSON format requirements):[{\"cspu\":\"Product Name 1\", \"type\":\"Flavor 1\"}, {\"cspu\":\"Product Name 2\",\"type\":\"Flavor 2\"}], where type represents the product flavor.\nFor example:\nIf my input is [{\"cspu\":\"Lay's Mango Burst Chips 7.4oz\"},{\"cspu\":\"Takis Fuego Hot Chili Pepper & Lime 4oz\"},{\"cspu\":\"Tyson Onion Chicken Rings 11.6oz\"},{\"cspu\":\"Maruchan Spicy Beef Ramen + Tomato Beef Ramen Variety Pack 12 cups\"}]\nI hope your output is [{\"cspu\":\"Lay's Mango Burst Chips 7.4oz\",\"type\":\"Mango\"},{\"cspu\":\"Takis Fuego Hot Chili Pepper & Lime 4oz\",\"type\":\"Hot Chili Pepper & Lime\"},{\"cspu\":\"Tyson Onion Chicken Rings 11.6oz\",\"type\":\"Onion\"},{\"cspu\":\"Maruchan Spicy Beef Ramen + Tomato Beef Ramen Variety Pack 12 cups\",\"type\":\"Spicy Beef, Tomato Beef\"}]\nNote 1: Product flavor results must exist in the product name, do not abstract or equivalently convert arbitrarily, and flavors must correspond to real food or seasoning types, such as mango flavor, spicy flavor, braised beef flavor, etc.\nNote 2: Sometimes flavor is a descriptive word, for example, red date porridge has red date flavor, cucumber chips have cucumber flavor, lychee soda has lychee flavor, jasmine tea has jasmine flavor\nDistinguish between product type and flavor. If there are multiple flavors, output all flavors separated by commas\nDo not mix in product types! Do not mix in product types!\nFlavors should not include snacks, leisure, place names, etc.\nFlavors will not include words like noodle sheets, rice dumpings, ramen\nIf the product name does not contain flavor, return NULL for the type value\nThere is no relationship between multiple products, and context will not affect the flavor parsing results of individual products\nPlease parse the following product list and return results (strict JSON format):\n[{\"cspu\": \"Lay's Potato Chips BBQ 7.75oz\"}, {\"cspu\": \"Arizona Green Tea with Honey 23fl oz\"}, {\"cspu\": \"Pepsi Cola Classic 12fl oz\"}, {\"cspu\": \"David Sunflower Seeds Ranch 5.25oz\"}]",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "cspu": {
+                        "type": "string",
+                        "能力项": "主题约束"
+                    },
+                    "type": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "能力项": "主题约束"
+                    }
+                },
+                "required": [
+                    "cspu",
+                    "type"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a product assistant that helps users parse the flavors of products.\nMy input format is: [{\"cspu\":\"Product Name 1\"}, {\"cspu\":\"Product Name 2\"}], where cspu is the product name to be parsed.\nYour response format is (must strictly follow JSON format requirements):[{\"cspu\":\"Product Name 1\", \"type\":\"Flavor 1\"}, {\"cspu\":\"Product Name 2\",\"type\":\"Flavor 2\"}], where type represents the product flavor.\nFor example:\nIf my input is [{\"cspu\":\"Lay's Mango Burst Chips 7.4oz\"},{\"cspu\":\"Takis Fuego Hot Chili Pepper & Lime 4oz\"},{\"cspu\":\"Tyson Onion Chicken Rings 11.6oz\"},{\"cspu\":\"Maruchan Spicy Beef Ramen + Tomato Beef Ramen Variety Pack 12 cups\"}]\nI hope your output is [{\"cspu\":\"Lay's Mango Burst Chips 7.4oz\",\"type\":\"Mango\"},{\"cspu\":\"Takis Fuego Hot Chili Pepper & Lime 4oz\",\"type\":\"Hot Chili Pepper & Lime\"},{\"cspu\":\"Tyson Onion Chicken Rings 11.6oz\",\"type\":\"Onion\"},{\"cspu\":\"Maruchan Spicy Beef Ramen + Tomato Beef Ramen Variety Pack 12 cups\",\"type\":\"Spicy Beef, Tomato Beef\"}]\nNote 1: Product flavor results must exist in the product name, do not abstract or equivalently convert arbitrarily, and flavors must correspond to real food or seasoning types, such as mango flavor, spicy flavor, braised beef flavor, etc.\nNote 2: Sometimes flavor is a descriptive word, for example, red date porridge has red date flavor, cucumber chips have cucumber flavor, lychee soda has lychee flavor, jasmine tea has jasmine flavor\nDistinguish between product type and flavor. If there are multiple flavors, output all flavors separated by commas\nDo not mix in product types! Do not mix in product types!\nFlavors should not include snacks, leisure, place names, etc.\nFlavors will not include words like noodle sheets, rice dumpings, ramen\nIf the product name does not contain flavor, return NULL for the type value\nThere is no relationship between multiple products, and context will not affect the flavor parsing results of individual products\nPlease parse the following product list and return results (strict JSON format):\n[{\"cspu\": \"Slim Jim Original Beef Jerky 0.28oz\"}, {\"cspu\": \"Wonderful Pistachios Honey Roasted 5.5oz\"}, {\"cspu\": \"Pringles BBQ Potato Crisps 5.5oz\"}, {\"cspu\": \"Fairlife 2% Milk 52fl oz\"}]",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "cspu": {
+                        "type": "string",
+                        "能力项": "主题约束"
+                    },
+                    "type": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "能力项": "主题约束"
+                    }
+                },
+                "required": [
+                    "cspu",
+                    "type"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a product assistant that helps users parse the flavors of products.\nMy input format is: [{\"cspu\":\"Product Name 1\"}, {\"cspu\":\"Product Name 2\"}], where cspu is the product name to be parsed.\nYour response format is (must strictly follow JSON format requirements):[{\"cspu\":\"Product Name 1\", \"type\":\"Flavor 1\"}, {\"cspu\":\"Product Name 2\",\"type\":\"Flavor 2\"}], where type represents the product flavor.\nFor example:\nIf my input is [{\"cspu\":\"Lay's Mango Burst Chips 7.4oz\"},{\"cspu\":\"Takis Fuego Hot Chili Pepper & Lime 4oz\"},{\"cspu\":\"Tyson Onion Chicken Rings 11.6oz\"},{\"cspu\":\"Maruchan Spicy Beef Ramen + Tomato Beef Ramen Variety Pack 12 cups\"}]\nI hope your output is [{\"cspu\":\"Lay's Mango Burst Chips 7.4oz\",\"type\":\"Mango\"},{\"cspu\":\"Takis Fuego Hot Chili Pepper & Lime 4oz\",\"type\":\"Hot Chili Pepper & Lime\"},{\"cspu\":\"Tyson Onion Chicken Rings 11.6oz\",\"type\":\"Onion\"},{\"cspu\":\"Maruchan Spicy Beef Ramen + Tomato Beef Ramen Variety Pack 12 cups\",\"type\":\"Spicy Beef, Tomato Beef\"}]\nNote 1: Product flavor results must exist in the product name, do not abstract or equivalently convert arbitrarily, and flavors must correspond to real food or seasoning types, such as mango flavor, spicy flavor, braised beef flavor, etc.\nNote 2: Sometimes flavor is a descriptive word, for example, red date porridge has red date flavor, cucumber chips have cucumber flavor, lychee soda has lychee flavor, jasmine tea has jasmine flavor\nDistinguish between product type and flavor. If there are multiple flavors, output all flavors separated by commas\nDo not mix in product types! Do not mix in product types!\nFlavors should not include snacks, leisure, place names, etc.\nFlavors will not include words like noodle sheets, rice dumpings, ramen\nIf the product name does not contain flavor, return NULL for the type value\nThere is no relationship between multiple products, and context will not affect the flavor parsing results of individual products\nPlease parse the following product list and return results (strict JSON format):\n[{\"cspu\": \"Jell-O Pudding Cups Chocolate 4-pack 15.5oz\"}, {\"cspu\": \"Maruchan Ramen Pork Flavor 3oz\"}, {\"cspu\": \"Blue Diamond Almonds Smokehouse 6oz\"}, {\"cspu\": \"Smartwater Vapor Distilled Water 33.8fl oz\"}]",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "cspu": {
+                        "type": "string",
+                        "能力项": "主题约束"
+                    },
+                    "type": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "能力项": "主题约束"
+                    }
+                },
+                "required": [
+                    "cspu",
+                    "type"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a product assistant that helps users parse the flavors of products.\nMy input format is: [{\"cspu\":\"Product Name 1\"}, {\"cspu\":\"Product Name 2\"}], where cspu is the product name to be parsed.\nYour response format is (must strictly follow JSON format requirements):[{\"cspu\":\"Product Name 1\", \"type\":\"Flavor 1\"}, {\"cspu\":\"Product Name 2\",\"type\":\"Flavor 2\"}], where type represents the product flavor.\nFor example:\nIf my input is [{\"cspu\":\"Lay's Mango Burst Chips 7.4oz\"},{\"cspu\":\"Takis Fuego Hot Chili Pepper & Lime 4oz\"},{\"cspu\":\"Tyson Onion Chicken Rings 11.6oz\"},{\"cspu\":\"Maruchan Spicy Beef Ramen + Tomato Beef Ramen Variety Pack 12 cups\"}]\nI hope your output is [{\"cspu\":\"Lay's Mango Burst Chips 7.4oz\",\"type\":\"Mango\"},{\"cspu\":\"Takis Fuego Hot Chili Pepper & Lime 4oz\",\"type\":\"Hot Chili Pepper & Lime\"},{\"cspu\":\"Tyson Onion Chicken Rings 11.6oz\",\"type\":\"Onion\"},{\"cspu\":\"Maruchan Spicy Beef Ramen + Tomato Beef Ramen Variety Pack 12 cups\",\"type\":\"Spicy Beef, Tomato Beef\"}]\nNote 1: Product flavor results must exist in the product name, do not abstract or equivalently convert arbitrarily, and flavors must correspond to real food or seasoning types, such as mango flavor, spicy flavor, braised beef flavor, etc.\nNote 2: Sometimes flavor is a descriptive word, for example, red date porridge has red date flavor, cucumber chips have cucumber flavor, lychee soda has lychee flavor, jasmine tea has jasmine flavor\nDistinguish between product type and flavor. If there are multiple flavors, output all flavors separated by commas\nDo not mix in product types! Do not mix in product types!\nFlavors should not include snacks, leisure, place names, etc.\nFlavors will not include words like noodle sheets, rice dumpings, ramen\nIf the product name does not contain flavor, return NULL for the type value\nThere is no relationship between multiple products, and context will not affect the flavor parsing results of individual products\nPlease parse the following product list and return results (strict JSON format):\n[{\"cspu\": \"Nestle Nesquik Chocolate Milk 8fl oz 4-pack\"}, {\"cspu\": \"Coca-Cola Cherry 16.9fl oz\"}, {\"cspu\": \"Pepperidge Farm Milano Cookies Dark Chocolate 7oz\"}, {\"cspu\": \"Lay's Potato Chips Original 7.75oz\"}]",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "cspu": {
+                        "type": "string",
+                        "能力项": "主题约束"
+                    },
+                    "type": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "能力项": "主题约束"
+                    }
+                },
+                "required": [
+                    "cspu",
+                    "type"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a product assistant that helps users parse the flavors of products.\nMy input format is: [{\"cspu\":\"Product Name 1\"}, {\"cspu\":\"Product Name 2\"}], where cspu is the product name to be parsed.\nYour response format is (must strictly follow JSON format requirements):[{\"cspu\":\"Product Name 1\", \"type\":\"Flavor 1\"}, {\"cspu\":\"Product Name 2\",\"type\":\"Flavor 2\"}], where type represents the product flavor.\nFor example:\nIf my input is [{\"cspu\":\"Lay's Mango Burst Chips 7.4oz\"},{\"cspu\":\"Takis Fuego Hot Chili Pepper & Lime 4oz\"},{\"cspu\":\"Tyson Onion Chicken Rings 11.6oz\"},{\"cspu\":\"Maruchan Spicy Beef Ramen + Tomato Beef Ramen Variety Pack 12 cups\"}]\nI hope your output is [{\"cspu\":\"Lay's Mango Burst Chips 7.4oz\",\"type\":\"Mango\"},{\"cspu\":\"Takis Fuego Hot Chili Pepper & Lime 4oz\",\"type\":\"Hot Chili Pepper & Lime\"},{\"cspu\":\"Tyson Onion Chicken Rings 11.6oz\",\"type\":\"Onion\"},{\"cspu\":\"Maruchan Spicy Beef Ramen + Tomato Beef Ramen Variety Pack 12 cups\",\"type\":\"Spicy Beef, Tomato Beef\"}]\nNote 1: Product flavor results must exist in the product name, do not abstract or equivalently convert arbitrarily, and flavors must correspond to real food or seasoning types, such as mango flavor, spicy flavor, braised beef flavor, etc.\nNote 2: Sometimes flavor is a descriptive word, for example, red date porridge has red date flavor, cucumber chips have cucumber flavor, lychee soda has lychee flavor, jasmine tea has jasmine flavor\nDistinguish between product type and flavor. If there are multiple flavors, output all flavors separated by commas\nDo not mix in product types! Do not mix in product types!\nFlavors should not include snacks, leisure, place names, etc.\nFlavors will not include words like noodle sheets, rice dumpings, ramen\nIf the product name does not contain flavor, return NULL for the type value\nThere is no relationship between multiple products, and context will not affect the flavor parsing results of individual products\nPlease parse the following product list and return results (strict JSON format):\n[{\"cspu\": \"Fruit by the Foot Strawberry 4.5oz\"}, {\"cspu\": \"Arizona Arnold Palmer Half & Half 23fl oz\"}, {\"cspu\": \"Blue Diamond Almonds Raw 16oz\"}, {\"cspu\": \"Horizon Organic Milk Strawberry 8fl oz\"}]",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "cspu": {
+                        "type": "string",
+                        "能力项": "主题约束"
+                    },
+                    "type": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "能力项": "主题约束"
+                    }
+                },
+                "required": [
+                    "cspu",
+                    "type"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "SCHEMA",
+        "question": "You are a product assistant that helps users parse the flavors of products.\nMy input format is: [{\"cspu\":\"Product Name 1\"}, {\"cspu\":\"Product Name 2\"}], where cspu is the product name to be parsed.\nYour response format is (must strictly follow JSON format requirements):[{\"cspu\":\"Product Name 1\", \"type\":\"Flavor 1\"}, {\"cspu\":\"Product Name 2\",\"type\":\"Flavor 2\"}], where type represents the product flavor.\nFor example:\nIf my input is [{\"cspu\":\"Lay's Mango Burst Chips 7.4oz\"},{\"cspu\":\"Takis Fuego Hot Chili Pepper & Lime 4oz\"},{\"cspu\":\"Tyson Onion Chicken Rings 11.6oz\"},{\"cspu\":\"Maruchan Spicy Beef Ramen + Tomato Beef Ramen Variety Pack 12 cups\"}]\nI hope your output is [{\"cspu\":\"Lay's Mango Burst Chips 7.4oz\",\"type\":\"Mango\"},{\"cspu\":\"Takis Fuego Hot Chili Pepper & Lime 4oz\",\"type\":\"Hot Chili Pepper & Lime\"},{\"cspu\":\"Tyson Onion Chicken Rings 11.6oz\",\"type\":\"Onion\"},{\"cspu\":\"Maruchan Spicy Beef Ramen + Tomato Beef Ramen Variety Pack 12 cups\",\"type\":\"Spicy Beef, Tomato Beef\"}]\nNote 1: Product flavor results must exist in the product name, do not abstract or equivalently convert arbitrarily, and flavors must correspond to real food or seasoning types, such as mango flavor, spicy flavor, braised beef flavor, etc.\nNote 2: Sometimes flavor is a descriptive word, for example, red date porridge has red date flavor, cucumber chips have cucumber flavor, lychee soda has lychee flavor, jasmine tea has jasmine flavor\nDistinguish between product type and flavor. If there are multiple flavors, output all flavors separated by commas\nDo not mix in product types! Do not mix in product types!\nFlavors should not include snacks, leisure, place names, etc.\nFlavors will not include words like noodle sheets, rice dumpings, ramen\nIf the product name does not contain flavor, return NULL for the type value\nThere is no relationship between multiple products, and context will not affect the flavor parsing results of individual products\nPlease parse the following product list and return results (strict JSON format):\n[{\"cspu\": \"Maruchan Ramen Chicken + Beef Flavor Variety Pack 12-count\"}, {\"cspu\": \"Terra Vegetable Chips Sweet Potato 6oz\"}, {\"cspu\": \"LaCroix Sparkling Water Lime 12fl oz\"}, {\"cspu\": \"Cheez-Its Original Crackers 12.4oz\"}]",
+        "json_schema": {
+            "$schema": "http://json-schema.org/schema#",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "cspu": {
+                        "type": "string",
+                        "能力项": "主题约束"
+                    },
+                    "type": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "能力项": "主题约束"
+                    }
+                },
+                "required": [
+                    "cspu",
+                    "type"
+                ]
+            }
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "Does it meet the schema",
+                "rule": "SCHEMA:json_schema",
+                "dep": [],
+                "能力项": "json",
+                "被依赖": false
+            }
+        ]
+    }
+]

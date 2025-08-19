@@ -1,0 +1,974 @@
+[
+    {
+        "category": "general_multi",
+        "question": "Hello, large model. Suppose you are a Xiaohongshu blogger contracted to share your life. However, due to a lack of inspiration recently, your traffic this week has dropped significantly. Now, you urgently need to gain a large amount of traffic. You recently went to Mount Fuji and want to publish a popular article related to it. Since your boss doesn’t trust you, they require you to provide 4 draft copies before the official release and have given you a sample content. The content is: [Recently, I was fortunate enough to embark on an extraordinary journey to Japan’s symbol - Mount Fuji. Mount Fuji attracts countless visitors with its perfect conical shape and breathtaking natural beauty. During this trip, not only was I awestruck by the majestic views of Mount Fuji from afar, but the rich culture and natural scenery around also captured my heart. Along the way, I visited the Fuji Five Lakes and admired the pleasant scenery of the lakes and mountains. Additionally, I experienced local cuisine and hot springs, feeling the unique charm of Japanese culture. This journey left me with a lasting impression, making me more eager for the next adventure.] The boss has the following requirements: First, the word count of your draft must be within 0.5 times of the theme word count (with a 10% fluctuation range). Word count refers to the number of words in English. Secondly, please make sure the draft avoids \"you\", \"I\", \"suitable\", \"happy\", \"relaxed\", \"travel\", \"the\", \"abroad\" but includes \"Fuji\", \"adventure\", \"photography\", \"scenery\", \"attractions\", \"culture\", \"food\", \"experience\". To ensure strong readability, format the output as follows: 1. Draft 1\n2. Draft 2\n3. Draft 3\n4. Draft 4\n5. Draft 5\n",
+        "corresponding_parts": {
+            "文案": "请你按照python list的格式，一一抓取模型回复生成的每条文案。"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文案",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的所有文案是否都是关于【富士山】的",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "生成特定文案、主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否生成了4条文案",
+                "corresponding_part": "文案",
+                "rule": "item_count:[4,4]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "文案是否避免重复",
+                "corresponding_part": "文案",
+                "rule": "repeat_each",
+                "dep": [
+                    0
+                ],
+                "能力项": "重复",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "字数是否是原文的0.5倍左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[49.1,60.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "50~200字、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "是否不存在关键词\"\"you\", \"I\", \"suitable\", \"happy\", \"relaxed\", \"travel\", \"the\", \"abroad\"\"",
+                "corresponding_part": "文案",
+                "rule": "non_keywords:[\"you\", \"I\", \"suitable\", \"happy\", \"relaxed\", \"travel\", \"the\", \"abroad\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "是否存在所有关键词\"\"Fuji\", \"adventure\", \"photography\", \"scenery\", \"attractions\", \"culture\", \"food\", \"experience\"\"",
+                "corresponding_part": "文案",
+                "rule": "keywords:[\"Fuji\", \"adventure\", \"photography\", \"scenery\", \"attractions\", \"culture\", \"food\", \"experience\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large model. Suppose you are a Xiaohongshu blogger contracted to share your life. However, due to a lack of inspiration recently, your traffic this week has dropped significantly. Now, you urgently need to gain a large amount of traffic. You recently went to Mount Fuji and want to publish a popular article related to it. Since your boss doesn’t trust you, they require you to provide 4 draft copies before the official release and have given you a sample content. The content is: [Recently, I was fortunate enough to embark on an extraordinary journey to Japan’s symbol - Mount Fuji. Mount Fuji attracts countless visitors with its perfect conical shape and breathtaking natural beauty. During this trip, not only was I awestruck by the majestic views of Mount Fuji from afar, but the rich culture and natural scenery around also captured my heart. Along the way, I visited the Fuji Five Lakes and admired the pleasant scenery of the lakes and mountains. Additionally, I experienced local cuisine and hot springs, feeling the unique charm of Japanese culture. This journey left me with a lasting impression, making me more eager for the next adventure.] The boss has the following requirements: First, the word count of your draft must be within 1.2 times of the theme word count (with a 10% fluctuation range). Word count refers to the number of words in English. Secondly, please make sure the draft avoids \"you\", \"I\", \"suitable\", \"happy\", \"relaxed\", \"travel\", \"the\", \"abroad\" but includes \"Fuji\", \"adventure\", \"photography\", \"scenery\", \"attractions\", \"culture\", \"food\", \"experience\". To ensure strong readability, format the output as follows: 1. Draft 1\n2. Draft 2\n3. Draft 3\n4. Draft 4\n5. Draft 5\n",
+        "corresponding_parts": {
+            "文案": "请你按照python list的格式，一一抓取模型回复生成的每条文案。"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文案",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的所有文案是否都是关于【富士山】的",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "生成特定文案、主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否生成了4条文案",
+                "corresponding_part": "文案",
+                "rule": "item_count:[4,4]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "文案是否避免重复",
+                "corresponding_part": "文案",
+                "rule": "repeat_each",
+                "dep": [
+                    0
+                ],
+                "能力项": "重复",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "字数是否是原文的1.2倍左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[117.7,143.9]",
+                "dep": [
+                    0
+                ],
+                "能力项": "50~200字、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "是否不存在关键词\"\"you\", \"I\", \"suitable\", \"happy\", \"relaxed\", \"travel\", \"the\", \"abroad\"\"",
+                "corresponding_part": "文案",
+                "rule": "non_keywords:[\"you\", \"I\", \"suitable\", \"happy\", \"relaxed\", \"travel\", \"the\", \"abroad\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "是否存在所有关键词\"\"Fuji\", \"adventure\", \"photography\", \"scenery\", \"attractions\", \"culture\", \"food\", \"experience\"\"",
+                "corresponding_part": "文案",
+                "rule": "keywords:[\"Fuji\", \"adventure\", \"photography\", \"scenery\", \"attractions\", \"culture\", \"food\", \"experience\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large model. Suppose you are a Xiaohongshu blogger contracted to share your life. However, due to a lack of inspiration recently, your traffic this week has dropped significantly. Now, you urgently need to gain a large amount of traffic. You recently went to Mount Fuji and want to publish a popular article related to it. Since your boss doesn’t trust you, they require you to provide 4 draft copies before the official release and have given you a sample content. The content is: [Recently, I was fortunate enough to embark on an extraordinary journey to Japan’s symbol - Mount Fuji. Mount Fuji attracts countless visitors with its perfect conical shape and breathtaking natural beauty. During this trip, not only was I awestruck by the majestic views of Mount Fuji from afar, but the rich culture and natural scenery around also captured my heart. Along the way, I visited the Fuji Five Lakes and admired the pleasant scenery of the lakes and mountains. Additionally, I experienced local cuisine and hot springs, feeling the unique charm of Japanese culture. This journey left me with a lasting impression, making me more eager for the next adventure.] The boss has the following requirements: First, the word count of your draft must be within 0.5 times of the theme word count (with a 10% fluctuation range). Word count refers to the number of words in English. Secondly, please make sure the draft avoids \"you\", \"suitable\", \"of\", \"travel\", \"relaxed\", \"happy\", \"abroad\", \"the\" but includes \"photography\", \"attractions\", \"springs\", \"scenery\", \"culture\", \"adventure\", \"Fuji\", \"experience\". To ensure strong readability, format the output as follows: 1. Draft 1\n2. Draft 2\n3. Draft 3\n4. Draft 4\n5. Draft 5\n",
+        "corresponding_parts": {
+            "文案": "请你按照python list的格式，一一抓取模型回复生成的每条文案。"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文案",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的所有文案是否都是关于【富士山】的",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "生成特定文案、主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否生成了4条文案",
+                "corresponding_part": "文案",
+                "rule": "item_count:[4,4]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "文案是否避免重复",
+                "corresponding_part": "文案",
+                "rule": "repeat_each",
+                "dep": [
+                    0
+                ],
+                "能力项": "重复",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "字数是否是原文的0.5倍左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[49.1,60.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "50~200字、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "是否不存在关键词\"\"you\", \"suitable\", \"of\", \"travel\", \"relaxed\", \"happy\", \"abroad\", \"the\"\"",
+                "corresponding_part": "文案",
+                "rule": "non_keywords:[\"you\", \"suitable\", \"of\", \"travel\", \"relaxed\", \"happy\", \"abroad\", \"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "是否存在所有关键词\"\"photography\", \"attractions\", \"springs\", \"scenery\", \"culture\", \"adventure\", \"Fuji\", \"experience\"\"",
+                "corresponding_part": "文案",
+                "rule": "keywords:[\"photography\", \"attractions\", \"springs\", \"scenery\", \"culture\", \"adventure\", \"Fuji\", \"experience\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large model. Suppose you are a Xiaohongshu blogger contracted to share your life. However, due to a lack of inspiration recently, your traffic this week has dropped significantly. Now, you urgently need to gain a large amount of traffic. You recently went to Mount Fuji and want to publish a popular article related to it. Since your boss doesn’t trust you, they require you to provide 4 draft copies before the official release and have given you a sample content. The content is: [Recently, I was fortunate enough to embark on an extraordinary journey to Japan’s symbol - Mount Fuji. Mount Fuji attracts countless visitors with its perfect conical shape and breathtaking natural beauty. During this trip, not only was I awestruck by the majestic views of Mount Fuji from afar, but the rich culture and natural scenery around also captured my heart. Along the way, I visited the Fuji Five Lakes and admired the pleasant scenery of the lakes and mountains. Additionally, I experienced local cuisine and hot springs, feeling the unique charm of Japanese culture. This journey left me with a lasting impression, making me more eager for the next adventure.] The boss has the following requirements: First, the word count of your draft must be within 1.2 times of the theme word count (with a 10% fluctuation range). Word count refers to the number of words in English. Secondly, please make sure the draft avoids \"you\", \"suitable\", \"of\", \"travel\", \"relaxed\", \"happy\", \"abroad\", \"the\" but includes \"photography\", \"attractions\", \"springs\", \"scenery\", \"culture\", \"adventure\", \"Fuji\", \"experience\". To ensure strong readability, format the output as follows: 1. Draft 1\n2. Draft 2\n3. Draft 3\n4. Draft 4\n5. Draft 5\n",
+        "corresponding_parts": {
+            "文案": "请你按照python list的格式，一一抓取模型回复生成的每条文案。"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文案",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的所有文案是否都是关于【富士山】的",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "生成特定文案、主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否生成了4条文案",
+                "corresponding_part": "文案",
+                "rule": "item_count:[4,4]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "文案是否避免重复",
+                "corresponding_part": "文案",
+                "rule": "repeat_each",
+                "dep": [
+                    0
+                ],
+                "能力项": "重复",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "字数是否是原文的1.2倍左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[117.7,143.9]",
+                "dep": [
+                    0
+                ],
+                "能力项": "50~200字、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "是否不存在关键词\"\"you\", \"suitable\", \"of\", \"travel\", \"relaxed\", \"happy\", \"abroad\", \"the\"\"",
+                "corresponding_part": "文案",
+                "rule": "non_keywords:[\"you\", \"suitable\", \"of\", \"travel\", \"relaxed\", \"happy\", \"abroad\", \"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "是否存在所有关键词\"\"photography\", \"attractions\", \"springs\", \"scenery\", \"culture\", \"adventure\", \"Fuji\", \"experience\"\"",
+                "corresponding_part": "文案",
+                "rule": "keywords:[\"photography\", \"attractions\", \"springs\", \"scenery\", \"culture\", \"adventure\", \"Fuji\", \"experience\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large model. Suppose you are a Xiaohongshu blogger contracted to share your life. However, due to a lack of inspiration recently, your traffic this week has dropped significantly. Now, you urgently need to gain a large amount of traffic. You recently went to Mount Fuji and want to publish a popular article related to it. Since your boss doesn’t trust you, they require you to provide 7 draft copies before the official release and have given you a sample content. The content is: [Recently, I was fortunate enough to embark on an extraordinary journey to Japan’s symbol - Mount Fuji. Mount Fuji attracts countless visitors with its perfect conical shape and breathtaking natural beauty. During this trip, not only was I awestruck by the majestic views of Mount Fuji from afar, but the rich culture and natural scenery around also captured my heart. Along the way, I visited the Fuji Five Lakes and admired the pleasant scenery of the lakes and mountains. Additionally, I experienced local cuisine and hot springs, feeling the unique charm of Japanese culture. This journey left me with a lasting impression, making me more eager for the next adventure.] The boss has the following requirements: First, the word count of your draft must be within 0.5 times of the theme word count (with a 10% fluctuation range). Word count refers to the number of words in English. Secondly, please make sure the draft avoids \"you\", \"I\", \"suitable\", \"happy\", \"relaxed\", \"travel\", \"the\", \"abroad\" but includes \"Fuji\", \"adventure\", \"photography\", \"scenery\", \"attractions\", \"culture\", \"food\", \"experience\". To ensure strong readability, format the output as follows: 1. Draft 1\n2. Draft 2\n3. Draft 3\n4. Draft 4\n5. Draft 5\n",
+        "corresponding_parts": {
+            "文案": "请你按照python list的格式，一一抓取模型回复生成的每条文案。"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文案",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的所有文案是否都是关于【富士山】的",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "生成特定文案、主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否生成了7条文案",
+                "corresponding_part": "文案",
+                "rule": "item_count:[7,7]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "文案是否避免重复",
+                "corresponding_part": "文案",
+                "rule": "repeat_each",
+                "dep": [
+                    0
+                ],
+                "能力项": "重复",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "字数是否是原文的0.5倍左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[49.1,60.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "50~200字、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "是否不存在关键词\"\"you\", \"I\", \"suitable\", \"happy\", \"relaxed\", \"travel\", \"the\", \"abroad\"\"",
+                "corresponding_part": "文案",
+                "rule": "non_keywords:[\"you\", \"I\", \"suitable\", \"happy\", \"relaxed\", \"travel\", \"the\", \"abroad\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "是否存在所有关键词\"\"Fuji\", \"adventure\", \"photography\", \"scenery\", \"attractions\", \"culture\", \"food\", \"experience\"\"",
+                "corresponding_part": "文案",
+                "rule": "keywords:[\"Fuji\", \"adventure\", \"photography\", \"scenery\", \"attractions\", \"culture\", \"food\", \"experience\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large model. Suppose you are a Xiaohongshu blogger contracted to share your life. However, due to a lack of inspiration recently, your traffic this week has dropped significantly. Now, you urgently need to gain a large amount of traffic. You recently went to Mount Fuji and want to publish a popular article related to it. Since your boss doesn’t trust you, they require you to provide 7 draft copies before the official release and have given you a sample content. The content is: [Recently, I was fortunate enough to embark on an extraordinary journey to Japan’s symbol - Mount Fuji. Mount Fuji attracts countless visitors with its perfect conical shape and breathtaking natural beauty. During this trip, not only was I awestruck by the majestic views of Mount Fuji from afar, but the rich culture and natural scenery around also captured my heart. Along the way, I visited the Fuji Five Lakes and admired the pleasant scenery of the lakes and mountains. Additionally, I experienced local cuisine and hot springs, feeling the unique charm of Japanese culture. This journey left me with a lasting impression, making me more eager for the next adventure.] The boss has the following requirements: First, the word count of your draft must be within 1.2 times of the theme word count (with a 10% fluctuation range). Word count refers to the number of words in English. Secondly, please make sure the draft avoids \"you\", \"I\", \"suitable\", \"happy\", \"relaxed\", \"travel\", \"the\", \"abroad\" but includes \"Fuji\", \"adventure\", \"photography\", \"scenery\", \"attractions\", \"culture\", \"food\", \"experience\". To ensure strong readability, format the output as follows: 1. Draft 1\n2. Draft 2\n3. Draft 3\n4. Draft 4\n5. Draft 5\n",
+        "corresponding_parts": {
+            "文案": "请你按照python list的格式，一一抓取模型回复生成的每条文案。"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文案",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的所有文案是否都是关于【富士山】的",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "生成特定文案、主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否生成了7条文案",
+                "corresponding_part": "文案",
+                "rule": "item_count:[7,7]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "文案是否避免重复",
+                "corresponding_part": "文案",
+                "rule": "repeat_each",
+                "dep": [
+                    0
+                ],
+                "能力项": "重复",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "字数是否是原文的1.2倍左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[117.7,143.9]",
+                "dep": [
+                    0
+                ],
+                "能力项": "50~200字、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "是否不存在关键词\"\"you\", \"I\", \"suitable\", \"happy\", \"relaxed\", \"travel\", \"the\", \"abroad\"\"",
+                "corresponding_part": "文案",
+                "rule": "non_keywords:[\"you\", \"I\", \"suitable\", \"happy\", \"relaxed\", \"travel\", \"the\", \"abroad\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "是否存在所有关键词\"\"Fuji\", \"adventure\", \"photography\", \"scenery\", \"attractions\", \"culture\", \"food\", \"experience\"\"",
+                "corresponding_part": "文案",
+                "rule": "keywords:[\"Fuji\", \"adventure\", \"photography\", \"scenery\", \"attractions\", \"culture\", \"food\", \"experience\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large model. Suppose you are a Xiaohongshu blogger contracted to share your life. However, due to a lack of inspiration recently, your traffic this week has dropped significantly. Now, you urgently need to gain a large amount of traffic. You recently went to Mount Fuji and want to publish a popular article related to it. Since your boss doesn’t trust you, they require you to provide 7 draft copies before the official release and have given you a sample content. The content is: [Recently, I was fortunate enough to embark on an extraordinary journey to Japan’s symbol - Mount Fuji. Mount Fuji attracts countless visitors with its perfect conical shape and breathtaking natural beauty. During this trip, not only was I awestruck by the majestic views of Mount Fuji from afar, but the rich culture and natural scenery around also captured my heart. Along the way, I visited the Fuji Five Lakes and admired the pleasant scenery of the lakes and mountains. Additionally, I experienced local cuisine and hot springs, feeling the unique charm of Japanese culture. This journey left me with a lasting impression, making me more eager for the next adventure.] The boss has the following requirements: First, the word count of your draft must be within 0.5 times of the theme word count (with a 10% fluctuation range). Word count refers to the number of words in English. Secondly, please make sure the draft avoids \"you\", \"suitable\", \"of\", \"travel\", \"relaxed\", \"happy\", \"abroad\", \"the\" but includes \"photography\", \"attractions\", \"springs\", \"scenery\", \"culture\", \"adventure\", \"Fuji\", \"experience\". To ensure strong readability, format the output as follows: 1. Draft 1\n2. Draft 2\n3. Draft 3\n4. Draft 4\n5. Draft 5\n",
+        "corresponding_parts": {
+            "文案": "请你按照python list的格式，一一抓取模型回复生成的每条文案。"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文案",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的所有文案是否都是关于【富士山】的",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "生成特定文案、主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否生成了7条文案",
+                "corresponding_part": "文案",
+                "rule": "item_count:[7,7]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "文案是否避免重复",
+                "corresponding_part": "文案",
+                "rule": "repeat_each",
+                "dep": [
+                    0
+                ],
+                "能力项": "重复",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "字数是否是原文的0.5倍左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[49.1,60.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "50~200字、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "是否不存在关键词\"\"you\", \"suitable\", \"of\", \"travel\", \"relaxed\", \"happy\", \"abroad\", \"the\"\"",
+                "corresponding_part": "文案",
+                "rule": "non_keywords:[\"you\", \"suitable\", \"of\", \"travel\", \"relaxed\", \"happy\", \"abroad\", \"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "是否存在所有关键词\"\"photography\", \"attractions\", \"springs\", \"scenery\", \"culture\", \"adventure\", \"Fuji\", \"experience\"\"",
+                "corresponding_part": "文案",
+                "rule": "keywords:[\"photography\", \"attractions\", \"springs\", \"scenery\", \"culture\", \"adventure\", \"Fuji\", \"experience\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large model. Suppose you are a Xiaohongshu blogger contracted to share your life. However, due to a lack of inspiration recently, your traffic this week has dropped significantly. Now, you urgently need to gain a large amount of traffic. You recently went to Mount Fuji and want to publish a popular article related to it. Since your boss doesn’t trust you, they require you to provide 7 draft copies before the official release and have given you a sample content. The content is: [Recently, I was fortunate enough to embark on an extraordinary journey to Japan’s symbol - Mount Fuji. Mount Fuji attracts countless visitors with its perfect conical shape and breathtaking natural beauty. During this trip, not only was I awestruck by the majestic views of Mount Fuji from afar, but the rich culture and natural scenery around also captured my heart. Along the way, I visited the Fuji Five Lakes and admired the pleasant scenery of the lakes and mountains. Additionally, I experienced local cuisine and hot springs, feeling the unique charm of Japanese culture. This journey left me with a lasting impression, making me more eager for the next adventure.] The boss has the following requirements: First, the word count of your draft must be within 1.2 times of the theme word count (with a 10% fluctuation range). Word count refers to the number of words in English. Secondly, please make sure the draft avoids \"you\", \"suitable\", \"of\", \"travel\", \"relaxed\", \"happy\", \"abroad\", \"the\" but includes \"photography\", \"attractions\", \"springs\", \"scenery\", \"culture\", \"adventure\", \"Fuji\", \"experience\". To ensure strong readability, format the output as follows: 1. Draft 1\n2. Draft 2\n3. Draft 3\n4. Draft 4\n5. Draft 5\n",
+        "corresponding_parts": {
+            "文案": "请你按照python list的格式，一一抓取模型回复生成的每条文案。"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文案",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的所有文案是否都是关于【富士山】的",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "生成特定文案、主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否生成了7条文案",
+                "corresponding_part": "文案",
+                "rule": "item_count:[7,7]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "文案是否避免重复",
+                "corresponding_part": "文案",
+                "rule": "repeat_each",
+                "dep": [
+                    0
+                ],
+                "能力项": "重复",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "字数是否是原文的1.2倍左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[117.7,143.9]",
+                "dep": [
+                    0
+                ],
+                "能力项": "50~200字、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "是否不存在关键词\"\"you\", \"suitable\", \"of\", \"travel\", \"relaxed\", \"happy\", \"abroad\", \"the\"\"",
+                "corresponding_part": "文案",
+                "rule": "non_keywords:[\"you\", \"suitable\", \"of\", \"travel\", \"relaxed\", \"happy\", \"abroad\", \"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "是否存在所有关键词\"\"photography\", \"attractions\", \"springs\", \"scenery\", \"culture\", \"adventure\", \"Fuji\", \"experience\"\"",
+                "corresponding_part": "文案",
+                "rule": "keywords:[\"photography\", \"attractions\", \"springs\", \"scenery\", \"culture\", \"adventure\", \"Fuji\", \"experience\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large model. Suppose you are a Xiaohongshu blogger contracted to share your life. However, due to a lack of inspiration recently, your traffic this week has dropped significantly. Now, you urgently need to gain a large amount of traffic. You recently went to Mount Fuji and want to publish a popular article related to it. Since your boss doesn’t trust you, they require you to provide 15 draft copies before the official release and have given you a sample content. The content is: [Recently, I was fortunate enough to embark on an extraordinary journey to Japan’s symbol - Mount Fuji. Mount Fuji attracts countless visitors with its perfect conical shape and breathtaking natural beauty. During this trip, not only was I awestruck by the majestic views of Mount Fuji from afar, but the rich culture and natural scenery around also captured my heart. Along the way, I visited the Fuji Five Lakes and admired the pleasant scenery of the lakes and mountains. Additionally, I experienced local cuisine and hot springs, feeling the unique charm of Japanese culture. This journey left me with a lasting impression, making me more eager for the next adventure.] The boss has the following requirements: First, the word count of your draft must be within 0.5 times of the theme word count (with a 10% fluctuation range). Word count refers to the number of words in English. Secondly, please make sure the draft avoids \"you\", \"I\", \"suitable\", \"happy\", \"relaxed\", \"travel\", \"the\", \"abroad\" but includes \"Fuji\", \"adventure\", \"photography\", \"scenery\", \"attractions\", \"culture\", \"food\", \"experience\". To ensure strong readability, format the output as follows: 1. Draft 1\n2. Draft 2\n3. Draft 3\n4. Draft 4\n5. Draft 5\n",
+        "corresponding_parts": {
+            "文案": "请你按照python list的格式，一一抓取模型回复生成的每条文案。"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文案",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的所有文案是否都是关于【富士山】的",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "生成特定文案、主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否生成了15条文案",
+                "corresponding_part": "文案",
+                "rule": "item_count:[15,15]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "文案是否避免重复",
+                "corresponding_part": "文案",
+                "rule": "repeat_each",
+                "dep": [
+                    0
+                ],
+                "能力项": "重复",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "字数是否是原文的0.5倍左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[49.1,60.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "50~200字、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "是否不存在关键词\"\"you\", \"I\", \"suitable\", \"happy\", \"relaxed\", \"travel\", \"the\", \"abroad\"\"",
+                "corresponding_part": "文案",
+                "rule": "non_keywords:[\"you\", \"I\", \"suitable\", \"happy\", \"relaxed\", \"travel\", \"the\", \"abroad\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "是否存在所有关键词\"\"Fuji\", \"adventure\", \"photography\", \"scenery\", \"attractions\", \"culture\", \"food\", \"experience\"\"",
+                "corresponding_part": "文案",
+                "rule": "keywords:[\"Fuji\", \"adventure\", \"photography\", \"scenery\", \"attractions\", \"culture\", \"food\", \"experience\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large model. Suppose you are a Xiaohongshu blogger contracted to share your life. However, due to a lack of inspiration recently, your traffic this week has dropped significantly. Now, you urgently need to gain a large amount of traffic. You recently went to Mount Fuji and want to publish a popular article related to it. Since your boss doesn’t trust you, they require you to provide 15 draft copies before the official release and have given you a sample content. The content is: [Recently, I was fortunate enough to embark on an extraordinary journey to Japan’s symbol - Mount Fuji. Mount Fuji attracts countless visitors with its perfect conical shape and breathtaking natural beauty. During this trip, not only was I awestruck by the majestic views of Mount Fuji from afar, but the rich culture and natural scenery around also captured my heart. Along the way, I visited the Fuji Five Lakes and admired the pleasant scenery of the lakes and mountains. Additionally, I experienced local cuisine and hot springs, feeling the unique charm of Japanese culture. This journey left me with a lasting impression, making me more eager for the next adventure.] The boss has the following requirements: First, the word count of your draft must be within 1.2 times of the theme word count (with a 10% fluctuation range). Word count refers to the number of words in English. Secondly, please make sure the draft avoids \"you\", \"I\", \"suitable\", \"happy\", \"relaxed\", \"travel\", \"the\", \"abroad\" but includes \"Fuji\", \"adventure\", \"photography\", \"scenery\", \"attractions\", \"culture\", \"food\", \"experience\". To ensure strong readability, format the output as follows: 1. Draft 1\n2. Draft 2\n3. Draft 3\n4. Draft 4\n5. Draft 5\n",
+        "corresponding_parts": {
+            "文案": "请你按照python list的格式，一一抓取模型回复生成的每条文案。"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文案",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的所有文案是否都是关于【富士山】的",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "生成特定文案、主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否生成了15条文案",
+                "corresponding_part": "文案",
+                "rule": "item_count:[15,15]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "文案是否避免重复",
+                "corresponding_part": "文案",
+                "rule": "repeat_each",
+                "dep": [
+                    0
+                ],
+                "能力项": "重复",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "字数是否是原文的1.2倍左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[117.7,143.9]",
+                "dep": [
+                    0
+                ],
+                "能力项": "50~200字、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "是否不存在关键词\"\"you\", \"I\", \"suitable\", \"happy\", \"relaxed\", \"travel\", \"the\", \"abroad\"\"",
+                "corresponding_part": "文案",
+                "rule": "non_keywords:[\"you\", \"I\", \"suitable\", \"happy\", \"relaxed\", \"travel\", \"the\", \"abroad\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "是否存在所有关键词\"\"Fuji\", \"adventure\", \"photography\", \"scenery\", \"attractions\", \"culture\", \"food\", \"experience\"\"",
+                "corresponding_part": "文案",
+                "rule": "keywords:[\"Fuji\", \"adventure\", \"photography\", \"scenery\", \"attractions\", \"culture\", \"food\", \"experience\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large model. Suppose you are a Xiaohongshu blogger contracted to share your life. However, due to a lack of inspiration recently, your traffic this week has dropped significantly. Now, you urgently need to gain a large amount of traffic. You recently went to Mount Fuji and want to publish a popular article related to it. Since your boss doesn’t trust you, they require you to provide 15 draft copies before the official release and have given you a sample content. The content is: [Recently, I was fortunate enough to embark on an extraordinary journey to Japan’s symbol - Mount Fuji. Mount Fuji attracts countless visitors with its perfect conical shape and breathtaking natural beauty. During this trip, not only was I awestruck by the majestic views of Mount Fuji from afar, but the rich culture and natural scenery around also captured my heart. Along the way, I visited the Fuji Five Lakes and admired the pleasant scenery of the lakes and mountains. Additionally, I experienced local cuisine and hot springs, feeling the unique charm of Japanese culture. This journey left me with a lasting impression, making me more eager for the next adventure.] The boss has the following requirements: First, the word count of your draft must be within 0.5 times of the theme word count (with a 10% fluctuation range). Word count refers to the number of words in English. Secondly, please make sure the draft avoids \"you\", \"suitable\", \"of\", \"travel\", \"relaxed\", \"happy\", \"abroad\", \"the\" but includes \"photography\", \"attractions\", \"springs\", \"scenery\", \"culture\", \"adventure\", \"Fuji\", \"experience\". To ensure strong readability, format the output as follows: 1. Draft 1\n2. Draft 2\n3. Draft 3\n4. Draft 4\n5. Draft 5\n",
+        "corresponding_parts": {
+            "文案": "请你按照python list的格式，一一抓取模型回复生成的每条文案。"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文案",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的所有文案是否都是关于【富士山】的",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "生成特定文案、主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否生成了15条文案",
+                "corresponding_part": "文案",
+                "rule": "item_count:[15,15]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "文案是否避免重复",
+                "corresponding_part": "文案",
+                "rule": "repeat_each",
+                "dep": [
+                    0
+                ],
+                "能力项": "重复",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "字数是否是原文的0.5倍左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[49.1,60.0]",
+                "dep": [
+                    0
+                ],
+                "能力项": "50~200字、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "是否不存在关键词\"\"you\", \"suitable\", \"of\", \"travel\", \"relaxed\", \"happy\", \"abroad\", \"the\"\"",
+                "corresponding_part": "文案",
+                "rule": "non_keywords:[\"you\", \"suitable\", \"of\", \"travel\", \"relaxed\", \"happy\", \"abroad\", \"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "是否存在所有关键词\"\"photography\", \"attractions\", \"springs\", \"scenery\", \"culture\", \"adventure\", \"Fuji\", \"experience\"\"",
+                "corresponding_part": "文案",
+                "rule": "keywords:[\"photography\", \"attractions\", \"springs\", \"scenery\", \"culture\", \"adventure\", \"Fuji\", \"experience\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            }
+        ]
+    },
+    {
+        "category": "general_multi",
+        "question": "Hello, large model. Suppose you are a Xiaohongshu blogger contracted to share your life. However, due to a lack of inspiration recently, your traffic this week has dropped significantly. Now, you urgently need to gain a large amount of traffic. You recently went to Mount Fuji and want to publish a popular article related to it. Since your boss doesn’t trust you, they require you to provide 15 draft copies before the official release and have given you a sample content. The content is: [Recently, I was fortunate enough to embark on an extraordinary journey to Japan’s symbol - Mount Fuji. Mount Fuji attracts countless visitors with its perfect conical shape and breathtaking natural beauty. During this trip, not only was I awestruck by the majestic views of Mount Fuji from afar, but the rich culture and natural scenery around also captured my heart. Along the way, I visited the Fuji Five Lakes and admired the pleasant scenery of the lakes and mountains. Additionally, I experienced local cuisine and hot springs, feeling the unique charm of Japanese culture. This journey left me with a lasting impression, making me more eager for the next adventure.] The boss has the following requirements: First, the word count of your draft must be within 1.2 times of the theme word count (with a 10% fluctuation range). Word count refers to the number of words in English. Secondly, please make sure the draft avoids \"you\", \"suitable\", \"of\", \"travel\", \"relaxed\", \"happy\", \"abroad\", \"the\" but includes \"photography\", \"attractions\", \"springs\", \"scenery\", \"culture\", \"adventure\", \"Fuji\", \"experience\". To ensure strong readability, format the output as follows: 1. Draft 1\n2. Draft 2\n3. Draft 3\n4. Draft 4\n5. Draft 5\n",
+        "corresponding_parts": {
+            "文案": "请你按照python list的格式，一一抓取模型回复生成的每条文案。"
+        },
+        "sub_questions": [
+            {
+                "point_id": 0,
+                "question": "是否给出了文案",
+                "rule": null,
+                "dep": [],
+                "被依赖": true
+            },
+            {
+                "point_id": 1,
+                "question": "给出的所有文案是否都是关于【富士山】的",
+                "rule": null,
+                "dep": [
+                    0
+                ],
+                "能力项": "生成特定文案、主题约束",
+                "被依赖": false
+            },
+            {
+                "point_id": 2,
+                "question": "是否生成了15条文案",
+                "corresponding_part": "文案",
+                "rule": "item_count:[15,15]",
+                "dep": [
+                    0
+                ],
+                "能力项": "单元数量合规",
+                "被依赖": false
+            },
+            {
+                "point_id": 3,
+                "question": "文案是否避免重复",
+                "corresponding_part": "文案",
+                "rule": "repeat_each",
+                "dep": [
+                    0
+                ],
+                "能力项": "重复",
+                "被依赖": false
+            },
+            {
+                "point_id": 4,
+                "question": "字数是否是原文的1.2倍左右",
+                "corresponding_part": "文案",
+                "rule": "each_length:[117.7,143.9]",
+                "dep": [
+                    0
+                ],
+                "能力项": "50~200字、范围、倍数",
+                "被依赖": false
+            },
+            {
+                "point_id": 5,
+                "question": "是否不存在关键词\"\"you\", \"suitable\", \"of\", \"travel\", \"relaxed\", \"happy\", \"abroad\", \"the\"\"",
+                "corresponding_part": "文案",
+                "rule": "non_keywords:[\"you\", \"suitable\", \"of\", \"travel\", \"relaxed\", \"happy\", \"abroad\", \"the\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            },
+            {
+                "point_id": 6,
+                "question": "是否存在所有关键词\"\"photography\", \"attractions\", \"springs\", \"scenery\", \"culture\", \"adventure\", \"Fuji\", \"experience\"\"",
+                "corresponding_part": "文案",
+                "rule": "keywords:[\"photography\", \"attractions\", \"springs\", \"scenery\", \"culture\", \"adventure\", \"Fuji\", \"experience\"]",
+                "dep": [
+                    0
+                ],
+                "能力项": "关键词",
+                "被依赖": false
+            }
+        ]
+    }
+]
