@@ -27,18 +27,18 @@ def count_cap_num(num, strings):
     # print("here: ", num)
     cap_num = count_cap_num_helper(strings)
     if num != cap_num:
-        return 0, f"❌ 大写的数量为{cap_num}, 不符合题目要求的数量：{num}"
+        return 0, f"❌ Caps Num: {cap_num}; Required Caps Num: {num}"
     else:
-        return 1, "✅ 数量符合"
+        return 1, "✅ Caps Num Match"
 
 
 def count_low_num(num, strings):
     # print("here: ", num)
     cap_num = count_low_num_helper(strings)
     if num != cap_num:
-        return 0, f"❌ 小写的数量为{cap_num}, 不符合题目要求的数量：{num}"
+        return 0, f"❌ Lowers Num: {cap_num}, Required Lowers Num: {num}"
     else:
-        return 1, "✅ 数量符合"
+        return 1, "✅ Lowers Num Match"
     
 def compound_word_num(range, strings):
     def is_compound_word(word):
@@ -52,9 +52,9 @@ def compound_word_num(range, strings):
                 cnt += 1
                 compound_words.append(word)
         if not range[0] <= cnt <= range[1]:
-            return 0, f"❌ 数量不匹配，产生的复合词数量为：{str(cnt)}, 检测到以下复合词{compound_words}"
+            return 0, f"❌ Count mismatch, number of compound words generated: {str(cnt)}, detected compound words: {compound_words}"
 
-    return 1, f"✅ 数量匹配，产生的复合词数量为 {str(cnt)}, 检测到以下复合词{compound_words}"
+    return 1, f"✅ Count matches, number of compound words generated: {str(cnt)}, detected compound words: {compound_words}"
 
 def no_character_repeat(strings):
     strings = to_lowercase_list(strings)
@@ -62,10 +62,10 @@ def no_character_repeat(strings):
         char_count = {}
         for char in string:
             if char in char_count:
-                return 0, f"❌，{string} 中字符 '{char}' 重复出现"
+                return 0, f"❌ Character '{char}' appears repeatedly in {string}"
             char_count[char] = 1
     
-    return 1, "✅，所有字符串中均无重复字符"
+    return 1, "✅ No repeated characters in all strings"
 
 def character_freq(letter, range, strings):
     strings = to_lowercase_list(strings)

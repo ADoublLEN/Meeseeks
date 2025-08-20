@@ -1,15 +1,15 @@
 {
     "round": 2,
-    "meeseeks_score": 0.48803283284724336,
-    "utility_score": 0.15283842794759825,
+    "meeseeks_score": 0.6785386190689221,
+    "utility_score": 0.465564738292011,
     "capability_stats": {
-        "任务意图理解": {
+        "Intent Recognition": {
             "percentage": 0.0,
             "correct": 0,
             "wrong": 10,
             "total": 10,
             "children": {
-                "在干扰下完成指令": {
+                "Follow instruction under distraction": {
                     "percentage": 0.0,
                     "correct": 0,
                     "wrong": 10,
@@ -18,33 +18,33 @@
                 }
             }
         },
-        "单元细节合规": {
-            "percentage": 0.5606361829025845,
-            "correct": 846,
-            "wrong": 663,
-            "total": 1509,
+        "Granular Content Validation": {
+            "percentage": 0.74140625,
+            "correct": 1898,
+            "wrong": 662,
+            "total": 2560,
             "children": {
-                "主题约束": {
-                    "percentage": 0.949671772428884,
-                    "correct": 434,
+                "Theme requirement": {
+                    "percentage": 0.9773399014778326,
+                    "correct": 992,
                     "wrong": 23,
-                    "total": 457,
+                    "total": 1015,
                     "children": {}
                 },
-                "文体约束": {
+                "Stylistic requirement": {
                     "percentage": 0.9696969696969697,
                     "correct": 32,
                     "wrong": 1,
                     "total": 33,
                     "children": {
-                        "生成特定文案": {
+                        "Generate in certain style": {
                             "percentage": 1.0,
                             "correct": 21,
                             "wrong": 0,
                             "total": 21,
                             "children": {}
                         },
-                        "生成名字/标题": {
+                        "Generate names/titles": {
                             "percentage": 0.9166666666666666,
                             "correct": 11,
                             "wrong": 1,
@@ -53,13 +53,13 @@
                         }
                     }
                 },
-                "语言约束": {
+                "Language requirement": {
                     "percentage": 0.0,
                     "correct": 0,
                     "wrong": 8,
                     "total": 8,
                     "children": {
-                        "中英文混杂": {
+                        "Generate Chinese-English-mixed article": {
                             "percentage": 0.0,
                             "correct": 0,
                             "wrong": 8,
@@ -68,123 +68,123 @@
                         }
                     }
                 },
-                "格式约束": {
-                    "percentage": 0.9575471698113207,
-                    "correct": 203,
+                "Granular format requirement": {
+                    "percentage": 0.983957219251337,
+                    "correct": 552,
                     "wrong": 9,
-                    "total": 212,
+                    "total": 561,
                     "children": {
-                        "特定格式": {
-                            "percentage": 0.949438202247191,
-                            "correct": 169,
+                        "Generate in other format": {
+                            "percentage": 0.9823874755381604,
+                            "correct": 502,
                             "wrong": 9,
-                            "total": 178,
+                            "total": 511,
                             "children": {}
                         },
-                        "日期格式": {
+                        "Generate result in date-format": {
                             "percentage": 1.0,
-                            "correct": 34,
+                            "correct": 50,
                             "wrong": 0,
-                            "total": 34,
+                            "total": 50,
                             "children": {}
                         }
                     }
                 },
-                "字数约束": {
-                    "percentage": 0.16703786191536749,
-                    "correct": 75,
-                    "wrong": 374,
-                    "total": 449,
+                "Word count requirement": {
+                    "percentage": 0.37225042301184436,
+                    "correct": 220,
+                    "wrong": 371,
+                    "total": 591,
                     "children": {
-                        "精确": {
+                        "Generate at accurate word number": {
                             "percentage": 0.0,
                             "correct": 0,
                             "wrong": 12,
                             "total": 12,
                             "children": {}
                         },
-                        "范围": {
-                            "percentage": 0.21341463414634146,
-                            "correct": 35,
-                            "wrong": 129,
-                            "total": 164,
+                        "Generate in rough/range word number": {
+                            "percentage": 0.5019455252918288,
+                            "correct": 129,
+                            "wrong": 128,
+                            "total": 257,
                             "children": {}
                         },
-                        "倍数": {
-                            "percentage": 0.06930693069306931,
-                            "correct": 7,
-                            "wrong": 94,
-                            "total": 101,
+                        "Generate in X times word number of reference text": {
+                            "percentage": 0.12264150943396226,
+                            "correct": 13,
+                            "wrong": 93,
+                            "total": 106,
                             "children": {}
                         },
-                        "0~10字": {
-                            "percentage": 0.4,
-                            "correct": 8,
+                        "Generate in 0~10 words": {
+                            "percentage": 0.5862068965517241,
+                            "correct": 17,
                             "wrong": 12,
-                            "total": 20,
+                            "total": 29,
                             "children": {}
                         },
-                        "10~50字": {
-                            "percentage": 0.26666666666666666,
-                            "correct": 4,
+                        "Generate in 10~50 words": {
+                            "percentage": 0.6857142857142857,
+                            "correct": 24,
                             "wrong": 11,
-                            "total": 15,
+                            "total": 35,
                             "children": {}
                         },
-                        "50~200字": {
-                            "percentage": 0.35714285714285715,
-                            "correct": 10,
+                        "Generate in 50~200 words": {
+                            "percentage": 0.5263157894736842,
+                            "correct": 20,
                             "wrong": 18,
-                            "total": 28,
+                            "total": 38,
                             "children": {}
                         },
-                        "200字以上": {
-                            "percentage": 0.10091743119266056,
-                            "correct": 11,
-                            "wrong": 98,
-                            "total": 109,
+                        "Generate in above 200 words": {
+                            "percentage": 0.14912280701754385,
+                            "correct": 17,
+                            "wrong": 97,
+                            "total": 114,
                             "children": {}
                         }
                     }
                 },
-                "其他特殊规则": {
-                    "percentage": 0.2914285714285714,
+                "Other granular requirements": {
+                    "percentage": 0.2897727272727273,
                     "correct": 102,
-                    "wrong": 248,
-                    "total": 350,
+                    "wrong": 250,
+                    "total": 352,
                     "children": {
-                        "押韵": {
-                            "percentage": 0.06666666666666667,
-                            "correct": 1,
+                        "Generate rhyming content": {
+                            "percentage": 0.125,
+                            "correct": 2,
                             "wrong": 14,
-                            "total": 15,
+                            "total": 16,
                             "children": {}
                         },
-                        "关键词": {
+                        "Generate with certain keywords": {
                             "percentage": 0.0,
                             "correct": 0,
                             "wrong": 42,
                             "total": 42,
                             "children": {}
                         },
-                        "重复": {
+                        "Generate repeat/non-repeat content": {
                             "percentage": 0.4225352112676056,
                             "correct": 30,
                             "wrong": 41,
                             "total": 71,
                             "children": {}
                         },
-                        "写作手法": {
+                        "Generate with certain rhetoric": {
                             "percentage": 1.0,
-                            "correct": 14,
+                            "correct": 15,
                             "wrong": 0,
-                            "total": 14,
+                            "total": 15,
                             "children": {}
                         },
-                        "词频": {
-                            "percentage": 0.27403846153846156,
-                            "correct": 57,
-                            "wrong": 151,
+                        "Generate with certain number of word X": {
+                            "percentage": 0.2644230769230769,
+                            "correct": 55,
+                            "wrong": 153,
                             "total": 208,
                             "children": {}
                         }
@@ -192,45 +192,45 @@
                 }
             }
         },
-        "整体结构合规": {
-            "percentage": 0.8637413394919169,
-            "correct": 374,
+        "Output Structure Validation": {
+            "percentage": 0.9528,
+            "correct": 1191,
             "wrong": 59,
-            "total": 433,
+            "total": 1250,
             "children": {
-                "模版合规": {
-                    "percentage": 0.8892045454545454,
-                    "correct": 313,
+                "Output format requirement": {
+                    "percentage": 0.9662337662337662,
+                    "correct": 1116,
                     "wrong": 39,
-                    "total": 352,
+                    "total": 1155,
                     "children": {
-                        "JSON": {
-                            "percentage": 0.8892045454545454,
-                            "correct": 313,
+                        "JSON format": {
+                            "percentage": 0.9662337662337662,
+                            "correct": 1116,
                             "wrong": 39,
-                            "total": 352,
+                            "total": 1155,
                             "children": {}
                         }
                     }
                 },
-                "单元数量合规": {
-                    "percentage": 0.7397260273972602,
-                    "correct": 54,
+                "Element number requirement": {
+                    "percentage": 0.7466666666666667,
+                    "correct": 56,
                     "wrong": 19,
-                    "total": 73,
+                    "total": 75,
                     "children": {}
                 },
-                "答题逻辑合规": {
-                    "percentage": 0.875,
-                    "correct": 7,
+                "Output logic requirement": {
+                    "percentage": 0.95,
+                    "correct": 19,
                     "wrong": 1,
-                    "total": 8,
+                    "total": 20,
                     "children": {
-                        "答题结构合规": {
-                            "percentage": 0.875,
-                            "correct": 7,
+                        "Generate by certain steps": {
+                            "percentage": 0.95,
+                            "correct": 19,
                             "wrong": 1,
-                            "total": 8,
+                            "total": 20,
                             "children": {}
                         }
                     }
@@ -238,5 +238,5 @@
             }
         }
     },
-    "total_items": 229
+    "total_items": 363
 }

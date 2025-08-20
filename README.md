@@ -1,4 +1,5 @@
 # 👑 Meeseeks Benchmark
+![Logo](logo.jpg)
 
 ## 📖 Introduction
 **Meeseeks** is an **instruction-following benchmark** designed to evaluate how well models can adhere to user instructions in a **multi-turn scenario**.  

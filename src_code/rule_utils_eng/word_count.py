@@ -38,9 +38,9 @@ def model_each_length(word_range, model_responses):
         total_len = len(english_words)
         
         if not word_range[0] <= total_len <= word_range[1]:
-            return 0, f"❌ {model_response} 数量不匹配此范围{word_range}: 英文单词数是：{str(total_len)}", total_len
+            return 0, f"❌ {model_response} count does not match range {word_range}: English word count is: {str(total_len)}", total_len
     
-    return 1, f"✅ 数量匹配：英文单词数是：{str(total_len)}", total_len
+    return 1, f"✅ Count matches: English word count is: {str(total_len)}", total_len
 
 def model_total_length(word_range, model_response):
     total_len = 0
@@ -49,8 +49,8 @@ def model_total_length(word_range, model_response):
         _, _, word_count = model_each_length([0, float('inf')], [item])
         total_len += word_count
     if not word_range[0] <= total_len <= word_range[1]:
-        return 0, f"❌ 字符数量不匹配此range{word_range}: model_response总数量为：{str(total_len)}"
-    return 1, f"✅ 字符数量匹配，model_response总数量为 {str(total_len)}"
+        return 0, f"❌ Character count does not match range {word_range}: model_response total count is: {str(total_len)}"
+    return 1, f"✅ Character count matches, model_response total count is: {str(total_len)}"
 
 
 def portuguese_each_length(word_range, model_responses):
@@ -66,9 +66,9 @@ def portuguese_each_length(word_range, model_responses):
         total_len = len(portuguese_words)
         
         if not word_range[0] <= total_len <= word_range[1]:
-            return 0, f"❌ {model_response} 数量不匹配此范围{word_range}: 葡萄牙语单词数是：{str(total_len)}", total_len
+            return 0, f"❌ {model_response} count does not match range {word_range}: Portuguese word count is: {str(total_len)}", total_len
     
-    return 1, f"✅ 数量匹配：葡萄牙语单词数是：{str(total_len)}", total_len
+    return 1, f"✅ Count matches: Portuguese word count is: {str(total_len)}", total_len
 
 def portuguese_total_length(word_range, model_response):
     total_len = 0
@@ -77,8 +77,8 @@ def portuguese_total_length(word_range, model_response):
         _, _, word_count = portuguese_each_length([0, float('inf')], [item])
         total_len += word_count
     if not word_range[0] <= total_len <= word_range[1]:
-        return 0, f"❌ 字符数量不匹配此range{word_range}: model_response总数量为：{str(total_len)}"
-    return 1, f"✅ 字符数量匹配，model_response总数量为 {str(total_len)}"
+        return 0, f"❌ Character count does not match range {word_range}: model_response total count is: {str(total_len)}"
+    return 1, f"✅ Character count matches, model_response total count is: {str(total_len)}"
 
 
 def arabic_each_length(word_range, model_responses):
@@ -94,9 +94,9 @@ def arabic_each_length(word_range, model_responses):
         total_len = len(arabic_words)
         
         if not word_range[0] <= total_len <= word_range[1]:
-            return 0, f"❌ {model_response} 数量不匹配此范围{word_range}: 阿拉伯语单词数是：{str(total_len)}", total_len
+            return 0, f"❌ {model_response} count does not match range {word_range}: Arabic word count is: {str(total_len)}", total_len
     
-    return 1, f"✅ 数量匹配：阿拉伯语单词数是：{str(total_len)}", total_len
+    return 1, f"✅ Count matches: Arabic word count is: {str(total_len)}", total_len
    
 def arabic_total_length(word_range, model_response):
     total_len = 0
@@ -105,8 +105,8 @@ def arabic_total_length(word_range, model_response):
         _, _, word_count = arabic_each_length([0, float('inf')], [item])
         total_len += word_count
     if not word_range[0] <= total_len <= word_range[1]:
-        return 0, f"❌ 字符数量不匹配此range{word_range}: model_response总数量为：{str(total_len)}"
-    return 1, f"✅ 字符数量匹配，model_response总数量为 {str(total_len)}"
+        return 0, f"❌ Character count does not match range {word_range}: model_response total count is: {str(total_len)}"
+    return 1, f"✅ Character count matches, model_response total count is: {str(total_len)}"
 
 
 # 俄文版
@@ -117,8 +117,8 @@ def russian_total_length(word_range, model_response):
         _, _, word_count = russian_each_length([0, float('inf')], [item])
         total_len += word_count
     if not word_range[0] <= total_len <= word_range[1]:
-        return 0, f"❌ 字符数量不匹配此range{word_range}: model_response总数量为：{str(total_len)}"
-    return 1, f"✅ 字符数量匹配，model_response总数量为 {str(total_len)}"
+        return 0, f"❌ Character count does not match range {word_range}: model_response total count is: {str(total_len)}"
+    return 1, f"✅ Character count matches, model_response total count is: {str(total_len)}"
 
 def russian_each_length(word_range, model_responses):
     for model_response in model_responses:
@@ -133,9 +133,9 @@ def russian_each_length(word_range, model_responses):
         total_len = len(russian_words)
         
         if not word_range[0] <= total_len <= word_range[1]:
-            return 0, f"❌ {model_response} 数量不匹配此范围{word_range}: 俄语单词数是：{str(total_len)}", total_len
+            return 0, f"❌ {model_response} count does not match range {word_range}: Russian word count is: {str(total_len)}", total_len
     
-    return 1, f"✅ 数量匹配：俄语单词数是：{str(total_len)}", total_len
+    return 1, f"✅ Count matches: Russian word count is: {str(total_len)}", total_len
 
 # 法语版
 def french_total_length(word_range, model_response):
@@ -145,8 +145,8 @@ def french_total_length(word_range, model_response):
         _, _, word_count = french_each_length([0, float('inf')], [item])
         total_len += word_count
     if not word_range[0] <= total_len <= word_range[1]:
-        return 0, f"❌ 字符数量不匹配此range{word_range}: model_response总数量为：{str(total_len)}"
-    return 1, f"✅ 字符数量匹配，model_response总数量为 {str(total_len)}"
+        return 0, f"❌ Character count does not match range {word_range}: model_response total count is: {str(total_len)}"
+    return 1, f"✅ Character count matches, model_response total count is: {str(total_len)}"
 
 def french_each_length(word_range, model_responses):
     for model_response in model_responses:
@@ -161,9 +161,9 @@ def french_each_length(word_range, model_responses):
         total_len = len(french_words)
         
         if not word_range[0] <= total_len <= word_range[1]:
-            return 0, f"❌ {model_response} 数量不匹配此范围{word_range}: 法语单词数是：{str(total_len)}", total_len
+            return 0, f"❌ {model_response} count does not match range {word_range}: French word count is: {str(total_len)}", total_len
     
-    return 1, f"✅ 数量匹配：法语单词数是：{str(total_len)}", total_len
+    return 1, f"✅ Count matches: French word count is: {str(total_len)}", total_len
 
 # 西班牙语版
 def spanish_total_length(word_range, model_response):
@@ -173,8 +173,8 @@ def spanish_total_length(word_range, model_response):
         _, _, word_count = spanish_each_length([0, float('inf')], [item])
         total_len += word_count
     if not word_range[0] <= total_len <= word_range[1]:
-        return 0, f"❌ 字符数量不匹配此range{word_range}: model_response总数量为：{str(total_len)}"
-    return 1, f"✅ 字符数量匹配，model_response总数量为 {str(total_len)}"
+        return 0, f"❌ Character count does not match range {word_range}: model_response total count is: {str(total_len)}"
+    return 1, f"✅ Character count matches, model_response total count is: {str(total_len)}"
 
 def spanish_each_length(word_range, model_responses):
     for model_response in model_responses:
@@ -189,9 +189,9 @@ def spanish_each_length(word_range, model_responses):
         total_len = len(spanish_words)
         
         if not word_range[0] <= total_len <= word_range[1]:
-            return 0, f"❌ {model_response} 数量不匹配此范围{word_range}: 西班牙语单词数是：{str(total_len)}", total_len
+            return 0, f"❌ {model_response} count does not match range {word_range}: Spanish word count is: {str(total_len)}", total_len
     
-    return 1, f"✅ 数量匹配：西班牙语单词数是：{str(total_len)}", total_len
+    return 1, f"✅ Count matches: Spanish word count is: {str(total_len)}", total_len
  
 # 印尼语版 
 def indonesian_total_length(word_range, model_response):
@@ -201,8 +201,8 @@ def indonesian_total_length(word_range, model_response):
         _, _, word_count = indonesian_each_length([0, float('inf')], [item])
         total_len += word_count
     if not word_range[0] <= total_len <= word_range[1]:
-        return 0, f"❌ 字符数量不匹配此range{word_range}: model_response总数量为：{str(total_len)}"
-    return 1, f"✅ 字符数量匹配，model_response总数量为 {str(total_len)}"
+        return 0, f"❌ Character count does not match range {word_range}: model_response total count is: {str(total_len)}"
+    return 1, f"✅ Character count matches, model_response total count is: {str(total_len)}"
 
 def indonesian_each_length(word_range, model_responses):
     for model_response in model_responses:
@@ -217,9 +217,9 @@ def indonesian_each_length(word_range, model_responses):
         total_len = len(indonesian_words)
         
         if not word_range[0] <= total_len <= word_range[1]:
-            return 0, f"❌ {model_response} 数量不匹配此范围{word_range}: 印尼语单词数是：{str(total_len)}", total_len
+            return 0, f"❌ {model_response} count does not match range {word_range}: Indonesian word count is: {str(total_len)}", total_len
     
-    return 1, f"✅ 数量匹配：印尼语单词数是：{str(total_len)}", total_len
+    return 1, f"✅ Count matches: Indonesian word count is: {str(total_len)}", total_len
 
 # 德语版
 def german_total_length(word_range, model_response):
@@ -229,8 +229,8 @@ def german_total_length(word_range, model_response):
         _, _, word_count = german_each_length([0, float('inf')], [item])
         total_len += word_count
     if not word_range[0] <= total_len <= word_range[1]:
-        return 0, f"❌ 字符数量不匹配此range{word_range}: model_response总数量为：{str(total_len)}"
-    return 1, f"✅ 字符数量匹配，model_response总数量为 {str(total_len)}"
+        return 0, f"❌ Character count does not match range {word_range}: model_response total count is: {str(total_len)}"
+    return 1, f"✅ Character count matches, model_response total count is: {str(total_len)}"
 
 def german_each_length(word_range, model_responses):
     for model_response in model_responses:
@@ -245,9 +245,9 @@ def german_each_length(word_range, model_responses):
         total_len = len(german_words)
         
         if not word_range[0] <= total_len <= word_range[1]:
-            return 0, f"❌ {model_response} 数量不匹配此范围{word_range}: 德语单词数是：{str(total_len)}", total_len
+            return 0, f"❌ {model_response} count does not match range {word_range}: German word count is: {str(total_len)}", total_len
     
-    return 1, f"✅ 数量匹配：德语单词数是：{str(total_len)}", total_len
+    return 1, f"✅ Count matches: German word count is: {str(total_len)}", total_len
 
 # 中文+其他语言混合计数
 def mixed_chinese_word_count(text: str, target_language: str = "english") -> Dict[str, int]:
@@ -275,7 +275,7 @@ def mixed_chinese_word_count(text: str, target_language: str = "english") -> Dic
     }
     
     if target_language not in language_patterns:
-        raise ValueError(f"不支持的语言: {target_language}")
+        raise ValueError(f"Unsupported language: {target_language}")
     
     # 1. 统计中文字符数
     chinese_chars = len(re.findall(r'[\u4e00-\u9fff]', text))
@@ -344,9 +344,9 @@ def mixed_language_each_length(word_range: List[float], model_responses: List[st
 
         total_len = target_word_count + chinese_words_count
         if not word_range[0] <= total_len <= word_range[1]:
-            return 0, f"❌ {og_model_response} 数量不匹配此范围{word_range}: {language}混合中文总单位数是：{total_len} (中文字符:{chinese_words_count}, {language}单词:{target_word_count})", chinese_words_count, target_word_count
+            return 0, f"❌ {og_model_response} count does not match range {word_range}: {language} mixed with Chinese total units: {total_len} (Chinese chars: {chinese_words_count}, {language} words: {target_word_count})", chinese_words_count, target_word_count
     
-    return 1, f"✅ 数量匹配：{language}混合中文总单位数是：{total_len} (中文字符:{chinese_words_count}, {language}单词:{target_word_count})", chinese_words_count, target_word_count
+    return 1, f"✅ Count matches: {language} mixed with Chinese total units: {total_len} (Chinese chars: {chinese_words_count}, {language} words: {target_word_count})", chinese_words_count, target_word_count
 
 
 if __name__ == "__main__":

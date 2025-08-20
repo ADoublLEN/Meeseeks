@@ -102,13 +102,13 @@ def match_keyword_in_text(keyword, tokens, original_text, language=None):
     
     # 检查是否在tokens中
     if normalized_keyword in tokens:
-        return True, "标准化匹配"
+        return True, "Normalized match"
     
     # 检查词形还原匹配
     for token in set(tokens):  # 使用set避免重复检查
         lemmatized_token = simplemma.lemmatize(token, lang=language) 
         if lemmatized_token == normalized_keyword:
-            return True, "词形还原匹配"
+            return True, "Lemmatized match"
     
     return False, None
 
@@ -179,7 +179,7 @@ def format_keyword_display(keyword, language):
     """格式化关键词显示，包括标准化形式"""
     normalized = simplemma.lemmatize(keyword.lower(), lang=language)
     if normalized != keyword.lower():
-        return f"'{keyword}'(标准化: '{normalized}')"
+        return f"'{keyword}'(normalized: '{normalized}')"
     return f"'{keyword}'"
 
 
@@ -198,9 +198,9 @@ def model_non_keywords(keywords, corresponding_parts, question):
             is_match, match_type = match_keyword_in_text(kw, tokens, part_lower, language)
             if is_match:
                 kw_display = format_keyword_display(kw, language)
-                return 0, f"❌ '{part}' 内包含关键词: {kw_display}({match_type})"
+                return 0, f"❌ '{part}' contains keyword: {kw_display}({match_type})"
     
-    return 1, f"✅ 所有内容均未出现关键词: {kws} (包括词形变体)"
+    return 1, f"✅ All content does not contain keywords: {kws} (including word variants)"
 
 
 def model_keywords(keywords, corresponding_parts, question):
@@ -217,9 +217,9 @@ def model_keywords(keywords, corresponding_parts, question):
             is_match, match_type = match_keyword_in_text(kw, tokens, part_lower, language)
             if not is_match:
                 kw_display = format_keyword_display(kw, language)
-                return 0, f"❌ '{part}' 内缺少关键词: {kw_display}"
+                return 0, f"❌ '{part}' missing keyword: {kw_display}"
     
-    return 1, f"✅ 所有内容均出现关键词: {kws} (包括词形变体)"
+    return 1, f"✅ All content contains keywords: {kws} (including word variants)"
 
 
 def model_keywords_any(num_need, keywords, corresponding_parts, question):
@@ -241,9 +241,9 @@ def model_keywords_any(num_need, keywords, corresponding_parts, question):
             matched.append(f"{kw_display}({match_type})")
             
             if len(matched) >= num_need:
-                return 1, f"✅ 包含至少 {num_need} 个关键词: {matched[:num_need]}"
+                return 1, f"✅ Contains at least {num_need} keywords: {matched[:num_need]}"
     
-    return 0, f"❌ 未包含足够关键词,还需 {num_need - len(matched)} 个,已匹配: {matched}"
+    return 0, f"❌ Not enough keywords, need {num_need - len(matched)} more, matched: {matched}"
 
 
 def model_word_freq(num_need, keywords, corresponding_parts, question):
@@ -259,17 +259,17 @@ def model_word_freq(num_need, keywords, corresponding_parts, question):
         print(tokens)
         count = count_keyword_occurrences(kw, tokens, part.lower(), language)
         if count > 0:
-            details.append(f"'{part}' 中出现 {count} 次")
+            details.append(f"'{part}' appears {count} times")
         total_count += count
     
     kw_display = format_keyword_display(kw, language)
     
     if total_count == num_need:
         detail_str = f"({'; '.join(details)})" if details else ""
-        return 1, f"✅ {kw_display} 共出现 {total_count} 次,符合要求 {detail_str}"
+        return 1, f"✅ {kw_display} appears {total_count} times, meets requirement {detail_str}"
     
-    detail_str = f"({'; '.join(details) if details else '未找到'})"
-    return 0, f"❌ {kw_display} 共出现 {total_count} 次,要求 {num_need} 次 {detail_str}"
+    detail_str = f"({'; '.join(details) if details else 'not found'})"
+    return 0, f"❌ {kw_display} appears {total_count} times, required {num_need} times {detail_str}"
 
 
 def model_non_word_freq(num_need, keywords, corresponding_parts, question):
@@ -284,16 +284,16 @@ def model_non_word_freq(num_need, keywords, corresponding_parts, question):
         tokens = tokenize_texts_with_normalization(part, language)[0]
         count = count_keyword_occurrences(kw, tokens, part.lower(), language)
         if count > 0:
-            details.append(f"'{part}' 中出现 {count} 次")
+            details.append(f"'{part}' appears {count} times")
         total_count += count
     
     kw_display = format_keyword_display(kw, language)
     
     if total_count <= num_need:
-        detail_str = f"({'; '.join(details) if details else '未找到'})"
-        return 1, f"✅ {kw_display} 共出现 {total_count} 次,不超过 {num_need} 次 {detail_str}"
+        detail_str = f"({'; '.join(details) if details else 'not found'})"
+        return 1, f"✅ {kw_display} appears {total_count} times, does not exceed {num_need} times {detail_str}"
     
-    return 0, f"❌ {kw_display} 共出现 {total_count} 次,超过 {num_need} 次 ({'; '.join(details)})"
+    return 0, f"❌ {kw_display} appears {total_count} times, exceeds {num_need} times ({'; '.join(details)})"
 
 
 def model_non_very_similar(sentences_list, question):
@@ -314,17 +314,17 @@ def model_non_very_similar(sentences_list, question):
             
             if sim > 0.75:
                 common_words = set(tokens_list[i]) & set(tokens_list[j])
-                return 0, (f"❌ 句子对相似度过高:\n"
+                return 0, (f"❌ Sentence pair similarity too high:\n"
                           f"1: '{sentences_list[i]}'\n"
                           f"2: '{sentences_list[j]}'\n"
-                          f"相似度: {sim:.3f}\n"
-                          f"共同词汇: {list(common_words)}")
+                          f"Similarity: {sim:.3f}\n"
+                          f"Common words: {list(common_words)}")
     
     max_sim = max([calculate_similarity(tokens_list[i], tokens_list[j]) 
                    for i in range(len(tokens_list)) 
                    for j in range(i + 1, len(tokens_list))], default=0)
     
-    return 1, f"✅ 无特别相似句子 (最高相似度: {max_sim:.3f})"
+    return 1, f"✅ No particularly similar sentences (highest similarity: {max_sim:.3f})"
 
 
 if __name__ == '__main__':

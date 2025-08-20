@@ -24,10 +24,10 @@ def model_repeat_each(model_response):
     duplicates = [item for item, count in item_count.items() if count > 1]
     
     if duplicates:
-        duplicate_info = ", ".join([f"'{item}' (出现{item_count[item]}次)" for item in duplicates])
-        return 0, f"❌ 有重复：{duplicate_info}"
+        duplicate_info = ", ".join([f"'{item}' (appears {item_count[item]} times)" for item in duplicates])
+        return 0, f"❌ Duplicates found: {duplicate_info}"
     
-    return 1, "✅ 无重复"
+    return 1, "✅ No duplicates"
 
 def model_no_word_repeat(model_response):
     model_response = [clean_up_text(item) for item in model_response]
