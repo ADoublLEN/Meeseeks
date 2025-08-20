@@ -60,25 +60,3 @@ evaluation_results_english/
 
 
 Each directory contains structured logs, extracted outputs, and scoring results for further analysis.
-
----
-
-## 📊 Key Features
-- Multi-turn **instruction-following benchmark**  
-- Self-correction through **feedback loops**  
-- Language support: **Chinese** & **English**  
-- Flexible evaluation pipeline with **open-source or commercial APIs**  
-- Clear, structured result outputs for analysis  
-
----
-
-## 📝 Citation
-If you find **Meeseeks** useful in your research, please cite our work (citation info coming soon).
-
----
-
-## 📧 Contact
-For issues, feature requests, or collaboration opportunities, please open a GitHub issue or contact the maintainers.
-
----
-✨ *Meeseeks — Making models better at following instructions.*
