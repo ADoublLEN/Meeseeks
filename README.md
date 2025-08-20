@@ -1,47 +1,84 @@
-# 🧩 Meeseeks — Multi-Turn Instruction-Following Benchmark
+# 👑 Meeseeks Benchmark
 
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](#license)
-[![Language](https://img.shields.io/badge/Langs-EN%20%7C%20ZH-informational)](#-quick-start)
-[![Category](https://img.shields.io/badge/Benchmark-Instruction--Following-success)](#-key-features)
+## 📖 Introduction
+**Meeseeks** is an **instruction-following benchmark** designed to evaluate how well models can adhere to user instructions in a **multi-turn scenario**.  
+A key feature of Meeseeks is its **self-correction loop**, where models receive structured feedback and must refine their responses accordingly.  
 
-**Meeseeks** is a benchmark for **multi-turn** instruction following. It evaluates whether models can **self-correct** their responses based on structured feedback—moving beyond single-turn accuracy to measure *adaptability* and *recovery*.
-
----
-
-## 📌 Contents
-- [Key Features](#-key-features)
-- [Quick Start](#-quick-start)
-- [Setup & Requirements](#-setup--requirements)
-- [Script Arguments](#-script-arguments)
-- [Expected Outputs](#-expected-outputs)
-- [Project Layout](#-project-layout)
-- [How It Works](#-how-it-works)
-- [Troubleshooting](#-troubleshooting)
-- [FAQ](#-faq)
-- [Cite](#-cite)
-- [License](#license)
-
----
-
-## ✨ Key Features
-
-- **Multi-turn evaluation:** Measures correction behavior across turns with feedback loops.
-- **Bilingual pipelines:** Same content for **EN** and **ZH**, with **language-specific evaluation**.
-- **Pluggable models:** Bring your own **tested model**, **extraction model**, and **scoring model**.
-- **Open or commercial:** Works with open-source (e.g., Qwen) or hosted APIs (e.g., Claude Sonnet).
+This benchmark provides a realistic evaluation of a model’s **adaptability, instruction adherence, and iterative improvement**.
 
 ---
 
 ## 🚀 Quick Start
 
-We provide three entry scripts:
+We provide three example scripts to help you get started quickly:
 
-```bash
-# Run Meeseeks (Chinese)
-bash example_run_chinese.sh
+- **`example_run_chinese.sh`** → Run Meeseeks (Chinese) dataset  
+- **`example_run_english.sh`** → Run Meeseeks (English) dataset  
+- **`example_run_custom.sh`** → Run your own dataset  
 
-# Run Meeseeks (English)
-bash example_run_english.sh
+> ℹ️ **Note:**  
+> Meeseeks (English) and Meeseeks (Chinese) share the **same content**, but their **evaluation pipelines are different**.
 
-# Run Meeseeks on your own dataset
-bash example_run_custom.sh
+---
+
+## ⚙️ Requirements
+
+Before running any script, you must implement **three model APIs**:
+
+1. **Test Model**  
+   - Argument: `--tested_model_url`  
+   - The model you want to evaluate.  
+
+2. **Extract Model** *(Recommended: `Qwen2.5-Coder-32B-Instruct`)*  
+   - Argument: `--qwen_url`  
+   - Used to extract structured outputs from model responses.  
+
+3. **Score Model** *(Recommended: `Qwen2.5-32B-Instruct`)*  
+   - Argument: `--qwen_coder_url`  
+   - Used to evaluate and score the extracted results.  
+
+---
+
+## 💡 Hardware & API Options
+
+- If you **have a GPU**:  
+  We recommend using the open-source **Qwen2.5 series** models for extraction and scoring.  
+
+- If you **don’t have a GPU**:  
+  You can use **commercial APIs** instead.  
+  - ✅ *Highly recommended:* **Claude 3.7 Sonnet**  
+  - Alternative APIs may also be integrated as long as they follow the input/output format.  
+
+---
+
+## 📂 Results
+
+- Chinese evaluation results will be stored in:  
+evaluation_results_chinese/
+- English evaluation results will be stored in:  
+evaluation_results_english/
+
+
+Each directory contains structured logs, extracted outputs, and scoring results for further analysis.
+
+---
+
+## 📊 Key Features
+- Multi-turn **instruction-following benchmark**  
+- Self-correction through **feedback loops**  
+- Language support: **Chinese** & **English**  
+- Flexible evaluation pipeline with **open-source or commercial APIs**  
+- Clear, structured result outputs for analysis  
+
+---
+
+## 📝 Citation
+If you find **Meeseeks** useful in your research, please cite our work (citation info coming soon).
+
+---
+
+## 📧 Contact
+For issues, feature requests, or collaboration opportunities, please open a GitHub issue or contact the maintainers.
+
+---
+✨ *Meeseeks — Making models better at following instructions.*
