@@ -10,7 +10,7 @@ This benchmark provides a realistic evaluation of a model’s **adaptability, in
 ---
 
 ## 📊 Leaderboard
-![leaderboard](leaderboard.png)
+![Leaderboard](Leaderboard.png)
 
 ---
 
