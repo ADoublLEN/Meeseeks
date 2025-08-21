@@ -11,19 +11,56 @@ This benchmark provides a realistic evaluation of a model’s **adaptability, in
 
 ## Quick Example
 
-| ROUND1-输入                                                                                                 | 评测内容            |
-| --------------------------------------------------------------------------------------------------------- | --------------- |
-| 指令遵循单项                                                                                                    | 对应能力项           |
-| 在短视频的评论区，以消费者角度生成32条用户口语化评论和40条用户非口语化评论。每条评论为7个字，不允许出现以下词语:这个,好,坏,不错,很,很棒                                 | 是否生成了32条用户口语化评论 | 条数约束 |
-| 是否生成了40条用户非口语化评论                                                                                          | 条数约束            |
-| 所有评论是否为7个字                                                                                                | 0~10字、精确        |
-| 评论是否不重复                                                                                                   | 重复              |
-| 评论是否不包含以下词语:这个,好,坏,不错,很,很棒                                                                                | 关键词             |
-| 💡 让我们激活多轮模式！                                                                                             |
-| ROUND2 - 输入（若ROUND1模型输出未满足需求："所有评论是否为7个字"）                                                                |
-| 你的回答中存在以下问题：所有评论是否为7个字：❌ 存在内容字符数量不匹配此range[7, 7] [妈妈希望你以后可以一帆风顺]字数为：13请根据这些信息给出你修正后的回答，注意：只输出回答，不要输出额外信息。 |
-| ROUND3 - 输入 ...                                                                                           |
-| ...                                                                                                       |
+<table style="text-align: center; width: 80%; margin: 0 auto;">
+<thead>
+<tr>
+  <th style="text-align: center; width: 25%;">ROUND1-输入</th>
+  <th style="text-align: center; width: 45%;">评测内容</th>
+  <th style="text-align: center; width: 30%;">对应能力项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td colspan="3" style="text-align: center;"><strong>指令遵循单项</strong></td>
+</tr>
+<tr>
+  <td rowspan="5" style="text-align: center; vertical-align: middle; width: 100px; max-width: 100px; word-wrap: break-word; font-size: 20px; padding: 8px;">在短视频的评论区，以消费者角度生成32条用户口语化评论和40条用户非口语化评论。每条评论为7个字，不允许出现以下词语:这个,好,坏,不错,很,很棒</td>
+  <td style="text-align: center;">是否生成了32条用户口语化评论</td>
+  <td style="text-align: center;">条数约束</td>
+</tr>
+<tr>
+  <td style="text-align: center;">是否生成了40条用户非口语化评论</td>
+  <td style="text-align: center;">条数约束</td>
+</tr>
+<tr>
+  <td style="text-align: center;">所有评论是否为7个字</td>
+  <td style="text-align: center;">0~10字、精确</td>
+</tr>
+<tr>
+  <td style="text-align: center;">评论是否不重复</td>
+  <td style="text-align: center;">重复</td>
+</tr>
+<tr>
+  <td style="text-align: center;">评论是否不包含以下词语:这个,好,坏,不错,很,很棒</td>
+  <td style="text-align: center;">关键词</td>
+</tr>
+<tr>
+  <td colspan="3" style="text-align: center;">💡 <strong>让我们激活多轮模式！</strong></td>
+</tr>
+<tr>
+  <td colspan="3" style="text-align: center;"><strong>ROUND2 - 输入（若ROUND1模型输出未满足需求："所有评论是否为7个字"）</strong></td>
+</tr>
+<tr>
+  <td colspan="3" style="text-align: center; word-wrap: break-word;">你的回答中存在以下问题：所有评论是否为7个字：❌ 存在内容字符数量不匹配此range[7, 7] [妈妈希望你以后可以一帆风顺]字数为：13请根据这些信息给出你修正后的回答，注意：只输出回答，不要输出额外信息。</td>
+</tr>
+<tr>
+  <td colspan="3" style="text-align: center;"><strong>ROUND3 - 输入 ...</strong></td>
+</tr>
+<tr>
+  <td colspan="3" style="text-align: center;">...</td>
+</tr>
+</tbody>
+</table>
 
 ---
 
