@@ -9,6 +9,12 @@ This benchmark provides a realistic evaluation of a model’s **adaptability, in
 
 ---
 
+## 📊 Leaderboard
+![leaderboard](leaderboard.svg)
+
+
+---
+
 ## 🍄‍🟫 A Quick Example
 
 <table style="text-align: center; width: 60%; margin: 0 auto;">
@@ -58,11 +64,6 @@ This benchmark provides a realistic evaluation of a model’s **adaptability, in
 </tr>
 </tbody>
 </table>
-
----
-
-## 📊 Leaderboard
-![leaderboard](leaderboard.svg)
 
 ---
 
