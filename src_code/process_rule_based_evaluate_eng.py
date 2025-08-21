@@ -111,7 +111,7 @@ def rule_based_evaluate(item, rule, model_response):
                 
                 # 四舍五入到小数点后两位进行比较
                 if round(real_ratio, 2) != round(expected_ratio, 2):
-                    return 0, f"❌ 不匹配: 中文字符数：{str(chinese_count)}，{language}单词数：{str(language_word_count)}，比例：{real_ratio:.4f}, 期望比例为：{str(ratio[0])} / {str(ratio[1])} = {expected_ratio:.4f}，至少确保小数点后两位是一致的"
+                    return 0, f"❌ Not match: Chinese character num:：{str(chinese_count)}，{language} word num：{str(language_word_count)} ratio: {real_ratio:.4f}, expected ratio: {str(ratio[0])} / {str(ratio[1])} = {expected_ratio:.4f}, at least make sure the two decimal places are consistent"
 
             return 1, "✅ 匹配"
         
