@@ -9,55 +9,52 @@ This benchmark provides a realistic evaluation of a model’s **adaptability, in
 
 ---
 
-## Quick Example
+## 🍄‍🟫 A Quick Example
 
-<table style="text-align: center; width: 80%; margin: 0 auto;">
+<table style="text-align: center; width: 60%; margin: 0 auto;">
 <thead>
-<tr>
-  <th style="text-align: center; width: 25%;">ROUND1-输入</th>
-  <th style="text-align: center; width: 45%;">评测内容</th>
-  <th style="text-align: center; width: 30%;">对应能力项</th>
+<tr style="background-color: #f0f0f0;">
+  <th style="text-align: center; width: 20%; font-weight: bold;">ROUND1-Input</th>
+  <th style="text-align: center; width: 50%; font-weight: bold;">Evaluation Content</th>
+  <th style="text-align: center; width: 30%; font-weight: bold;">Capability tags</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td colspan="3" style="text-align: center;"><strong>指令遵循单项</strong></td>
+  <td rowspan="5" style="text-align: center; vertical-align: middle; width: 150px; max-width: 150px; word-wrap: break-word; font-size: 12px; padding: 6px; line-height: 1.3; font-weight: normal;">Generate 32 colloquial user comments and 40 formal user comments from a consumer perspective in short video comment sections. Each comment should be exactly 7 characters long and must not contain the following words:["this", "good", "that"]</td>
+  <td style="text-align: center; font-weight: normal;">Whether 32 colloquial user comments were generated</td>
+  <td style="text-align: center; font-weight: normal;">Element number requirement</td>
 </tr>
 <tr>
-  <td rowspan="5" style="text-align: center; vertical-align: middle; width: 100px; max-width: 100px; word-wrap: break-word; font-size: 20px; padding: 8px;">在短视频的评论区，以消费者角度生成32条用户口语化评论和40条用户非口语化评论。每条评论为7个字，不允许出现以下词语:这个,好,坏,不错,很,很棒</td>
-  <td style="text-align: center;">是否生成了32条用户口语化评论</td>
-  <td style="text-align: center;">条数约束</td>
+  <td style="text-align: center; font-weight: normal;">Whether 40 formal user comments were generated</td>
+  <td style="text-align: center; font-weight: normal;">Element number requirement</td>
 </tr>
 <tr>
-  <td style="text-align: center;">是否生成了40条用户非口语化评论</td>
-  <td style="text-align: center;">条数约束</td>
+  <td style="text-align: center; font-weight: normal;">Whether all comments are exactly 7 characters</td>
+  <td style="text-align: center; font-weight: normal;">Generate in 0∼10 words、Generate at accurate word number</td>
 </tr>
 <tr>
-  <td style="text-align: center;">所有评论是否为7个字</td>
-  <td style="text-align: center;">0~10字、精确</td>
+  <td style="text-align: center; font-weight: normal;">Whether comments are non-repetitive</td>
+  <td style="text-align: center; font-weight: normal;">Generate repeat/non-repeat content</td>
 </tr>
 <tr>
-  <td style="text-align: center;">评论是否不重复</td>
-  <td style="text-align: center;">重复</td>
+  <td style="text-align: center; font-weight: normal;">Whether comments do not contain forbidden words: ["this", "good", "that"]</td>
+  <td style="text-align: center; font-weight: normal;"> Generate with certain keywords</td>
+</tr>
+<tr style="background-color: #f0f0f0;">
+  <td colspan="3" style="text-align: center; font-weight: normal;">💡 <strong>Let's activate multi-round mode!</strong></td>
+</tr>
+<tr style="background-color: #f0f0f0;">
+  <td colspan="3" style="text-align: center; font-weight: normal;"><strong>ROUND2 - Input (if ROUND1 model output fails to meet requirement: "Whether all comments are exactly 7 characters")</strong></td>
 </tr>
 <tr>
-  <td style="text-align: center;">评论是否不包含以下词语:这个,好,坏,不错,很,很棒</td>
-  <td style="text-align: center;">关键词</td>
+  <td colspan="3" style="text-align: center; word-wrap: break-word; font-weight: normal;">Your response has the following issues: Whether all comments are exactly 7 characters: ❌ Content character count does not match range[7, 7] [mom prouds of you] character count: 4 Please provide your corrected response based on this information. Note: Only output the answer, do not output additional information.</td>
+</tr>
+<tr style="background-color: #f0f0f0;">
+  <td colspan="3" style="text-align: center; font-weight: normal;"><strong>ROUND3 - Input ...</strong></td>
 </tr>
 <tr>
-  <td colspan="3" style="text-align: center;">💡 <strong>让我们激活多轮模式！</strong></td>
-</tr>
-<tr>
-  <td colspan="3" style="text-align: center;"><strong>ROUND2 - 输入（若ROUND1模型输出未满足需求："所有评论是否为7个字"）</strong></td>
-</tr>
-<tr>
-  <td colspan="3" style="text-align: center; word-wrap: break-word;">你的回答中存在以下问题：所有评论是否为7个字：❌ 存在内容字符数量不匹配此range[7, 7] [妈妈希望你以后可以一帆风顺]字数为：13请根据这些信息给出你修正后的回答，注意：只输出回答，不要输出额外信息。</td>
-</tr>
-<tr>
-  <td colspan="3" style="text-align: center;"><strong>ROUND3 - 输入 ...</strong></td>
-</tr>
-<tr>
-  <td colspan="3" style="text-align: center;">...</td>
+  <td colspan="3" style="text-align: center; font-weight: normal;">...</td>
 </tr>
 </tbody>
 </table>
