@@ -14,7 +14,7 @@ We officially released the multilingual version of Meeseeks!
 
 ## 📋 Previous Versions
 
-Temporarily removed for ICLR submitting
+Temporarily removed for arr submitting
 
 ## 📖 Introduction
 **Meeseeks** is an **instruction-following benchmark** designed to evaluate how well models can adhere to user instructions in a **multi-turn scenario**.  
@@ -230,4 +230,4 @@ Each directory contains:
 
 
 ## 🙏 Contributors behind the scenes
-Temporarily removed for ICLR submitting
+Temporarily removed for arr submitting
